@@ -1,0 +1,73 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Thoughts and Advice on Writing your BAP",
+    "section": "",
+    "text": "Preface\nI have been teaching a Bachelor’s Project (BAP) at Leiden University for several years now. I have seen great theses, poor theses, and everything in between as both a supervisor and as a second reader on theses in other courses. This book is a collection of materials that I have been developing for the past several years aimed at giving you additional guidance for developing a good (perhaps even great) thesis.\nThere are three main sections to this book:\n\nWriting the Thesis: This part slightly puts the cart before the horse by considering the written product of the thesis - what should be in it, how to structure it, and how to communicate effectively. It also provides links to some other resources that I think can help you in this process (see the starting preface/part of each section for additional resources).\nDoing Research: This part focuses on the process of doing research. In particular, it provides some guidance on how to find relevant research to review for your project and how to think about finding relevant data to analyze (presuming you are not collecting your own).\nPractical Issues in Data Analysis: This section focuses on providing some advice on how to analyze and present data in an effective manner. It is not a full primer on statistical analyses (you should consult your Statistics I/II notes and the resources provided there for that), but seeks to bridge the gap between the abstract and the practical.\n\nWhat I write naturally reflects my own opinions and tastes. That does not make them “correct”, of course, although this information may still be of value even if it is purely idiosyncratic to me as a reader given that I’m one of the people grading your thesis! In addition, this document, by its very nature, is focused on general advice; your specific project may require deviations or alterations to what I suggest here.\nI will highlight some other resources for helping you along the way in subsequent sections as I note above. One resource that I want to highlight here is a Substack written by two political scientists–Paul Musgrave and Nicholas Davis–called “Thesis Statement” (weblink). These authors have written a host of short, but very insightful, posts on how to approach nearly every part of writing one’s senior thesis. I would strongly recommend reading through what they have written as well.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "part_writing.html",
+    "href": "part_writing.html",
+    "title": "Writing the Thesis",
+    "section": "",
+    "text": "Some Other Guides\nWhat I write in the sections to come is based on my experience supervising BAP thesis projects and assessing thesis projects as a second reader. The points below are thus potentially idiosyncratic to me as a reader. However, I have also drawn on a variety of other resources from political and social scientists in composing this advice. You can find links to some of the resources I draw upon below. I recommend giving them a quick read through as well since they are pretty short, but note that some of these documents are pitched at particular institutions or particular types of assignments, so not every point in them will be relevant.",
+    "crumbs": [
+      "Writing the Thesis"
+    ]
+  },
+  {
+    "objectID": "part_writing.html#some-other-guides",
+    "href": "part_writing.html#some-other-guides",
+    "title": "Writing the Thesis",
+    "section": "",
+    "text": "Thesis Statement by Paul Musgrave and Nicholas Davis\nWriting Advice by John Gerring\nAssorted Tips for Students on Writing Research Papers, Dos and Don’ts of Writing for Students, and Research Design Paper Instructions by Steven V. Miller\nThree Templates for Introductions to Political Science Articles\nCh. 12: Communicating Research in “Research Design in Political Science” by Dimiter Toshkov",
+    "crumbs": [
+      "Writing the Thesis"
+    ]
+  },
+  {
+    "objectID": "writing_01_structure.html",
+    "href": "writing_01_structure.html",
+    "title": "1  Structuring the Thesis",
+    "section": "",
+    "text": "In general, a BAP thesis can be divided into the following portions:\n\n\nIntroduction\nReview of Literature and Argument\nResearch Design\nAnalyses/Results\nConclusion\nAppendix/Appendices\n\nI discuss each portion of the thesis in the chapters to come. But, first, a few beginning thoughts.\nFirst, do not take the above as meaning that you need to have exactly this number of sections in your thesis. It may, and often does, make sense to divide some of these portions into separate sections or subsections. The Review of Literature and Argument portion of the thesis, for instance, is often best divided into two or more sections to avoid overwhelming the reader with too much information all at once and to signal changes in topic within the thesis. It is not a bad idea, meanwhile, to divide the Research Design section into sub-sections as I’ll discuss later on.\nRegardless of these points, there should be clear section headers to delineate where each portion of the thesis begins and where the next one ends with the exception of the Introduction which does not require a section header. I prefer, and recommend, the APA style for section headers shown here with main sections centered and bolded and then sub-section headers left-aligned and bolded. For instance:\n\nA second consideration concerns length The thesis, as a whole, should be between 7,000-8,000 words (excluding the title page and references). A natural question might then be: how long should each portion be? There is no single correct answer to this question. What follows, then, are highly general recommendations that will need to be revised in relation to your particular research question and project. I would not get too attached to the specific numbers here - they were not created via any type of scientific process beyond me trying to eyeball my own writing, and past theses, and throwing out some plausible sounding ranges. However, the ranges may give some sense of the relative importance of each section.\n\nIntroduction: ~500-1000 words\nLiterature Review and theory: ~1500-2500 words\nResearch Design: ~700-1500 words\nAnalyses/Results: ~700-1500 words\nConclusion: ~600-1500 words\n\nFinally, I have a sixth item above: Appendix or Appendices. There are two types of appendix that it makes sense to include: (1) one that gives some additional details on how control variables are measured and operationalized in your model; (2) one that goes into detail about your assumption checks. I’ll discuss these in sections to come. An important point: appendices do not count toward the word count of the thesis.",
+    "crumbs": [
+      "Writing the Thesis",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Structuring the Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "part_research.html#footnotes",
+    "href": "part_research.html#footnotes",
+    "title": "Doing Research",
+    "section": "",
+    "text": "Well, four is probably more accurate since you also have to write and edit the thing. See the first section of this collection: “Writing the Thesis”.↩︎",
+    "crumbs": [
+      "Doing Research"
+    ]
+  },
+  {
+    "objectID": "part_analysis.html",
+    "href": "part_analysis.html",
+    "title": "Practical Issues in Data Analysis",
+    "section": "",
+    "text": "Other Resouces\nThe ensuing set of chapters is not a guide to statistics and does not cover all elements of data analysis (e.g., assumptions testing). If you need a refresher on the statistics element, then you should consult Andy Field’s “Discovering Statistics Using IBM SPSS Statistics” and/or OpenIntro Statistics as well as your class notes for Statistics I and II. SPSS users can find videos on how to use SPSS for data analysis at this Kaltura page (and additional written instruction via the .pdf file linked to above). R users can find the videos and overviews from Statistics I and II on this Brightspace page. The Statistics I R overviews have now been collected into a single book here. The Statistics I R overviews are also being collected into a single online resource and I will update this document with a link to it when it is ready. You can, of course, also consult me to supplement these materials.\nThe resources above do not exhaust the potential guides and pedagogical resources available for working with R/R-Studio.\nHere are some additional resources that you may find useful.",
+    "crumbs": [
+      "Practical Issues in Data Analysis"
+    ]
+  },
+  {
+    "objectID": "part_analysis.html#other-resouces",
+    "href": "part_analysis.html#other-resouces",
+    "title": "Practical Issues in Data Analysis",
+    "section": "",
+    "text": "Data Visualization\nYou were introduced to the ggplot package for data visualization in Statistics I/II. This was very much an introduction as the helper materials did not go into everything this series of co[^1]mmands can do. The R Graphics Cookbook provides a much more thorough walkthrough of how to create, and augment, nearly any other type of plot possible with ggplot . Cédric Scherer’s A ggplot2 Tutorial for Beautiful Plotting in R, meanwhile, provides an overview of many of the aesthetic options available in ggplot for creating eye-catching graphics. Finally, Professor Kieran Healy’s book Data Visualization is a great resource for learning about what makes a plot an effective tool for communication in the first place.1\n1 His Bluesky account is a fun read as well.\n\nR Programming\nYou were introduced to the tidyverse in Statistics I/II. One of the most influential resources for working with these tools, and with R in general, can be found in the book R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Wickham is one of the progenitors of this library of R packages and on the shortlist for most influential people in the broader R universe. This book is for those who want to push their knowledge of R further and perhaps particularly for those that might be thinking of going into data science or something similar in their post-graduate life.\n\n\nR Markdown\nYou may very well write your thesis using two programs: a word processor (e.g., Microsoft Word or [shudder] Google Docs) for the actual writing and R-Studio for the analyses. However, you could very well write the whole thing in R-Studio as an R Markdown document. The book R Markdown Cookbook by Yihui Zie, Christophe Dervieux, and Emily Riederer is resource is for those bold few who are thinking of doing that as it delves into the wide array of options available to you in doing so.\nOne note here: if you’re writing your thesis in R Markdown, then I recommend that you also install and use Zotero as a citation manager. I recommend using a citation manager in general, but Zotero can be used with R-Markdown documents, making the inclusion of in-text citations and the (automatic) generation of a bibliography section much easier. See this blog entry on how to add citations in R Markdown using Zotero.",
+    "crumbs": [
+      "Practical Issues in Data Analysis"
+    ]
+  }
+]

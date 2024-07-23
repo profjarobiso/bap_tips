@@ -1,0 +1,26 @@
+---
+reference-location: margin
+---
+
+# Writing the Thesis
+
+The Bachelor thesis is an individual piece of work in which you will advance your own research question concerning some topic within the domain of public opinion (well, within my BAP). A good empirical project begins with a well-defined research question, advances a plausible and testable hypothesis (or hypotheses), and utilizes an appropriate research design for putting that hypothesis to the test.
+
+That all is perhaps easier said than done and writing a *good* BA thesis will take effort on your part. Indeed, clearly communicating in any forum can be difficult and even professional political scientists often write poorly.
+
+The goal of this section is to provide some things to think about as you go about the *writing* part of your project. In particular, I will...
+
+-   Discuss the basic structure of the thesis
+-   Provide my thoughts on how to successfully execute each section and some pitfalls to avoid when doing so[^1]
+
+[^1]: And by "pitfalls", I sometimes mean "things that annoy me"
+
+## Some Other Guides
+
+What I write in the sections to come is based on my experience supervising BAP thesis projects and assessing thesis projects as a second reader. The points below are thus potentially idiosyncratic to me as a reader. However, I have also drawn on a variety of other resources from political and social scientists in composing this advice. You can find links to some of the resources I draw upon below. I recommend giving them a quick read through as well since they are pretty short, but note that some of these documents are pitched at particular institutions or particular types of assignments, so not every point in them will be relevant.
+
+-   [Thesis Statement](https://thesisstatement.substack.com/){target="_blank"} by Paul Musgrave and Nicholas Davis
+-   [Writing Advice](http://www.bu.edu/polisci/files/people/faculty/gerring/documents/WritingAdvice.pdf){target="_blank"} by John Gerring
+-   [Assorted Tips for Students on Writing Research Papers](http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/){target="_blank"}, [Dos and Don'ts of Writing for Students](http://svmiller.com/blog/2015/06/dos-and-donts-of-writing-for-students/){target="_blank"}, and [Research Design Paper Instructions](https://www.dropbox.com/s/qhv4d4pjsk2rxgt/posc3410-research-design-paper-instructions.pdf?dl=0){target="_blank"} by Steven V. Miller
+-   [Three Templates for Introductions to Political Science Articles](https://anthlittle.github.io/files/little_intros.pdf){target="_blank"}
+-   [Ch. 12: Communicating Research](https://catalogue.leidenuniv.nl/permalink/f/1cnfioc/TN_cdi_askewsholts_vlebooks_9781137342843){target="_blank"} in "Research Design in Political Science" by Dimiter Toshkov

@@ -1,0 +1,31 @@
+---
+reference-location: margin
+---
+
+# Practical Issues in Data Analysis {#sec-practical-issues-in-data-analysis}
+
+The foregoing sections have discussed what the thesis should look like in general and provided resources for finding new research and appropriate data. However, you will also have to actually do the analyses as well. The goal of this section is to provide guidance on analyzing quantitative data for your thesis project. It will begin with some general thoughts about this process and discuss some common questions that you might have. This portion of the section is relevant for everybody. The remaining chapters will then discuss some more specific topics that might be relevant for your particular project and which may not have been discussed in your previous course work. The focus of these chapters will be on conducting analyses in R. You can download a .pdf version of these chapters written for SPSS users (and some other SPSS related documents) at [this link](https://surfdrive.surf.nl/files/index.php/s/ZSFRnub4Af2GkyD){target="_blank"}.
+
+## Other Resouces
+
+The ensuing set of chapters is not a guide to statistics and does not cover all elements of data analysis (e.g., assumptions testing). If you need a refresher on the statistics element, then you should consult Andy Field's "Discovering Statistics Using IBM SPSS Statistics" and/or [OpenIntro Statistics](https://www.openintro.org/book/os/){target="_blank"} as well as your class notes for Statistics I and II. SPSS users can find videos on how to use SPSS for data analysis at [this Kaltura page](https://video.leidenuniv.nl/channel/Instruction+videos+Statistics+(Political+Science)/145907901/subscribe){target="_blank"} (and additional written instruction via the .pdf file linked to above). R users can find the videos and overviews from Statistics I and II on this [Brightspace page](https://brightspace.universiteitleiden.nl/d2l/le/discovery/view/course/261270){target="_blank"}. The Statistics I R overviews have now been collected into a single book [here](https://poweleiden.github.io/statistics1/){target="_blank"}. The Statistics I R overviews are also being collected into a single online resource and I will update this document with a link to it when it is ready. You can, of course, also consult me to supplement these materials.
+
+The resources above do not exhaust the potential guides and pedagogical resources available for working with R/R-Studio.
+
+Here are some additional resources that you may find useful.
+
+### Data Visualization
+
+You were introduced to the `ggplot` package for data visualization in Statistics I/II. This was very much an introduction as the helper materials did not go into everything this series of co\[\^1\]mmands can do. The [R Graphics Cookbook](https://r-graphics.org/){target="_blank"} provides a much more thorough walkthrough of how to create, and augment, nearly any other type of plot possible with `ggplot` . Cédric Scherer's [A ggplot2 Tutorial for Beautiful Plotting in R](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), meanwhile, provides an overview of many of the aesthetic options available in `ggplot` for creating eye-catching graphics. Finally, Professor Kieran Healy's book [Data Visualization](https://socviz.co/index.html#preface){target="_blank"} is a great resource for learning about what makes a plot an effective tool for communication in the first place.[^1]
+
+[^1]: His Bluesky [account](https://bsky.app/profile/kjhealy.bsky.social){target="_blank"} is a fun read as well.
+
+### R Programming
+
+You were introduced to the `tidyverse` in Statistics I/II. One of the most influential resources for working with these tools, and with R in general, can be found in the book [R for Data Science](https://r4ds.hadley.nz/){target="_blank"} by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Wickham is one of the progenitors of this library of R packages and on the shortlist for most influential people in the broader R universe. This book is for those who want to push their knowledge of R further and perhaps particularly for those that might be thinking of going into data science or something similar in their post-graduate life.
+
+### R Markdown
+
+You may very well write your thesis using two programs: a word processor (e.g., Microsoft Word or \[shudder\] Google Docs) for the actual writing and R-Studio for the analyses. However, you could very well write the whole thing in R-Studio as an R Markdown document. The book [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/){target="_blank"} by Yihui Zie, Christophe Dervieux, and Emily Riederer is resource is for those bold few who are thinking of doing that as it delves into the wide array of options available to you in doing so.
+
+One note here: if you're writing your thesis in R Markdown, then I recommend that you also install and use [Zotero](https://www.zotero.org/){target="_blank"} as a citation manager. I recommend using a citation manager in general, but Zotero can be used with R-Markdown documents, making the inclusion of in-text citations and the (automatic) generation of a bibliography section much easier. See [this blog entry](https://posit.co/blog/rstudio-1-4-preview-citations/){target="_blank"} on how to add citations in R Markdown using Zotero.

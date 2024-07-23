@@ -1,0 +1,13 @@
+# Preface {.unnumbered}
+
+I have been teaching a Bachelor's Project (BAP) at Leiden University for several years now. I have seen great theses, poor theses, and everything in between as both a supervisor and as a second reader on theses in other courses. This book is a collection of materials that I have been developing for the past several years aimed at giving you additional guidance for developing a good (perhaps even great) thesis.
+
+There are three main sections to this book:
+
+1.  **Writing the Thesis**: This part slightly puts the cart before the horse by considering the written product of the thesis - what should be in it, how to structure it, and how to communicate effectively. It also provides links to some other resources that I think can help you in this process (see the starting preface/part of each section for additional resources).
+2.  **Doing Research**: This part focuses on the process of doing research. In particular, it provides some guidance on how to find relevant research to review for your project and how to think about finding relevant data to analyze (presuming you are not collecting your own).
+3.  **Practical Issues in Data Analysis**: This section focuses on providing some advice on how to analyze and present data in an effective manner. It is not a full primer on statistical analyses (you should consult your Statistics I/II notes and the resources provided there for that), but seeks to bridge the gap between the abstract and the practical.
+
+What I write naturally reflects my own opinions and tastes. That does not make them "correct", of course, although this information may still be of value even if it is purely idiosyncratic to me as a reader given that I'm one of the people grading your thesis! In addition, this document, by its very nature, is focused on general advice; your specific project may require deviations or alterations to what I suggest here.
+
+I will highlight some other resources for helping you along the way in subsequent sections as I note above. One resource that I want to highlight here is a Substack written by two political scientists--Paul Musgrave and Nicholas Davis--called "Thesis Statement" ([weblink](https://thesisstatement.substack.com/){target="_blank"}). These authors have written a host of short, but very insightful, posts on how to approach nearly every part of writing one's senior thesis. I would strongly recommend reading through what they have written as well.

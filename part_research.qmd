@@ -1,0 +1,11 @@
+# Doing Research {#sec-doing-research}
+
+Let's say there are three big tasks in your BAP:[^part_research-1]
+
+[^part_research-1]: Well, four is probably more accurate since you also have to write and edit the thing. See the first section of this collection: "Writing the Thesis".
+
+1.  Identifying your question: what do you want to know?
+2.  Identifying your proposed answer to this question: how do you think the world works?
+3.  Identifying an appropriate research design, testing your answer, and reflecting on your results: are you (more or less) correct about the world?
+
+All three steps require you to engage with scholarly research on the general topic in which you are interested. This will help you understand what is known and not known about your subject and hence what new questions might be interesting to ask. You also need to engage with prior research in order to formulate a plausible answer to your question. And, engaging with prior work may help you identify aspects of your research design (e.g., what should you control for?). The first chapter in this section thus provides some thoughts on how to effectively seek out new information within the great body of potentially relevant work at the other end of your Google Search query. The second chapter, meanwhile, provides some thoughts on how to find relevant data to help you address your RQ and test your hypothesis/es.

@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Thoughts and Advice on Writing your BAP"
+  author: "Dr. Joshua Robison"
+  date: today
+  chapters:
+    - index.qmd
+    - part: part_writing.qmd
+      chapters:
+      - writing_01_structure.qmd
+    - part: part_research.qmd
+    - part: part_analysis.qmd
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+
+editor: visual
+
