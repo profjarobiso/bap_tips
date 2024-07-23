@@ -10,9 +10,7 @@ The foregoing sections have discussed what the thesis should look like in genera
 
 The ensuing set of chapters is not a guide to statistics and does not cover all elements of data analysis (e.g., assumptions testing). If you need a refresher on the statistics element, then you should consult Andy Field's "Discovering Statistics Using IBM SPSS Statistics" and/or [OpenIntro Statistics](https://www.openintro.org/book/os/){target="_blank"} as well as your class notes for Statistics I and II. SPSS users can find videos on how to use SPSS for data analysis at [this Kaltura page](https://video.leidenuniv.nl/channel/Instruction+videos+Statistics+(Political+Science)/145907901/subscribe){target="_blank"} (and additional written instruction via the .pdf file linked to above). R users can find the videos and overviews from Statistics I and II on this [Brightspace page](https://brightspace.universiteitleiden.nl/d2l/le/discovery/view/course/261270){target="_blank"}. The Statistics I R overviews have now been collected into a single book [here](https://poweleiden.github.io/statistics1/){target="_blank"}. The Statistics I R overviews are also being collected into a single online resource and I will update this document with a link to it when it is ready. You can, of course, also consult me to supplement these materials.
 
-The resources above do not exhaust the potential guides and pedagogical resources available for working with R/R-Studio.
-
-Here are some additional resources that you may find useful.
+The resources above do not exhaust the potential guides and pedagogical resources available for working with R/R-Studio. Here are some additional resources that you may find useful.
 
 ### Data Visualization
 

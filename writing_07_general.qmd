@@ -1,0 +1,104 @@
+# General Writing Advice {#sec-general-writing-advice}
+
+The foregoing chapters provide some thoughts on the each section of your thesis. In this final chapter, I will offer some more general thoughts on writing that apply to the whole thesis.
+
+## Outline first
+
+In general, it is a good idea to begin with an outline of what you want to write. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences.
+
+A potential outline might look like this (although, the contents will obviously vary based on what you are writing):
+
+1.  Introduction
+    -   First Paragraph: Main point
+    -   Second Paragraph: Main point
+    -   Third Paragraph...
+2.  Literature Review & Theory Section(s)
+    -   Potential Sub-section 1
+        -   Paragraph 1...
+    -   Potential Sub-section 2
+3.  Methods
+    -   Data Source: Where does the data come from and why this data source?
+    -   Dependent Variable: How do you measure your dependent variable?
+    -   Independent Variable(s): How do you measure your dependent variable?
+    -   Model: Any relevant details on how you will analyze the data.
+4.  Results
+5.  Conclusion
+    -   Paragraph 1...
+
+In filling in the outline for each paragraph, be sure to keep in mind that each paragraph should be organized around a clear, and singular, point or idea. A goal of the thesis, and indeed all writing, is to clearly communicate ideas. One writing tic that may undermine this goal is over-stuffing paragraphs with too many ideas or points. Instead, focus each paragraph on a main idea with successive paragraphs building on each other to form an overarching argument or point. [Steven V. Miller's](http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/){target="_blank"} tip's for students page has an example of what I am talking about here that is quite useful.
+
+The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a *start* to writing - there are places where I have placeholders ("Final Sentence"), for instance - and its contents are rather barebones. But, it provided me with a start!
+
+-   Introduction
+    -   Paragraph 1: Promises aren't believed
+        -   Politicians make promises on the campaign trail.
+        -   They seem to mostly keep them
+        -   However, the mass public doesn't believe this
+        -   The public largely distrusts politicians and believe them to be liars and not promise keepers
+        -   Campaign statements are often *non-credible*
+        -   This poses some challenges to broader accounts of democratic representation and operation that place promissory representation at their core - how can the public hold elites accountable if they don't believe them in the first place?
+    -   Paragraph 2: Moral language might increase credibility
+        -   What would make a politician's statements more credible?
+        -   One possibility highlighted in recent work is the use of *moral* language.
+        -   What is moral language
+        -   Politicians and parties do sometimes use this language
+        -   Simas and Clifford show that *general* moral language (of this sort) does lead to more perceived sincerity
+    -   Paragraph 3/4: This paper's contribution(s)
+        -   We contribute to this work in two ways.
+        -   First, we consider targeting. (maybe switch to language of matched morals rather than targeted? easier to talk about mis-matched?).
+        -   Important for this reason.
+        -   Second, we focus on competence. speaker credibility is based on two components: beliefs about the intentions/motives of the speaker (sincerity, trustworthiness) and their competence or ability to perform the action in question.
+        -   Competence is important for this reason.
+    -   Paragraph 4 or 5: This paper's argument
+        -   We argue...
+        -   Targeted \> non-targeted when it comes to sincerity & matched; targeted = more perceived similarity, so there is a halo effect (?); moral character stuff
+        -   Targeted \< non-targeted when it comes to sincerity & mismatched; backlash effect (but is that what the feinberg stuff shows?)
+        -   What about competence? More of an open question.
+        -   On the one hand, if more committed then more likely to work on it.
+        -   On the other hand, if more commiteed then *less likely to compromise* and perhaps less likely to have influence!
+    -   Paragraph 5 or 6: roadmap?
+        -   What comes next.
+-   Review/Theory
+    -   Paragraph 1: Position Taking is central ...
+        -   Common models of democratic politics grounds electoral competition in the programmatic offerings of parties and candidates
+        -   For instance, promissory theories of representation are based on the idea that parties and candidates make policy promises during election season; voters choose based on those promises; and then parties/candidates are held accountable at the next election based on whether they upheld those promises.
+        -   This process is iterative however with partisan elites potentially changing their positions over time in response to prior electoral performance and in an effort to anticipate the behavior of future voters (Mansbridge, Erikson, Adams etc.)..
+        -   Regardless of whether this is a backwards or forwards process, policy is central to elections and representation.
+    -   Paragraph 2: But contested?
+        -   Parties and candidates spend a good deal of effort cultivating policy positions and publishing party manifestos documenting how they will act in office.
+        -   And, yet, the actual role of policy positions on voter choices is contested.
+        -   Studies of proximity voting suggest a role for voter positions, but one that is perhaps limited relative to more long standing concerns such as partisan predispositions or group loyalties. (Warshaw, etc.; maybe footnote Lenz -- Of course, this assumes that voters have exogenous preferences to begin with, which is a quite problematic assumption - Kuklinski, Druckman, Lenz, Disch)
+        -   Changes in party positions, on the other hand, do seem to matter but perhaps mostly over time and only to a small extent.
+        -   Policy is central to how we talk about elections and democratic politics, but it is not always clear whether it should be or not. (too strong?)
+    -   Paragraph 3: What explains this disconnect?
+        -   What might explain the lack of more robust evidence about party positioning and voter policy positions?
+        -   There are a variety of potential answers to this including the (contested) possibility that only some types of issues matter (e.g., strong attitudes, issue importance, moralization; something on moralization) or that party strategies to remain ambiguous may muddy the waters (Somer-Topcu; etc.).
+        -   Another reason might be that the policy statements of parties and candidates may lack *credibility* in the eyes of audience members.
+        -   Party position taken occurs in a context wherein many people distrust parties and politicians, believing them to only care about electoral success and willing to pander.
+        -   Suspicion about the motives of partisan elites, perhaps stoked by other actors, may thus undermine the influence of party position taking (Adams, pandering minds, my papers).
+        -   On the other hand, party positions may be more influential in contexts wherein audience members believe the position to be more credible as when parties take unpopular positions as this is read as going against the party's interests and hence serves as a costly signal about the party's true intentions (Vazquez; see also Berinsky; Lupia?).
+        -   Final sentence
+    -   ...
+
+## Write and Edit, Edit, Edit...
+
+Having an outline in hand first helps clarify what you actually need to write...which is a handy thing to know before you start writing! However, it is, of course, just a first step. You then need to start writing and, important, *editing* and *rewriting* as well. Your first draft is almost certainly your worst draft in terms of clarity for the reader. Revisit your writing as much as possible. If possible, have someone read a draft of your thesis and ask them for feedback regarding anything that is unclear or doesn't make sense.
+
+Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: [Simple Tricks for Better Prose](https://thesisstatement.substack.com/p/simple-tricks-for-better-prose){target="_blank"}; [Show and Tell](https://thesisstatement.substack.com/p/show-and-tell)
+
+1.  Proofreading for Clarity
+    -   Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.
+    -   Be wary of starting sentences with demonstratives that are not connected to a noun (e.g. "This results in", "These can affect," etc.). Sentences such as these invite the question: what is "this" again?
+    -   Avoid using the passive voice if you can help it.
+    -   Avoid beginning paragraphs with "However" or similar clauses. "However" implies a contrast (This thing, *however* this other thing)...but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you're setting yourself up against.
+    -   Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.
+2.  Proofreading for Content
+    -   Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.
+    -   One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of "but why?" questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.
+    -   Do not assume that you reader(s) know everything about the topic you're writing about.
+3.  Proofread for Grammar and Miscellaneous Errors
+    -   Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.
+
+## Use a reference manager to ease in-text citing and reference list building
+
+I recommend using a citation manager to help simplify the task of referencing as much as possible. I personally use [Zotero](https://www.zotero.org/){target="_blank"} but have experienced with Mendeley which also works fine. Either tool can help you insert citations in-text and automatically populate bibliographies for your essays.
