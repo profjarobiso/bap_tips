@@ -10,6 +10,8 @@ book:
     - part: part_writing.qmd
       chapters:
       - writing_01_structure.qmd
+      - writing_02_introduction.qmd
+      - writing_07_general.qmd
     - part: part_research.qmd
     - part: part_analysis.qmd
 

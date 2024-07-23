@@ -1,0 +1,29 @@
+---
+reference-location: margin
+---
+
+# The Introduction {#sec-the-introduction}
+
+The introduction is a mini-preview of the paper to come. The reader should come away from this section understanding what the topic of the paper is, what the specific question you are investigating is, why these things are interesting/relevant (the stakes of the research), and have a sense of what your answer to the question is.
+
+How should you go about writing this section and accomplishing these goals? Here is an outline of a [paper](https://doi.org/10.1086/717085){target="_blank"} I recently wrote that exemplifies one way of approaching these tasks.[^writing_02_introduction-1] The bit after the colon (e.g., "Paragraph 1: blah blah blah") indicates the general goal of the paragraph, while the bit after "Example:" indicates the specific point I was trying to make in that paragraph in this particular paper. This is an example of how to think about using an outline to help you structure your thinking and make it easier to write (see @sec-general-writing-advice).
+
+[^writing_02_introduction-1]: Although, given the nature of time, "recently" here is receding further and further into the past.
+
+-   Paragraph 1: Here is an important subject to consider
+    -   Example: People follow party cues with potentially problematic normative implications for democracy.
+-   Paragraph 2: Ah, but there is something we don't know...but should!
+    -   Example: Previous work hasn't examined the effectiveness of party cues when other actors (journalists, rival politicians) allege that the party is motivated by ulterior motives despite this being a common element of political rhetoric
+-   Paragraph 3: Preview of your argument
+    -   Example: I argue that cues will be less effective in these circumstances because cue taking is built on trustworthiness and these messages undermine trustworthiness.
+-   Paragraph 4: Preview of study and findings
+    -   Example: I use an experiment where I randomly assign party cues with and without these types of messages; I find that cue taking is indeed undermined.
+-   Paragraph 5: Roadmap of paper (potentially)
+
+In the above, I first try to establish that people should care about party cue taking by highlighting findings that people actually do use them (i.e., they're a common element of politics) and also that there is something at stake in their use. In this case, the idea is that cue taking may threaten an understanding of democracy wherein elected officials follow the wishes of the public rather than the public simply following its leaders.[^writing_02_introduction-2] I have thus set up some broader stakes for the paper by tying it to more general normative concerns about democracy. Identifying the stakes of the paper is important; the reader should have some sense of an answer to the 'so what' question (i.e., why should we care about this?) before they exit the introduction. In the second paragraph, meanwhile, I tried to highlight a gap in the literature - something we don't know about. I then gave a preview of my particular argument and what I found. This is something that BAP students sometimes fail to do when writing their thesis to their detriment. As [Davis and Musgrave](https://thesisstatement.substack.com/p/the-introduction-is-not-a-murder){target="_blank"} note, the introduction is "not a murder mystery". You do not want to [bury the lede](https://www.merriam-webster.com/wordplay/bury-the-lede-versus-lead){target="_blank"} about what you argue and ultimately find! Instead, you should give the reader a roadmap into what is coming further on in the thesis.
+
+[^writing_02_introduction-2]: [Druckman](https://doi.org/10.1080/10584609.2013.852643){target="_blank"} offers a discussion of this tension from the perspective of a public opinion researcher and whether the potential "endogeneity" of public opinion to elite communicates means that the public does not hold "quality opinions". [Disch](https://doi.org/10.1017/S0003055410000602){target="_blank"} offers a discussion from the perspective of a normative political theorist and provides an alternative understanding of responsiveness and mass opinion.
+
+There are different ways of structuring introductions and, indeed, of motivating the importance of research questions. I strongly recommend reading [Three Templates for Introductions to Political Science Articles](https://anthlittle.github.io/files/little_intros.pdf){target="_blank"} by Andrew T. Little as this document provides some great ideas of how to effectively structure this section of a paper. In my rendition above, I did this by highlighting something missing from previous research on this topic. In the actual paper, I actually used something like one of the templates identified by Little wherein I suggested that different theoretical traditions in this field predict different outcomes (i.e.: There is something common in politics we don't know about and, moreover, Theory A predicts X about it while Theory B predicts Y...which one is correct?).
+
+In the outline above, I placed a final entry: "Roadmap (potentially)". This is a reference to 'roadmap' paragraphs in which the author outlines the steps they will take in the paper to come (I will first talk about X; then, I will discuss why that is insufficient; then I'll do this...). I am personally agnostic about the inclusion of such roadmaps in the introduction to a thesis paper. Most of the time the structure is pretty common so its inclusion feels unnecessary. Not everybody feels the same, so it may be sensible to include a short roadmap to cover your bases.
