@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 7&nbsp; General Writing Advice</title>
+<title>Thoughts and Advice on Writing your BAP - 3&nbsp; Review of Literature and Argument</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part_research.html" rel="next">
-<link href="./writing_06_conclusion.html" rel="prev">
+<link href="./writing_04_design.html" rel="next">
+<link href="./writing_02_introduction.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,10 +71,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_03_review.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -140,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing_03_review.html" class="sidebar-item-text sidebar-link">
+  <a href="./writing_03_review.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></span></a>
   </div>
 </li>
@@ -164,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link active">
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
   </div>
 </li>
@@ -188,19 +217,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#outline-first" id="toc-outline-first" class="nav-link active" data-scroll-target="#outline-first"><span class="header-section-number">7.1</span> Outline first</a></li>
-  <li><a href="#write-and-edit-edit-edit" id="toc-write-and-edit-edit-edit" class="nav-link" data-scroll-target="#write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</a></li>
-  <li><a href="#some-other-questions-and-topics" id="toc-some-other-questions-and-topics" class="nav-link" data-scroll-target="#some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</a></li>
-  <li><a href="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" id="toc-use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="nav-link" data-scroll-target="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</a></li>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">3.1</span> Goals</a></li>
+  <li><a href="#specific-tips-points-and-warnings" id="toc-specific-tips-points-and-warnings" class="nav-link" data-scroll-target="#specific-tips-points-and-warnings"><span class="header-section-number">3.2</span> Specific Tips, Points, and Warnings</a>
+  <ul class="collapse">
+  <li><a href="#focus-on-theory" id="toc-focus-on-theory" class="nav-link" data-scroll-target="#focus-on-theory"><span class="header-section-number">3.2.1</span> Focus on Theory</a></li>
+  <li><a href="#draw-it-out-before-you-write" id="toc-draw-it-out-before-you-write" class="nav-link" data-scroll-target="#draw-it-out-before-you-write"><span class="header-section-number">3.2.2</span> Draw it out before you write</a></li>
+  <li><a href="#stating-your-hypothesishypotheses" id="toc-stating-your-hypothesishypotheses" class="nav-link" data-scroll-target="#stating-your-hypothesishypotheses"><span class="header-section-number">3.2.3</span> Stating your hypothesis/hypotheses</a></li>
+  <li><a href="#sec-focus-on-what-is-important" id="toc-sec-focus-on-what-is-important" class="nav-link" data-scroll-target="#sec-focus-on-what-is-important"><span class="header-section-number">3.2.4</span> Focus on what is important</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_03_review.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-general-writing-advice" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></h1>
+<h1 class="title"><span id="sec-review-of-literature-and-argument" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></span></h1>
 </div>
 
 
@@ -217,150 +250,80 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The foregoing chapters provide some thoughts on the each section of your thesis. In this final chapter, I will offer some more general thoughts on writing that apply to the whole thesis.</p>
-<section id="outline-first" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="outline-first"><span class="header-section-number">7.1</span> Outline first</h2>
-<p>In general, it is a good idea to begin with an outline of what you want to write. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences.</p>
-<p>A potential outline might look like this (although, the contents will obviously vary based on what you are writing):</p>
+<section id="goals" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">3.1</span> Goals</h2>
+<p>The next portion of your paper is the literature review and theory building portion. You should aim to accomplish several things in this section:</p>
 <ol type="1">
-<li>Introduction
-<ul>
-<li>First Paragraph: Main point</li>
-<li>Second Paragraph: Main point</li>
-<li>Third Paragraph…</li>
-</ul></li>
-<li>Literature Review &amp; Theory Section(s)
-<ul>
-<li>Potential Sub-section 1
-<ul>
-<li>Paragraph 1…</li>
-</ul></li>
-<li>Potential Sub-section 2</li>
-</ul></li>
-<li>Methods
-<ul>
-<li>Data Source: Where does the data come from and why this data source?</li>
-<li>Dependent Variable: How do you measure your dependent variable?</li>
-<li>Independent Variable(s): How do you measure your dependent variable?</li>
-<li>Model: Any relevant details on how you will analyze the data.</li>
-</ul></li>
-<li>Results</li>
-<li>Conclusion
-<ul>
-<li>Paragraph 1…</li>
-</ul></li>
+<li>Tell the reader what we already know about this subject</li>
+<li>Tell the reader what we don’t know (e.g., that something isn’t studied, or that there is a conflict between theories, etc.)</li>
+<li>Tell the reader what your answer to the ‘what we don’t know’ issue is and try to persuade them that it is a good answer</li>
 </ol>
-<p>In filling in the outline for each paragraph, be sure to keep in mind that each paragraph should be organized around a clear, and singular, point or idea. A goal of the thesis, and indeed all writing, is to clearly communicate ideas. One writing tic that may undermine this goal is over-stuffing paragraphs with too many ideas or points. Instead, focus each paragraph on a main idea with successive paragraphs building on each other to form an overarching argument or point. <a href="http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/" target="_blank">Steven V. Miller’s</a> tip’s for students page has an example of what I am talking about here that is quite useful.</p>
-<p>The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a <em>start</em> to writing - there are places where I have placeholders (“Final Sentence”), for instance - and its contents are rather barebones. But, it provided me with a start!</p>
-<ul>
-<li>Introduction
-<ul>
-<li>Paragraph 1: Promises aren’t believed
-<ul>
-<li>Politicians make promises on the campaign trail.</li>
-<li>They seem to mostly keep them</li>
-<li>However, the mass public doesn’t believe this</li>
-<li>The public largely distrusts politicians and believe them to be liars and not promise keepers</li>
-<li>Campaign statements are often <em>non-credible</em></li>
-<li>This poses some challenges to broader accounts of democratic representation and operation that place promissory representation at their core - how can the public hold elites accountable if they don’t believe them in the first place?</li>
-</ul></li>
-<li>Paragraph 2: Moral language might increase credibility
-<ul>
-<li>What would make a politician’s statements more credible?</li>
-<li>One possibility highlighted in recent work is the use of <em>moral</em> language.</li>
-<li>What is moral language</li>
-<li>Politicians and parties do sometimes use this language</li>
-<li>Simas and Clifford show that <em>general</em> moral language (of this sort) does lead to more perceived sincerity</li>
-</ul></li>
-<li>Paragraph 3/4: This paper’s contribution(s)
-<ul>
-<li>We contribute to this work in two ways.</li>
-<li>First, we consider targeting. (maybe switch to language of matched morals rather than targeted? easier to talk about mis-matched?).</li>
-<li>Important for this reason.</li>
-<li>Second, we focus on competence. speaker credibility is based on two components: beliefs about the intentions/motives of the speaker (sincerity, trustworthiness) and their competence or ability to perform the action in question.</li>
-<li>Competence is important for this reason.</li>
-</ul></li>
-<li>Paragraph 4 or 5: This paper’s argument
-<ul>
-<li>We argue…</li>
-<li>Targeted &gt; non-targeted when it comes to sincerity &amp; matched; targeted = more perceived similarity, so there is a halo effect (?); moral character stuff</li>
-<li>Targeted &lt; non-targeted when it comes to sincerity &amp; mismatched; backlash effect (but is that what the feinberg stuff shows?)</li>
-<li>What about competence? More of an open question.</li>
-<li>On the one hand, if more committed then more likely to work on it.</li>
-<li>On the other hand, if more commiteed then <em>less likely to compromise</em> and perhaps less likely to have influence!</li>
-</ul></li>
-<li>Paragraph 5 or 6: roadmap?
-<ul>
-<li>What comes next.</li>
-</ul></li>
-</ul></li>
-<li>Review/Theory
-<ul>
-<li>Paragraph 1: Position Taking is central …
-<ul>
-<li>Common models of democratic politics grounds electoral competition in the programmatic offerings of parties and candidates</li>
-<li>For instance, promissory theories of representation are based on the idea that parties and candidates make policy promises during election season; voters choose based on those promises; and then parties/candidates are held accountable at the next election based on whether they upheld those promises.</li>
-<li>This process is iterative however with partisan elites potentially changing their positions over time in response to prior electoral performance and in an effort to anticipate the behavior of future voters (Mansbridge, Erikson, Adams etc.)..</li>
-<li>Regardless of whether this is a backwards or forwards process, policy is central to elections and representation.</li>
-</ul></li>
-<li>Paragraph 2: But contested?
-<ul>
-<li>Parties and candidates spend a good deal of effort cultivating policy positions and publishing party manifestos documenting how they will act in office.</li>
-<li>And, yet, the actual role of policy positions on voter choices is contested.</li>
-<li>Studies of proximity voting suggest a role for voter positions, but one that is perhaps limited relative to more long standing concerns such as partisan predispositions or group loyalties. (Warshaw, etc.; maybe footnote Lenz – Of course, this assumes that voters have exogenous preferences to begin with, which is a quite problematic assumption - Kuklinski, Druckman, Lenz, Disch)</li>
-<li>Changes in party positions, on the other hand, do seem to matter but perhaps mostly over time and only to a small extent.</li>
-<li>Policy is central to how we talk about elections and democratic politics, but it is not always clear whether it should be or not. (too strong?)</li>
-</ul></li>
-<li>Paragraph 3: What explains this disconnect?
-<ul>
-<li>What might explain the lack of more robust evidence about party positioning and voter policy positions?</li>
-<li>There are a variety of potential answers to this including the (contested) possibility that only some types of issues matter (e.g., strong attitudes, issue importance, moralization; something on moralization) or that party strategies to remain ambiguous may muddy the waters (Somer-Topcu; etc.).</li>
-<li>Another reason might be that the policy statements of parties and candidates may lack <em>credibility</em> in the eyes of audience members.</li>
-<li>Party position taken occurs in a context wherein many people distrust parties and politicians, believing them to only care about electoral success and willing to pander.</li>
-<li>Suspicion about the motives of partisan elites, perhaps stoked by other actors, may thus undermine the influence of party position taking (Adams, pandering minds, my papers).</li>
-<li>On the other hand, party positions may be more influential in contexts wherein audience members believe the position to be more credible as when parties take unpopular positions as this is read as going against the party’s interests and hence serves as a costly signal about the party’s true intentions (Vazquez; see also Berinsky; Lupia?).</li>
-<li>Final sentence</li>
-</ul></li>
-<li>…</li>
-</ul></li>
-</ul>
+<p>You should have already previewed these points in the Introduction. However, here is the place to unpack that shortened preview into something with more depth.</p>
+<p>One issue students sometimes have in writing this portion of their thesis is an over-focus on goal 1 to the detriment of goals 2 and 3. BAP literature reviews can sometimes read as a laundry list of readings (and this person did X and then another person did Y, and then this other person did Z) without it being clear how these different readings relate to one another or what is really the problem that you will be addressing. However, everything you write in the thesis should have a reason or point for being. Every paragraph should build on the last and help you toward realizing the goal of persuading the reader that there is something we should know but which we don’t and that you have a (potential) answer to that question and hence the content of <em>your</em> contribution.</p>
+<p>One way of thinking about this is via a discussion from an article by <a href="https://catalogue.leidenuniv.nl/permalink/f/1cnfioc/TN_cdi_pubmed_primary_30089228" target="_blank">Siddaway, Wood, and Hedges</a>. The goal of this manuscript is to discuss best practices when writing what is known as a ‘systematic reviews’ of a research literature. The goal of a ‘systematic review’ is to “bring together, synthesize, and critique one or more literatures to provide an overall impression of the extent, nature, and quality of evidence in relation to a particular research question, highlighting gaps between what we know and what we need to know.”</p>
+<p>Siddaway, et al.&nbsp;discuss two types of systematic review. The first is meta-analysis in which the researcher gathers together as many published and un-published research articles on the subject at hand and then merges them together into a single dataset for subsequent quantitative analysis. The second is a “narrative” literature review in which the author still systematically canvasses a literature but instead provide a more qualitative discussion of major themes in the work under discussion.</p>
+<p>Siddaway et al.&nbsp;draw a distinction between “reviewing literature” and “literature reviews” (by which they mean these systematic reviews):<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;They discuss reviewing literature in the introduction in this excerpt. The authors are psychologists and articles in psychology often feature less of a separation between the introduction section as discussed in the preceding chapter and the ‘literature review’ section as discussed here.</p></div></div><blockquote class="blockquote">
+<p>Before discussing systematic reviews and the different types of literature review, it may be instructive to dispel two common misunderstanding about [systematic] literature reviews. The first is that conducting a literature review is the same as the task of reviewing literature, which occurs when writing the introductory section of all quantitative and qualitative journal articles (including review articles). Reviewing literature involves selectively discussing the literature on a particular topic to make the argument that a new study will make a new and/or important contribution to knowledge. In contrast, literature reviews make up a distinct research design and type of article in their own right. Rather than selectively reviewing relevant literature to make a flowing rationale for a study’s existence, they provide a comprehensive synthesis of the available evidence to allow the researcher to draw broad and robust conclusions….To best achieve the purposes of a systematic review, we like Baumeister’s (2013) advice to adopt the mindset of a judge and jury rather than a lawyer. A judge and jury skeptically evaluate the evidence to render the fairest judgment possible, whereas a lawyer’s approach is to make the best case for one side of the argument. Returning to the differences between a literature review and the task of reviewing literature, the introduction section of a quantitative or qualitative article is usually written using the lawyer’s approach.</p>
+</blockquote>
+<p>Ideally, you should put on the hat of judge for the assigned literature review in the substantive seminar (albeit on a smaller sampling of research). In <em>your thesis</em>, on the other hand, compose your review of the literature more like a lawyer. You are not just telling us what others have found, but doing so in a way to scaffold your own argument and contribution.</p>
+<p><a href="https://thesisstatement.substack.com/p/dont-write-a-literature-review" target="_blank">Musgrave and Davis</a> make a similar point when they tell students <em>not</em> to write “literature reviews” in their thesis:</p>
+<blockquote class="blockquote">
+<p>The “literature review” in a thesis, by contrast, has to establish what is <em>relevant</em> in prior arguments to situate your own work. Some of this should reflect your own reading and research, but a good deal of it should come from the suggested readings from your adviser. Your goal with the literature review is <em>sufficiency</em>, not novelty and certainly not mastery. All you have to do is demonstrate that your project is not adrift alone somewhere but, rather, that it is directly linked to earlier research….Your goal is to demonstrate how your contribution fits with that conversation, and to do that you will <em>also</em> have to show shortcomings, conflicts, or unresolved issues in some aspect of that earlier conversation. Moreover, the problems you uncover need to relate to the work <em>you</em> will be doing—there’s no benefit in showing that the theory is flawed if you’re writing a methods paper, and there’s no benefit in showing that methods are flawed if you’re writing a theory paper.</p>
+</blockquote>
+<p>These authors have a nice discussion of some ways of thinking about narrow (but important) ways that a senior thesis can contribute to a research literature in this <a href="https://thesisstatement.substack.com/p/focus-then-focus-more" target="_blank">post</a>.</p>
 </section>
-<section id="write-and-edit-edit-edit" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</h2>
-<p>Having an outline in hand first helps clarify what you actually need to write…which is a handy thing to know before you start writing! However, it is, of course, just a first step. You then need to start writing and, important, <em>editing</em> and <em>rewriting</em> as well. Your first draft is almost certainly your worst draft in terms of clarity for the reader. Revisit your writing as much as possible. If possible, have someone read a draft of your thesis and ask them for feedback regarding anything that is unclear or doesn’t make sense.</p>
-<p>Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: <a href="https://thesisstatement.substack.com/p/simple-tricks-for-better-prose" target="_blank">Simple Tricks for Better Prose</a>; <a href="https://thesisstatement.substack.com/p/show-and-tell">Show and Tell</a></p>
-<ol type="1">
-<li>Proofreading for Clarity
-<ul>
-<li>Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.</li>
-<li>Be wary of starting sentences with demonstratives that are not connected to a noun (e.g.&nbsp;“This results in”, “These can affect,” etc.). Sentences such as these invite the question: what is “this” again?</li>
-<li>Avoid using the passive voice if you can help it.</li>
-<li>Avoid beginning paragraphs with “However” or similar clauses. “However” implies a contrast (This thing, <em>however</em> this other thing)…but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you’re setting yourself up against.</li>
-<li>Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.</li>
-</ul></li>
-<li>Proofreading for Content
-<ul>
-<li>Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.</li>
-<li>One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of “but why?” questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.</li>
-<li>Do not assume that you reader(s) know everything about the topic you’re writing about.</li>
-</ul></li>
-<li>Proofread for Grammar and Miscellaneous Errors
-<ul>
-<li>Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.</li>
-</ul></li>
-</ol>
+<section id="specific-tips-points-and-warnings" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="specific-tips-points-and-warnings"><span class="header-section-number">3.2</span> Specific Tips, Points, and Warnings</h2>
+<p>The following sub-sections provide some additional thoughts on approaching this portion of the paper.</p>
+<section id="focus-on-theory" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="focus-on-theory"><span class="header-section-number">3.2.1</span> Focus on Theory</h3>
+<p>A key goal of your ‘theory’ section is to describe for the reader the major approaches relevant to your question; why they don’t seem to actually answer your question (or do so in some unsatisfactory manner); and, ultimately, what <em>your</em> answer is to the question at hand. And, of course, to do this in as efficient an amount of space as possible.</p>
+<p>My general advice here is to abstract away from the particular a little bit and focus on the general or abstract. In other words, try to avoid what I’ll call a ‘listing’ approach to the literature and focus more attention on the theories that connect the reviewed research (the general) rather than detailing every detail of the specific articles (the specific).</p>
+<p>As an example, let’s return to the example of a paper on whether accusations of ulterior motivation undermine the effectiveness of party cues on public opinion (a paper topic introduced in <a href="writing_02_introduction.html" class="quarto-xref"><span>Chapter 2</span></a>). I might begin by reviewing a variety of articles on party cue taking. I might write:</p>
+<blockquote class="blockquote">
+<p>“Cohen (2003) uses lab experiments to study this topic. He finds that cues matter irrespective of policy specifics, i.e.&nbsp;people choose party over ideology. [New paragraph] Bullock (2011) uses a survey experiment to show that substantive information about a policy undermines cue taking. He does this by doing X and Y. [New paragraph] And then there is Bolsen et al (2014). Bolsen et al.&nbsp;recruit subjects from the Bovitz online panel and randomly assign people to various conditions. They then do all these analyses and find that cues matter a lot. [New paragraph] And then there is….”</p>
+</blockquote>
+<p>The issue here is that your reader will likely be confused and uncertain as to what the central or most important point is of all this listing. What is the main point above beyond, perhaps, that there is variation in the literature? This might be an important point, but it does not, by itself, shed light on why party cues might matter and why, in turn, accusations of ulterior motives might moderate their influence. And, even if this is the main point, it could surely be stated much more simply!For instance:</p>
+<blockquote class="blockquote">
+<p>Research is divided on the influence of party cues with some finding that they dominate other considerations (Cohen 2003; Bolsen et al.&nbsp;2014) but others finding that they have a limited impact in more realistic environments (Bullock 2011; Boudreau and Mackenzie 2014)</p>
+</blockquote>
+<p>Instead, consider organizing your literature review around <em>theories</em> and prominent answers to your question and use specific articles to elaborate on key elements of those theories as needed. In the example above, I could instead write:</p>
+<blockquote class="blockquote">
+<p>Many studies suggest that party cues matter, although they vary in the theoretical basis for their claims. Importantly, these theoretical claims suggest divergent reactions to party cue taking when accusations of ulterior motivations are present. [New Paragraph] On the one hand, some authors root cue taking in social identity processes. Here, partisanship is a social identity formed young in life and then reaffirmed over time due to psychological processes that ‘bias’ the reception of new information (Cohen 2003; Bolsen et al.&nbsp;2014; other relevant citations). As an example, consider Bolsen et al…. Based on this perspective we might assume that Z will not matter for cue taking because…. [New Paragraph] While the social identity approach is perhaps dominant, other scholars consider partisanship from a different lens. Here, partisanship is a running tally based on performance evaluations (Fiorina 1981; Achen 1992). Party cues are followed only in certain cases, such as X and Y. For instance, Bullock (2011) shows…. Based on this perspective, we would expect reduced cue taking because…</p>
+</blockquote>
+<p>This latter style focuses attention on what matters: the <em>theory</em> or <em>theories</em> involved in this debate, what they imply for the research question, and the evidence relevant for the paper’s argument. You can still use articles/books/book chapters here, but they are meant to elaborate on or exemplify something more general.</p>
+<p>There may be exceptions to the above of course. If you theory section requires you to directly contrast two different articles, for instance, then that would be fine. But, in general, I think it wise to root yourself in the theoretical approach(es) that underlie the articles you are talking about - to make sure that these are clearly described and discussed.</p>
+<p>See this <a href="http://svmiller.com/blog/2014/11/how-to-do-a-literature-review/">post</a> by Steven V. MIller for some additional thoughts on structuring literature reviews. Read <a href="https://thesisstatement.substack.com/p/how-to-talk-about-other-people" target="_blank">Musgrave and Davis</a> on “how to talk about other people”.</p>
 </section>
-<section id="some-other-questions-and-topics" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</h2>
-<p>can you use first person! Yes! “This paper argues” is nonsense. You argue! Own the argument.</p>
-<p>avoid tables that overlap pages</p>
+<section id="draw-it-out-before-you-write" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="draw-it-out-before-you-write"><span class="header-section-number">3.2.2</span> Draw it out before you write</h3>
+<p>In class you will be introduced to the practice of drawing a causal diagram to think through the theoretical assumptions underlying a paper’s argument. This is a good thing to do for your thesis as well as you prepare your literature review and argument portion.</p>
+<p>For instance, suppose that there is one or two key theoretical traditions in the literature that you are reviewing. In my party cues example, these might be instrumental approaches based on rational choice theory (people follow party cues as rational shortcuts based on feelings of trust) and social identity theory (people follow party cues because they identify with the party and are motivated to be good group members). It can make sense to draw out a causal diagram for each theory linking the IV and DV in an attempt to think through what the theory takes as necessary for the IV to affect the DV (i.e.&nbsp;what are the mechanisms) as well as whether there are potential moderators that the literature has not examined or alternatively potential confounds. In so doing, you may be able to better identify gaps in the literature and hence see the path forward to writing your literature review.</p>
+<p>This can also be useful for you in thinking about the analyses that you want to perform. Suppose that you are writing a paper on the subject of political ideology and trust in the legal system. Perhaps you hypothesize that trust will be higher among those on the right-side of the ideological spectrum than the left and find data relevant to examining hypothesis. Okay…what should you control for in your model? Going through the steps of drawing out a causal diagram for yourself might help you further refine your argument about why this relationship should emerge (e.g., through the process of identifying potential mediators of the relationship) as well as helping you think about what the most important confounds of the relationship happen to be (age? education? openness to experience?). You can then discuss why you include particular variables as controls in your thesis. In addition, if there are important confounds that you cannot control for, well, you have now identified some of them and have something to discuss in your conclusion.</p>
+<p>Note: while I think causal diagrams like the ones we’ll use in class are good tools to use, you do not need to then include them in the final thesis.</p>
 </section>
-<section id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</h2>
-<p>I recommend using a citation manager to help simplify the task of referencing as much as possible. I personally use <a href="https://www.zotero.org/" target="_blank">Zotero</a> but have experienced with Mendeley which also works fine. Either tool can help you insert citations in-text and automatically populate bibliographies for your essays.</p>
+<section id="stating-your-hypothesishypotheses" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="stating-your-hypothesishypotheses"><span class="header-section-number">3.2.3</span> Stating your hypothesis/hypotheses</h3>
+<p>Explicitly state clear and testable hypotheses. What you expect may be implicit, or even clear, based on what you have written. But, that isn’t always the case from experience; what is clear in your mind may not be clear to the reader. So, explicitly state your hypotheses. This is preferably done outside the confines of a paragraph, e.g.&nbsp;below it (see the image in <a href="writing_01_structure.html" class="quarto-xref"><span>Chapter 1</span></a> for a better example).</p>
+<blockquote class="blockquote">
+<p>Hypothesis 1: Blah blah blah.</p>
+</blockquote>
+<p>You should not include the rationale for the hypothesis in the statement of the hypothesis. For instance, you might be tempted to write: “Hypothesis: Y will increase alongside X because of these following reasons”. But, you should have already discussed those reasons in the foregoing paragraph(s) so there is no need to reiterate them in the hypothesis. Focus the hypothesis on the specific thing being tested.</p>
+<p>Make sure that your hypothesis/hypotheses is clear and falsifiable. Instead of “Hypothesis 1: There will be a relationship between X and Y”, one could state “Hypothesis 1: As X increases, so will Y” or something like that. This is better because it gives the specified direction of the relationship. It is clear what would falsify the expectation (i.e.&nbsp;a null relationship or even a negative one).</p>
+<p>You do not need to state the null hypothesis. The only exception here is if the null is something other than “zero effect of the IV”.</p>
+<p>If you write a hypothesis that implies multiple tests, then I think you should probably break it up. So, for instance, you might write: “Hypothesis 1: Voter turnout will increase alongside education, age, and social network size”. Now, if your intent is to consider the joint influence of these three things (i.e.&nbsp;you are comparing an old person with lots of education and a big network to young people with little education and a small network) then that may be fine. But, probably you are instead intending to independently test these relationships (i.e.&nbsp;is turnout higher among older people?; is turnout higher among the college educated?; is turnout higher among those with bigger social networks?). In that case, then separate them into distinct hypotheses (H1, H2, and H3) to be more clearly communicate your expectations.</p>
+<p>As a final note, it is probably not a good idea to provide the hypotheses in a separate “Hypotheses” section (and <strong>definitely not</strong> in the Research Design section). Doing so can break the connection between argument and hypothesis and make it more difficult to understand why you’re claiming what you’re claiming.</p>
+</section>
+<section id="sec-focus-on-what-is-important" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="sec-focus-on-what-is-important"><span class="header-section-number">3.2.4</span> Focus on what is important</h3>
+<p>Your analyses will involve running a regression of some type (linear, logit, etc.) with the goal of attempting to uncover the relationship between X and Y while avoiding, as far as possible, worries of omitted variable bias unless you are analyzing experimental data. In so doing, you will want to include various control variables. You will need to tell us about those variables. The trick here is giving the reader <em>just enough</em> detail about what is being included and why without giving <em>so much</em> that the reader’s attention wanders.</p>
+<p>You do not need to discuss what control variables you intend to use in this portion of the thesis. Instead, focus your attention on advancing a clear and persuasive argument for why X <span class="math inline">\(\rightarrow\)</span> Y. The influence of other variables can and should be discussed here to the extent that they shed light on that relationship, e.g., moderating variables (variables that augment the relationship between X and Y).</p>
 
 
 </section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -918,13 +881,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./writing_06_conclusion.html" class="pagination-link" aria-label="Conclusion">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span>
+      <a href="./writing_02_introduction.html" class="pagination-link" aria-label="The Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part_research.html" class="pagination-link" aria-label="Doing Research">
-        <span class="nav-page-text">Doing Research</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./writing_04_design.html" class="pagination-link" aria-label="Research Design/Data Section">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Research Design/Data Section</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

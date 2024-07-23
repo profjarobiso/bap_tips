@@ -11,6 +11,10 @@ book:
       chapters:
       - writing_01_structure.qmd
       - writing_02_introduction.qmd
+      - writing_03_review.qmd
+      - writing_04_design.qmd
+      - writing_05_analyses.qmd
+      - writing_06_conclusion.qmd
       - writing_07_general.qmd
     - part: part_research.qmd
     - part: part_analysis.qmd

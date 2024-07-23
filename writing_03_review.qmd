@@ -1,0 +1,95 @@
+---
+reference-location: margin
+---
+
+# Review of Literature and Argument {#sec-review-of-literature-and-argument}
+
+## Goals
+
+The next portion of your paper is the literature review and theory building portion. You should aim to accomplish several things in this section:
+
+1.  Tell the reader what we already know about this subject
+2.  Tell the reader what we don't know (e.g., that something isn't studied, or that there is a conflict between theories, etc.)
+3.  Tell the reader what your answer to the 'what we don't know' issue is and try to persuade them that it is a good answer
+
+You should have already previewed these points in the Introduction. However, here is the place to unpack that shortened preview into something with more depth.
+
+One issue students sometimes have in writing this portion of their thesis is an over-focus on goal 1 to the detriment of goals 2 and 3. BAP literature reviews can sometimes read as a laundry list of readings (and this person did X and then another person did Y, and then this other person did Z) without it being clear how these different readings relate to one another or what is really the problem that you will be addressing. However, everything you write in the thesis should have a reason or point for being. Every paragraph should build on the last and help you toward realizing the goal of persuading the reader that there is something we should know but which we don't and that you have a (potential) answer to that question and hence the content of *your* contribution.
+
+One way of thinking about this is via a discussion from an article by [Siddaway, Wood, and Hedges](https://catalogue.leidenuniv.nl/permalink/f/1cnfioc/TN_cdi_pubmed_primary_30089228){target="_blank"}. The goal of this manuscript is to discuss best practices when writing what is known as a 'systematic reviews' of a research literature. The goal of a 'systematic review' is to "bring together, synthesize, and critique one or more literatures to provide an overall impression of the extent, nature, and quality of evidence in relation to a particular research question, highlighting gaps between what we know and what we need to know."
+
+Siddaway, et al. discuss two types of systematic review. The first is meta-analysis in which the researcher gathers together as many published and un-published research articles on the subject at hand and then merges them together into a single dataset for subsequent quantitative analysis. The second is a "narrative" literature review in which the author still systematically canvasses a literature but instead provide a more qualitative discussion of major themes in the work under discussion.
+
+Siddaway et al. draw a distinction between "reviewing literature" and "literature reviews" (by which they mean these systematic reviews):[^1]
+
+[^1]: They discuss reviewing literature in the introduction in this excerpt. The authors are psychologists and articles in psychology often feature less of a separation between the introduction section as discussed in the preceding chapter and the 'literature review' section as discussed here.
+
+> Before discussing systematic reviews and the different types of literature review, it may be instructive to dispel two common misunderstanding about \[systematic\] literature reviews. The first is that conducting a literature review is the same as the task of reviewing literature, which occurs when writing the introductory section of all quantitative and qualitative journal articles (including review articles). Reviewing literature involves selectively discussing the literature on a particular topic to make the argument that a new study will make a new and/or important contribution to knowledge. In contrast, literature reviews make up a distinct research design and type of article in their own right. Rather than selectively reviewing relevant literature to make a flowing rationale for a study's existence, they provide a comprehensive synthesis of the available evidence to allow the researcher to draw broad and robust conclusions....To best achieve the purposes of a systematic review, we like Baumeister's (2013) advice to adopt the mindset of a judge and jury rather than a lawyer. A judge and jury skeptically evaluate the evidence to render the fairest judgment possible, whereas a lawyer's approach is to make the best case for one side of the argument. Returning to the differences between a literature review and the task of reviewing literature, the introduction section of a quantitative or qualitative article is usually written using the lawyer's approach.
+
+Ideally, you should put on the hat of judge for the assigned literature review in the substantive seminar (albeit on a smaller sampling of research). In *your thesis*, on the other hand, compose your review of the literature more like a lawyer. You are not just telling us what others have found, but doing so in a way to scaffold your own argument and contribution.
+
+[Musgrave and Davis](https://thesisstatement.substack.com/p/dont-write-a-literature-review){target="_blank"} make a similar point when they tell students *not* to write "literature reviews" in their thesis:
+
+> The "literature review" in a thesis, by contrast, has to establish what is *relevant* in prior arguments to situate your own work. Some of this should reflect your own reading and research, but a good deal of it should come from the suggested readings from your adviser. Your goal with the literature review is *sufficiency*, not novelty and certainly not mastery. All you have to do is demonstrate that your project is not adrift alone somewhere but, rather, that it is directly linked to earlier research....Your goal is to demonstrate how your contribution fits with that conversation, and to do that you will *also* have to show shortcomings, conflicts, or unresolved issues in some aspect of that earlier conversation. Moreover, the problems you uncover need to relate to the work *you* will be doing---there's no benefit in showing that the theory is flawed if you're writing a methods paper, and there's no benefit in showing that methods are flawed if you're writing a theory paper.
+
+These authors have a nice discussion of some ways of thinking about narrow (but important) ways that a senior thesis can contribute to a research literature in this [post](https://thesisstatement.substack.com/p/focus-then-focus-more){target="_blank"}.
+
+## Specific Tips, Points, and Warnings
+
+The following sub-sections provide some additional thoughts on approaching this portion of the paper.
+
+### Focus on Theory
+
+A key goal of your 'theory' section is to describe for the reader the major approaches relevant to your question; why they don't seem to actually answer your question (or do so in some unsatisfactory manner); and, ultimately, what *your* answer is to the question at hand. And, of course, to do this in as efficient an amount of space as possible.
+
+My general advice here is to abstract away from the particular a little bit and focus on the general or abstract. In other words, try to avoid what I'll call a 'listing' approach to the literature and focus more attention on the theories that connect the reviewed research (the general) rather than detailing every detail of the specific articles (the specific).
+
+As an example, let's return to the example of a paper on whether accusations of ulterior motivation undermine the effectiveness of party cues on public opinion (a paper topic introduced in @sec-the-introduction). I might begin by reviewing a variety of articles on party cue taking. I might write:
+
+> "Cohen (2003) uses lab experiments to study this topic. He finds that cues matter irrespective of policy specifics, i.e. people choose party over ideology. \[New paragraph\] Bullock (2011) uses a survey experiment to show that substantive information about a policy undermines cue taking. He does this by doing X and Y. \[New paragraph\] And then there is Bolsen et al (2014). Bolsen et al. recruit subjects from the Bovitz online panel and randomly assign people to various conditions. They then do all these analyses and find that cues matter a lot. \[New paragraph\] And then there is...."
+
+The issue here is that your reader will likely be confused and uncertain as to what the central or most important point is of all this listing. What is the main point above beyond, perhaps, that there is variation in the literature? This might be an important point, but it does not, by itself, shed light on why party cues might matter and why, in turn, accusations of ulterior motives might moderate their influence. And, even if this is the main point, it could surely be stated much more simply!For instance:
+
+> Research is divided on the influence of party cues with some finding that they dominate other considerations (Cohen 2003; Bolsen et al. 2014) but others finding that they have a limited impact in more realistic environments (Bullock 2011; Boudreau and Mackenzie 2014)
+
+Instead, consider organizing your literature review around *theories* and prominent answers to your question and use specific articles to elaborate on key elements of those theories as needed. In the example above, I could instead write:
+
+> Many studies suggest that party cues matter, although they vary in the theoretical basis for their claims. Importantly, these theoretical claims suggest divergent reactions to party cue taking when accusations of ulterior motivations are present. \[New Paragraph\] On the one hand, some authors root cue taking in social identity processes. Here, partisanship is a social identity formed young in life and then reaffirmed over time due to psychological processes that 'bias' the reception of new information (Cohen 2003; Bolsen et al. 2014; other relevant citations). As an example, consider Bolsen et al.... Based on this perspective we might assume that Z will not matter for cue taking because.... \[New Paragraph\] While the social identity approach is perhaps dominant, other scholars consider partisanship from a different lens. Here, partisanship is a running tally based on performance evaluations (Fiorina 1981; Achen 1992). Party cues are followed only in certain cases, such as X and Y. For instance, Bullock (2011) shows.... Based on this perspective, we would expect reduced cue taking because...
+
+This latter style focuses attention on what matters: the *theory* or *theories* involved in this debate, what they imply for the research question, and the evidence relevant for the paper's argument. You can still use articles/books/book chapters here, but they are meant to elaborate on or exemplify something more general.
+
+There may be exceptions to the above of course. If you theory section requires you to directly contrast two different articles, for instance, then that would be fine. But, in general, I think it wise to root yourself in the theoretical approach(es) that underlie the articles you are talking about - to make sure that these are clearly described and discussed.
+
+See this [post](http://svmiller.com/blog/2014/11/how-to-do-a-literature-review/) by Steven V. MIller for some additional thoughts on structuring literature reviews. Read [Musgrave and Davis](https://thesisstatement.substack.com/p/how-to-talk-about-other-people){target="_blank"} on "how to talk about other people".
+
+### Draw it out before you write
+
+In class you will be introduced to the practice of drawing a causal diagram to think through the theoretical assumptions underlying a paper's argument. This is a good thing to do for your thesis as well as you prepare your literature review and argument portion.
+
+For instance, suppose that there is one or two key theoretical traditions in the literature that you are reviewing. In my party cues example, these might be instrumental approaches based on rational choice theory (people follow party cues as rational shortcuts based on feelings of trust) and social identity theory (people follow party cues because they identify with the party and are motivated to be good group members). It can make sense to draw out a causal diagram for each theory linking the IV and DV in an attempt to think through what the theory takes as necessary for the IV to affect the DV (i.e. what are the mechanisms) as well as whether there are potential moderators that the literature has not examined or alternatively potential confounds. In so doing, you may be able to better identify gaps in the literature and hence see the path forward to writing your literature review.
+
+This can also be useful for you in thinking about the analyses that you want to perform. Suppose that you are writing a paper on the subject of political ideology and trust in the legal system. Perhaps you hypothesize that trust will be higher among those on the right-side of the ideological spectrum than the left and find data relevant to examining hypothesis. Okay...what should you control for in your model? Going through the steps of drawing out a causal diagram for yourself might help you further refine your argument about why this relationship should emerge (e.g., through the process of identifying potential mediators of the relationship) as well as helping you think about what the most important confounds of the relationship happen to be (age? education? openness to experience?). You can then discuss why you include particular variables as controls in your thesis. In addition, if there are important confounds that you cannot control for, well, you have now identified some of them and have something to discuss in your conclusion.
+
+Note: while I think causal diagrams like the ones we'll use in class are good tools to use, you do not need to then include them in the final thesis.
+
+### Stating your hypothesis/hypotheses
+
+Explicitly state clear and testable hypotheses. What you expect may be implicit, or even clear, based on what you have written. But, that isn't always the case from experience; what is clear in your mind may not be clear to the reader. So, explicitly state your hypotheses. This is preferably done outside the confines of a paragraph, e.g. below it (see the image in @sec-writing-structure for a better example).
+
+> Hypothesis 1: Blah blah blah.
+
+You should not include the rationale for the hypothesis in the statement of the hypothesis. For instance, you might be tempted to write: "Hypothesis: Y will increase alongside X because of these following reasons". But, you should have already discussed those reasons in the foregoing paragraph(s) so there is no need to reiterate them in the hypothesis. Focus the hypothesis on the specific thing being tested.
+
+Make sure that your hypothesis/hypotheses is clear and falsifiable. Instead of "Hypothesis 1: There will be a relationship between X and Y", one could state "Hypothesis 1: As X increases, so will Y" or something like that. This is better because it gives the specified direction of the relationship. It is clear what would falsify the expectation (i.e. a null relationship or even a negative one).
+
+You do not need to state the null hypothesis. The only exception here is if the null is something other than "zero effect of the IV".
+
+If you write a hypothesis that implies multiple tests, then I think you should probably break it up. So, for instance, you might write: "Hypothesis 1: Voter turnout will increase alongside education, age, and social network size". Now, if your intent is to consider the joint influence of these three things (i.e. you are comparing an old person with lots of education and a big network to young people with little education and a small network) then that may be fine. But, probably you are instead intending to independently test these relationships (i.e. is turnout higher among older people?; is turnout higher among the college educated?; is turnout higher among those with bigger social networks?). In that case, then separate them into distinct hypotheses (H1, H2, and H3) to be more clearly communicate your expectations.
+
+As a final note, it is probably not a good idea to provide the hypotheses in a separate "Hypotheses" section (and **definitely not** in the Research Design section). Doing so can break the connection between argument and hypothesis and make it more difficult to understand why you're claiming what you're claiming.
+
+### Focus on what is important {#sec-focus-on-what-is-important}
+
+Your analyses will involve running a regression of some type (linear, logit, etc.) with the goal of attempting to uncover the relationship between X and Y while avoiding, as far as possible, worries of omitted variable bias unless you are analyzing experimental data. In so doing, you will want to include various control variables. You will need to tell us about those variables. The trick here is giving the reader *just enough* detail about what is being included and why without giving *so much* that the reader's attention wanders.
+
+You do not need to discuss what control variables you intend to use in this portion of the thesis. Instead, focus your attention on advancing a clear and persuasive argument for why X $\rightarrow$ Y. The influence of other variables can and should be discussed here to the extent that they shed light on that relationship, e.g., moderating variables (variables that augment the relationship between X and Y).

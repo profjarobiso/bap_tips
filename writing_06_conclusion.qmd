@@ -1,0 +1,36 @@
+# Conclusion {#sec-conclusion}
+
+## Structure
+
+In the Introduction, your goal is to motivate a research question and then preview your answer to that question, how you tested that argument, and what you found. Something like this (although, obviously, the format here will depend on your question, argument, data source, etc.)
+
+> Many people say X. But, we actually see Y. Why is that? Well, I argue that X occurs when Z is high but does not when Z is low. I tested this argument using evidence from Data Source. I first regressed Y on X and found that that Y happens, much as earlier work shows. But, when I include Z as a moderator, I found support for my argument. This has important implications for something which I discuss in the conclusion.
+
+Your conclusion should *concisely* do the above but as a jumping off point for a discussion of the limitations and broader implications of your results. A potential structure could be:
+
+1.  Review of what you've done
+    -   It is important to understand whether parties can dominate public opinion. I argued that party influence is conditioned by X. I showed via some method that this indeed appear to be the case. While cue taking occurred when X was absent, their power diminished when X was present. In the remainder of this conclusion, I discuss limitations of this study and potential avenues for future work.
+2.  Limitations and future work
+    -   I used a one time experiment, but party messages are experienced over time. We could study this in this way. We might find this which would have this implication.
+3.  Broader implications
+    -   Some think party cue taking threatens norms of democratic representation, but that's only a problem if people follow them unthinkingly and I've shown that's not an issue. This means X for democracy.
+
+## Be Specific
+
+One thing you are trying to communicate here is that you have reflected on your project; that you have critically thought through your methodological decisions and their implications for your results and how others should relate to them. Another is to expand on why your study has some further interest for other people.
+
+One important point I'd like to communicate here: be as **specific** as possible when you discuss the limitations of your study. Many times students say "well, I focused on X cases which might be problematic" and leave it at that. However, a comment like that is really just the start of the conversation. Indeed, it could very well be the case that the relationship between X and Y is basically the same across contexts! For instance, consider [this paper](https://preprints.apsanet.org/engage/apsa/article-details/65f382289138d2316179a3c8){target="_blank"} which examines the generalizability of experiments commonly done in the US in a multiple of countries and basically finds that treatment effects are consistent across context (at least, for the experiments and contexts they are looking at). You may even think this is the case in your own example - in which, you should make that argument! "One potential limitation is that I only looked at Brazil. But that isn't as concerning as we might think!"
+
+Go one step further and consider the *specific* problems that might arise (and why!) based on the theory (or theories) you have been working with and how they could be addressed in future work. Doing so shows a higher level of analytical thinking whereas simply plunking down a "eh, it's a single case" type comment just reads as if you are ticking off a box and will almost certainly receive a "the conclusion discusses limitations but should go further" comment from me on the evaluation box.
+
+To return to the example about party cue taking that I have used throughout this book, let's say that this study used very old data for some reason. I might then write:
+
+> A recurring debate in the literature on party cues is why people follow the party line. I argued that they do because of X. I then used the best available evidence to test this argument, where I found Y. In the remainder of this conclusion, I'll talk about some potential limitations in these analyses and questions this all raises. \[New Paragraph:\] One potential limitation is the time frame of my study, which focuses on party cue taking in the year 1981. That is potentially problematic because political parties in the US have polarized since then and partisans have better sorted themselves into party camps. This may matter if this means that partisans instead have stronger group motivations to follow the party, which would mean that my results understate the influence of cue taking. Future studies could address this by doing X. ... \[New Paragraph\] This study has important implications for party competition. To the extent that cue taking is reduced when Z occurs, then this means that elite partisans have little ability to influence the public given that Z is quite prevalent. As a result, worries over elite manipulation should be reduced. This is good for democracy (we think).
+
+One reason why students sometimes do not elaborate here is because they are machine-gunning out potential issues ("and this could be an issue and this and this and this"). Two well fleshed ideas are *much* better than seven superficial ideas. **Focus** and elaborate.
+
+Conclusions can be weirdly hard to write in no small part because you have to take a step back, critically reflect on what you have done, but then project forward to other time periods, or contexts, or experimental instruments, or whatever. So, do not rush this section! Give it the time it deserves.
+
+## Don't Only Be Negative
+
+You should highlight the potential limitations of your study. However, remember to also remind us why this paper is interesting in the first place! What's good or interesting about this project? Why should we care? This is something you can communicate in the first paragraph of the conclusion per the outline above ('this study addresses an important question not fully examined by others', etc.).

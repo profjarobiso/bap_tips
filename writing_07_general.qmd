@@ -99,6 +99,12 @@ Here is some advice for the editing process. Musgrave and Davis provide addition
 3.  Proofread for Grammar and Miscellaneous Errors
     -   Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.
 
+## Some Other Questions and Topics
+
+can you use first person! Yes! "This paper argues" is nonsense. You argue! Own the argument.
+
+avoid tables that overlap pages
+
 ## Use a reference manager to ease in-text citing and reference list building
 
 I recommend using a citation manager to help simplify the task of referencing as much as possible. I personally use [Zotero](https://www.zotero.org/){target="_blank"} but have experienced with Mendeley which also works fine. Either tool can help you insert citations in-text and automatically populate bibliographies for your essays.
