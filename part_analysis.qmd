@@ -14,9 +14,9 @@ The resources above do not exhaust the potential guides and pedagogical resource
 
 ### Data Visualization
 
-You were introduced to the `ggplot` package for data visualization in Statistics I/II. This was very much an introduction as the helper materials did not go into everything this series of co\[\^1\]mmands can do. The [R Graphics Cookbook](https://r-graphics.org/){target="_blank"} provides a much more thorough walkthrough of how to create, and augment, nearly any other type of plot possible with `ggplot` . Cédric Scherer's [A ggplot2 Tutorial for Beautiful Plotting in R](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), meanwhile, provides an overview of many of the aesthetic options available in `ggplot` for creating eye-catching graphics. Finally, Professor Kieran Healy's book [Data Visualization](https://socviz.co/index.html#preface){target="_blank"} is a great resource for learning about what makes a plot an effective tool for communication in the first place.[^1]
+You were introduced to the `ggplot` package for data visualization in Statistics I/II. This was very much an introduction as the helper materials did not go into everything this series of co\[\^1\]mmands can do. The [R Graphics Cookbook](https://r-graphics.org/){target="_blank"} provides a much more thorough walkthrough of how to create, and augment, nearly any other type of plot possible with `ggplot` . Cédric Scherer's [A ggplot2 Tutorial for Beautiful Plotting in R](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/), meanwhile, provides an overview of many of the aesthetic options available in `ggplot` for creating eye-catching graphics. Finally, Professor Kieran Healy's book [Data Visualization](https://socviz.co/index.html#preface){target="_blank"} is a great resource for learning about what makes a plot an effective tool for communication in the first place.[^part_analysis-1]
 
-[^1]: His Bluesky [account](https://bsky.app/profile/kjhealy.bsky.social){target="_blank"} is a fun read as well.
+[^part_analysis-1]: His Bluesky [account](https://bsky.app/profile/kjhealy.bsky.social){target="_blank"} is a fun read as well.
 
 ### R Programming
 

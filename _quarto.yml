@@ -17,6 +17,9 @@ book:
       - writing_06_conclusion.qmd
       - writing_07_general.qmd
     - part: part_research.qmd
+      chapters: 
+        - doing_01_research.qmd
+        - doing_02_data.qmd
     - part: part_analysis.qmd
 
 format:
