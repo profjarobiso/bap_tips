@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 9&nbsp; Finding and Evaluating Data</title>
+<title>Thoughts and Advice on Writing your BAP - 11&nbsp; Some Practical Questions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part_analysis.html" rel="next">
-<link href="./doing_01_research.html" rel="prev">
+<link href="./analysis_01.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -43,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -83,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_research.html">Doing Research</a></li><li class="breadcrumb-item"><a href="./doing_02_data.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_02.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -187,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./doing_02_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./doing_02_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></span></a>
   </div>
 </li>
@@ -210,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis_02.html" class="sidebar-item-text sidebar-link">
+  <a href="./analysis_02.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span></a>
   </div>
 </li>
@@ -226,23 +228,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#study-design-and-interpretation" id="toc-study-design-and-interpretation" class="nav-link active" data-scroll-target="#study-design-and-interpretation"><span class="header-section-number">9.1</span> Study Design and Interpretation</a></li>
-  <li><a href="#data-resources" id="toc-data-resources" class="nav-link" data-scroll-target="#data-resources"><span class="header-section-number">9.2</span> Data Resources</a>
-  <ul class="collapse">
-  <li><a href="#data-repositories" id="toc-data-repositories" class="nav-link" data-scroll-target="#data-repositories"><span class="header-section-number">9.2.1</span> Data Repositories</a></li>
-  <li><a href="#some-acronyms-to-know" id="toc-some-acronyms-to-know" class="nav-link" data-scroll-target="#some-acronyms-to-know"><span class="header-section-number">9.2.2</span> Some acronyms to know…</a></li>
-  <li><a href="#sec-data-eurobarometer" id="toc-sec-data-eurobarometer" class="nav-link" data-scroll-target="#sec-data-eurobarometer"><span class="header-section-number">9.2.3</span> A Note on the Eurobarometer</a></li>
-  <li><a href="#r-packages-for-accessing-data" id="toc-r-packages-for-accessing-data" class="nav-link" data-scroll-target="#r-packages-for-accessing-data"><span class="header-section-number">9.2.4</span> R Packages for Accessing Data</a></li>
-  </ul></li>
+  <li><a href="#what-should-i-control-for" id="toc-what-should-i-control-for" class="nav-link active" data-scroll-target="#what-should-i-control-for"><span class="header-section-number">11.1</span> What should I control for?</a></li>
+  <li><a href="#if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" id="toc-if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" class="nav-link" data-scroll-target="#if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model"><span class="header-section-number">11.2</span> If a control variable is not statistically significant, should I remove it from my model?</a></li>
+  <li><a href="#how-many-variables-should-i-can-i-include-in-my-model" id="toc-how-many-variables-should-i-can-i-include-in-my-model" class="nav-link" data-scroll-target="#how-many-variables-should-i-can-i-include-in-my-model"><span class="header-section-number">11.3</span> How many variables should I, can I, include in my model?</a></li>
+  <li><a href="#what-should-i-do-with-ordinal-data" id="toc-what-should-i-do-with-ordinal-data" class="nav-link" data-scroll-target="#what-should-i-do-with-ordinal-data"><span class="header-section-number">11.4</span> What should I do with ordinal data?</a></li>
+  <li><a href="#what-should-i-do-if-my-dv-is-categorical" id="toc-what-should-i-do-if-my-dv-is-categorical" class="nav-link" data-scroll-target="#what-should-i-do-if-my-dv-is-categorical"><span class="header-section-number">11.5</span> What should I do if my DV is categorical?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_research.html">Doing Research</a></li><li class="breadcrumb-item"><a href="./doing_02_data.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_02.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-research-data" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></h1>
 </div>
 
 
@@ -259,121 +258,91 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Over the course of the seminar you will be asked to read, and critically evaluate quantitative empirical articles. You will have to do so the same while formulating an argument for your thesis project. And, you will then have to produce your own quantitative analyses for this project as well. This document provides links to some resources that will aid you in this process.</p>
-<section id="study-design-and-interpretation" class="level2 page-columns page-full" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="study-design-and-interpretation"><span class="header-section-number">9.1</span> Study Design and Interpretation</h2>
-<p>The books, book chapters, and articles that you read during the seminar and in preparation of your thesis project will often feature both descriptive claims (e.g., claims about the extent of political knowledge in a particular country) and causal or explanatory claims as well (e.g.&nbsp;that political knowledge <em>causes</em> political tolerance). One important task is to consider the validity of these claims; you should not presume that a reading on a course syllabus, or one published by an academic journal or publishing house, is the final word on the subject as science is cumulative, research is fallible, and new conditions or contexts may require revision of what existing research leads us to expect.</p>
-<p>In thinking about the claims made by a piece of empirical research you should think about the following questions:</p>
-<ol type="1">
-<li>Is the underlying theory logically coherent?</li>
-<li>Are the specific empirical claims made by the resource plausible given this theory and other things we now about the world?</li>
-<li>How was the data generated? (who was surveyed? what experimental conditions are involved? how are key constructs measured?)</li>
-<li>Why did the researchers opt for these methods (and, crucially, what choices did they make that could have been made otherwise?)</li>
-<li>How confident should we be about an author’s findings given these design choices?</li>
-</ol>
-<p>Here are some resources to aid you in thinking about these questions. Of course, you can also ask me for my thoughts as well!</p>
-<ul>
-<li><a href="https://egap.org/" target="_blank">Evidence in Governance and Politics (EGAP)</a>
-<ul>
-<li>This website features several short and accessible guides for thinking about research design and causal inference. Their particular focus is on experimental work, but much of what they discuss is relevant in non-experimental settings. See their <a href="https://egap.org/methods-guides/" target="_blank">Methods Guides</a> section.</li>
-<li>Some pages of particular relevance:
-<ul>
-<li><a href="https://egap.org/resource/10-things-to-know-about-causal-inference/" target="_blank">10 Things to Know About Causal Inference</a></li>
-<li><a href="https://egap.org/resource/10-strategies-for-figuring-out-if-x-caused-y/" target="_blank">10 Strategies for Figuring Out if X Caused Y</a></li>
-<li><a href="https://egap.org/resource/10-things-to-know-about-external-validity/" target="_blank">10 Things to Know About External Validity</a></li>
-</ul></li>
-</ul></li>
-<li><a href="https://catalogue.leidenuniv.nl/permalink/f/1cnfioc/TN_cdi_askewsholts_vlebooks_9781137342843" target="_blank">Research Design in Political Science</a> by Dimiter Toshkov
-<ul>
-<li>This is a very nice book about the nitty gritty of doing research - on how to think about concepts, the nature of causal inference, and how to do empirical research (and what problems might arise when doing so). It thus goes a bit deeper than the shorter EGAP guides and covers all steps in the research process as well.</li>
-<li>The following chapters are particularly relevant: “Theory in the Research Process”, “Concepts and Operationalizations”, “Measurement and Description”, “Experimental Designs”, and “Large-N Designs”</li>
-</ul></li>
-<li>Survey Research
-<ul>
-<li>Much of what we know about how ordinary people think about politics comes from survey evidence (sometimes paired with an experiment, oftentimes not).</li>
-<li>The political scientist Adam Berinsky provides a nice discussion of some of the important choices that survey researchers must make when designing and implementing surveys and how these choices may influence what can learn about politics in <a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-polisci-101513-113724" target="_blank">this article</a>.</li>
-<li><a href="https://www.pewresearch.org/" target="_blank">Pew Research</a> is a major polling firm that performs surveys around the world (although more so in the United States). Not only might they be a valid source of data for your project, they also provide some resources for learning more about survey methods. Their <a href="https://www.pewresearch.org/topic/methodological-research/" target="_blank">Methodological Research</a> talks about specific issues in survey research (e.g., debates about how best to measure <a href="https://www.pewresearch.org/short-reads/2022/06/28/how-and-why-we-surveyed-americans-about-their-views-on-gender-identity/" target="_blank">gender</a> or the difficulty of asking questions about religion in <a href="https://www.pewresearch.org/short-reads/2023/08/30/is-china-a-religious-country-or-not-its-a-tricky-question-to-answer/" target="_blank">China</a>) that may be interesting although not necessarily directly relevant for you. On the other hand, their <a href="https://www.youtube.com/c/pewresearch/playlists" target="_blank">YouTube</a> page provides a nice <a href="https://youtube.com/playlist?list=PLZ9z-Af5ISavJpPlvdMU4T-etIDOUmldk&amp;si=uJRtHiiK5Kd_pSiy" target="_blank">series</a> of short videos on survey methods that may be helpful in understanding survey research more generally.</li>
-</ul></li>
-<li>Experiments
-<ul>
-<li><p>You may be interested in experiments as a method for understanding the world and perhaps even as a method to be employed in your own project.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>If you want to learn more about experiments, then I heavily recommend reading through the Toshkov chapter on the subject and skimming through the book <a href="https://catalogue.leidenuniv.nl/permalink/f/q6ue0j/UBL_ALMA51407977430002711" target="_blank">Experimental Thinking: A Primer on Social Science Experiments</a> by James Druckman to better understand the possibilities on offer.</p></li>
-</ul></li>
-</ul>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Students in my BAP have, in the past, fielded survey experiments for their projects. I am certainly open to this as a method. If you are interested in this, then I’d ask you to keep in mind the issue of time and feasibility. Collecting your own data does add some steps to the thesis writing process - you will need to come up with the experimental protocols, create the survey (using, for instance, <a href="https://www.staff.universiteitleiden.nl/research/it-and-research/qualtrics">Qualtrics</a>), field the survey, and then analyze it. This can be doable in the short time span available to you (especially if you are replicating/extending an existing experimental design), but does require you to be a bit more ‘on the ball’ in terms of time management. If you’re interested in doing this, then you should talk with me as soon as possible to discuss your ideas.</p></div></div><p>The foregoing focuses on the logic of research design - on why researchers might collect data in the way they do and the potential consequences of research design on the findings that result. Understanding a study’s findings also depends on reading the regression tables and figures present in the article as well, something which may feel overwhelming at times. Here are some useful resources for helping you interpret research:</p>
-<ul>
-<li><a href="http://svmiller.com/blog/2014/08/reading-a-regression-table-a-guide-for-students/" target="_blank">Reading a Regression Table: A Guide for Students</a> by Steven V. Miller</li>
-<li><a href="https://egap.org/resource/10-things-to-know-about-reading-a-regression-table/" target="_blank">10 Things to Know about Reading a Regression Table</a> by EGAP</li>
-</ul>
+<p>In this chapter I’ll discuss some more practical questions that may arise as you think about how to analyze your data.</p>
+<section id="what-should-i-control-for" class="level2 page-columns page-full" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="what-should-i-control-for"><span class="header-section-number">11.1</span> What should I control for?</h2>
+<p>Your goal in the thesis is probably going to be to test some hypothesis. For instance, you might hypothesize that partisan animosity (“affective polarization”) will be greater among people with extreme ideologies than centrist ideologies. In other words, people with extreme ideologies might dislike people who identify with a different political party as themselves more than people with less extreme ideologies dislike people who identify with a different political party as themselves. You will naturally want to find data on your DV and IV and fit some type of regression model. A natural question then arises: what else should go into my model? Or: what should I “control” for?</p>
+<p>We can answer this question by taking a step back and thinking about what we’re trying to do when we include a “control” variable in our model.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Suppose we perform some bivariate test predicting partisan animosity and affective polarization and find the relationship we expect to find (i.e., more extremity = more animosity). The challenge before us is that ideological extremity is not randomly distributed in society. Extremists probably differ from non-extremists in all sorts of ways - they might have different education levels, social networks, personality characteristics, etc. This consideration raises the possibility that the relationship we observe (more dogmatism = more animosity) is <em>better explained</em> by one or more of these other characteristics that differentiates extremists and non-extremists (e.g., more <a href="https://doi.org/10.1016/j.cobeha.2019.10.016" target="_blank">dogmatism</a> = more animosity &amp; more extremity?). We include “control” variables in an attempt to statistically account for alternative explanations for the relationship we care about. We should thus “control” for any and all potential <em>confounder</em> variables <em>that we can</em>, i.e., variables that we have good reason to think cause <em>both</em> our main IV of interest <em>and</em> the DV.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;The focus here is on the inclusion of additional predictors in a context where we are trying to generate an unbiased estimate of the relationship between a particular IV and a DV. We could also be building a statistical model for the sake of prediction, e.g., to construct an accurate forecasting model. The considerations about what to include in such a model would be different as the focus would be on what best reduces predictions errors from the model as a whole rather than what reduces bias in one particular estimate.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Of course, there may be (likely are) important confounders out there that we cannot measure or perhaps simply do not have a measure of to include in our model. We should thus be careful not to over-interpret statistical models of observational data as definitively telling us that our IV of interest causes the DV - it is better to talk about these relationships as associations between the variables.</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-confounder1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confounder1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-confounder1-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="analysis_02_files/figure-html/fig-confounder1-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounder1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: A Relationship with Two Confounders
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Per above, you should control for things that you believe cause both your main IV of interest and your DV. You can justify these beliefs in relation to prior evidence and theory. Per <a href="analysis_01.html" class="quarto-xref"><span>Chapter 10</span></a>, one important part of the thesis writing process (and of doing your analysis) is first doing the hard work of figuring out how you <em>think</em> the world works in relation to your phenomenon of interest as this will help you identify relevant control variables.</p>
+<p>One thing you should avoid doing is simply dumping variables into your model. This is because you can get in trouble by leaving out relevant variables (as above) but <em>also</em> by including unnecessary variables in your model as well! In particular, you should try to avoid including what are alternatively known as “post-treatment” or “mediating” variables in your model.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> A post-treatment variable is a variable that is caused <em>by</em> your main IV and in turn causes your DV. For instance:</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;There is yet another potential source of bias from improper variable inclusion: <a href="https://catalogofbias.org/biases/collider-bias/" target="_blank">collider bias</a>. Let’s say we have this model: Y = X1 + X2. Collider bias emerges when one of the variables on the right hand side of the equation (X2, for instance) is caused by the other two variables (i.e., X2 is caused by Y and X1). Collider bias can lead to a spurious association much like omitted variable bias when a relevant confound is excluded.</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-mediator1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediator1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-mediator1-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="analysis_02_files/figure-html/fig-mediator1-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediator1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: A Relationship with a Confounder and a Mediator
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What is the problem here, exactly? Let’s say that our main IV is ideological extremity and our DV is partisan animosity. We might think that some of this relationship is explained by a common source of both variables (dogmatism or cognitive rigidity) and include that in our model. However, we think extremity should still predict animosity (the relationship is not <em>only</em> due to dogmatic thinking). In particular, we theorize that this relationship should emerge because holding an extreme ideology facilitates a variety of reasoning processes that will lead extremists to hold inaccurate beliefs about the other side’s political views.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Extremists, for instance, might come to see the other side as holding more extreme beliefs than it actually does, feel threatened by this (somewhat imagined) out-group, and hence express more animosity toward the out-group.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Inaccurate “meta-perceptions” (or, beliefs about others beliefs) are indeed an important predictor of group animosity (see, for instance, <a href="https://doi.org/10.1073/pnas.2001263117" target="_blank">Moore-Berg et al.</a>) and perhaps also support for political violence (see, for instance, <a href="https://www.nature.com/articles/s41562-023-01594-w" target="_blank">Braley et al.</a>)</p>
+<p>per Moore-Berg a</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-mediator2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediator2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-mediator2-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="analysis_02_files/figure-html/fig-mediator2-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediator2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: Probably Not a Good Idea to Control for Beliefs about Out-Group Beliefs!
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If we include variables pertaining to a person’s extremity and their beliefs about the out-group in a model predicting their level of animosity toward the out-group, then we will be estimating the “effect” of extremity “holding constant” beliefs about the out-group, i.e., after adjusting for differences in beliefs about the out-group. However, we will be producing a <em>biased</em> estimate of the <em>total</em> relationship between extremity and animosity because we are essentially “controlling away” (part of) the effect we care about in the first place! Including the mediator in our model accounts for part of (perhaps even the entire) reason why extremity matters for understanding animosity thereby leading to a smaller effect estimate than actually exists - our model can only tell us whether there is a relationship between extremity and animosity after adjusting for differences in the mediator. Indeed, if the only reason why extremists differ from non-extremists is because of the effect of extremity on beliefs about the out-group, then our estimate for the effect of extremity in this model might even be 0 (statistically insignificant)!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> You can see this point in practice via Case 4 in this <a href="https://janhove.github.io/posts/2021-06-29-posttreatment/" target="_blank">explainer</a>. The upshot is that you should try and avoid including post-treatment variables in your model…if you can. The difficulty is that what counted as a confounder (causes X and Y) versus a post-treatment variable (caused by X, causes Y) may be ambiguous or contested. At a certain level, we may be stuck with assumptions about how the world works to justify our decisions on this front.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;See <a href="https://www.vox.com/2014/12/1/7311417/race-law-controls" target="_blank">this article</a> for additional discussion of this type of situation.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;This is a real-life example based on the following <a href="https://www.nytimes.com/interactive/2023/07/24/upshot/ivy-league-elite-college-admissions.html?unlocked_article_code=1.9k0.QVwt.AMoPxL1M5loZ&amp;smid=url-share" target="_blank">news article</a>.</p></div></div><p>There can be contexts in which we would want to include the post-treatment variable in the model although they may not apply to your thesis. First, we might actually be interested in whether there is any left-over relationship between our main IV and the DV after accounting for potential mediators. For instance, we might be investigating wealth biases in college admissions.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> We might examine this question by comparing admission rates for students with rich parents vs.&nbsp;those with non-rich parents and find higher rates among the former group than the latter. A skeptic may say that this is not evidence that colleges are biased toward the rich - perhaps family wealth leads to better academic performance (higher grades, higher test scores) and that is what colleges are paying attention to. In this instance, it might make sense to also include measures of performance to see if there is still a relationship between family background and admissions after adjusting for differences in performance (what we might call a “direct” effect of family background since it is not being mediated by performance). Second, we might be interested in testing for mediation: how much of the relationship between our main IV and the DV is accounted for by a mediator? This is difficult to do in practice, and especially so with observational data, but typically would involve including the post-treatment/mediating variable in the model at some point. However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential ‘control away’ some of the influence of your main IV by controlling for one of its effects, which is probably not what you want to do!</p>
+<p>Two final thoughts here. First, the foregoing applies when your data is non-experimental. However, if you are working with an experiment then you don’t generally <em>need</em> any control variables in your model. You can simply predict your DV with an indicator for which treatment group the observation has been randomly assigned to. This is the case because random assignment is handling the task of ruling out alternative explanations. Second, the foregoing focuses on situations where the two predictor variables are causing one another (in someway) and also causing Y. What about if the two IVs are unrelated to one another while both predicting the DV? Including both predictors in the model would be a good idea in this scenario but for other reasons than discussed above. Instead of reducing <em>bias</em> in our estimates, doing so would reduce <em>variance</em> in our estimaets (i.e., it would lead to more certainty); see Case 5 in <a href="https://janhove.github.io/posts/2021-06-29-posttreatment/#case-5-x-and-z-affect-y-x-and-z-dont-affect-each-other." target="_blank">this explainer</a>. However, this is mainly of interest in experimental studies wherein we know for sure that our main IV (assignment to different experimental groups) is unrelated to other variables (due to random assignment and measuring the other variables prior to assignment).</p>
 </section>
-<section id="data-resources" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="data-resources"><span class="header-section-number">9.2</span> Data Resources</h2>
-<p>You will need data for your thesis projects. The type of data required is determined by your research question and theory. However, I suspect that many of you will make use of existing data sources such as existing surveys and administrative data. How can you identify (and then access) useful data for your projects?</p>
-<p>There are three resources you can use for figuring out what data to use for your thesis project.</p>
-<p>The first are the various readings you have done in the course of your review of the literature related to your topic. They are a natural first place to begin as they are, of course, on the same topic as your own thesis. As you read and research, it may make sense to create a spreadsheet to keep track of the various data sources used in the myriad articles you read and what appears to be in them. This may have the benefit of also revealing <em>limitations</em> in existing work (or, at least, the work you have reviewed). For instance, if you notice in your spreadsheet that most of the data comes from European data sources, then this could help you motivate the use of non-European data as part of your answer to the ‘so what’ question for your thesis.</p>
-<p>A second resource are the various websites linked below in the “Data Repositories” sub-section. ICPSR and GESIS are both data repositories wherein researchers have deposited their data. Each enables you to perform a keyword search that may enable you to find datasets connected with your thesis topic. The “dataset with political datasets” webpage, meanwhile, is a very helpful one-stop shop for finding links to a wide array of relevant data sources in political science.</p>
-<p>Finally…you have me! If you’re having trouble finding something, ask me for advice. I may be able to guide you to something that is of relevance to your project, although no guarantees are provided here!</p>
-<section id="data-repositories" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="data-repositories"><span class="header-section-number">9.2.1</span> Data Repositories</h3>
-<ul>
-<li><a href="https://github.com/erikgahner/PolData" target="_blank">A Dataset with Political Datasets</a>: This webpage provides links to a huge array of datasets, including both mass level public opinion surveys as well as data on elites and institutions. You can even download the list as a spreadsheet that includes additional data about the data (meta!), such as what regions the resource covers, what time frame, and so on. This is a great place to begin. Scroll down to “Citizens” and take a look.</li>
-<li><a href="https://search.gesis.org/" target="_blank">Gesis</a> : A data repository run by the Leibniz Institute for the Social Sciences. Particularly relevant if you are using Eurobarometer data (see <a href="#sec-data-eurobarometer" class="quarto-xref"><span>Section 9.2.3</span></a> section below) or European Election Studies data.</li>
-<li><a href="https://www.icpsr.umich.edu/web/pages/ICPSR/index.html" target="_blank">ICPSR</a> : Another data repository, this one run by the University of Michigan</li>
-<li><a href="https://www.pewresearch.org/" target="_blank">Pew Research</a>: A leading public opinion firm with polling data available worldwide. See <a href="https://www.pewresearch.org/short-reads/2021/10/22/how-to-access-pew-research-center-survey-data/" target="_blank">here</a> on how to access their data.</li>
-</ul>
+<section id="if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model"><span class="header-section-number">11.2</span> If a control variable is not statistically significant, should I remove it from my model?</h2>
+<p>No.</p>
+<p>You should use theory and evidence to justify what variables go into the model. A “statistically insignificant” variable does not mean the variable does not ‘cause’ the DV or even that it doesn’t matter for you. Insignificant predictors could emerge, for instance, due to poor survey wording (measurement error) or low sample size even in a case where there is a ‘real’ relationship between the two variables. And, per above, the rationale for including the variable in your model is that it is a plausible confounder of a/the variable you actually care about. If those assumptions are correct then we may very well <em>expect</em> to see a null relationship between (some of) the controls and the DV since you are controlling for its potential mechanisms (i.e., your main IV)!</p>
 </section>
-<section id="some-acronyms-to-know" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="some-acronyms-to-know"><span class="header-section-number">9.2.2</span> Some acronyms to know…</h3>
-<p>Some surveys tend to come up quite a lot in our discussions. I may refer to them by their acronym due to their seeming ubiquity. Here are some examples:</p>
-<ul>
-<li>ANES: American National Election Studies.</li>
-<li>WVS: World Values Survey</li>
-<li>EVS: European Values Survey</li>
-<li>ESS: European Social Survey</li>
-<li>CSES: Comparative study of Electoral Systems</li>
-<li>EES: European Election Studies</li>
-</ul>
+<section id="how-many-variables-should-i-can-i-include-in-my-model" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="how-many-variables-should-i-can-i-include-in-my-model"><span class="header-section-number">11.3</span> How many variables should I, can I, include in my model?</h2>
+<p>There is a basic mathematical ‘basement’ here for OLS models: n &gt; k. n is the number of observations you have while k is the number of coefficients. A bivariate model has two coefficients (intercept and slope) while multiple regression models would have as many added slope terms as there are additional predictors. The number of observations you have must be greater than the number of variables you’re including in the model.</p>
+<p>Okay, but probably you’ll have anywhere from 25 to 10,000 observations in your dataset. So, is it okay to include anywhere from 20 to 9500 variables? Not necessarily. Too many variables for too few observations can lead to an issue known as <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank">overfitting</a>. There are some <em>general</em> rules of thumb here though that you may see suggesting that you should have approximately 10-15 observations per model term. A constant + 2 IVs? You’d want 30-45 observations at least. Of course, rules of thumb are not always iron clad.</p>
+<p>The general aim should probably be for parsimony: “Everything should be as simple as it can be, but not simpler”.</p>
 </section>
-<section id="sec-data-eurobarometer" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="sec-data-eurobarometer"><span class="header-section-number">9.2.3</span> A Note on the Eurobarometer</h3>
-<p>You may be interested in public opinion within Europe. One useful resource might then be the <a href="https://europa.eu/eurobarometer/screen/home" target="_blank">Eurobarometer</a>, which provides access to a series of surveys in EU member states going back quite a long time. For instance, you might be interested in media use and EU attitudes and head to their website to search for relevant surveys. Let’s say you turn up their <a href="https://europa.eu/eurobarometer/surveys/detail/3153" target="_blank">Media &amp; News Survey (2023)</a> and think it would be a perfect fit for your project. Scrolling down that page, you might find this link:</p>
-<p><img src="images/eb.png" class="img-fluid"></p>
-<p>Fantastic - you’ve found a survey and its data! Surely, all you have to do is follow that link and you can download the relevant data. … Well, not quite. Following that link will give you access to a variety of excel spreadsheets with data in them:</p>
-<p><img src="images/eb1.png" class="img-fluid"></p>
-<p>However, those data files are <strong>not</strong> the ones that you will want. These data files are Excel spreadsheets that provide summary statistics for the survey, e.g., the % of people within a particular country and age range that give a particular answer:</p>
-<p><img src="images/eb2.png" class="img-fluid"></p>
-<p>This is almost certainly not what you want as it’s not the underlying raw individual-level data. Even if you are interested in explaining variation at the country-level (e.g., why might the percentage saying yes to a question vary between countries rather than between individuals), the files provided via the link above would be a pain in the ass for doing that because data is organized into separate files for each country and the files themselves are badly organized for use in R (or some other statistical program).</p>
-<p>If you want to use Eurobarometer data, then you instead need to go to the <a href="https://search.gesis.org/" target="_blank">GESIS</a> data repository and search there for the specific survey that you’re interested in (or, perhaps, simply for “eurobarometer” - although from there you’ll need to find the one you want from the multitude of Eurobarometer surveys). <a href="https://search.gesis.org/research_data/ZA8777" target="_blank">Here</a> is the page for the survey used in this example. It provides access to the raw data, questionnaires, and other documents (under Downloads). Note that you need to create a free account to access these files.</p>
-<p><img src="images/eb3.png" class="img-fluid"></p>
-<p>So, you Eurobarometer interested folk have been warned…</p>
+<section id="what-should-i-do-with-ordinal-data" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="what-should-i-do-with-ordinal-data"><span class="header-section-number">11.4</span> What should I do with ordinal data?</h2>
+<p>Statistics II focuses on OLS regression and logistic regression. The former is meant for the analysis of continuous (interval/ratio) DVs, while the latter is meant for binary DVs. What about <em>ordinal</em> data though? These impose some complications.</p>
+<p>Consider age in years as a variable. The difference between 18 years old and 19 years old is the same as the difference between 80 years old and 81 years old: 1 year. Each unit increment in age in years cover the same amount of change. Now, consider a standard left-right ideology measure ranging from 0 (“left”) to 10 (“right”). A person who rates themselves a 1 on the scale is less left-leaning than someone who rates themselves a 0. A person who rates themselves a 10 on the scale is likewise less left-leaning (more right-leaning) than someone who gives themselves a 9. The difference in each case is again a single unit on our scale. But do these 1 unit differences really capture the same amount of ideological difference between the groups? This is not quite as clear cut as with the age variable given the abstractness of the scale.</p>
+<p>The foregoing ambiguity can create a problem for ordinary least squares regression. OLS models assume that the relationship between the IV and the DV is linear: that moving from 18 years to 19 years will bring with it the same degree of change in Y as moving from 80 to 81 years. Or, that moving from 0 to 1 on the left-right measure brings with it the same degree of change in Y as moving from 9 to 10. However, ordinal variables can violate, or at least potentially violate, that assumption insofar as the difference between levels of the variable doesn’t capture the same degree of change across the range of the IV. So, what should you do?</p>
+<p>If your DV is ordinal, then my recommendation is to simply run an OLS model. The alternative to an OLS model here is an ordered/ordinal logistic model. I’ll discuss fitting such a model in <strong>CHAPTER</strong>. However, while this is indeed the technically more appropriate model: you were not trained on how to run it, it is more difficult to interpret, there are debates about statisticians about whether it is really a better model, and it usually leads to the same basic conclusions. In running the OLS model, you will be implicitly assuming that the spacing between categories on the DV is indeed equivalent/identical. If you are concerned about that assumption, then I’d recommend that you present the results of both an OLS model and an ordered logistic model; discuss the results of the OLS model; and then note the similarity with (and/or differences from) the ordered logit model. This is a common tactic. I’ll discuss this more in <strong>CHAPTER</strong>.</p>
+<p>A perhaps trickier business is what to do with ordinal <em>independent</em> variables. One can do two things here. First, one could treat the variable as a categorical variable: create a dummy variable for each level of the variable and then include all but one in the resulting model. This is the safest tactic as it does not involve making any further assumptions about the data (i.e., that the change between categories is equivalent). However, it throws away information about the variable (the fact that it is <em>ordered</em> in nature) and only enables you to formally test the statistical significance of the difference between the included categories and the common baseline category. Second, one could simply assume that the categories are equivalently spaced and treat the variable as ‘continuous’ in nature. This perhaps enables easier interpretations, but does involve that additional assumption and you know what they say about assumptions.</p>
+<p>In practice you will see both things done and sometimes even in the same model! Here, I would recommend paying some attention to how other researchers use the variable in question. The 7-pt party identity measure in the US is almost always treated as an interval/continuous scale, for instance.</p>
 </section>
-<section id="r-packages-for-accessing-data" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="r-packages-for-accessing-data"><span class="header-section-number">9.2.4</span> R Packages for Accessing Data</h3>
-<p>One way to obtain data is to go to the website for a survey (or, perhaps, a repository that contains its data), download the relevant data file(s) to you computer, load them in to R, and begin working. However, some data sources can be directly accessed via R packages. Here are some relevant examples:</p>
-<ul>
-<li><p><a href="https://github.com/vdeminstitute/vdemdata" target="_blank">vdemdata</a></p>
-<ul>
-<li>Installing this package will download the most recent Varieties of Democracy (V-Dem) data files.</li>
-<li>You can find a vignette on how to use this package <a href="https://rforpoliticalscience.com/2024/04/04/how-to-download-and-graph-the-of-democracy-v-dem-dataset-in-r/" target="_blank">here</a></li>
-</ul></li>
-<li><p><a href="https://vincentarelbundock.github.io/WDI/#/">WDI</a></p>
-<ul>
-<li>You might need/want to access data from the World Bank (e.g., data on a country’s unemployment rate). This package enables you to query the World Bank’s databases from R and then download the data directly without needed to visit their webpage. (In practice, I’d recommend using the World Bank’s website to help you search for the relevant indicator and then using the package to download it.)</li>
-<li>Steven V. Miller provides a helpful <a href="http://svmiller.com/blog/2021/02/gank-world-bank-data-with-wdi-in-r/" target="_blank">vignette</a> on how to use this package.</li>
-</ul></li>
-<li><p><a href="https://github.com/piersyork/owidR" target="_blank">Our World in Data</a></p>
-<ul>
-<li>This package enables access to the data provided by <a href="https://ourworldindata.org/" target="_blank">Our World in Data</a> resource.</li>
-</ul></li>
-<li><p><a href="https://cran.r-project.org/web/packages/gesisdata/index.html" target="_blank">gesisdata</a></p>
-<ul>
-<li>A resource for accessing data stored on the Gesis repository.</li>
-<li>Frederick Sold provides a <a href="https://cran.r-project.org/web/packages/gesisdata/vignettes/gesisdata-vignette.html" target="_blank">vignette</a> discussing how to set up and use the package.</li>
-</ul></li>
-</ul>
+<section id="what-should-i-do-if-my-dv-is-categorical" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="what-should-i-do-if-my-dv-is-categorical"><span class="header-section-number">11.5</span> What should I do if my DV is categorical?</h2>
+<p>If my DV had multiple categories that do not admit of an obvious ordering (e.g.: do you support the Labour Party, Conservative Party, or the Liberal Democrat Party), then a multinomial logit model would be most appropriate. A multinomial logit model is basically just a logit model but one designed for categorical variables with more than two categories. I’ll give an example in <strong>CHAPTER</strong>.</p>
 
 
-</section>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;11.1: A Relationship with Two Confounders</span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;11.2: A Relationship with a Confounder and a Mediator</span>
+<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;11.3: Probably Not a Good Idea to Control for Beliefs about Out-Group Beliefs!</span>
+</div>
 </section>
 
 
@@ -933,17 +902,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./doing_01_research.html" class="pagination-link" aria-label="Finding Literature">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Finding Literature</span></span>
+      <a href="./analysis_01.html" class="pagination-link" aria-label="Analysis Steps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part_analysis.html" class="pagination-link" aria-label="Practical Issues in Data Analysis">
-        <span class="nav-page-text">Practical Issues in Data Analysis</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

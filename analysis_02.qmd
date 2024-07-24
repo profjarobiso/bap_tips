@@ -1,8 +1,7 @@
 ---
-filters: 
-  - tikz
-tikz:
-  cache: true
+reference-location: margin
+lightbox: true
+echo: false
 ---
 
 # Some Practical Questions
@@ -13,60 +12,174 @@ In this chapter I'll discuss some more practical questions that may arise as you
 
 Your goal in the thesis is probably going to be to test some hypothesis. For instance, you might hypothesize that partisan animosity ("affective polarization") will be greater among people with extreme ideologies than centrist ideologies. In other words, people with extreme ideologies might dislike people who identify with a different political party as themselves more than people with less extreme ideologies dislike people who identify with a different political party as themselves. You will naturally want to find data on your DV and IV and fit some type of regression model. A natural question then arises: what else should go into my model? Or: what should I "control" for?
 
-We can answer this question by taking a step back and thinking about what we're trying to do when we include a "control" variable into our model. Suppose we perform some bivariate test predicting partisan animosity and affective polarization and find the relationship we expect to find (i.e., more extremity = more animosity). The challenge before us is that ideological extremity is not randomly distributed in society. Extremists probably differ from non-extremists in all sorts of ways - they might have different education levels, social networks, personality characteristics, etc. This consideration raises the possibility that the relationship we observe (more extremity = more animosity) is *better explained* by one or more of these other characteristics that differentiates extremists and non-extremists (e.g., more education = more animosity?). We include "control" variables in an attempt to statistically account for (to rule out) these alternative explanations for the relationship we care about. We should thus "control" for any and all potential *confounder* variables, i.e., variables that we have good reason to think cause *both* our main IV of interest *and* the DV.
+We can answer this question by taking a step back and thinking about what we're trying to do when we include a "control" variable in our model.[^analysis_02-1] Suppose we perform some bivariate test predicting partisan animosity and affective polarization and find the relationship we expect to find (i.e., more extremity = more animosity). The challenge before us is that ideological extremity is not randomly distributed in society. Extremists probably differ from non-extremists in all sorts of ways - they might have different education levels, social networks, personality characteristics, etc. This consideration raises the possibility that the relationship we observe (more dogmatism = more animosity) is *better explained* by one or more of these other characteristics that differentiates extremists and non-extremists (e.g., more [dogmatism](https://doi.org/10.1016/j.cobeha.2019.10.016){target="_blank"} = more animosity & more extremity?). We include "control" variables in an attempt to statistically account for alternative explanations for the relationship we care about. We should thus "control" for any and all potential *confounder* variables *that we can*, i.e., variables that we have good reason to think cause *both* our main IV of interest *and* the DV.[^analysis_02-2]
 
-**NEED TO UPDATE**
+[^analysis_02-1]: The focus here is on the inclusion of additional predictors in a context where we are trying to generate an unbiased estimate of the relationship between a particular IV and a DV. We could also be building a statistical model for the sake of prediction, e.g., to construct an accurate forecasting model. The considerations about what to include in such a model would be different as the focus would be on what best reduces predictions errors from the model as a whole rather than what reduces bias in one particular estimate.
 
-::: {#fig-example1 .test-class}
-``` {.tikz embed_mode="link" scale="3" filename="control_vars" format="svg"}
-\node[draw] (a) at (0,0) {Main IV}; 
-\node[draw] (b) at (6,0) {DV};            
-\node[draw] (c) at (3,3) {Confounder};
-\draw[-latex] (c) -- (a);
-\draw[-latex] (c) -- (b);       
-\draw[-latex] (a) -- (b);
+[^analysis_02-2]: Of course, there may be (likely are) important confounders out there that we cannot measure or perhaps simply do not have a measure of to include in our model. We should thus be careful not to over-interpret statistical models of observational data as definitively telling us that our IV of interest causes the DV - it is better to talk about these relationships as associations between the variables.
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+#| fig-cap: "A Relationship with Two Confounders"
+#| label: fig-confounder1
+
+#https://www.andrewheiss.com/blog/2020/02/25/closing-backdoors-dags/
+
+library(tidyverse)
+library(ggdag)
+library(dagitty)
+
+node_details <- tribble(
+  ~name, ~label, ~x, ~y,
+  "y", "DV",  4, 1, 
+  "x1", "Main IV", 1, 1, 
+  "x2", "Confounder 1", 3, 2, 
+  "x3", "Confounder 2", 2, 2
+)
+
+node_labels <- node_details$label
+names(node_labels) <- node_details$name
+
+example_dag <- dagify(
+  y ~ x1 + x2 + x3, 
+  x1 ~ x2 + x3, 
+  exposure = "x1", 
+  outcome = "y", 
+  coords = node_details, 
+  labels = node_labels)
+  
+example_dag_tidy <- example_dag |> 
+  tidy_dagitty() |> 
+  node_status()
+
+status_colors <- c(exposure = "#0074D9", outcome = "#FF4136")
+
+ggplot(example_dag_tidy, 
+       aes(x = x, y = y, xend = xend, yend = yend)) + 
+  geom_dag_edges() +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_label_repel(aes(label = label, fill = status), 
+                       seed = 1234,
+                       nudge_y = 2.5, 
+                       color = "white", fontface = "bold") +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE) + 
+  theme_dag()
 ```
-:::
 
 Per above, you should control for things that you believe cause both your main IV of interest and your DV. You can justify these beliefs in relation to prior evidence and theory. Per @sec-analysis-steps, one important part of the thesis writing process (and of doing your analysis) is first doing the hard work of figuring out how you *think* the world works in relation to your phenomenon of interest as this will help you identify relevant control variables.
 
-One thing you should avoid doing is simply dumping variables into your model. This is because you can get in trouble by leaving out relevant variables (as above) but *also* by including unnecessary variables in your model as well! In particular, you should try to avoid including what are alternatively known as "post-treatmnet" or "mediating" variables in your model. A post-treatment variable is a variable that is caused *by* your main IV and in turn causes your DV.
+One thing you should avoid doing is simply dumping variables into your model. This is because you can get in trouble by leaving out relevant variables (as above) but *also* by including unnecessary variables in your model as well! In particular, you should try to avoid including what are alternatively known as "post-treatment" or "mediating" variables in your model.[^analysis_02-3] A post-treatment variable is a variable that is caused *by* your main IV and in turn causes your DV. For instance:
 
-::: test-class
-``` {.tikz embed_mode="link" scale="3" filename="control_vars1" format="svg"}
-\node[draw] (a) at (-2,0) {Main IV} ;
-\node[draw] (b) at (2,0) {Y};
-\node[draw] (c) at (0,-1) {Post-Treatment Var};
-\draw[black, -latex] (a) -- (b);
-\draw[red, -latex] (a) -- (c);
-\draw[red, -latex] (c) -- ( b);
+[^analysis_02-3]: There is yet another potential source of bias from improper variable inclusion: [collider bias](https://catalogofbias.org/biases/collider-bias/){target="_blank"}. Let's say we have this model: Y = X1 + X2. Collider bias emerges when one of the variables on the right hand side of the equation (X2, for instance) is caused by the other two variables (i.e., X2 is caused by Y and X1). Collider bias can lead to a spurious association much like omitted variable bias when a relevant confound is excluded.
+
+```{r}
+#| fig-cap: "A Relationship with a Confounder and a Mediator"
+#| label: fig-mediator1
+
+node_details1 <- tribble(
+  ~name, ~label, ~x, ~y,
+  "y", "DV",  4, 1, 
+  "x1", "Main IV", 1, 1, 
+  "x2", "Mediator", 2, 2, 
+  "x3", "Confounder", 1, 4
+)
+
+node_labels1<- node_details1$label
+names(node_labels1) <- node_details1$name
+
+example_dag1 <- dagify(
+  y ~ x1 + x2 + x3, 
+  x1 ~ x3,
+  x2 ~ x1, 
+  exposure = "x1", 
+  outcome = "y", 
+  coords = node_details1, 
+  labels = node_labels1)
+  
+example_dag_tidy1 <- example_dag1 |> 
+  tidy_dagitty() |> 
+  node_status()
+
+status_colors <- c(exposure = "#0074D9", outcome = "#FF4136")
+
+ggplot(example_dag_tidy1, 
+       aes(x = x, y = y, xend = xend, yend = yend)) + 
+  geom_dag_edges() +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_label_repel(aes(label = label, fill = status), 
+                       seed = 1234,
+                       nudge_y = 2.5, 
+                       color = "white", fontface = "bold") +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE) + 
+  theme_dag()
+
+
 ```
-:::
 
-What is the problem here, exactly? Let's say that our main IV is ideological extremity and our DV is partisan animosity. Let's say that we believe that extremists will dislike the other side more than non-extremists and that they will do so because holding an extreme ideology facilitates a variety of reasoning processes that will lead extremists to hold inaccurate beliefs about the other side's political views. Extremists, for instance, might come to see the other side as holding more extreme beliefs than it actually does.
+What is the problem here, exactly? Let's say that our main IV is ideological extremity and our DV is partisan animosity. We might think that some of this relationship is explained by a common source of both variables (dogmatism or cognitive rigidity) and include that in our model. However, we think extremity should still predict animosity (the relationship is not *only* due to dogmatic thinking). In particular, we theorize that this relationship should emerge because holding an extreme ideology facilitates a variety of reasoning processes that will lead extremists to hold inaccurate beliefs about the other side's political views.[^analysis_02-4] Extremists, for instance, might come to see the other side as holding more extreme beliefs than it actually does, feel threatened by this (somewhat imagined) out-group, and hence express more animosity toward the out-group.
 
-**ADD FOOTNOTE WITH SOURCES**
+[^analysis_02-4]: Inaccurate "meta-perceptions" (or, beliefs about others beliefs) are indeed an important predictor of group animosity (see, for instance, [Moore-Berg et al.](https://doi.org/10.1073/pnas.2001263117){target="_blank"}) and perhaps also support for political violence (see, for instance, [Braley et al.](https://www.nature.com/articles/s41562-023-01594-w){target="_blank"})
 
-::: {#fig-example2 .test-class}
-``` {.tikz embed_mode="link" scale="3" filename="control_vars1" format="svg"}
-\node[draw] (a) at (-2,0) {Extremity} ;
-\node[draw] (b) at (2,0) {Animosity};
-\node[draw] (c) at (0,-1) {Beliefs about Out-Group};
-\draw[black, -latex] (a) -- (b);
-\draw[red, -latex] (a) -- (c);
-\draw[red, -latex] (c) -- ( b);
+    per Moore-Berg a
+
+```{r}
+#| echo: false
+#| fig-cap: "Probably Not a Good Idea to Control for Beliefs about Out-Group Beliefs!"
+#| label: fig-mediator2
+
+node_details2 <- tribble(
+  ~name, ~label, ~x, ~y,
+  "y", "Animosity",  4, 1, 
+  "x1", "Ideological Extremity", 1, 1, 
+  "x2", "Beliefs of Out-Group Beliefs", 2, 2, 
+  "x3", "Dogmatism", 1, 4
+)
+
+node_labels2 <- node_details2$label
+names(node_labels2) <- node_details2$name
+
+example_dag2 <- dagify(
+  y ~ x1 + x2 + x3, 
+  x1 ~ x3,
+  x2 ~ x1, 
+  exposure = "x1", 
+  outcome = "y", 
+  coords = node_details2, 
+  labels = node_labels2)
+  
+example_dag_tidy2 <- example_dag2 |> 
+  tidy_dagitty() |> 
+  node_status()
+
+ggplot(example_dag_tidy2, 
+       aes(x = x, y = y, xend = xend, yend = yend)) + 
+  geom_dag_edges() +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_label_repel(aes(label = label, fill = status), 
+                       seed = 1234,
+                       nudge_y = 2.5, 
+                       color = "white", fontface = "bold") +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE) + 
+  theme_dag()
 ```
-:::
 
-If we include variables pertaining to a person's extremity and their beliefs about the out-group in a model predicting their level of animosity toward the out-group, then we will be estimating the "effect" of extremity "holding constant" beliefs about the out-group. We will be producing an estimate of the relationship between extremity and animosity that works through other channels or mediators than beliefs about the out-groups. Our estimate for the effect of extremity is thus going be *biased* - it will likely be smaller than it should be because we are accounting for part of the process that explains why extremists differ from non-extremists via the other predictor variable in the model. Indeed, if the only reason why extremists differ from non-extremists is because of the effect of extremity on beliefs about the out-group, then our estimate for the effect of extremity in this model might even be 0 (statistically insignificant)! You can see this point in practice via Case 4 in this [explainer](https://janhove.github.io/posts/2021-06-29-posttreatment/){target="_blank"}. The upshot is that you should try and avoid including post-treatment variables in your model...if you can. The difficulty is that what counted as a confounder (causes X and Y) versus a post-treatment variable (caused by X, causes Y) may be ambiguous or contested.
+If we include variables pertaining to a person's extremity and their beliefs about the out-group in a model predicting their level of animosity toward the out-group, then we will be estimating the "effect" of extremity "holding constant" beliefs about the out-group, i.e., after adjusting for differences in beliefs about the out-group. However, we will be producing a *biased* estimate of the *total* relationship between extremity and animosity because we are essentially "controlling away" (part of) the effect we care about in the first place! Including the mediator in our model accounts for part of (perhaps even the entire) reason why extremity matters for understanding animosity thereby leading to a smaller effect estimate than actually exists - our model can only tell us whether there is a relationship between extremity and animosity after adjusting for differences in the mediator. Indeed, if the only reason why extremists differ from non-extremists is because of the effect of extremity on beliefs about the out-group, then our estimate for the effect of extremity in this model might even be 0 (statistically insignificant)![^analysis_02-5] You can see this point in practice via Case 4 in this [explainer](https://janhove.github.io/posts/2021-06-29-posttreatment/){target="_blank"}. The upshot is that you should try and avoid including post-treatment variables in your model...if you can. The difficulty is that what counted as a confounder (causes X and Y) versus a post-treatment variable (caused by X, causes Y) may be ambiguous or contested. At a certain level, we may be stuck with assumptions about how the world works to justify our decisions on this front.
 
-**ADD FOOTNOTE ON MEDIATION**
+[^analysis_02-5]: See [this article](https://www.vox.com/2014/12/1/7311417/race-law-controls){target="_blank"} for additional discussion of this type of situation.
 
-There can be contexts in which we would want to include the post-treatment variable in the model. First, we might actually be interested in whether there is any left-over relationship between our main IV and the DV even after accounting for potential mediators. For instance, we might be investigating wealth biases in college admissions. We might examine this question by comparing admission rates for students with rich parents vs. those with non-rich parents and find higher rates among the former group than the latter. A skeptic may say that this is not evidence that colleges are biased toward the rich - perhaps family wealth leads to better academic performance (higher grades, higher test scores) and that is what colleges are paying attention to. In this instance, it might make sense to also include measures of performance to see if there is still a relationship between family background and admissions after adjusting for differences in performance (a "direct" effect). Second, we might be interested in testing for mediation: how much of the relationship between our main IV and the DV is accounted for by a mediator? This is difficult to do in practice, but typically would involve including the post-treatment/mediating variable in the model at some point. However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential 'control away' some of the influence of your main IV by controlling for one of its effects, which is probably not what you want to do!
+There can be contexts in which we would want to include the post-treatment variable in the model although they may not apply to your thesis. First, we might actually be interested in whether there is any left-over relationship between our main IV and the DV after accounting for potential mediators. For instance, we might be investigating wealth biases in college admissions.[^analysis_02-6] We might examine this question by comparing admission rates for students with rich parents vs. those with non-rich parents and find higher rates among the former group than the latter. A skeptic may say that this is not evidence that colleges are biased toward the rich - perhaps family wealth leads to better academic performance (higher grades, higher test scores) and that is what colleges are paying attention to. In this instance, it might make sense to also include measures of performance to see if there is still a relationship between family background and admissions after adjusting for differences in performance (what we might call a "direct" effect of family background since it is not being mediated by performance). Second, we might be interested in testing for mediation: how much of the relationship between our main IV and the DV is accounted for by a mediator? This is difficult to do in practice, and especially so with observational data, but typically would involve including the post-treatment/mediating variable in the model at some point. However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential 'control away' some of the influence of your main IV by controlling for one of its effects, which is probably not what you want to do!
 
-**ADD LINK TO EXPLAINER**
+[^analysis_02-6]: This is a real-life example based on the following [news article](https://www.nytimes.com/interactive/2023/07/24/upshot/ivy-league-elite-college-admissions.html?unlocked_article_code=1.9k0.QVwt.AMoPxL1M5loZ&smid=url-share){target="_blank"}.
 
-Two final thoughts here. First, the foregoing applies when your data is non-experimental. However, if you are working with an experiment then you don't generally *need* any control variables in your model. You can simply predict your DV with an indicator for which treatment group the observation has been randomly assigned to. This is the case because random assignment is handling the task of ruling out alternative explanations. Second, the foregoing focuses on situations where the two predictor variables are causing one another (in someway) and also causing Y. What about if the two IVs are unrelated to one another while both predicting the DV? Including both predictors in the model would be a good idea in this scenario but for other reasons than discussed above. Instead of reducing *bias* in our estimates, doing so would reduce *variance* in our estimaets (i.e., it would lead to more certainty); see Case 5 in \[this explainer\](However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential 'control away' some of the influence of your main IV by controlling for one of its effects. Your resulting estimate for your main IV will be an estimate of its residual relationship with your DV after the intermediary relationship via the post-treatment variable has been accounted for. So, you should try not to include such variables.){target="\_blank"}. However, this is mainly of interest in experimental studies wherein we know for sure that our main IV (assignment to different experimental groups) is unrelated to other variables (due to random assignment).
+Two final thoughts here. First, the foregoing applies when your data is non-experimental. However, if you are working with an experiment then you don't generally *need* any control variables in your model. You can simply predict your DV with an indicator for which treatment group the observation has been randomly assigned to. This is the case because random assignment is handling the task of ruling out alternative explanations. Second, the foregoing focuses on situations where the two predictor variables are causing one another (in someway) and also causing Y. What about if the two IVs are unrelated to one another while both predicting the DV? Including both predictors in the model would be a good idea in this scenario but for other reasons than discussed above. Instead of reducing *bias* in our estimates, doing so would reduce *variance* in our estimaets (i.e., it would lead to more certainty); see Case 5 in [this explainer](https://janhove.github.io/posts/2021-06-29-posttreatment/#case-5-x-and-z-affect-y-x-and-z-dont-affect-each-other.){target="_blank"}. However, this is mainly of interest in experimental studies wherein we know for sure that our main IV (assignment to different experimental groups) is unrelated to other variables (due to random assignment and measuring the other variables prior to assignment).
 
 ## If a control variable is not statistically significant, should I remove it from my model?
 
