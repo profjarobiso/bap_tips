@@ -40,7 +40,7 @@ One thorny subject here is *substantive* significance. The p-value associated wi
 
 [^writing_05_analyses-2]: Moreover, a statistically significant relationship does not necessarily mean that your hypothesis is true. Maybe your DV is actually causing your IV (e.g., "reverse causality"). Or perhaps you have an omitted variable that confounds the relationship. Meanwhile, an "insignificant" result could result from measurement error or a small sample.
 
-Discussing the substantive importance of coefficient can be tricky. I discuss this point in more detail in the @sec-practical-issues-in-data-analysis.
+Discussing the substantive importance of coefficient can be tricky. I discuss this point in more detail in a chapter in the final section of this book.
 
 ### Discussing Control Variables {#sec-discussing-control-variables}
 

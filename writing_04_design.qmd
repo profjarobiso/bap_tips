@@ -60,7 +60,7 @@ The idea here is to give the reader sufficient information so that they can unde
 
 As an additional point here, it makes sense to include a short point about *why* you are including these particular variables as controls. That is, justify their inclusion in some way. Typically, we control for variables to reduce bias in our models - we are worried that the relationship between our main variable of interest and the DV is actual spurious in nature because this relationship occurs due the correlation between them and confounding variables. A justification on this front may highlight a reason (such as previous studies) suggesting that the control might cause *both* the DV and the main IV of interest in the model with a reference to relevant work to give warrant to the claim.
 
-I discuss additional questions and issues in relation to statistical modeling that you may encounter in @sec-practical-issues-in-data-analysis.
+I discuss additional questions and issues in relation to statistical modeling that you may encounter in the final section of this book.
 
 ### Don't use SPSS/R variable names in-text
 

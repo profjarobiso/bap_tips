@@ -1,0 +1,101 @@
+---
+filters: 
+  - tikz
+tikz:
+  cache: true
+---
+
+# Some Practical Questions
+
+In this chapter I'll discuss some more practical questions that may arise as you think about how to analyze your data.
+
+## What should I control for?
+
+Your goal in the thesis is probably going to be to test some hypothesis. For instance, you might hypothesize that partisan animosity ("affective polarization") will be greater among people with extreme ideologies than centrist ideologies. In other words, people with extreme ideologies might dislike people who identify with a different political party as themselves more than people with less extreme ideologies dislike people who identify with a different political party as themselves. You will naturally want to find data on your DV and IV and fit some type of regression model. A natural question then arises: what else should go into my model? Or: what should I "control" for?
+
+We can answer this question by taking a step back and thinking about what we're trying to do when we include a "control" variable into our model. Suppose we perform some bivariate test predicting partisan animosity and affective polarization and find the relationship we expect to find (i.e., more extremity = more animosity). The challenge before us is that ideological extremity is not randomly distributed in society. Extremists probably differ from non-extremists in all sorts of ways - they might have different education levels, social networks, personality characteristics, etc. This consideration raises the possibility that the relationship we observe (more extremity = more animosity) is *better explained* by one or more of these other characteristics that differentiates extremists and non-extremists (e.g., more education = more animosity?). We include "control" variables in an attempt to statistically account for (to rule out) these alternative explanations for the relationship we care about. We should thus "control" for any and all potential *confounder* variables, i.e., variables that we have good reason to think cause *both* our main IV of interest *and* the DV.
+
+**NEED TO UPDATE**
+
+::: {#fig-example1 .test-class}
+``` {.tikz embed_mode="link" scale="3" filename="control_vars" format="svg"}
+\node[draw] (a) at (0,0) {Main IV}; 
+\node[draw] (b) at (6,0) {DV};            
+\node[draw] (c) at (3,3) {Confounder};
+\draw[-latex] (c) -- (a);
+\draw[-latex] (c) -- (b);       
+\draw[-latex] (a) -- (b);
+```
+:::
+
+Per above, you should control for things that you believe cause both your main IV of interest and your DV. You can justify these beliefs in relation to prior evidence and theory. Per @sec-analysis-steps, one important part of the thesis writing process (and of doing your analysis) is first doing the hard work of figuring out how you *think* the world works in relation to your phenomenon of interest as this will help you identify relevant control variables.
+
+One thing you should avoid doing is simply dumping variables into your model. This is because you can get in trouble by leaving out relevant variables (as above) but *also* by including unnecessary variables in your model as well! In particular, you should try to avoid including what are alternatively known as "post-treatmnet" or "mediating" variables in your model. A post-treatment variable is a variable that is caused *by* your main IV and in turn causes your DV.
+
+::: test-class
+``` {.tikz embed_mode="link" scale="3" filename="control_vars1" format="svg"}
+\node[draw] (a) at (-2,0) {Main IV} ;
+\node[draw] (b) at (2,0) {Y};
+\node[draw] (c) at (0,-1) {Post-Treatment Var};
+\draw[black, -latex] (a) -- (b);
+\draw[red, -latex] (a) -- (c);
+\draw[red, -latex] (c) -- ( b);
+```
+:::
+
+What is the problem here, exactly? Let's say that our main IV is ideological extremity and our DV is partisan animosity. Let's say that we believe that extremists will dislike the other side more than non-extremists and that they will do so because holding an extreme ideology facilitates a variety of reasoning processes that will lead extremists to hold inaccurate beliefs about the other side's political views. Extremists, for instance, might come to see the other side as holding more extreme beliefs than it actually does.
+
+**ADD FOOTNOTE WITH SOURCES**
+
+::: {#fig-example2 .test-class}
+``` {.tikz embed_mode="link" scale="3" filename="control_vars1" format="svg"}
+\node[draw] (a) at (-2,0) {Extremity} ;
+\node[draw] (b) at (2,0) {Animosity};
+\node[draw] (c) at (0,-1) {Beliefs about Out-Group};
+\draw[black, -latex] (a) -- (b);
+\draw[red, -latex] (a) -- (c);
+\draw[red, -latex] (c) -- ( b);
+```
+:::
+
+If we include variables pertaining to a person's extremity and their beliefs about the out-group in a model predicting their level of animosity toward the out-group, then we will be estimating the "effect" of extremity "holding constant" beliefs about the out-group. We will be producing an estimate of the relationship between extremity and animosity that works through other channels or mediators than beliefs about the out-groups. Our estimate for the effect of extremity is thus going be *biased* - it will likely be smaller than it should be because we are accounting for part of the process that explains why extremists differ from non-extremists via the other predictor variable in the model. Indeed, if the only reason why extremists differ from non-extremists is because of the effect of extremity on beliefs about the out-group, then our estimate for the effect of extremity in this model might even be 0 (statistically insignificant)! You can see this point in practice via Case 4 in this [explainer](https://janhove.github.io/posts/2021-06-29-posttreatment/){target="_blank"}. The upshot is that you should try and avoid including post-treatment variables in your model...if you can. The difficulty is that what counted as a confounder (causes X and Y) versus a post-treatment variable (caused by X, causes Y) may be ambiguous or contested.
+
+**ADD FOOTNOTE ON MEDIATION**
+
+There can be contexts in which we would want to include the post-treatment variable in the model. First, we might actually be interested in whether there is any left-over relationship between our main IV and the DV even after accounting for potential mediators. For instance, we might be investigating wealth biases in college admissions. We might examine this question by comparing admission rates for students with rich parents vs. those with non-rich parents and find higher rates among the former group than the latter. A skeptic may say that this is not evidence that colleges are biased toward the rich - perhaps family wealth leads to better academic performance (higher grades, higher test scores) and that is what colleges are paying attention to. In this instance, it might make sense to also include measures of performance to see if there is still a relationship between family background and admissions after adjusting for differences in performance (a "direct" effect). Second, we might be interested in testing for mediation: how much of the relationship between our main IV and the DV is accounted for by a mediator? This is difficult to do in practice, but typically would involve including the post-treatment/mediating variable in the model at some point. However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential 'control away' some of the influence of your main IV by controlling for one of its effects, which is probably not what you want to do!
+
+**ADD LINK TO EXPLAINER**
+
+Two final thoughts here. First, the foregoing applies when your data is non-experimental. However, if you are working with an experiment then you don't generally *need* any control variables in your model. You can simply predict your DV with an indicator for which treatment group the observation has been randomly assigned to. This is the case because random assignment is handling the task of ruling out alternative explanations. Second, the foregoing focuses on situations where the two predictor variables are causing one another (in someway) and also causing Y. What about if the two IVs are unrelated to one another while both predicting the DV? Including both predictors in the model would be a good idea in this scenario but for other reasons than discussed above. Instead of reducing *bias* in our estimates, doing so would reduce *variance* in our estimaets (i.e., it would lead to more certainty); see Case 5 in \[this explainer\](However, in the context of your study this type of variable is almost certainly a nuisance variable that you do not want to include in the model because doing so will essential 'control away' some of the influence of your main IV by controlling for one of its effects. Your resulting estimate for your main IV will be an estimate of its residual relationship with your DV after the intermediary relationship via the post-treatment variable has been accounted for. So, you should try not to include such variables.){target="\_blank"}. However, this is mainly of interest in experimental studies wherein we know for sure that our main IV (assignment to different experimental groups) is unrelated to other variables (due to random assignment).
+
+## If a control variable is not statistically significant, should I remove it from my model?
+
+No.
+
+You should use theory and evidence to justify what variables go into the model. A "statistically insignificant" variable does not mean the variable does not 'cause' the DV or even that it doesn't matter for you. Insignificant predictors could emerge, for instance, due to poor survey wording (measurement error) or low sample size even in a case where there is a 'real' relationship between the two variables. And, per above, the rationale for including the variable in your model is that it is a plausible confounder of a/the variable you actually care about. If those assumptions are correct then we may very well *expect* to see a null relationship between (some of) the controls and the DV since you are controlling for its potential mechanisms (i.e., your main IV)!
+
+## How many variables should I, can I, include in my model?
+
+There is a basic mathematical 'basement' here for OLS models: n \> k. n is the number of observations you have while k is the number of coefficients. A bivariate model has two coefficients (intercept and slope) while multiple regression models would have as many added slope terms as there are additional predictors. The number of observations you have must be greater than the number of variables you're including in the model.
+
+Okay, but probably you'll have anywhere from 25 to 10,000 observations in your dataset. So, is it okay to include anywhere from 20 to 9500 variables? Not necessarily. Too many variables for too few observations can lead to an issue known as [overfitting](https://en.wikipedia.org/wiki/Overfitting){target="_blank"}. There are some *general* rules of thumb here though that you may see suggesting that you should have approximately 10-15 observations per model term. A constant + 2 IVs? You'd want 30-45 observations at least. Of course, rules of thumb are not always iron clad.
+
+The general aim should probably be for parsimony: "Everything should be as simple as it can be, but not simpler".
+
+## What should I do with ordinal data?
+
+Statistics II focuses on OLS regression and logistic regression. The former is meant for the analysis of continuous (interval/ratio) DVs, while the latter is meant for binary DVs. What about *ordinal* data though? These impose some complications.
+
+Consider age in years as a variable. The difference between 18 years old and 19 years old is the same as the difference between 80 years old and 81 years old: 1 year. Each unit increment in age in years cover the same amount of change. Now, consider a standard left-right ideology measure ranging from 0 ("left") to 10 ("right"). A person who rates themselves a 1 on the scale is less left-leaning than someone who rates themselves a 0. A person who rates themselves a 10 on the scale is likewise less left-leaning (more right-leaning) than someone who gives themselves a 9. The difference in each case is again a single unit on our scale. But do these 1 unit differences really capture the same amount of ideological difference between the groups? This is not quite as clear cut as with the age variable given the abstractness of the scale.
+
+The foregoing ambiguity can create a problem for ordinary least squares regression. OLS models assume that the relationship between the IV and the DV is linear: that moving from 18 years to 19 years will bring with it the same degree of change in Y as moving from 80 to 81 years. Or, that moving from 0 to 1 on the left-right measure brings with it the same degree of change in Y as moving from 9 to 10. However, ordinal variables can violate, or at least potentially violate, that assumption insofar as the difference between levels of the variable doesn't capture the same degree of change across the range of the IV. So, what should you do?
+
+If your DV is ordinal, then my recommendation is to simply run an OLS model. The alternative to an OLS model here is an ordered/ordinal logistic model. I'll discuss fitting such a model in **CHAPTER**. However, while this is indeed the technically more appropriate model: you were not trained on how to run it, it is more difficult to interpret, there are debates about statisticians about whether it is really a better model, and it usually leads to the same basic conclusions. In running the OLS model, you will be implicitly assuming that the spacing between categories on the DV is indeed equivalent/identical. If you are concerned about that assumption, then I'd recommend that you present the results of both an OLS model and an ordered logistic model; discuss the results of the OLS model; and then note the similarity with (and/or differences from) the ordered logit model. This is a common tactic. I'll discuss this more in **CHAPTER**.
+
+A perhaps trickier business is what to do with ordinal *independent* variables. One can do two things here. First, one could treat the variable as a categorical variable: create a dummy variable for each level of the variable and then include all but one in the resulting model. This is the safest tactic as it does not involve making any further assumptions about the data (i.e., that the change between categories is equivalent). However, it throws away information about the variable (the fact that it is *ordered* in nature) and only enables you to formally test the statistical significance of the difference between the included categories and the common baseline category. Second, one could simply assume that the categories are equivalently spaced and treat the variable as 'continuous' in nature. This perhaps enables easier interpretations, but does involve that additional assumption and you know what they say about assumptions.
+
+In practice you will see both things done and sometimes even in the same model! Here, I would recommend paying some attention to how other researchers use the variable in question. The 7-pt party identity measure in the US is almost always treated as an interval/continuous scale, for instance.
+
+## What should I do if my DV is categorical?
+
+If my DV had multiple categories that do not admit of an obvious ordering (e.g.: do you support the Labour Party, Conservative Party, or the Liberal Democrat Party), then a multinomial logit model would be most appropriate. A multinomial logit model is basically just a logit model but one designed for categorical variables with more than two categories. I'll give an example in **CHAPTER**.

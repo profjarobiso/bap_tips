@@ -23,6 +23,7 @@ book:
     - part: part_analysis.qmd
       chapters: 
         - analysis_01.qmd
+        - analysis_02.qmd
 
 format:
   html:
