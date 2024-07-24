@@ -1,0 +1,72 @@
+---
+reference-location: margin
+---
+
+# Analysis Steps {#sec-analysis-steps}
+
+The analyses in your BAP represent a long-term process of thinking, questioning, and writing. I've broken this process down into an 'idealized' series of steps. I say idealized because researching is never as neat as this image suggests.
+
+```{mermaid}
+flowchart TD
+  A[What Do You Want to Know?] --> B[Pre-Analysis Planning]
+  B --> A
+  B --> D[Data-Cleaning and Creation]
+  D --> E[Descriptive Analyses]
+  E --> F[Statistical Model]
+  F --> G[Analyze Assumptions]
+  G --> H[Finalize Model]
+  H --> I[Interpretation & Writing]
+
+```
+
+<br>
+
+## What Do You Want to Know?
+
+The first step above is not "perform your analyses" but instead "What Do You Want to Know?". This is because everything depends on this step - what data you should look for and try to use, what types of analyses you perform, and so on.
+
+We can think of this step as involving finding an answer to these two questions:
+
+-   What is the question?
+    -   What is your *research question*? What is it that you want to know about the world?
+    -   For instance: do young people punish politicians for democratic violations as much as old people?; or: does partisanship promote voter turnout?; or: does social contact reduce prejudice?
+    -   See [Musgrave and Davis](https://thesisstatement.substack.com/p/asking-the-right-questions){target="_blank"} on how to ask the "right questions".
+-   What is the claim you want to test?
+    -   You will advance a claim about the world in your thesis that you then seek to test. This claim is your hypothesis (or hypotheses).
+    -   For instance: young people are less likely to punish non-democratic behavior by politicians; or: partisans are more likely to vote than non-partisans; or: social contact with out-group members reduces prejudice.
+
+Answering these questions is what will primarily occupy your attention in the first 8-11 weeks of the thesis project (i.e., the seminar, proposal writing stage, and post-proposal feedback stage).
+
+## Pre-Analysis Planning
+
+The second step is "Pre-Analysis Plan". This step involves figuring out how to translate your answer to "What Do You Want to Know" into practice. We can also break this down a bit further:
+
+-   Find a Reasonable Data Source
+    -   What data or type of data do you need to test your empirical claims and hence answer your question? Can you actually access this data? If you cannot obtain the 'ideal' data to test your hypothesis(es), then can you obtain a reasonable alternative?
+    -   This is commonly a social survey for students in my BAP, but could also be (or laso include) administrative data or an experiment.
+-   Identity Relevant Variables and Decide How You'll Treat Them
+    -   You will formulate some hypothesis or hypotheses that you will then test. This test will likely involve a multiple regression of some type in which you predict a dependent variable with an independent variable and some "control" variables. You both need to find a data source with reasonable measurements for the concepts relevant to this statistical model and also figure out how they should be handled in the analyses (e.g., do you need to convert anything into a factor variable, do you need to rescale a variable, etc.).
+-   Identify Relevant Methods of Analysis
+    -   What type of statistical model is most appropriate for analyzing your dependent variable? The answer here generally follows from the nature of the dependent variable (e.g., continuous $\rightarrow$ OLS model, binary $\rightarrow$ logistic model), but there may be complications along the way (e.g., your DV may be categorical, or you may have clustered/nested data, etc.).
+-   Think about limitations
+    -   All data sources are "limited" in some fashion, e.g., they only focus on some observations rather than all possible observations, the measurement of some key construct may not exactly match the underlying concept in some way, etc. You should give some thought as you go to the potential issues in your data and how they might *specifically* affect your results. Does the use of this particular data source (etc.) make it *easier* or *harder* to find evidence consistent with your expectations? If so, why and how could we avoid this issue in future work? If not, why not? This is perhaps most relevant for the writing stage of the thesis and particularly discussions in the conclusion.
+
+Work on this step should begin during the "What Do You Want to Know" portion but may extend further (i.e., you might not really start focusing on this until Weeks 6-7, say, and not have a full answer until a little bit after this). However, you should have a good idea of the data source that you'll use by mid-November or so and a sense of what you'll need to do to translate this raw data into your analyses shortly thereafter so that you can, well, begin the analysis portion. The first 'feedback' deadline in my BAP is timed for around this point and I recommend/expect a reasonably clear research design section that communicates these points (and especially the data source and nature of the main variables) by this time frame.
+
+I have an arrow pointing from this box back to "What Do you Want to Know". You should not decide your research question or hypotheses based on the data available to you. At the same time, [feasibility](https://thesisstatement.substack.com/p/a-good-thesis-is-a-feasible-thesis){target="_blank"} is an important element of a good thesis. A common saying in graduate school is "the only good dissertation is a finished dissertation". You can identify an interesting and novel question, and advance a plausible argument/hypothesis regarding it, but if you cannot test it all then the thesis process will grind to a halt. It thus could be a case that you'll need to revisit some of your answers in the "What Do You Want to Know" step (e.g., reframe the question, change the IV, etc.) as you begin hammering out the details here. Ideally this would be done in consultation with me so that I can provide you guidance in this process.
+
+## Data Cleaning and Creation
+
+After you have decided on what data you need and what variables from this dataset you'll use (and how), then you can start cleaning the data in preparation for subsequent analyses. By "data cleaning", I mean removing missing value codes (if necessary), recoding variables, creating new ones, etc. One thing to keep in mind: this will probably be the most time consuming element of the actual analyses. A regression model can be run in seconds on a modern computer...but cleaning the data could take much longer.
+
+If you need to create your own dataset in some form (e.g., merging multiple databases together, collecting data for an experiment), then this would also happen at this point in time followed by data cleaning.
+
+## Descriptive Analyses
+
+You might then be tempted to jump into a statistical model...stop! You should first get to know these variables and especially the ones core to your hypothesis(es).[^analysis_01-1] In other words, begin with some univariate analyses (mean + measure of dispersion \[SD, confidence interval\] for continuous variables, tabulations/frequency table for binary/category variables, etc.) to better understand your data. This might suggest to you the need to make some type of transformation or recoding of the variable. Beyond that, it may help you turn up errors in the data cleaning process before you progress to a more fully realized model and commit yourself to an interpretation of its output. And, finally, this step is important because you should provide this information somewhere in your thesis (see @sec-research-designdata-section).
+
+[^analysis_01-1]: Some of this may come about in the Data-Cleaning and Creation stage. For instance, you may need to factorize a categorical variable and, in so doing, decide which category will be the reference group for your analyses. If the variable is related to a clear hypothesis, then the reference category will likely depend on what comparison(s) makes most sense for testing the hypothesis. For instance, if you have a four-category region variable (North, West, East, South) and are arguing that your DV will be lower in the South than everywhere else, then the South would be the most relevant reference group. (In this situation it might even make sense to make this into a single variable \[South vs. Non-South\], but hopefully the point is made). Otherwise, you might want to avoid using a category with very few observation in it, but to do that you'd need to do a quick tabulation to check.
+
+## Statistical Modeling...Interpretation & Writing
+
+After getting to know your data, proceed to bivariate and multi-variate analyses. If your main variables are continuous, perform a correlation and then your fuller statistical model (i.e., a linear regression) (etc.). After you perform your main statistical model, check its assumptions and, if necessary, make changes to the statistical model (e.g., use a different standard error, transform a variable, etc.). Finally, interpret your model and write up the results.

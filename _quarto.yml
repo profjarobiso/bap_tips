@@ -21,6 +21,8 @@ book:
         - doing_01_research.qmd
         - doing_02_data.qmd
     - part: part_analysis.qmd
+      chapters: 
+        - analysis_01.qmd
 
 format:
   html:

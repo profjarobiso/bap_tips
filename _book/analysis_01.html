@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 5&nbsp; Results/Analyses Section</title>
+<title>Thoughts and Advice on Writing your BAP - 10&nbsp; Analysis Steps</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./writing_06_conclusion.html" rel="next">
-<link href="./writing_04_design.html" rel="prev">
+<link href="./part_analysis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +69,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_05_analyses.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_01.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing_05_analyses.html" class="sidebar-item-text sidebar-link active">
+  <a href="./writing_05_analyses.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></span></a>
   </div>
 </li>
@@ -204,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis_01.html" class="sidebar-item-text sidebar-link">
+  <a href="./analysis_01.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span></a>
   </div>
 </li>
@@ -220,24 +251,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">5.1</span> Goals</a></li>
-  <li><a href="#some-more-specific-points" id="toc-some-more-specific-points" class="nav-link" data-scroll-target="#some-more-specific-points"><span class="header-section-number">5.2</span> Some More Specific Points</a>
-  <ul class="collapse">
-  <li><a href="#structure-in-the-same-order-as-your-hypotheses" id="toc-structure-in-the-same-order-as-your-hypotheses" class="nav-link" data-scroll-target="#structure-in-the-same-order-as-your-hypotheses"><span class="header-section-number">5.2.1</span> Structure in the same order as your hypotheses</a></li>
-  <li><a href="#restate-your-hypotheses-when-you-start-discussing-them" id="toc-restate-your-hypotheses-when-you-start-discussing-them" class="nav-link" data-scroll-target="#restate-your-hypotheses-when-you-start-discussing-them"><span class="header-section-number">5.2.2</span> Restate your hypotheses when you start discussing them</a></li>
-  <li><a href="#go-beyond-statistical-significance" id="toc-go-beyond-statistical-significance" class="nav-link" data-scroll-target="#go-beyond-statistical-significance"><span class="header-section-number">5.2.3</span> Go beyond “statistical significance”</a></li>
-  <li><a href="#sec-discussing-control-variables" id="toc-sec-discussing-control-variables" class="nav-link" data-scroll-target="#sec-discussing-control-variables"><span class="header-section-number">5.2.4</span> Discussing Control Variables</a></li>
-  <li><a href="#talking-about-r2" id="toc-talking-about-r2" class="nav-link" data-scroll-target="#talking-about-r2"><span class="header-section-number">5.2.5</span> Talking about R<sup>2</sup></a></li>
-  </ul></li>
+  <li><a href="#what-do-you-want-to-know" id="toc-what-do-you-want-to-know" class="nav-link active" data-scroll-target="#what-do-you-want-to-know"><span class="header-section-number">10.1</span> What Do You Want to Know?</a></li>
+  <li><a href="#pre-analysis-planning" id="toc-pre-analysis-planning" class="nav-link" data-scroll-target="#pre-analysis-planning"><span class="header-section-number">10.2</span> Pre-Analysis Planning</a></li>
+  <li><a href="#data-cleaning-and-creation" id="toc-data-cleaning-and-creation" class="nav-link" data-scroll-target="#data-cleaning-and-creation"><span class="header-section-number">10.3</span> Data Cleaning and Creation</a></li>
+  <li><a href="#descriptive-analyses" id="toc-descriptive-analyses" class="nav-link" data-scroll-target="#descriptive-analyses"><span class="header-section-number">10.4</span> Descriptive Analyses</a></li>
+  <li><a href="#statistical-modelinginterpretation-writing" id="toc-statistical-modelinginterpretation-writing" class="nav-link" data-scroll-target="#statistical-modelinginterpretation-writing"><span class="header-section-number">10.5</span> Statistical Modeling…Interpretation &amp; Writing</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_05_analyses.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_01.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-resultsanalyses-section" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></span></h1>
+<h1 class="title"><span id="sec-analysis-steps" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span></h1>
 </div>
 
 
@@ -254,70 +281,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="goals" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">5.1</span> Goals</h2>
-<p>You will naturally discuss the results of your analyses after discussing your data. This section is fairly straightforward in that its central goal is to tell the reader what you have found and how this relates to your hypothesis/hypotheses. What follows are some general points on the content of this section.</p>
-</section>
-<section id="some-more-specific-points" class="level2 page-columns page-full" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="some-more-specific-points"><span class="header-section-number">5.2</span> Some More Specific Points</h2>
-<section id="structure-in-the-same-order-as-your-hypotheses" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="structure-in-the-same-order-as-your-hypotheses"><span class="header-section-number">5.2.1</span> Structure in the same order as your hypotheses</h3>
-<p>If you have more than one hypothesis, then you should discuss them in order: analyses relevant to H1, then analyses relevant to H2, etc. It may make sense in this case to create subsections for each test, but that is not always necessary.</p>
-</section>
-<section id="restate-your-hypotheses-when-you-start-discussing-them" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="restate-your-hypotheses-when-you-start-discussing-them"><span class="header-section-number">5.2.2</span> Restate your hypotheses when you start discussing them</h3>
-<p>Remind your reader about your expectations when you start discussing your analyses and be clear about what would fit with those expectations in the analysis/es you are showing.</p>
-<p>So, to return to the running example of whether accusations of ulterior motives undermine the influence of party cues, I might begin this section by writing something like:</p>
-<blockquote class="blockquote">
-<p>I argued in Hypothesis 1 that receiving an in-party cue should result in greater policy support among partisans. Table 1 provides the results of a regression model where policy support is regressed receiving a in-party cue or whether they did not (baseline condition). A positive coefficient would thus be consistent with Hypothesis 1. And, indeed…</p>
-</blockquote>
-<p>Then, I might write something like this when discussing a secondary hypothesis:</p>
-<blockquote class="blockquote">
-<p>Table 1 shows that party cues mattered. However, in Hypothesis 2 I argued that this effect would be conditional, i.e.&nbsp;it would be smaller when the party was described as motivated by ulterior goals. I test this claim by including an interaction term between Variable1 and Variable2; see Model 2 in Table 1. A negative coefficient on the interaction term would be consistent with my hypothesis. And, indeed, Table 1 shows…</p>
-</blockquote>
-<p>Doing this makes sure you and your reader are on the same page.</p>
-</section>
-<section id="go-beyond-statistical-significance" class="level3 page-columns page-full" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="go-beyond-statistical-significance"><span class="header-section-number">5.2.3</span> Go beyond “statistical significance”</h3>
-<p>In interpreting your results, you might be tempted to just say “well, there is a statistically significant (or insignificant) effect of the independent variable” and leave it at that. But this does not tell the reader very much. And, indeed, it elides the more important question of <em>substantive</em> significance as one could obtain an estimate that one is confident is more than statistical noise but which is unimportant.</p>
-<p>When writing up your results, discuss the direction and magnitude of results with some level of specificity. One way to do this is to interpret the direction and magnitude of the effect implied by the coefficient in your model. So, for instance, if the coefficient is 0.8, you might say: “for every one unit increase in my variable, the DV is expected to change by 0.8 [DV units] on average”.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> It if often a good idea to then supplement such a statement with predictions from the model: “Based on this model and its results, we would expect that someone at the minimum of X to score a 2 on the scale, while someone at the maximum of X would score a 6” (or something like that). One can also do this with logistic models using average marginal effect estimates and/or predicted probability estimates. Incorporating a figure to show these changes is also a wonderful idea although it is not always needed.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Well, if the IV is continuous. If it is a binary or categorical variable, then you would discuss this as a difference in means test: is the mean in category A different from the mean in category B? And, of course, we would not use quite the same language when describing a logistic regression model since the coefficients of that model are on the hard to communicate log of the odds (logit) scale. A focus on average marginal effects and predicted probabilities would be more useful there.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Moreover, a statistically significant relationship does not necessarily mean that your hypothesis is true. Maybe your DV is actually causing your IV (e.g., “reverse causality”). Or perhaps you have an omitted variable that confounds the relationship. Meanwhile, an “insignificant” result could result from measurement error or a small sample.</p></div></div><p>One thorny subject here is <em>substantive</em> significance. The p-value associated with a regression coefficient might be small leading you to “reject” the null hypothesis. But, that doesn’t mean the effect in question is particularly important! We can precisely measure small effects with enough data after all.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> It is thus a good idea to give some consideration to whether the effect that you are observing is “meaningful” or “substantively” important. What characterizes a “substantively” important finding, however, is not always clear. This can depend on the topic in question and our prior knowledge about it. Consider a study investigating variation in the percentage of votes cast for an incumbent party that finds that a one unit change in X leads to an expected gain of 1% more votes. If the incumbent party in the context of this study typically wins elections and does so by 45-50% on average, then a 1% change due to X is probably irrelevant in the “real world”. However, if real elections are typically within 1-3% on average, then a 1% change due to X could mean a different winner and hence a represents a “substantive” or “important” effect! So, there is no straightforward answer here. This is one reason why I suggest incorporating predictions from your model into the discussion of your results as these may aid in interpreting substantiveness in light of your knowledge of this case and the literature regarding it.</p>
-<p>Discussing the substantive importance of coefficient can be tricky. I discuss this point in more detail in the <span class="quarto-unresolved-ref">?sec-practical-issues-in-data-analysis</span>.</p>
-</section>
-<section id="sec-discussing-control-variables" class="level3 page-columns page-full" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="sec-discussing-control-variables"><span class="header-section-number">5.2.4</span> Discussing Control Variables</h3>
-<p>You’ll likely have various control variables in your model (unless you are analyzing an experiment). How much attention should you give them in your discussion of results? The answer is “probably not much if any”. Recall that the standard justification for why we “control” for other variables is to avoid statistical bias when estimating the relationship between the predictor variable we care about and the DV. In other words, we have some reason to believe that the “control” variable causes both our main IV of interest and the DV such that failing to include it in the model would yield faulty conclusions about the relationship between that main IV and the DV. We are not including the control variable in the model, in other words, because we actually care about its direct relationship with Y…so why should we then spend a lot of time talking about it? Indeed, every word you spend on talking about the “controls” is a word you could be using to better set up your research question, or justify your theoretical argument, or elaborate on the implications of your results, i.e., the stuff your readers will most care about.</p>
-<p>There is an additional reason why you might want to limit your attention to the control variables: they don’t necessarily tell you what you think they’re telling you (which can lead your discussions into error-prone directions) and what they <em>are</em> telling you may not be very interesting on its own.</p>
-<p>Consider the following simplified causal diagram:</p>
-<div class="cell">
+<p>The analyses in your BAP represent a long-term process of thinking, questioning, and writing. I’ve broken this process down into an ‘idealized’ series of steps. I say idealized because researching is never as neat as this image suggests.</p>
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="writing_05_analyses_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A[What Do You Want to Know?] --&gt; B[Pre-Analysis Planning]
+  B --&gt; A
+  B --&gt; D[Data-Cleaning and Creation]
+  D --&gt; E[Descriptive Analyses]
+  E --&gt; F[Statistical Model]
+  F --&gt; G[Analyze Assumptions]
+  G --&gt; H[Finalize Model]
+  H --&gt; I[Interpretation &amp; Writing]
+
+</pre>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>The diagram above shows a set of theorized causal relationships wherein a person’s immigration attitudes (DV) are influenced by their own educational attainment (main IV) and a potential confounder (Parents Education). Parents Education is thus theorized to influence Immigration Attitudes and to do so, at least partially, because of its influence on a person’s Own Education. If our interest is on obtaining an unbiased estimate of the relationship between Own Education and Immigration Attitude, then we should include Own Education and Parents Education in our resulting statistical model.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The coefficient for Own Education would tell us about the relationship between Own Education and Immigration Attitudes “controlling for” or “after adjusting for” Parents Education. In essence: if we compared people with different educational backgrounds but whose parents had the same educational attainment, then what is the difference in immigration attitudes that we’d expect to see?</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;There are plausibly other confounds out there of the education/immigration relationship, but I am keeping the figure simple. <a href="https://doi.org/10.1146/annurev-polisci-102512-194818" target="_blank">Hainmueller and Hopkins</a> provide a relatively recent review of the literature on immigration attitudes.</p></div></div><p>What would the coefficient for “Parent Education” represent in such a model? Well, it would provide us with an estimate of the relationship between this variable and the DV that is unrelated to “Own Education” (e.g., the influence of this variable after adjusting for differences in Own Education). Stated differently: it is an estimate of the relationship between “Parent Education” and “Immigration Attitudes” that emerges due to <em>other</em> mechanisms/mediators besides “Own Education”. For instance, it might represent the influence of Parent Education on Immigration Attitudes that works through a person’s ideology, or their self-interest, etc. (unless those things are also controlled in the model!). It is thus <em>not</em> an estimate of the <strong>total</strong> relationship between Parents Education and Immigration Attitudes but the relationship that is left over after addressing one of the mediator’s of this variable’s relationship with the DV. This coefficient is thus a “biased” estimate of the total relationship between this variable and the DV. Specifically, it suffers from what is known as <a href="https://gking.harvard.edu/files/gking/files/bigprobP.pdf" target="_blank">post-treatment bias</a>. Any resulting discussion of this coefficient that does not take this fact into account would thus fall into error…but why risk error if this topic is kind of besides the point to begin with?</p>
-<p>So, in general, I would tell you to focus on <em>just</em> the variable(s) relevant to your hypothesis/es and interpret them. There might be some reason to deviate from this rule if something really surprising or odd turned up, but that is something we would need to discuss with each other.</p>
+<p><br></p>
+<section id="what-do-you-want-to-know" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="what-do-you-want-to-know"><span class="header-section-number">10.1</span> What Do You Want to Know?</h2>
+<p>The first step above is not “perform your analyses” but instead “What Do You Want to Know?”. This is because everything depends on this step - what data you should look for and try to use, what types of analyses you perform, and so on.</p>
+<p>We can think of this step as involving finding an answer to these two questions:</p>
+<ul>
+<li>What is the question?
+<ul>
+<li>What is your <em>research question</em>? What is it that you want to know about the world?</li>
+<li>For instance: do young people punish politicians for democratic violations as much as old people?; or: does partisanship promote voter turnout?; or: does social contact reduce prejudice?</li>
+<li>See <a href="https://thesisstatement.substack.com/p/asking-the-right-questions" target="_blank">Musgrave and Davis</a> on how to ask the “right questions”.</li>
+</ul></li>
+<li>What is the claim you want to test?
+<ul>
+<li>You will advance a claim about the world in your thesis that you then seek to test. This claim is your hypothesis (or hypotheses).</li>
+<li>For instance: young people are less likely to punish non-democratic behavior by politicians; or: partisans are more likely to vote than non-partisans; or: social contact with out-group members reduces prejudice.</li>
+</ul></li>
+</ul>
+<p>Answering these questions is what will primarily occupy your attention in the first 8-11 weeks of the thesis project (i.e., the seminar, proposal writing stage, and post-proposal feedback stage).</p>
 </section>
-<section id="talking-about-r2" class="level3 page-columns page-full" data-number="5.2.5">
-<h3 data-number="5.2.5" class="anchored" data-anchor-id="talking-about-r2"><span class="header-section-number">5.2.5</span> Talking about R<sup>2</sup></h3>
-<p>Students writing the BAP can sometimes seen quite preoccupied with the R<sup>2</sup> of their model and whether it is “too low” or not. You probably don’t need to worry much about that and, even, have to talk about the R<sup>2</sup> at all. Let me explain why.</p>
-<p>The first reason why talking about R<sup>2</sup> is not usually necessary concerns the purpose of what you’re doing. Regressions can be used to try and build strong predictive models, e.g., to build a model to try and make accurate electoral forecasts. In that context,R<sup>2</sup> may be quite relevant as a model that doesn’t explain much variation in existing data may generate inaccurate predictions for new data.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> However, your goal is likely more focused on using a regression model to say something about a <em>particular</em> variable and its relationship with Y: to describe that relationship and, contingent on research design considerations and assumptions about omitted variables, to say something about whether X causes Y. R<sup>2</sup> is not particularly relevant for that latter purpose. The more important things to focus on are the coefficients for the variables core to your hypotheses, the predictions they generate, and the (un)certainty surrounding them (e.g., confidence intervals and standard errors).</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Although, the reverse is also true. A highly predictive model with one set of data might not generate accurate predictions on a different data set!</p></div></div><p>Second, R<sup>2</sup> has some potential issues that have led some to question its validity as a measure of model fit to begin with. See <a href="https://data.library.virginia.edu/is-r-squared-useless/" target="_blank">here</a> for a deeper dive.</p>
-<ol type="1">
-<li>It assumes a linear model, which means that you can get a very low R<sup>2</sup> even with a very strong relationship between X and Y if the relationship is non-linear and you have failed to account for that aspect of the data.</li>
-<li>You can theoretically get a “good” or “high” R<sup>2</sup> with a silly model. For instance, if I were to regress a person’s height on the height of their parents (as measured before the parents had the child), I’d probably get a decent R<sup>2</sup> value. Height, after all, is one of the most heritable traits we have. If I were to reverse that regression, I’d still get a good R<sup>2</sup>, even though a child’s height cannot go back in time and cause their parents’ height! Or, as an alternative example, if I were trying to explain a person’s vote choice, I could survey them five minutes beforehand and ask them whom they intended to vote for. Including that variable in a resulting model would certainly lead to a very high R<sup>2</sup>, but it wouldn’t tell me anything about why they voted for the party/candidate they voted for because the high R<sup>2</sup> is emerging because you’ve included an IV in the model that is essentially the same as the DV!</li>
-<li>R<sup>2</sup> values are inherently sample dependent. If I field a survey and estimate a model and then you field a separate survey with the same exact measures and run the same exact model we’d expect the R<sup>2</sup> to be non-identical (although, hopefully, quite similar).</li>
-<li>Finally, what counts as a “high” R<sup>2</sup> can be field specific. R<sup>2</sup>, in essence, tells you how much systematic variation in Y you are capturing with your models versus residual noise…but some Y variables are simply noisier than others. Individual human behavior is much more noisy than, say, the behavior of molecules under controlled conditions. A discussion of whether R<sup>2</sup> is high or low must then proceed from knowledge of how much variation researchers can typically explain with their models in the domain of study rather than as a blanket statement.</li>
-</ol>
-<p>R<sup>2</sup> statistics can have some value. In particular, they are helpful in comparing models using the same data. If you run one model and then another which includes an additional variable, then it can make sense to talk about how this did or did not increase the variance explained. However, to go back to point one, even that is not necessarily the relevant consideration.</p>
-<p>The point is not to never talk about this statistic. Rather, you shouldn’t use it as a heuristic for judging the quality of your, or other’s research or, at least, use it by itself to make those judgments. Research quality is dependent on the clarity of theory and its relationship to existing knowledge, the nature of the sample, how variables are measured, and what goes into the model. R<sup>2</sup>, as well as other model fit statistics, can be useful in this endeavor, but only as one piece of evidence.</p>
+<section id="pre-analysis-planning" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="pre-analysis-planning"><span class="header-section-number">10.2</span> Pre-Analysis Planning</h2>
+<p>The second step is “Pre-Analysis Plan”. This step involves figuring out how to translate your answer to “What Do You Want to Know” into practice. We can also break this down a bit further:</p>
+<ul>
+<li>Find a Reasonable Data Source
+<ul>
+<li>What data or type of data do you need to test your empirical claims and hence answer your question? Can you actually access this data? If you cannot obtain the ‘ideal’ data to test your hypothesis(es), then can you obtain a reasonable alternative?</li>
+<li>This is commonly a social survey for students in my BAP, but could also be (or laso include) administrative data or an experiment.</li>
+</ul></li>
+<li>Identity Relevant Variables and Decide How You’ll Treat Them
+<ul>
+<li>You will formulate some hypothesis or hypotheses that you will then test. This test will likely involve a multiple regression of some type in which you predict a dependent variable with an independent variable and some “control” variables. You both need to find a data source with reasonable measurements for the concepts relevant to this statistical model and also figure out how they should be handled in the analyses (e.g., do you need to convert anything into a factor variable, do you need to rescale a variable, etc.).</li>
+</ul></li>
+<li>Identify Relevant Methods of Analysis
+<ul>
+<li>What type of statistical model is most appropriate for analyzing your dependent variable? The answer here generally follows from the nature of the dependent variable (e.g., continuous <span class="math inline">\(\rightarrow\)</span> OLS model, binary <span class="math inline">\(\rightarrow\)</span> logistic model), but there may be complications along the way (e.g., your DV may be categorical, or you may have clustered/nested data, etc.).</li>
+</ul></li>
+<li>Think about limitations
+<ul>
+<li>All data sources are “limited” in some fashion, e.g., they only focus on some observations rather than all possible observations, the measurement of some key construct may not exactly match the underlying concept in some way, etc. You should give some thought as you go to the potential issues in your data and how they might <em>specifically</em> affect your results. Does the use of this particular data source (etc.) make it <em>easier</em> or <em>harder</em> to find evidence consistent with your expectations? If so, why and how could we avoid this issue in future work? If not, why not? This is perhaps most relevant for the writing stage of the thesis and particularly discussions in the conclusion.</li>
+</ul></li>
+</ul>
+<p>Work on this step should begin during the “What Do You Want to Know” portion but may extend further (i.e., you might not really start focusing on this until Weeks 6-7, say, and not have a full answer until a little bit after this). However, you should have a good idea of the data source that you’ll use by mid-November or so and a sense of what you’ll need to do to translate this raw data into your analyses shortly thereafter so that you can, well, begin the analysis portion. The first ‘feedback’ deadline in my BAP is timed for around this point and I recommend/expect a reasonably clear research design section that communicates these points (and especially the data source and nature of the main variables) by this time frame.</p>
+<p>I have an arrow pointing from this box back to “What Do you Want to Know”. You should not decide your research question or hypotheses based on the data available to you. At the same time, <a href="https://thesisstatement.substack.com/p/a-good-thesis-is-a-feasible-thesis" target="_blank">feasibility</a> is an important element of a good thesis. A common saying in graduate school is “the only good dissertation is a finished dissertation”. You can identify an interesting and novel question, and advance a plausible argument/hypothesis regarding it, but if you cannot test it all then the thesis process will grind to a halt. It thus could be a case that you’ll need to revisit some of your answers in the “What Do You Want to Know” step (e.g., reframe the question, change the IV, etc.) as you begin hammering out the details here. Ideally this would be done in consultation with me so that I can provide you guidance in this process.</p>
+</section>
+<section id="data-cleaning-and-creation" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="data-cleaning-and-creation"><span class="header-section-number">10.3</span> Data Cleaning and Creation</h2>
+<p>After you have decided on what data you need and what variables from this dataset you’ll use (and how), then you can start cleaning the data in preparation for subsequent analyses. By “data cleaning”, I mean removing missing value codes (if necessary), recoding variables, creating new ones, etc. One thing to keep in mind: this will probably be the most time consuming element of the actual analyses. A regression model can be run in seconds on a modern computer…but cleaning the data could take much longer.</p>
+<p>If you need to create your own dataset in some form (e.g., merging multiple databases together, collecting data for an experiment), then this would also happen at this point in time followed by data cleaning.</p>
+</section>
+<section id="descriptive-analyses" class="level2 page-columns page-full" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="descriptive-analyses"><span class="header-section-number">10.4</span> Descriptive Analyses</h2>
+<p>You might then be tempted to jump into a statistical model…stop! You should first get to know these variables and especially the ones core to your hypothesis(es).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> In other words, begin with some univariate analyses (mean + measure of dispersion [SD, confidence interval] for continuous variables, tabulations/frequency table for binary/category variables, etc.) to better understand your data. This might suggest to you the need to make some type of transformation or recoding of the variable. Beyond that, it may help you turn up errors in the data cleaning process before you progress to a more fully realized model and commit yourself to an interpretation of its output. And, finally, this step is important because you should provide this information somewhere in your thesis (see <a href="writing_04_design.html" class="quarto-xref"><span>Chapter 4</span></a>).</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Some of this may come about in the Data-Cleaning and Creation stage. For instance, you may need to factorize a categorical variable and, in so doing, decide which category will be the reference group for your analyses. If the variable is related to a clear hypothesis, then the reference category will likely depend on what comparison(s) makes most sense for testing the hypothesis. For instance, if you have a four-category region variable (North, West, East, South) and are arguing that your DV will be lower in the South than everywhere else, then the South would be the most relevant reference group. (In this situation it might even make sense to make this into a single variable [South vs.&nbsp;Non-South], but hopefully the point is made). Otherwise, you might want to avoid using a category with very few observation in it, but to do that you’d need to do a quick tabulation to check.</p></div></div></section>
+<section id="statistical-modelinginterpretation-writing" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="statistical-modelinginterpretation-writing"><span class="header-section-number">10.5</span> Statistical Modeling…Interpretation &amp; Writing</h2>
+<p>After getting to know your data, proceed to bivariate and multi-variate analyses. If your main variables are continuous, perform a correlation and then your fuller statistical model (i.e., a linear regression) (etc.). After you perform your main statistical model, check its assumptions and, if necessary, make changes to the statistical model (e.g., use a different standard error, transform a variable, etc.). Finally, interpret your model and write up the results.</p>
 
 
-</section>
 </section>
 
 
@@ -877,14 +921,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./writing_04_design.html" class="pagination-link" aria-label="Research Design/Data Section">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Research Design/Data Section</span></span>
+      <a href="./part_analysis.html" class="pagination-link" aria-label="Practical Issues in Data Analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Practical Issues in Data Analysis</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./writing_06_conclusion.html" class="pagination-link" aria-label="Conclusion">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
