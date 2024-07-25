@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 7&nbsp; General Writing Advice</title>
+<title>Thoughts and Advice on Writing your BAP - 14&nbsp; Combining Plots</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part_research.html" rel="next">
-<link href="./writing_06_conclusion.html" rel="prev">
+<link href="./analysis_pivot.html" rel="next">
+<link href="./analysis_03.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_04.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link active">
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
   </div>
 </li>
@@ -228,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
+  <a href="./analysis_04.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
   </div>
 </li>
@@ -250,19 +284,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#outline-first" id="toc-outline-first" class="nav-link active" data-scroll-target="#outline-first"><span class="header-section-number">7.1</span> Outline first</a></li>
-  <li><a href="#write-and-edit-edit-edit" id="toc-write-and-edit-edit-edit" class="nav-link" data-scroll-target="#write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</a></li>
-  <li><a href="#some-other-questions-and-topics" id="toc-some-other-questions-and-topics" class="nav-link" data-scroll-target="#some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</a></li>
-  <li><a href="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" id="toc-use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="nav-link" data-scroll-target="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</a></li>
+  <li><a href="#example-using-patchwork" id="toc-example-using-patchwork" class="nav-link active" data-scroll-target="#example-using-patchwork"><span class="header-section-number">14.1</span> Example Using <code>patchwork</code></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_04.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-general-writing-advice" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></h1>
+<h1 class="title"><span id="sec-combining-plots" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></h1>
 </div>
 
 
@@ -279,150 +310,190 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The foregoing chapters provide some thoughts on the each section of your thesis. In this final chapter, I will offer some more general thoughts on writing that apply to the whole thesis.</p>
-<section id="outline-first" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="outline-first"><span class="header-section-number">7.1</span> Outline first</h2>
-<p>In general, it is a good idea to begin with an outline of what you want to write. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences.</p>
-<p>A potential outline might look like this (although, the contents will obviously vary based on what you are writing):</p>
-<ol type="1">
-<li>Introduction
-<ul>
-<li>First Paragraph: Main point</li>
-<li>Second Paragraph: Main point</li>
-<li>Third Paragraph…</li>
-</ul></li>
-<li>Literature Review &amp; Theory Section(s)
-<ul>
-<li>Potential Sub-section 1
-<ul>
-<li>Paragraph 1…</li>
-</ul></li>
-<li>Potential Sub-section 2</li>
-</ul></li>
-<li>Methods
-<ul>
-<li>Data Source: Where does the data come from and why this data source?</li>
-<li>Dependent Variable: How do you measure your dependent variable?</li>
-<li>Independent Variable(s): How do you measure your dependent variable?</li>
-<li>Model: Any relevant details on how you will analyze the data.</li>
-</ul></li>
-<li>Results</li>
-<li>Conclusion
-<ul>
-<li>Paragraph 1…</li>
-</ul></li>
-</ol>
-<p>In filling in the outline for each paragraph, be sure to keep in mind that each paragraph should be organized around a clear, and singular, point or idea. A goal of the thesis, and indeed all writing, is to clearly communicate ideas. One writing tic that may undermine this goal is over-stuffing paragraphs with too many ideas or points. Instead, focus each paragraph on a main idea with successive paragraphs building on each other to form an overarching argument or point. <a href="http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/" target="_blank">Steven V. Miller’s</a> tip’s for students page has an example of what I am talking about here that is quite useful.</p>
-<p>The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a <em>start</em> to writing - there are places where I have placeholders (“Final Sentence”), for instance - and its contents are rather barebones. But, it provided me with a start!</p>
-<ul>
-<li>Introduction
-<ul>
-<li>Paragraph 1: Promises aren’t believed
-<ul>
-<li>Politicians make promises on the campaign trail.</li>
-<li>They seem to mostly keep them</li>
-<li>However, the mass public doesn’t believe this</li>
-<li>The public largely distrusts politicians and believe them to be liars and not promise keepers</li>
-<li>Campaign statements are often <em>non-credible</em></li>
-<li>This poses some challenges to broader accounts of democratic representation and operation that place promissory representation at their core - how can the public hold elites accountable if they don’t believe them in the first place?</li>
-</ul></li>
-<li>Paragraph 2: Moral language might increase credibility
-<ul>
-<li>What would make a politician’s statements more credible?</li>
-<li>One possibility highlighted in recent work is the use of <em>moral</em> language.</li>
-<li>What is moral language</li>
-<li>Politicians and parties do sometimes use this language</li>
-<li>Simas and Clifford show that <em>general</em> moral language (of this sort) does lead to more perceived sincerity</li>
-</ul></li>
-<li>Paragraph 3/4: This paper’s contribution(s)
-<ul>
-<li>We contribute to this work in two ways.</li>
-<li>First, we consider targeting. (maybe switch to language of matched morals rather than targeted? easier to talk about mis-matched?).</li>
-<li>Important for this reason.</li>
-<li>Second, we focus on competence. speaker credibility is based on two components: beliefs about the intentions/motives of the speaker (sincerity, trustworthiness) and their competence or ability to perform the action in question.</li>
-<li>Competence is important for this reason.</li>
-</ul></li>
-<li>Paragraph 4 or 5: This paper’s argument
-<ul>
-<li>We argue…</li>
-<li>Targeted &gt; non-targeted when it comes to sincerity &amp; matched; targeted = more perceived similarity, so there is a halo effect (?); moral character stuff</li>
-<li>Targeted &lt; non-targeted when it comes to sincerity &amp; mismatched; backlash effect (but is that what the feinberg stuff shows?)</li>
-<li>What about competence? More of an open question.</li>
-<li>On the one hand, if more committed then more likely to work on it.</li>
-<li>On the other hand, if more commiteed then <em>less likely to compromise</em> and perhaps less likely to have influence!</li>
-</ul></li>
-<li>Paragraph 5 or 6: roadmap?
-<ul>
-<li>What comes next.</li>
-</ul></li>
-</ul></li>
-<li>Review/Theory
-<ul>
-<li>Paragraph 1: Position Taking is central …
-<ul>
-<li>Common models of democratic politics grounds electoral competition in the programmatic offerings of parties and candidates</li>
-<li>For instance, promissory theories of representation are based on the idea that parties and candidates make policy promises during election season; voters choose based on those promises; and then parties/candidates are held accountable at the next election based on whether they upheld those promises.</li>
-<li>This process is iterative however with partisan elites potentially changing their positions over time in response to prior electoral performance and in an effort to anticipate the behavior of future voters (Mansbridge, Erikson, Adams etc.)..</li>
-<li>Regardless of whether this is a backwards or forwards process, policy is central to elections and representation.</li>
-</ul></li>
-<li>Paragraph 2: But contested?
-<ul>
-<li>Parties and candidates spend a good deal of effort cultivating policy positions and publishing party manifestos documenting how they will act in office.</li>
-<li>And, yet, the actual role of policy positions on voter choices is contested.</li>
-<li>Studies of proximity voting suggest a role for voter positions, but one that is perhaps limited relative to more long standing concerns such as partisan predispositions or group loyalties. (Warshaw, etc.; maybe footnote Lenz – Of course, this assumes that voters have exogenous preferences to begin with, which is a quite problematic assumption - Kuklinski, Druckman, Lenz, Disch)</li>
-<li>Changes in party positions, on the other hand, do seem to matter but perhaps mostly over time and only to a small extent.</li>
-<li>Policy is central to how we talk about elections and democratic politics, but it is not always clear whether it should be or not. (too strong?)</li>
-</ul></li>
-<li>Paragraph 3: What explains this disconnect?
-<ul>
-<li>What might explain the lack of more robust evidence about party positioning and voter policy positions?</li>
-<li>There are a variety of potential answers to this including the (contested) possibility that only some types of issues matter (e.g., strong attitudes, issue importance, moralization; something on moralization) or that party strategies to remain ambiguous may muddy the waters (Somer-Topcu; etc.).</li>
-<li>Another reason might be that the policy statements of parties and candidates may lack <em>credibility</em> in the eyes of audience members.</li>
-<li>Party position taken occurs in a context wherein many people distrust parties and politicians, believing them to only care about electoral success and willing to pander.</li>
-<li>Suspicion about the motives of partisan elites, perhaps stoked by other actors, may thus undermine the influence of party position taking (Adams, pandering minds, my papers).</li>
-<li>On the other hand, party positions may be more influential in contexts wherein audience members believe the position to be more credible as when parties take unpopular positions as this is read as going against the party’s interests and hence serves as a costly signal about the party’s true intentions (Vazquez; see also Berinsky; Lupia?).</li>
-<li>Final sentence</li>
-</ul></li>
-<li>…</li>
-</ul></li>
-</ul>
-</section>
-<section id="write-and-edit-edit-edit" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</h2>
-<p>Having an outline in hand first helps clarify what you actually need to write…which is a handy thing to know before you start writing! However, it is, of course, just a first step. You then need to start writing and, important, <em>editing</em> and <em>rewriting</em> as well. Your first draft is almost certainly your worst draft in terms of clarity for the reader. Revisit your writing as much as possible. If possible, have someone read a draft of your thesis and ask them for feedback regarding anything that is unclear or doesn’t make sense.</p>
-<p>Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: <a href="https://thesisstatement.substack.com/p/simple-tricks-for-better-prose" target="_blank">Simple Tricks for Better Prose</a>; <a href="https://thesisstatement.substack.com/p/show-and-tell">Show and Tell</a></p>
-<ol type="1">
-<li>Proofreading for Clarity
-<ul>
-<li>Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.</li>
-<li>Be wary of starting sentences with demonstratives that are not connected to a noun (e.g.&nbsp;“This results in”, “These can affect,” etc.). Sentences such as these invite the question: what is “this” again?</li>
-<li>Avoid using the passive voice if you can help it.</li>
-<li>Avoid beginning paragraphs with “However” or similar clauses. “However” implies a contrast (This thing, <em>however</em> this other thing)…but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you’re setting yourself up against.</li>
-<li>Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.</li>
-</ul></li>
-<li>Proofreading for Content
-<ul>
-<li>Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.</li>
-<li>One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of “but why?” questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.</li>
-<li>Do not assume that you reader(s) know everything about the topic you’re writing about.</li>
-</ul></li>
-<li>Proofread for Grammar and Miscellaneous Errors
-<ul>
-<li>Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.</li>
-</ul></li>
-</ol>
-</section>
-<section id="some-other-questions-and-topics" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</h2>
-<p>can you use first person! Yes! “This paper argues” is nonsense. You argue! Own the argument.</p>
-<p>avoid tables that overlap pages</p>
-</section>
-<section id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</h2>
-<p>I recommend using a citation manager to help simplify the task of referencing as much as possible. I personally use <a href="https://www.zotero.org/" target="_blank">Zotero</a> but have experienced with Mendeley which also works fine. Either tool can help you insert citations in-text and automatically populate bibliographies for your essays.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Load your data</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>demdata <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"data/demdata.rds"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">For importing/exporting data</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="2">For data manipulation &amp; plotting</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="3">For creating regression tables</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Figures are great ways of presenting statistical information. There are times when we will want to include multiple figures in our papers.</p>
+<section id="example-using-patchwork" class="level2 page-columns page-full" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="example-using-patchwork"><span class="header-section-number">14.1</span> Example Using <code>patchwork</code></h2>
+<p>Let’s say that our paper was focused on investigating the relationship between inequality and democracy scores. Democracy, of course, is a complex concept. We can see this from the name of one of the most important sources of data on regime type available to researchers (emphasis mine): the <em>Varieties</em> of Democracy (<a href="https://www.v-dem.net/" target="_blank">V-Dem</a>) project. The V-Dem dataset, for instance, includes <code>v2x_polyarchy</code> which refers to the extent of electoral democracy, <code>v2x_libdem</code> which focuses on the extent of liberal democracy, and <code>v2x_egaldem</code> which focuses on the extent of egalitarian democracy.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Perhaps we plan on analyzing all three indicators as DVs in our paper. We would naturally want to describe the nature of these variables at some point in our paper, i.e., provide some indication about their central tendency and how much they vary. We could do this rather simply in-text by telling the reader about the mean and standard deviation of each variable. (“My first dependent variable is a measure of electoral democracy from V-Dem. This variable measures blah blah blah (mean = X, SD = X). My second….”) We could also provide a nice figure showing the degree of variation in these variables as well to supplement these discussions with a histogram making a lot of sense given the nature of these variables. For example:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;To say nothing of <code>v2x_partipdem</code> (participatory democracy) and <code>v2x_delibdem</code> (deliberative democracy)!</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>poly_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(demdata, <span class="fu">aes</span>(<span class="at">x =</span> v2x_polyarchy)) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Electoral Democracy"</span>, </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2</span></span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>lib_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(demdata, <span class="fu">aes</span>(<span class="at">x =</span> v2x_libdem)) <span class="sc">+</span> </span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span>  </span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Liberal Democracy"</span>, </span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span> </span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) </span>
+<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 3</span></span>
+<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a>egal_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(demdata, <span class="fu">aes</span>(<span class="at">x =</span> v2x_egaldem)) <span class="sc">+</span> </span>
+<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span>  </span>
+<span id="annotated-cell-2-19"><a href="#annotated-cell-2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Egalitarian Democracy"</span>, </span>
+<span id="annotated-cell-2-20"><a href="#annotated-cell-2-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span> </span>
+<span id="annotated-cell-2-21"><a href="#annotated-cell-2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) </span>
+<span id="annotated-cell-2-22"><a href="#annotated-cell-2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-2-23"><a href="#annotated-cell-2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#The output</span></span>
+<span id="annotated-cell-2-24"><a href="#annotated-cell-2-24" aria-hidden="true" tabindex="-1"></a>poly_plot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">This alters how the histogram bars are presented. <code>fill=</code> covers the interior color, while <code>color</code> concerns the color of the borders.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">The title provides information of what the x-axis is showing, so I removed the x-axis label (<code>x = NULL</code>) to avoid redundancy.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="3">Sets the “limits” or range of the x-axis. Not strictly needed, but made sense here since I’m plotting different variables with the same theoretical range but potentially different observed minimums and maximums.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lib_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>egal_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is nice - we can see how much variation there is on the variables and also some differences between them (e.g., more countries at the higher levels of electoral democracy than liberal or egalitarian democracy). In terms of the paper, however, it might be a bit awkward to provide each histogram as its own figure - it’s not <em>wrong</em> per se, but it would take up a lot of space in the paper.</p>
+<p>Instead of providing each plot separately, we can combine these different histograms into a single figure and include that in our thesis. We can then refer to that figure as we go. The <code>patchwork</code> package is one very useful package for doing this (see their <a href="https://patchwork.data-imaginist.com/" target="_blank">webpage</a> for all the different things you can do with this package).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;We could also “reshape” our data to accomplish these ends as well; see <a href="analysis_pivot.html" class="quarto-xref"><span>Chapter 15</span></a> .</p></div></div><p>Here is an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load the package</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Combine the plots</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>poly_plot <span class="sc">+</span> lib_plot <span class="sc">+</span> egal_plot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="1">Normally we would load all of our packages at the very beginning of our script file.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The simplest way to combine plots with <code>patchwork</code> is by using a <code>+</code> sign as here. This may not be the best looking version of our figure though given the number of plots we’re combining. They are currently a bit scrunched up since there is only so much horizontal space in the figure. We can use <code>patchwork</code> to combine the different figures a bit differently to avoid this issue (if we think it is a problem). For instance, we could stack each plot on top of each other (use more vertical space); this is generally done by using the <code>/</code> divider rather than a <code>+</code> sign. We could mix and match the <code>+</code> and <code>\</code> signs as in the second plot below. Or, we could explicitly specify how many rows there should be as in the third option.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;We could also specify the number of <em>columns</em> (<code>ncol = 2)</code> .</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#One stacked on top of the other</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>poly_plot <span class="sc">/</span> lib_plot <span class="sc">/</span> egal_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#One plot on top, two side by side</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>poly_plot <span class="sc">/</span> (lib_plot <span class="sc">+</span> egal_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Setting the number of rows or columns</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>poly_plot <span class="sc">+</span> lib_plot <span class="sc">+</span> egal_plot <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_04_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this instance, I think either the first or third options works the best. I kind of like the first one because it best facilitates a comparison across the different variables. If that were not of interest (e.g., if one plot was a histogram of a continuous variable and another was a bar-plot of a categorical variable), then specifying the number of columns/rows might be better.</p>
+<p>We can export this figure by storing the output as an object and then using <code>ggsave()</code> to save the image as a .png file. I will take one final step here when storing the final plot: I’ll add a ‘tag’ (“A”, “B”, “C”) to each plot. This makes it easier to reference the different components of the plot when writing about them (e.g,. “Plot A in Figure 1 shows….Meanwhile, Plot B…). <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Tagging, and the various ways one could modify these tags, is discussed on <a href="https://patchwork.data-imaginist.com/articles/guides/annotation.html" target="_blank">this page</a> of the <code>patchwork</code> website.</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>final_plot <span class="ot">&lt;-</span> poly_plot <span class="sc">/</span> lib_plot <span class="sc">/</span> egal_plot <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Save</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"final_plot.png"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> final_plot, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">8</span>, <span class="at">width =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>ggsave()</code> command works as follows:</p>
+<dl>
+<dt><code>"final_plot.png"</code></dt>
+<dd>
+<p>You begin by specifying the name of the output file. You can control the format here as well. I save the file as a .png file, which is a common figure output file type. There are other options, but this one should be sufficient for the thesis.</p>
+</dd>
+<dt><code>plot = …</code></dt>
+<dd>
+<p>I then tell the command what object should be saved in the figure. If this line is missing then <code>ggsave</code> will save the most recently produced plot…which may not be the one you want to save!</p>
+</dd>
+<dt><code>height = ….</code></dt>
+<dd>
+<p>I then specify the dimensions of the figure. These are in inches by default, but can be changed to other units as well (e.g., including <code>units = 'cm'</code> would allow you to control the size in centimeters). This is usually a trial and error approach - save the image, open it up and see if it is distorted in some way, and then update as needed (make wider, make shorter, etc.).</p>
+</dd>
+</dl>
+<p>The example above focused on combining histograms. This can of course be used with other types of plots, with combinations of types, and with coefficient plots. It is not always needed, but can make sense in some instances.</p>
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -919,25 +990,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;
@@ -980,13 +1090,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./writing_06_conclusion.html" class="pagination-link" aria-label="Conclusion">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span>
+      <a href="./analysis_03.html" class="pagination-link" aria-label="Regression Table Formatting Suggestion">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part_research.html" class="pagination-link" aria-label="Doing Research">
-        <span class="nav-page-text">Doing Research</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./analysis_pivot.html" class="pagination-link" aria-label="Reshaping Datasets">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

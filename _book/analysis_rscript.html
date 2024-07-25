@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 7&nbsp; General Writing Advice</title>
+<title>Thoughts and Advice on Writing your BAP - 12&nbsp; R Script Files</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part_research.html" rel="next">
-<link href="./writing_06_conclusion.html" rel="prev">
+<link href="./analysis_03.html" rel="next">
+<link href="./analysis_02.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -43,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -83,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_rscript.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -164,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link active">
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
   </div>
 </li>
@@ -216,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis_rscript.html" class="sidebar-item-text sidebar-link">
+  <a href="./analysis_rscript.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span></a>
   </div>
 </li>
@@ -250,19 +287,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#outline-first" id="toc-outline-first" class="nav-link active" data-scroll-target="#outline-first"><span class="header-section-number">7.1</span> Outline first</a></li>
-  <li><a href="#write-and-edit-edit-edit" id="toc-write-and-edit-edit-edit" class="nav-link" data-scroll-target="#write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</a></li>
-  <li><a href="#some-other-questions-and-topics" id="toc-some-other-questions-and-topics" class="nav-link" data-scroll-target="#some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</a></li>
-  <li><a href="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" id="toc-use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="nav-link" data-scroll-target="#use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</a></li>
+  <li><a href="#suggested-structure" id="toc-suggested-structure" class="nav-link active" data-scroll-target="#suggested-structure"><span class="header-section-number">12.1</span> Suggested Structure</a></li>
+  <li><a href="#separating-sections" id="toc-separating-sections" class="nav-link" data-scroll-target="#separating-sections"><span class="header-section-number">12.2</span> Separating Sections</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_writing.html">Writing the Thesis</a></li><li class="breadcrumb-item"><a href="./writing_07_general.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_rscript.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-general-writing-advice" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></h1>
+<h1 class="title"><span id="sec-r-script-files" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span></h1>
 </div>
 
 
@@ -279,147 +314,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The foregoing chapters provide some thoughts on the each section of your thesis. In this final chapter, I will offer some more general thoughts on writing that apply to the whole thesis.</p>
-<section id="outline-first" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="outline-first"><span class="header-section-number">7.1</span> Outline first</h2>
-<p>In general, it is a good idea to begin with an outline of what you want to write. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences.</p>
-<p>A potential outline might look like this (although, the contents will obviously vary based on what you are writing):</p>
-<ol type="1">
-<li>Introduction
+<p>You used R Markdown files to create assignments in Statistics I and II. However, you may very likely be using R differently for your thesis: as the place where you perform your analyses with the write up then happening in a word processor (Microsoft Word, Google Docs, etc.). As such, you will likely be working in a R Script file rather than an R Markdown file. This chapter provides some thoughts on how best to set those script files up. It will make reference to an example R Script file that you can access via <a href="https://surfdrive.surf.nl/files/index.php/s/ffmaNaUFIkJgGme" target="_blank">this link</a>.</p>
+<section id="suggested-structure" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="suggested-structure"><span class="header-section-number">12.1</span> Suggested Structure</h2>
+<p>I would recommend structuring the R Script file with different sections that build on one another. The logic behind this ordering is based on the discussion in <a href="analysis_01.html" class="quarto-xref"><span>Chapter 10</span></a>. For instance:</p>
 <ul>
-<li>First Paragraph: Main point</li>
-<li>Second Paragraph: Main point</li>
-<li>Third Paragraph…</li>
+<li>Header Information
+<ul>
+<li>It is nice to start with some header information indicating what the contents of the file are for. You are probably going to have a single script file for your project so this can be as simple as providing a short description such as “BAP - Data Analysis Script by NAME”. If you had multiple files (e.g., one for data cleaning, one for one type of analysis, one for another) then you could help keep things straight for yourself and others by having that information in the header (e.g., “Data Cleaning Script” or “Regression Model Analyses”).</li>
+<li>See below for an example.</li>
 </ul></li>
-<li>Literature Review &amp; Theory Section(s)
+<li>Packages
 <ul>
-<li>Potential Sub-section 1
-<ul>
-<li>Paragraph 1…</li>
+<li>The various packages you’ll need to complete your analysis.</li>
+<li>The main thing to watch out for are package conflicts. The <code>car</code> package, for instance, has a conflict with the <code>dplyr</code> package within <code>tidyverse</code> - both <code>car</code> and <code>dplyr</code> have a command called <code>recode()</code>. If you load <code>car</code> before <code>tidyverse</code>, then R will use the <code>recode</code> command from the latter package, but if you load <code>tidyverse</code> before <code>car</code> then R will use the <code>recode</code> command from <code>car</code> instead.</li>
 </ul></li>
-<li>Potential Sub-section 2</li>
+<li>Data
+<ul>
+<li>Load your data or datasets.</li>
+<li>If you are loading multiple different datasets, then it might make sense to have a big section that loads the first dataset and cleans it as needed, then another one that loads the second one and cleans it, and then one for <a href="https://poweleiden.github.io/statistics1/data_06_merging_data.html" target="_blank">joining</a> them, before progressing onto the analyses.</li>
 </ul></li>
-<li>Methods
+<li>Data Cleaning
 <ul>
-<li>Data Source: Where does the data come from and why this data source?</li>
-<li>Dependent Variable: How do you measure your dependent variable?</li>
-<li>Independent Variable(s): How do you measure your dependent variable?</li>
-<li>Model: Any relevant details on how you will analyze the data.</li>
+<li>Then a section where you clean your data as needed (e.g., recoding variables, creating factor variables, etc.).</li>
+<li>This section might also include syntax for summary statistics and looking at the attributes of the variables as this may be relevant for deciding how to clean the data.</li>
 </ul></li>
-<li>Results</li>
-<li>Conclusion
+<li>Data Analysis with subsections
 <ul>
-<li>Paragraph 1…</li>
-</ul></li>
-</ol>
-<p>In filling in the outline for each paragraph, be sure to keep in mind that each paragraph should be organized around a clear, and singular, point or idea. A goal of the thesis, and indeed all writing, is to clearly communicate ideas. One writing tic that may undermine this goal is over-stuffing paragraphs with too many ideas or points. Instead, focus each paragraph on a main idea with successive paragraphs building on each other to form an overarching argument or point. <a href="http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/" target="_blank">Steven V. Miller’s</a> tip’s for students page has an example of what I am talking about here that is quite useful.</p>
-<p>The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a <em>start</em> to writing - there are places where I have placeholders (“Final Sentence”), for instance - and its contents are rather barebones. But, it provided me with a start!</p>
-<ul>
-<li>Introduction
-<ul>
-<li>Paragraph 1: Promises aren’t believed
-<ul>
-<li>Politicians make promises on the campaign trail.</li>
-<li>They seem to mostly keep them</li>
-<li>However, the mass public doesn’t believe this</li>
-<li>The public largely distrusts politicians and believe them to be liars and not promise keepers</li>
-<li>Campaign statements are often <em>non-credible</em></li>
-<li>This poses some challenges to broader accounts of democratic representation and operation that place promissory representation at their core - how can the public hold elites accountable if they don’t believe them in the first place?</li>
-</ul></li>
-<li>Paragraph 2: Moral language might increase credibility
-<ul>
-<li>What would make a politician’s statements more credible?</li>
-<li>One possibility highlighted in recent work is the use of <em>moral</em> language.</li>
-<li>What is moral language</li>
-<li>Politicians and parties do sometimes use this language</li>
-<li>Simas and Clifford show that <em>general</em> moral language (of this sort) does lead to more perceived sincerity</li>
-</ul></li>
-<li>Paragraph 3/4: This paper’s contribution(s)
-<ul>
-<li>We contribute to this work in two ways.</li>
-<li>First, we consider targeting. (maybe switch to language of matched morals rather than targeted? easier to talk about mis-matched?).</li>
-<li>Important for this reason.</li>
-<li>Second, we focus on competence. speaker credibility is based on two components: beliefs about the intentions/motives of the speaker (sincerity, trustworthiness) and their competence or ability to perform the action in question.</li>
-<li>Competence is important for this reason.</li>
-</ul></li>
-<li>Paragraph 4 or 5: This paper’s argument
-<ul>
-<li>We argue…</li>
-<li>Targeted &gt; non-targeted when it comes to sincerity &amp; matched; targeted = more perceived similarity, so there is a halo effect (?); moral character stuff</li>
-<li>Targeted &lt; non-targeted when it comes to sincerity &amp; mismatched; backlash effect (but is that what the feinberg stuff shows?)</li>
-<li>What about competence? More of an open question.</li>
-<li>On the one hand, if more committed then more likely to work on it.</li>
-<li>On the other hand, if more commiteed then <em>less likely to compromise</em> and perhaps less likely to have influence!</li>
-</ul></li>
-<li>Paragraph 5 or 6: roadmap?
-<ul>
-<li>What comes next.</li>
-</ul></li>
-</ul></li>
-<li>Review/Theory
-<ul>
-<li>Paragraph 1: Position Taking is central …
-<ul>
-<li>Common models of democratic politics grounds electoral competition in the programmatic offerings of parties and candidates</li>
-<li>For instance, promissory theories of representation are based on the idea that parties and candidates make policy promises during election season; voters choose based on those promises; and then parties/candidates are held accountable at the next election based on whether they upheld those promises.</li>
-<li>This process is iterative however with partisan elites potentially changing their positions over time in response to prior electoral performance and in an effort to anticipate the behavior of future voters (Mansbridge, Erikson, Adams etc.)..</li>
-<li>Regardless of whether this is a backwards or forwards process, policy is central to elections and representation.</li>
-</ul></li>
-<li>Paragraph 2: But contested?
-<ul>
-<li>Parties and candidates spend a good deal of effort cultivating policy positions and publishing party manifestos documenting how they will act in office.</li>
-<li>And, yet, the actual role of policy positions on voter choices is contested.</li>
-<li>Studies of proximity voting suggest a role for voter positions, but one that is perhaps limited relative to more long standing concerns such as partisan predispositions or group loyalties. (Warshaw, etc.; maybe footnote Lenz – Of course, this assumes that voters have exogenous preferences to begin with, which is a quite problematic assumption - Kuklinski, Druckman, Lenz, Disch)</li>
-<li>Changes in party positions, on the other hand, do seem to matter but perhaps mostly over time and only to a small extent.</li>
-<li>Policy is central to how we talk about elections and democratic politics, but it is not always clear whether it should be or not. (too strong?)</li>
-</ul></li>
-<li>Paragraph 3: What explains this disconnect?
-<ul>
-<li>What might explain the lack of more robust evidence about party positioning and voter policy positions?</li>
-<li>There are a variety of potential answers to this including the (contested) possibility that only some types of issues matter (e.g., strong attitudes, issue importance, moralization; something on moralization) or that party strategies to remain ambiguous may muddy the waters (Somer-Topcu; etc.).</li>
-<li>Another reason might be that the policy statements of parties and candidates may lack <em>credibility</em> in the eyes of audience members.</li>
-<li>Party position taken occurs in a context wherein many people distrust parties and politicians, believing them to only care about electoral success and willing to pander.</li>
-<li>Suspicion about the motives of partisan elites, perhaps stoked by other actors, may thus undermine the influence of party position taking (Adams, pandering minds, my papers).</li>
-<li>On the other hand, party positions may be more influential in contexts wherein audience members believe the position to be more credible as when parties take unpopular positions as this is read as going against the party’s interests and hence serves as a costly signal about the party’s true intentions (Vazquez; see also Berinsky; Lupia?).</li>
-<li>Final sentence</li>
-</ul></li>
-<li>…</li>
+<li>Then a section for the various analyses you’ll end up doing with sub-sections for different steps in that process (e.g., running the model, checking assumptions, obtaining/plotting predicted values, creating the regression table, etc.).</li>
+<li>The sample script file that I provide has this set up slightly differently with one section for descriptive and/or bivariate analyses and then one for the regression model and subsequent steps. The specifics here are not super mission critical, you just want to set things up in a clear and logical manner so that you know what is going on and to help others decipher what you’re doing (e.g., if you ask me for help then I’ll want clarity!).</li>
 </ul></li>
 </ul>
 </section>
-<section id="write-and-edit-edit-edit" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="write-and-edit-edit-edit"><span class="header-section-number">7.2</span> Write and Edit, Edit, Edit…</h2>
-<p>Having an outline in hand first helps clarify what you actually need to write…which is a handy thing to know before you start writing! However, it is, of course, just a first step. You then need to start writing and, important, <em>editing</em> and <em>rewriting</em> as well. Your first draft is almost certainly your worst draft in terms of clarity for the reader. Revisit your writing as much as possible. If possible, have someone read a draft of your thesis and ask them for feedback regarding anything that is unclear or doesn’t make sense.</p>
-<p>Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: <a href="https://thesisstatement.substack.com/p/simple-tricks-for-better-prose" target="_blank">Simple Tricks for Better Prose</a>; <a href="https://thesisstatement.substack.com/p/show-and-tell">Show and Tell</a></p>
-<ol type="1">
-<li>Proofreading for Clarity
+<section id="separating-sections" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="separating-sections"><span class="header-section-number">12.2</span> Separating Sections</h2>
+<p>How can you keep things neat and divided? The <code>#</code> symbol is your friend here. The <code>#</code> symbol defines a comment area which R will not try and evaluate as code. For instance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is a comment - R will ignore the stuff in this greyed out line</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Here is another comment</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>mpg)  <span class="co">#and another</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.40   15.43   19.20   20.09   22.80   33.90 </code></pre>
+</div>
+</div>
+<p>Here is a snapshot of the beginning of the example script file:</p>
+<p><a href="images/script_ex.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/script_ex.png" class="img-fluid"></a></p>
+<p>I have tried to delineate different sections by using the <code>#</code> commenting tool. The very first part, for instance, is the Header (in the terminology from above) - I would replace “Project Information” and “Author” with relevant information for my project/file. I then have a section for Packages and another for Data and so on. I have used multiple hashtags to try and make different sections stand out from one another a bit more.</p>
+<p>A handy tool here is the Outline section. You can see an Outline of the contexts of the script file on the right side of the image; this can be toggled by clicking on the button next to “Source”. The Outline is nice because clicking on an entry within it will automatically take you to that place in the script file thereby saving you from having to scroll around looking for things. You can add something to the Outline by including four dashes (<code>----</code>) at the end of the comment text. You can remove something from the Outline by including a single dash there instead; I do this for the long row of hashtags used in separating sections because otherwise they’d be added to the Outline but listed as “Untitled” thereby cluttering everything up. You can nest sections within one another by using one, two, or three hashtags (see <a href="https://posit.co/blog/rstudio-v1-4-preview-little-things/" target="_blank">here</a> as well):</p>
 <ul>
-<li>Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.</li>
-<li>Be wary of starting sentences with demonstratives that are not connected to a noun (e.g.&nbsp;“This results in”, “These can affect,” etc.). Sentences such as these invite the question: what is “this” again?</li>
-<li>Avoid using the passive voice if you can help it.</li>
-<li>Avoid beginning paragraphs with “However” or similar clauses. “However” implies a contrast (This thing, <em>however</em> this other thing)…but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you’re setting yourself up against.</li>
-<li>Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.</li>
-</ul></li>
-<li>Proofreading for Content
-<ul>
-<li>Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.</li>
-<li>One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of “but why?” questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.</li>
-<li>Do not assume that you reader(s) know everything about the topic you’re writing about.</li>
-</ul></li>
-<li>Proofread for Grammar and Miscellaneous Errors
-<ul>
-<li>Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.</li>
-</ul></li>
-</ol>
-</section>
-<section id="some-other-questions-and-topics" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="some-other-questions-and-topics"><span class="header-section-number">7.3</span> Some Other Questions and Topics</h2>
-<p>can you use first person! Yes! “This paper argues” is nonsense. You argue! Own the argument.</p>
-<p>avoid tables that overlap pages</p>
-</section>
-<section id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="use-a-reference-manager-to-ease-in-text-citing-and-reference-list-building"><span class="header-section-number">7.4</span> Use a reference manager to ease in-text citing and reference list building</h2>
-<p>I recommend using a citation manager to help simplify the task of referencing as much as possible. I personally use <a href="https://www.zotero.org/" target="_blank">Zotero</a> but have experienced with Mendeley which also works fine. Either tool can help you insert citations in-text and automatically populate bibliographies for your essays.</p>
+<li><code>#</code> : Section</li>
+<li><code>##</code>: Sub-Section</li>
+<li><code>###</code> Sub-subsection</li>
+</ul>
 
 
 </section>
@@ -919,25 +867,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       };
     }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
           }
-        });
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
       }
   const findCites = (el) => {
     const parentEl = el.parentElement;
@@ -980,17 +967,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./writing_06_conclusion.html" class="pagination-link" aria-label="Conclusion">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span>
+      <a href="./analysis_02.html" class="pagination-link" aria-label="Some Practical Questions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part_research.html" class="pagination-link" aria-label="Doing Research">
-        <span class="nav-page-text">Doing Research</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./analysis_03.html" class="pagination-link" aria-label="Regression Table Formatting Suggestion">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

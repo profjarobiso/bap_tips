@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Thoughts and Advice on Writing your BAP - 15&nbsp; Reshaping Datasets</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./analysis_04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Thoughts and Advice on Writing your BAP</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing the Thesis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_01_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Structuring the Thesis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_02_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_03_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_04_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Research Design/Data Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_05_analyses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_06_conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_01_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Finding Literature</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_02_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical Issues in Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_rscript.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_pivot.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#wide-vs.-long-datasets" id="toc-wide-vs.-long-datasets" class="nav-link active" data-scroll-target="#wide-vs.-long-datasets"><span class="header-section-number">15.1</span> Wide vs.&nbsp;Long Datasets</a></li>
+  <li><a href="#from-wide-to-long-pivot_longer" id="toc-from-wide-to-long-pivot_longer" class="nav-link" data-scroll-target="#from-wide-to-long-pivot_longer"><span class="header-section-number">15.2</span> From Wide to Long: <code>pivot_longer()</code></a></li>
+  <li><a href="#from-long-to-wide-pivot_wider" id="toc-from-long-to-wide-pivot_wider" class="nav-link" data-scroll-target="#from-long-to-wide-pivot_wider"><span class="header-section-number">15.3</span> From Long to Wide: <code>pivot_wider()</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-reshaping-datasets" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Packages</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">For importing/exporting data</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="2">Loads libraries for data manipulation and plotting</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>You will be working with data in your project. The data that you obtain from the World Values Survey, the Dutch National Election Studies, the Varieties of Democracy, and so on, will likely be “<a href="https://r4ds.had.co.nz/tidy-data.html" target="_blank">tidy</a>” data wherein columns represent variables and rows represent observations. These “tidy” datasets can nevertheless come in either of two “shapes” with potentially important implications for your analyses. This chapter unpacks this idea and discusses how you can move between “longer” and “wider” datasets.</p>
+<section id="wide-vs.-long-datasets" class="level2 page-columns page-full" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="wide-vs.-long-datasets"><span class="header-section-number">15.1</span> Wide vs.&nbsp;Long Datasets</h2>
+<p>Let’s first get a handle on what is meant by “wide” and “long” datasets.</p>
+<p>The following dataset is a simplified version of the European Social Survey:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import our data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ess <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"./data/ess_small.rda"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#A snapshot</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    idno contplt wrkprty wrkorg badge sgnptit pbldmn bctprd eisced agea trstprl
+1 600002       2       2      2     2       2      2      2      4   53       7
+2 600003       1       2      1     2       1      2      1      5   41       4
+3 600005       2       2      1     2       2      2      2      7   42       7
+4 600011       2       2      2     2       2      2      2      1   87       3
+5 600013       2       2      2     2       2      2      2      1   78       3
+6 600014       2       2      2     2       1      2      2      2   48       5
+  trstlgl trstplc trstplt
+1       8       6       6
+2       5       5       2
+3       8       8       7
+4       4       8       3
+5       9       8       6
+6       3       0       3</code></pre>
+</div>
+</div>
+<p>The columns are different variables. <code>idno</code>, for instance, is a unique and anonymized ID number for each respondent in the survey. The variable between <code>contplt</code> and <code>bctprd</code> provide data on whether the respondent indicated that they had completed some type of political behavior (e.g, <code>wrkprt</code> = 1 if the respondent reported working for a political party and 2 if not). The remaining columns provide data on education (<code>eisced</code>), age (<code>agea</code>), and trust in various institutions (<code>trstprl</code> through <code>trstplt</code>).</p>
+<p>The foregoing is what we would call a “wide” dataset. The first column of a dataset is usually an identifier.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> A wide-formatted dataset is one wherein the values in this identifier column do not repeat. Each row in the dataset above focuses on a <em>different</em> survey respondent (as seen from the unique values in <code>idno</code>).</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This is not always true. Big social surveys like the ESS or ANES will often starts with lots of columns focused on survey-related variables (e.g., the country of the respondent, when the respondent answered the survey, what mode was used, weights, etc.) before getting to the actual survey responses.</p></div></div><p>Compare what is shown above to the following dataset, which focuses on data from the <a href="https://www.v-dem.net/" target="_blank">Varieties of Democracy</a> (V-Dem) project:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import our data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vdem <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"./data/vdem_small.rda"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#A snapshot</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vdem, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   country_name year v2x_polyarchy v2x_egaldem v2x_corr
+1        Mexico 1789         0.028          NA     0.68
+2        Mexico 1790         0.028          NA     0.68
+3        Mexico 1791         0.028          NA     0.68
+4        Mexico 1792         0.028          NA     0.68
+5        Mexico 1793         0.028          NA     0.68
+6        Mexico 1794         0.028          NA     0.68
+7        Mexico 1795         0.028          NA     0.68
+8        Mexico 1796         0.028          NA     0.68
+9        Mexico 1797         0.028          NA     0.68
+10       Mexico 1798         0.028          NA     0.68</code></pre>
+</div>
+</div>
+<p>This is a “long” formatted dataset. The first column is again an identifier. In this case, the variable is named <code>country_name</code> and provides the name of each country in the dataset. The values here repeat. We can think of the observations in a “long” formatted dataset as a “dyad”.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In this example, the dyad would be a “country-year” - our data includes observations on countries by year. A dyad could refer to something else though. For instance, suppose we ask respondents to evaluate multiple political parties; we could organize our dataset in a “long” format wherein each row provides a respondents evaluation of a distinct party (e.g., a respondent-party dyad).</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;We could perhaps have data with an even more complicated unit of analysis. Instead of countries, or country-years, perhaps we have party-country-years or something.</p></div></div><p>Most students in my BAP will use survey data. This type of data will generally be in a “wide” format unless, perhaps, the survey is a panel survey (e.g., the respondent is surveyed at multiple time points). In general, it will make the most sense to keep the data in that format. However, there are some situations wherein it may be useful to “reshape” the data (e.g., convert a wide dataset to a long dataset). This can facilitate some types of descriptive analyses and may be required for others. Likewise, you may have need to reshape a long dataset into a wider format. The remainder of this document will show you how to do this using two commands from the <code>tidyverse</code>: <code>pivot_longer()</code> and <code>pivot_wider()</code>.</p>
+</section>
+<section id="from-wide-to-long-pivot_longer" class="level2 page-columns page-full" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="from-wide-to-long-pivot_longer"><span class="header-section-number">15.2</span> From Wide to Long: <code>pivot_longer()</code></h2>
+<p>Let’s consider a first use case where it may make sense to reshape our data as an example of how to do so. The ESS dataset above includes columns (variables) pertaining to whether the respondent reported performing various political actions. Here is an overview:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>ess <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(contplt<span class="sc">:</span>bctprd) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>  sjPlot<span class="sc">::</span><span class="fu">view_df</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="1">I am using the <code>view_df()</code> command from the <code>sjPlot</code> package to take a look at the variable’s attributes. This set up allows me to use the command without loading the package first, which sometimes can be handy.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Data frame: select(ess, contplt:bctprd)</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">ID</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Name</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Label</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Values</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Value Labels</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">contplt</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Contacted politician or government official last<br>
+12 months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yes<br>
+No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">2</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">wrkprty</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Worked in political party or action group last 12<br>
+months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Yes<br>
+No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">wrkorg</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Worked in another organisation or association last<br>
+12 months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yes<br>
+No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">4</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">badge</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Worn or displayed campaign badge/sticker last 12<br>
+months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Yes<br>
+No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">5</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">sgnptit</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Signed petition last 12 months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yes<br>
+No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">6</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">pbldmn</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Taken part in lawful public demonstration last 12<br>
+months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">Yes<br>
+No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">7</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bctprd</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Boycotted certain products last 12 months</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1<br>
+2<br>
+NA(b)<br>
+NA(c)<br>
+NA(d)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Yes<br>
+No</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Let’s say we were writing a paper where we are investigating the relationship between education and political participation. We might hypothesize that those with a university degree will be more likely to take action than those without one.</p>
+<p>We should first begin by getting to know our variables. For instance, we might first ask whether rates of participation vary between these different behaviors. This may help us provide context for the results of the statistical model that we report later on in our paper.</p>
+<p>One way we can do this is by creating a figure that plots the proportion of respondents who reported taking each action. However, our dataset is not very well organized for this goal given that each participation measure is a separate column in the dataset. Reshaping the data so that it is in a longer format can get around this problem. Specifically, we’ll do the following:</p>
+<ul>
+<li>Reshape the data into a respondent-behavior dyad</li>
+<li>Use <code>group_by()</code> and <code>summarize()</code> to create a data object with the proportions (see <a href="https://poweleiden.github.io/statistics1/data_03_variables.html#summarising-data" target="_blank">Section 3.2</a> in the Statistic I R book for a refresher on these tools)</li>
+<li>Plot our data</li>
+</ul>
+<p>Let’s begin by reshaping the data. Here is the syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ess_long <span class="ot">&lt;-</span> ess <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"contplt"</span>, <span class="st">"wrkprty"</span>, <span class="st">"wrkorg"</span>, <span class="st">"badge"</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">"sgnptit"</span>, <span class="st">"pbldmn"</span>, <span class="st">"bctprd"</span>), </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"measure"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"outcome"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is the data produced by this command. Seeing it will help illuminate what I did in the syntax above:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ess_long, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 9
+     idno eisced  agea trstprl trstlgl trstplc trstplt measure outcome
+    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1 600002      4    53       7       8       6       6 contplt       2
+ 2 600002      4    53       7       8       6       6 wrkprty       2
+ 3 600002      4    53       7       8       6       6 wrkorg        2
+ 4 600002      4    53       7       8       6       6 badge         2
+ 5 600002      4    53       7       8       6       6 sgnptit       2
+ 6 600002      4    53       7       8       6       6 pbldmn        2
+ 7 600002      4    53       7       8       6       6 bctprd        2
+ 8 600003      5    41       4       5       5       2 contplt       1
+ 9 600003      5    41       4       5       5       2 wrkprty       2
+10 600003      5    41       4       5       5       2 wrkorg        1</code></pre>
+</div>
+</div>
+<p>The first column is <code>idno</code>, our respondent identifier. We can see now that the values here now <em>repeat</em> - each respondent is now represented multiple times in the data. We then get columns for education, age, and trust. These still provide the values for these variables for each respondent. We can see that they do not vary <em>within</em> respondents (i.e., the same values are provided for each row associated with respondent 600002).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> We then see a column named <code>measure</code> - the contents of this column indicate which participation measure the particular row tells us about. Row 1, for instance, tells you how respondent 600002 answered the “contplt” question, while row 2 tells you how respondent 600002 answered the “wrkprty” question, and so on. Finally, <code>outcome</code> gives the specific value provided on the participation measure associated with the respondent. A 2 on these measures indicate that the respondent did not take the action in question, while a 1 indicates that they did. Respondent 600002 did not report taking any of the actions in question.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;In practice, I would probably have a precursor line in my syntax that selects only the variables I want in the reshaped dataset to avoid including unnecessary elements. For instance: <code>ess |&gt; select(contplt, wrkprty, wrkorg, badge, sgnptit, pbldmn, bctprd) |&gt; pivot_longer(…)</code></p></div></div><p>Let’s unpack the syntax now:</p>
+<dl>
+<dt><code>cols = c("contplt", …)</code></dt>
+<dd>
+<p>This tells the command which columns should be part of the reshaping process. I included the variable names (in parentheses) within <code>c()</code>. I could have made this much simpler in the present instance by instead using: <code>cols = contplt:bctprd</code>. (Quotation marks not needed here.) This would have told R to include all of the columns between <code>contplt</code> and <code>bctprd</code> when reshaping to the longer data object. This is a generally easier thing to type out, but would have been problematic had there been a variable in that sequence that I <em>did not</em> want to reshape by.</p>
+</dd>
+<dt><code>names_to = "measure"</code></dt>
+<dd>
+<p>This is how we indicate the name for the new column that provides information on the columns we’ve made the dataset longer by. If this omitted, then <code>pivot_longer()</code> would use “name” as the, uh, name of this column.</p>
+</dd>
+<dt><code>values_to = "outcome"</code></dt>
+<dd>
+<p>This is how we indicate the name for the new column that provides information on the responses/observed values for each variable we’ve included in the reshaping syntax. If this is omitted, then <code>pivot_longer()</code> would use “value” as the name of the column.</p>
+</dd>
+</dl>
+<p>We now have our data in a longer format. We can now use <code>group_by()</code> and <code>summarize()</code> to get the proportions we want to plot (or other types of statistics, such as the mean or median, if that was more relevant). However, we need to first recode our outcome variable into a 0/1 variable (0 = did not take the action, 1 = did take the action). We could have done this before reshaping the data, but that would have involved seven different commands so this is comparatively simpler.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> ess_long <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_recode =</span> <span class="fu">case_when</span>(</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>      outcome <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>      outcome <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(measure) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">beh_prop =</span> <span class="fu">mean</span>(outcome_recode, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="1">I use <code>case_when()</code> here to make it a bit easier to handle observations with missing values on this variable. I create a new variable here because if I overwrite the original variable but make a mistake while doing so, then I need to re-run the pivoting command.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="2">Basically tells R to separate (or group) the data by each unique value in the <code>measure</code> column and then do the next step to each grouping</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="3">This tells R to undue the grouping. Not taking this step can lead to issues when we follow <code>group_by()</code> with <code>mutate()</code>. It isn’t a problem to not include this syntax after <code>summarize()</code> (see the discussion <a href="https://stackoverflow.com/questions/48446816/explain-ungroup-in-dplyr" target="_blank">here</a>), but I include it to be consistent.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>Let’s take a look:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>descriptives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  measure beh_prop
+  &lt;chr&gt;      &lt;dbl&gt;
+1 badge     0.0407
+2 bctprd    0.137 
+3 contplt   0.135 
+4 pbldmn    0.0298
+5 sgnptit   0.221 
+6 wrkorg    0.252 
+7 wrkprty   0.0347</code></pre>
+</div>
+</div>
+<p>We now have a data object with two variables: one indicating the behavior measure (<code>measure</code>) and one indicating the proportion of respondents with a value of 1 (i.e., performed this action) on the measure. We can next make a plot either for our own edification or for inclusion in our paper:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(descriptives, <span class="fu">aes</span>(<span class="at">x =</span> measure, <span class="at">y =</span> beh_prop)) <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>( <span class="at">label =</span> <span class="fu">round</span>(beh_prop, <span class="dv">2</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_pivot_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is not too bad. However, if we were going to include this in our paper, then we should rename “badge”, etc., into something the consumers of our plot will understand. We might also want to reorder the data such that the bars progress largest to smallest or vice versa. For instance:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">measure =</span> <span class="fu">recode</span>(measure,</span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'badge'</span> <span class="ot">=</span> <span class="st">'Worn Badge'</span>, </span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'bctprd'</span> <span class="ot">=</span> <span class="st">'Boycott Products'</span>, </span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'contplt'</span> <span class="ot">=</span> <span class="st">'Contact Politician'</span>, </span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'pbldmn'</span> <span class="ot">=</span> <span class="st">'Public Demonstration'</span>, </span>
+<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'sgnptit'</span> <span class="ot">=</span> <span class="st">'Signed Petition'</span>, </span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'wrkorg'</span> <span class="ot">=</span> <span class="st">'Worked in Organization'</span>, </span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'wrkprty'</span> <span class="ot">=</span> <span class="st">'Worked in Party'</span>)) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-10" class="code-annotation-target"><a href="#annotated-cell-10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(measure, <span class="sc">-</span>beh_prop), <span class="at">y =</span> beh_prop)) <span class="sc">+</span></span>
+<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(beh_prop, <span class="dv">2</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-13" class="code-annotation-target"><a href="#annotated-cell-10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_wrap</span>(<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="annotated-cell-10-14"><a href="#annotated-cell-10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Participation Measure"</span>, </span>
+<span id="annotated-cell-10-15"><a href="#annotated-cell-10-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="1">We can give the different behaviors more informative names by recoding the contents of <code>measure</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="10" data-code-annotation="2"><code>reorder(measure, -beh_prop)</code> handles the ordering. If we dropped the <code>-</code> sign, then the bars would ascend rather than descend.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="13" data-code-annotation="3">This makes sure the labels warp around so that they do not overlap. The number can be changed to give more/less space. Note: this requires that the <code>scales</code> package is installed.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_pivot_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can see <a href="https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html" target="_blank">this discussion</a> for a longer discussion of the different ways of reordering axes in a <code>ggplot</code>. You can learn more about how to add the automatic line break to value labels <a href="https://www.andrewheiss.com/blog/2022/06/23/long-labels-ggplot/#option-f-automatically-add-line-breaks" target="_blank">here</a>.</p>
+<p>The set up for this example suggested a hypothesis: people with a university degree participate more than those without a degree. We could also break down participation by education via this same basic process. We just need to add our education variable to the <code>group_by()</code> command.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In the present case we will first want to create a binary variable for education (no degree vs.&nbsp;university degree) although one could imagine doing this for more than two categories as well.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In practice, we might want to combine these different participation measures into a single scale. For instance, we could recode each measure into a 0/1 binary and then sum them up into a scale ranging from 0 (no actions taken) to 7 (all actions taken) and then use that as our DV.</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>descriptives_univ <span class="ot">&lt;-</span> ess_long <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_recode =</span> <span class="fu">case_when</span>(</span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a>      outcome <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a>      outcome <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>), </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-6" class="code-annotation-target"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">univ =</span> <span class="fu">case_when</span>(</span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7" aria-hidden="true" tabindex="-1"></a>      eisced <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">55</span>) <span class="sc">~</span> <span class="st">"No Degree"</span>, </span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8" aria-hidden="true" tabindex="-1"></a>      eisced <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">~</span> <span class="st">"Degree"</span>)) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-9" class="code-annotation-target"><a href="#annotated-cell-11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(measure, univ) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">beh_prop =</span> <span class="fu">mean</span>(outcome_recode, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="6" data-code-annotation="1"><code>eisced</code> is my education variable. It takes on values between 1 (less than lower secondary education) to 7 (higher tertiary) with another category numbered 55 for “Other”. The <code>c(6:7)</code> type notation works here because all categories are whole numbers; if <code>eisced</code> could take on a value of 6.7 (for instance), then observations with this value would not get recoded when using <code>c(6:7)</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="9" data-code-annotation="2">I am now telling R to separate (group) data by each combined value of <code>measure</code> and <code>univ</code> (e.g., measure = “badge” &amp; univ = 0, measure = “badge” &amp; univ = 1, …) and then do the next stuff.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'measure'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(descriptives_univ, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   measure univ      beh_prop
+   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
+ 1 badge   Degree      0.0502
+ 2 badge   No Degree   0.0376
+ 3 badge   &lt;NA&gt;        0     
+ 4 bctprd  Degree      0.260 
+ 5 bctprd  No Degree   0.0960
+ 6 bctprd  &lt;NA&gt;        0     
+ 7 contplt Degree      0.232 
+ 8 contplt No Degree   0.103 
+ 9 contplt &lt;NA&gt;        0     
+10 pbldmn  Degree      0.0591</code></pre>
+</div>
+</div>
+<p>We can now turn this into a plot although we should first filter our “NA” values.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a>descriptives_univ <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(univ)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">measure =</span> <span class="fu">recode</span>(measure,</span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'badge'</span> <span class="ot">=</span> <span class="st">'Worn Badge'</span>, </span>
+<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'bctprd'</span> <span class="ot">=</span> <span class="st">'Boycott Products'</span>, </span>
+<span id="annotated-cell-13-6"><a href="#annotated-cell-13-6" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'contplt'</span> <span class="ot">=</span> <span class="st">'Contact Politician'</span>, </span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'pbldmn'</span> <span class="ot">=</span> <span class="st">'Public Demonstration'</span>, </span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'sgnptit'</span> <span class="ot">=</span> <span class="st">'Signed Petition'</span>, </span>
+<span id="annotated-cell-13-9"><a href="#annotated-cell-13-9" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'wrkorg'</span> <span class="ot">=</span> <span class="st">'Worked in Organization'</span>, </span>
+<span id="annotated-cell-13-10"><a href="#annotated-cell-13-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">'wrkprty'</span> <span class="ot">=</span> <span class="st">'Worked in Party'</span>), </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-11" class="code-annotation-target"><a href="#annotated-cell-13-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">univ =</span> <span class="fu">factor</span>(univ, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No Degree"</span>, <span class="st">"Degree"</span>))) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-13-12"><a href="#annotated-cell-13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> univ, <span class="at">y =</span> beh_prop)) <span class="sc">+</span> </span>
+<span id="annotated-cell-13-13"><a href="#annotated-cell-13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-13-14"><a href="#annotated-cell-13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(beh_prop, <span class="dv">2</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3">3</button><span id="annotated-cell-13-15" class="code-annotation-target"><a href="#annotated-cell-13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> measure) <span class="sc">+</span></span>
+<span id="annotated-cell-13-16"><a href="#annotated-cell-13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="annotated-cell-13-17"><a href="#annotated-cell-13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"University Degree?"</span>, </span>
+<span id="annotated-cell-13-18"><a href="#annotated-cell-13-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="2,3" data-code-annotation="1">Makes sure we keep all observations where <code>univ</code> is <em>not</em> missing (<code>!</code> = not, <code>is.na</code> = is NA).</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="11" data-code-annotation="2">I convert <code>univ</code> to a factor and specify the levels with “No Degree” being the first one. This makes sure that “No Degree” (the “lower” value on education) is plotted before “Degree”.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="15" data-code-annotation="3">Creates separate facets/graphs for each value of our <code>measure</code> variable.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_pivot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It does look like those with higher levels of education are more like to take these particular political acts. The difference is fairly small when we look at behaviors that are uncommon, but much larger with behaviors that are a bit more likely to be observed in general (e.g., boycotting). Of course, this doesn’t mean that education is <em>causing</em> these differences. Indeed, whether education causes political participation is something of a recent debate. We would thus want to move to a more fully specified model to more fully justify our claims.</p>
+<p>The foregoing can also be useful for making the same <em>type</em> of plot but for different variables. For instance, our <code>ess</code> dataset contains several measures of trust: trust in the country’s parliament (<code>trstprl</code>), trust in the legal system (<code>trstlgl</code>), trust in the police (<code>trstplc</code>), and trust in politicians (<code>trstplt</code>) on a scale ranging from 0 (no trust at all) to 10 (complete trust). . We could, for instance, provide a bar-graph showing the number (or even proportion) of respondents giving each response from 0-10. Instead of creating a plot for each variable separately and then using <code>patchwork</code> to combine them (as shown in <a href="analysis_04.html" class="quarto-xref"><span>Chapter 14</span></a>), we could do this all at once by using <code>tidy_longer()</code>. For instance:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>ess <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> trstprl<span class="sc">:</span>trstplt,</span>
+<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"target"</span>, </span>
+<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"trust"</span>) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(target, trust) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3">3</button><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4">4</button><span id="annotated-cell-14-8" class="code-annotation-target"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">target =</span> <span class="fu">recode</span>(target,</span>
+<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'trstlgl'</span> <span class="ot">=</span> <span class="st">'Legal System'</span>, </span>
+<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'trstplc'</span> <span class="ot">=</span> <span class="st">'Police'</span>, </span>
+<span id="annotated-cell-14-11"><a href="#annotated-cell-14-11" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'trstplt'</span> <span class="ot">=</span> <span class="st">'Politicians'</span>, </span>
+<span id="annotated-cell-14-12"><a href="#annotated-cell-14-12" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'trstprl'</span> <span class="ot">=</span> <span class="st">'Parliament'</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="annotated-cell-14-13"><a href="#annotated-cell-14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trust, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="annotated-cell-14-14"><a href="#annotated-cell-14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="annotated-cell-14-15"><a href="#annotated-cell-14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> target) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5">5</button><span id="annotated-cell-14-16" class="code-annotation-target"><a href="#annotated-cell-14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="annotated-cell-14-17"><a href="#annotated-cell-14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">y =</span> <span class="st">'Count'</span>, <span class="at">x =</span> <span class="st">'Trust'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="1">The four variables all appear in a sequence, so I can do this instead of the <code>c("var name", "var name")</code> procedure from above.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="6" data-code-annotation="2">I’m going to plot the number of people in each category on each measure. So I combine both variables (the one listing the variable name, <code>target</code>, and the one listing the respondent’s response, <code>trust</code>, in <code>group_by()</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="7" data-code-annotation="3">I could technically use a simpler command here: <code>tally()</code>. This would do the same thing as this line of syntax.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="8" data-code-annotation="4">Using <code>recode</code> to give the different trust variables nicer names for the plot.</span>
+</dd>
+<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-14" data-code-lines="16" data-code-annotation="5">This makes sure there are breaks/ticks on the x-axis for each value between 0 and 10.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_pivot_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, we can see that trust seems to be slightly higher when we look at the legal institutions (legal system and police) than for the more explicitly political institutions. This is a fairly common finding in the trust literature. We can see this by looking at the means for each variable as well using the <code>describe()</code> function from the <code>psych</code> package for simplicity:<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;We could, of course, have done this in the long dataset as well, e.g.: <code>ess_long |&gt; group_by(target) |&gt; summarize(mean = mean(trust, na.rm=T)</code> , although we would have needed to include some additional lines of syntax to get the standard deviation, etc.. Pivoting is not always the best solution!</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ess <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trstprl<span class="sc">:</span>trstplt) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">describe</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        vars    n mean   sd median trimmed  mad min max range  skew kurtosis
+trstprl    1 1824 5.24 2.06      6    5.43 1.48   0  10    10 -0.77     0.28
+trstlgl    2 1830 6.02 2.02      6    6.22 1.48   0  10    10 -0.85     0.56
+trstplc    3 1835 6.40 1.83      7    6.64 1.48   0  10    10 -1.25     1.83
+trstplt    4 1829 5.05 1.96      5    5.25 1.48   0   9     9 -0.81     0.16
+          se
+trstprl 0.05
+trstlgl 0.05
+trstplc 0.04
+trstplt 0.05</code></pre>
+</div>
+</div>
+<p>Pivoting from wide to long can be a useful strategy for your analyses. We have used it above to summarize multiple variables and then produce nice looking figures to communicate our results. Pivoting could also be useful in other contexts as well. It may be a pre-requisite for some types of analyses (e.g., the analysis of repeated measures data such as with panel data). It could also be useful as a prelude to more advanced analyses such as performing the same regression model on lots and lots of different subsets of our data (e.g., the same model for each country in a dataset) although that use is beyond the scope of this document (see <a href="https://r4ds.had.co.nz/many-models.html" target="_blank">here</a> for an example discussion).</p>
+</section>
+<section id="from-long-to-wide-pivot_wider" class="level2 page-columns page-full" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="from-long-to-wide-pivot_wider"><span class="header-section-number">15.3</span> From Long to Wide: <code>pivot_wider()</code></h2>
+<p>We can move from long to wide as well. This is perhaps less useful overall. The main use case I can think of here focuses on situations where you want to compare across different values within one of the dyad columns.</p>
+<p>Let’s start with a simple example involving our <code>ess_long</code> data from above. Let’s take a quick look at the data again to remind ourselves what it looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ess_long, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 9
+     idno eisced  agea trstprl trstlgl trstplc trstplt measure outcome
+    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1 600002      4    53       7       8       6       6 contplt       2
+ 2 600002      4    53       7       8       6       6 wrkprty       2
+ 3 600002      4    53       7       8       6       6 wrkorg        2
+ 4 600002      4    53       7       8       6       6 badge         2
+ 5 600002      4    53       7       8       6       6 sgnptit       2
+ 6 600002      4    53       7       8       6       6 pbldmn        2
+ 7 600002      4    53       7       8       6       6 bctprd        2
+ 8 600003      5    41       4       5       5       2 contplt       1
+ 9 600003      5    41       4       5       5       2 wrkprty       2
+10 600003      5    41       4       5       5       2 wrkorg        1</code></pre>
+</div>
+</div>
+<p>Why might we want to make this wider? Well, maybe we want to answer look at the cross-tabulation between <code>contplt</code> and <code>wrkprty</code> to get a sense of their inter-relationship: do people who work for political parties also tend to contact politicians?. That isn’t really easy to do with the data variables stacked on top of each other like this. Instead, we can use <code>pivot_wider()</code> to create a wider version of this dataset wherein the two variables are given their own columns that we can then pass into some other command. Here is how we can do that:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ess_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(ess_long, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_cols =</span> idno<span class="sc">:</span>trstplt, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> measure, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> outcome</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<dl>
+<dt><code>id_cols = idno:trstplt</code></dt>
+<dd>
+<p>This is a very important row. <code>id_cols</code> tells the command which columns in the data are “id” columns - that is, which columns “uniquely identify each observation”. The <code>idno:trstplt</code> entry tells the command to treat all columns between those bookends (<code>idno</code> through <code>trstplt</code>) as unique identifiers. If I only put one of those variables here (e.g., <code>id_cols = idno</code> by itself), then the other columns would get dropped from the resulting dataset! That may or may not be an issue in a given example.</p>
+</dd>
+<dt><code>names_from = measure</code></dt>
+<dd>
+<p>This tells the command which column in our longer dataset contains the values that we want to use as the column names in our wider dataset. The <code>measure</code> variable contains that data in our example.</p>
+</dd>
+<dt><code>values_from = outcome</code></dt>
+<dd>
+<p>Likewise, we need to tell the command which column contains the values that should be used in these newly created columns. That column is named <code>outcome</code> in this example.</p>
+</dd>
+</dl>
+<p>Let’s take a look so you can see what this looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ess_wide, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 14
+     idno eisced  agea trstprl trstlgl trstplc trstplt contplt wrkprty wrkorg
+    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1 600002      4    53       7       8       6       6       2       2      2
+ 2 600003      5    41       4       5       5       2       1       2      1
+ 3 600005      7    42       7       8       8       7       2       2      1
+ 4 600011      1    87       3       4       8       3       2       2      2
+ 5 600013      1    78       3       9       8       6       2       2      2
+ 6 600014      2    48       5       3       0       3       2       2      2
+ 7 600015      2    61       4       4       3       3       2       2      2
+ 8 600017      2    21       8       6       7       7       2       2      2
+ 9 600021      4    67       6       7       7       6       2       1      1
+10 600024      1    57       0       7       5       0       1       2      2
+# ℹ 4 more variables: badge &lt;dbl&gt;, sgnptit &lt;dbl&gt;, pbldmn &lt;dbl&gt;, bctprd &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>We one again have a dataset wherein each row focuses on a <em>unique</em> observation (completely different survey respondent) complete with columns for each of our participation measures. We could then perform a simple cross-tabulation if we wanted:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(ess_wide, <span class="fu">table</span>(contplt, wrkprty))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="1" data-code-annotation="1">I am using <code>with()</code> here to avoid having to use the <code>$</code> notation twice (e.g., instead of writing <code>table(ess_wide$contplt, ess_wide$wrkprty)</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       wrkprty
+contplt    1    2
+      1   33  215
+      2   31 1563</code></pre>
+</div>
+</div>
+<p>Recall that 1 = “did the action” and 2 = “did not”. Most people took neither action. More people reported contacting a politician but not working for a party (n = 215) than doing both actions (n = 33) or working for a party but not contacting a politician (n= 31).</p>
+<p>Let’s look at another (slightly more complex example) using the <code>vdem</code> data. Here are the variables in our dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">view_df</span>(vdem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Data frame: vdem</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">ID</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Name</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Label</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Values</td>
+<td data-quarto-table-cell-role="th" style="text-align: left; border-bottom: double; font-style: italic; font-weight: normal; padding: 0.2cm; vertical-align: top;">Value Labels</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">country_name</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">&lt;output omitted&gt;</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">2</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">year</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;"></td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;"><em>range: 1789-2023</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">v2x_polybackground-color:#eeeeeehy</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top;"><em>range: 0.0-0.9</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">4</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;">v2x_egaldem</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;"></td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; background-color: #eeeeee;"><em>range: 0.0-0.9</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">5</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">v2x_corr</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top;"><em>range: 0.0-1.0</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Our data focuses on a country’s level of electoral democracy (<code>v2x_polyarchy</code>), egalitarian democracy (<code>v2x_egaldem</code>) and level of corruption (<code>v2x_corr</code>). We have data over time for each measure - from 1789 to 2023!<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Although, in practice, we have missing data for many years prior to the 20th century.</p></div></div><p>One thing we might wonder is this: how <em>stable</em> are democracy scores? One way we could get at this is to consider the correlation between years, e.g., how strongly correlated are democracy scores in 1980 and 2000 or in 2000 and 2020? The more strongly correlated the scores, the more stable is democracy. Again, though, our data is “stacked” such that the democracy score data (either via <code>v2x_polyarchy</code> or <code>v2x_egaldem</code>) is all in one column. We thus need to widen our data such that there is a column for our democracy measure (or measures) for each separate year that we can then feed into a correlation.</p>
+<p>Here is how I will do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vdem_wider <span class="ot">&lt;-</span> vdem <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2000</span>, <span class="dv">2020</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country_name, year, v2x_polyarchy, v2x_egaldem) <span class="sc">|&gt;</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> <span class="st">"country_name"</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> <span class="st">"year"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(<span class="st">"v2x_polyarchy"</span>, <span class="st">"v2x_egaldem"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<dl>
+<dt><code>filter(year %in% c(1980, 2000, 2020)</code></dt>
+<dd>
+<p>I am filtering my original data such that only data from these three years is kept. If I skipped this step then my wide dataset would end up with a column for <em>each</em> year from 1793 to 2023! That is overkill in the present instance. This initial step may not be needed in other examples.</p>
+</dd>
+<dt><code>select(…)</code></dt>
+<dd>
+<p>I am also getting rid of the corruption measure (while keeping the variables included in the <code>select()</code> command). I could have widen the data to include separate columns for it as well, but that is not really needed in this example. Getting rid of unnecessary columns also makes the <code>id_cols</code> part simpler.</p>
+</dd>
+<dt><code>id_cols = "country_name"</code></dt>
+<dd>
+<p>This specifies the unique identifier variable. Here, the variable that uniquely identifies observations across time is <code>country_name</code>, which lists the, uh, country name for each observation.</p>
+</dd>
+<dt><code>names_from = "year"</code></dt>
+<dd>
+<p>This indicates that I want the values from the <code>year</code> column to be included in the names of the columns that this command creates.</p>
+</dd>
+<dt><code>values_from = c("v2x_polyarchy", "v2x_egaldem"))</code></dt>
+<dd>
+<p>This tells the command which columns in our long dataset contain the values we want to port over into the columns we’re creating.</p>
+</dd>
+</dl>
+<p>Let’s take a look:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vdem_wider, <span class="at">n =</span> <span class="dv">10</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 7
+   country_name  v2x_polyarchy_1980 v2x_polyarchy_2000 v2x_polyarchy_2020
+   &lt;chr&gt;                      &lt;dbl&gt;              &lt;dbl&gt;              &lt;dbl&gt;
+ 1 Mexico                     0.3                0.671              0.652
+ 2 Suriname                   0.218              0.783              0.754
+ 3 Sweden                     0.91               0.914              0.901
+ 4 Switzerland                0.87               0.888              0.901
+ 5 Ghana                      0.543              0.667              0.722
+ 6 South Africa               0.16               0.745              0.714
+ 7 Japan                      0.841              0.84               0.835
+ 8 Burma/Myanmar              0.137              0.095              0.422
+ 9 Russia                     0.107              0.405              0.258
+10 Albania                    0.174              0.407              0.536
+# ℹ 3 more variables: v2x_egaldem_1980 &lt;dbl&gt;, v2x_egaldem_2000 &lt;dbl&gt;,
+#   v2x_egaldem_2020 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>The first column is our ID column. We can now see that each country features once! We then get columns with our democracy data. The command has “glued” together the names from <code>values_from</code> with the values from <code>year</code> (e.g., <code>v2x_polyarchy_1980</code> tells us the polyarchy scores for each country in the year 1980, while <code>v2x_polyarchy_2000</code> gives us the year 2000 data and so on). The naming of variables in a <code>pivot_wider()</code> command can get a little bit complicated in more complicated examples and there are additional options useful on this front; see the <a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" target="_blank">reference page</a> for the command.</p>
+<p>Let’s look at some correlations. I will use the <code>correlation()</code> command from the aptly named <code>correlation</code> package to do this because it makes it easy to calculate multiple correlations at once.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-23-1"><a href="#annotated-cell-23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(correlation)</span>
+<span id="annotated-cell-23-2"><a href="#annotated-cell-23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-23-3"><a href="#annotated-cell-23-3" aria-hidden="true" tabindex="-1"></a>vdem_wider <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1">1</button><span id="annotated-cell-23-4" class="code-annotation-target"><a href="#annotated-cell-23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"v2x_polyarchy"</span>)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-23-5"><a href="#annotated-cell-23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation page-columns page-full">
+<dl class="code-annotation-container-hidden code-annotation-container-grid page-columns page-full">
+<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="4" data-code-annotation="1">This is one of a variety of helpful shortcuts for selecting variables based on the contents of variable names, including <code>ends_with()</code> and <code>starts_with()</code> See <a href="https://tidyselect.r-lib.org/reference/starts_with.html" target="_blank">this</a><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>se, pretty stable is not <em>perfectly</em> stable.</span>
+</dd>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;See <a href="https://stackoverflow.com/questions/71602835/how-can-i-add-45-degree-line" target="_blank">here</a> for where I found the syntax needed for the 45 degree line.</p></div></div></dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Correlation Matrix (pearson-method)
+
+Parameter1         |         Parameter2 |    r |       95% CI |     t |  df |         p
+---------------------------------------------------------------------------------------
+v2x_polyarchy_1980 | v2x_polyarchy_2000 | 0.70 | [0.61, 0.77] | 12.23 | 153 | &lt; .001***
+v2x_polyarchy_1980 | v2x_polyarchy_2020 | 0.68 | [0.58, 0.75] | 11.34 | 153 | &lt; .001***
+v2x_polyarchy_2000 | v2x_polyarchy_2020 | 0.83 | [0.78, 0.87] | 19.64 | 175 | &lt; .001***
+
+p-value adjustment method: Holm (1979)
+Observations: 155-177</code></pre>
+</div>
+</div>
+<p>We could perhaps plot this data to get a better sense of matters. I will do so for the 1980 and 2020 data. I will also add a 45 degree diagonal line; points above this line will indicate countries with <em>higher</em> levels of democracy in 2020 than 1980, while points below the line indicate a <em>decrease</em> in electoral democracy over time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vdem_wider, <span class="fu">aes</span>(<span class="at">x =</span> v2x_polyarchy_1980, <span class="at">y =</span> v2x_polyarchy_2020)) <span class="sc">+</span> </span>
+<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="annotated-cell-24-3"><a href="#annotated-cell-24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1">1</button><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="cn">Inf</span>)), <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2">2</button><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="annotated-cell-24-7"><a href="#annotated-cell-24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Electoral Democracy (1980)"</span>, </span>
+<span id="annotated-cell-24-8"><a href="#annotated-cell-24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Electoral Democracy (2020)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="1">Adds the 45 degree line.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="5" data-code-annotation="2">The democracy variables have a theoretical range of 0 to 1. This extends the y- axis to cover that full range.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_pivot_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The electoral democracy scores are quite stable per the correlation coefficient. Where there are deviations it tends to show up in countries with a higher democracy score in 2020 than 1980. This makes sense as the 1980s/1990s is commonly referred to as the ‘third wave of democratization’ We can also see that countries with comparatively high levels of democracy in 1980 generally have quite high levels in 2020 as well.</p>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./analysis_04.html" class="pagination-link" aria-label="Combining Plots">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

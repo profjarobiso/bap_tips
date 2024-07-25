@@ -1,0 +1,54 @@
+---
+code-annotations: hover
+reference-location: margin
+---
+
+# R Script Files {#sec-r-script-files}
+
+You used R Markdown files to create assignments in Statistics I and II. However, you may very likely be using R differently for your thesis: as the place where you perform your analyses with the write up then happening in a word processor (Microsoft Word, Google Docs, etc.). As such, you will likely be working in a R Script file rather than an R Markdown file. This chapter provides some thoughts on how best to set those script files up. It will make reference to an example R Script file that you can access via [this link](https://surfdrive.surf.nl/files/index.php/s/ffmaNaUFIkJgGme){target="_blank"}.
+
+## Suggested Structure
+
+I would recommend structuring the R Script file with different sections that build on one another. The logic behind this ordering is based on the discussion in @sec-analysis-steps. For instance:
+
+-   Header Information
+    -   It is nice to start with some header information indicating what the contents of the file are for. You are probably going to have a single script file for your project so this can be as simple as providing a short description such as "BAP - Data Analysis Script by NAME". If you had multiple files (e.g., one for data cleaning, one for one type of analysis, one for another) then you could help keep things straight for yourself and others by having that information in the header (e.g., "Data Cleaning Script" or "Regression Model Analyses").
+    -   See below for an example.
+-   Packages
+    -   The various packages you'll need to complete your analysis.
+    -   The main thing to watch out for are package conflicts. The `car` package, for instance, has a conflict with the `dplyr` package within `tidyverse` - both `car` and `dplyr` have a command called `recode()`. If you load `car` before `tidyverse`, then R will use the `recode` command from the latter package, but if you load `tidyverse` before `car` then R will use the `recode` command from `car` instead.
+-   Data
+    -   Load your data or datasets.
+    -   If you are loading multiple different datasets, then it might make sense to have a big section that loads the first dataset and cleans it as needed, then another one that loads the second one and cleans it, and then one for [joining](https://poweleiden.github.io/statistics1/data_06_merging_data.html){target="_blank"} them, before progressing onto the analyses.
+-   Data Cleaning
+    -   Then a section where you clean your data as needed (e.g., recoding variables, creating factor variables, etc.).
+    -   This section might also include syntax for summary statistics and looking at the attributes of the variables as this may be relevant for deciding how to clean the data.
+-   Data Analysis with subsections
+    -   Then a section for the various analyses you'll end up doing with sub-sections for different steps in that process (e.g., running the model, checking assumptions, obtaining/plotting predicted values, creating the regression table, etc.).
+    -   The sample script file that I provide has this set up slightly differently with one section for descriptive and/or bivariate analyses and then one for the regression model and subsequent steps. The specifics here are not super mission critical, you just want to set things up in a clear and logical manner so that you know what is going on and to help others decipher what you're doing (e.g., if you ask me for help then I'll want clarity!).
+
+## Separating Sections
+
+How can you keep things neat and divided? The `#` symbol is your friend here. The `#` symbol defines a comment area which R will not try and evaluate as code. For instance:
+
+```{r}
+#| echo: true
+
+# Here is a comment - R will ignore the stuff in this greyed out line
+
+## Here is another comment
+summary(mtcars$mpg)  #and another
+
+```
+
+Here is a snapshot of the beginning of the example script file:
+
+![](images/script_ex.png){.lightbox}
+
+I have tried to delineate different sections by using the `#` commenting tool. The very first part, for instance, is the Header (in the terminology from above) - I would replace "Project Information" and "Author" with relevant information for my project/file. I then have a section for Packages and another for Data and so on. I have used multiple hashtags to try and make different sections stand out from one another a bit more.
+
+A handy tool here is the Outline section. You can see an Outline of the contexts of the script file on the right side of the image; this can be toggled by clicking on the button next to "Source". The Outline is nice because clicking on an entry within it will automatically take you to that place in the script file thereby saving you from having to scroll around looking for things. You can add something to the Outline by including four dashes (`----`) at the end of the comment text. You can remove something from the Outline by including a single dash there instead; I do this for the long row of hashtags used in separating sections because otherwise they'd be added to the Outline but listed as "Untitled" thereby cluttering everything up. You can nest sections within one another by using one, two, or three hashtags (see [here](https://posit.co/blog/rstudio-v1-4-preview-little-things/){target="_blank"} as well):
+
+-   `#` : Section
+-   `##`: Sub-Section
+-   `###` Sub-subsection
