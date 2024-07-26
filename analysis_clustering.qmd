@@ -812,4 +812,4 @@ The discussions above focus on situations where our DV is (assumed to be) contin
 
 -   Is the relationship you're interested in testing something that varies at the lower level of aggregation (e.g., between individuals)? Then focus on a single cluster or use fixed effects.
 -   Is the relationship of interest primarily at the higher level of aggregation (e.g., between countries)? Then recode the DV to be 0/1, find the mean by cluster, and regress that on your predictor variables. The DV here would vary continuously between 0 and 1, so a linear regression model would likely be sufficient.
--   Do you need or want a more complicated solution? Then you could fit a mixed effects/multi-level logistic model instead (see [here](https://stats.oarc.ucla.edu/r/dae/mixed-effects-logistic-regression/){target="_blank"})
+-   Do you need or want a more complicated solution? Then you could fit a mixed effects/multi-level logistic model instead (see [here](https://stats.oarc.ucla.edu/r/dae/mixed-effects-logistic-regression/){target="_blank"}).
