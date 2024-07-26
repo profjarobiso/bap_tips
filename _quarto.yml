@@ -28,6 +28,8 @@ book:
         - analysis_03.qmd
         - analysis_04.qmd
         - analysis_pivot.qmd
+        - analysis_robust.qmd
+        - analysis_clustering.qmd
 
 format:
   html:

@@ -4,7 +4,7 @@ lightbox: true
 echo: false
 ---
 
-# Some Practical Questions
+# Some Practical Questions {#sec-some-practical-questions}
 
 In this chapter I'll discuss some more practical questions that may arise as you think about how to analyze your data.
 

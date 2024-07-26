@@ -1,0 +1,803 @@
+---
+code-annotations: hover
+reference-location: margin
+toc-depth: 4
+---
+
+# Geographically Clustered/Nested Data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Packages
+library(flextable)
+library(rio) # <1> 
+library(tidyverse) #<2> 
+library(modelsummary) #<3>
+library(marginaleffects)
+library(broom)
+library(parameters)
+library(patchwork)
+```
+
+Consider the humble regression equation:
+
+$$
+y_{i} = b_{0} + (b_{1} * x_{1}) + ... + \epsilon_{i}
+$$
+
+We predict what value we expect our dependent variable (y) to take on given one or more independent variables ( $x_{1}, x_{2}$, etc.). However, our predictions are never perfect. The error term ( $\epsilon_{i}$) focuses on these differences - how far off is our prediction for a given observation used in fitting the model?
+
+One important point is that we need to make assumptions about the nature and distribution of this error term if we wish to make inferences to the broader population from which we draw our sample. OLS models, for instance, assume that the error term is normally distributed around 0 and is homoskedastic. Another assumption that is relevant for both OLS and logistic regression is the *independent errors* assumption. Here, we assume that there is no correlation between the residuals of our model (the prediction errors) and the dependent variable - knowing that we make an over-estimate for one observation shouldn't give us information about whether our prediction error for a different observation is an over- or under-estimate. These assumptions are important because they underlie the calculation fo the standard error and hence our statistical significance tests: if they are seriously violated, then our standard errors will be too small and our significance tests will be biased toward finding "significant" findings.
+
+We can try and address heteroskedasticity in a few ways (e.g., transforming a variable, adding new variables, using robust standard errors; see @sec-robust). The violation of normality is typically considered less of a problem if you have even a moderately sized dataset (e.g., n \> 100 or so). What about the independent errors assumption?
+
+The independent errors assumption could be violated in different ways. One threat is omitted variable bias. This is a threat you should try and minimize albeit not one you will likely perfectly avoid outside of an experiment. Measurement error could also lead to violations on this front, but you're likely dealing with pre-made measures (and measurements) so there is likely nothing you could do here. A final threat is *clustered* or *nested* data, which refers to situations where you have (repeated) observations sampled from within some broader level of analysis. Examples include:
+
+-   Surveys such as the [World Values Survey](https://www.worldvaluessurvey.org/wvs.jsp){target="_blank"}, [European Social Survey](https://www.europeansocialsurvey.org/){target="_blank"}, [AmericasBarometer](https://www.vanderbilt.edu/lapop/about-americasbarometer.php){target="_blank"}, etc., where countries are sampled and then individuals sampled from *within* those countries.
+-   Datasets such as the [American National Election Studies](https://electionstudies.org/){target="_blank"} (ANES) cumulative time series dataset which features data from each version of the ANES over time such that (different) individuals are clustered *within* survey years (i.e., respondents in 1972, respondents in 1976, etc.).
+-   Datasets that involve repeated measurements of the same country over time (time series data), same individual over time (panel data), or perhaps simply repeated observations of the same individual at a single time point (repeated measures data).[^analysis_clustering-1]
+
+[^analysis_clustering-1]: You can probably imagine complex combinations of these different types of data. For instance, if I used data from the European Social Survey from each of its modules, I would have data on individuals clustered within a country within a year (or, a country-year).
+
+The remainder of this document will discuss why this type of data violates the independent errors assumption and discuss some ways to analyze this type of data. The focus will be on geographically clustered data, i.e., individual survey respondents within a given country. However, the same considerations can be applied to other instances of geographical clustering (e.g., individuals sampled from different schools or from within different cities, etc.).
+
+<!--# chapter with time clustered data? -->
+
+## An Example of the Problem
+
+Suppose that I was writing my thesis on the topic of regime satisfaction: when do people vary in how satisfied they are with the way that the political regime works in their country? There are lots of datasets with measures related to regime satisfaction, but perhaps I think that the World Values Survey is the most appropriate for my paper because it alone has a measure of my main independent variable.
+
+The data I'll work with is a subset of their Wave 7 data wherein individual respondents were sampled within 66 countries or territories across the world. Respondents were asked the following question: "On a scale from1 to 10 where '1' is 'not satisfied at all' and '10' is 'completely satisfied', how satisfied are you with how the political system is functioning in your country these days?
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Distribution of Individual-Level Responses"
+#| label: fig-indiv-dist
+
+# Load our data
+wvs <- import("./data/wvs_small.rda")
+
+#Some cleaning 
+wvs <- wvs |> 
+  mutate(
+    country_name = sjlabelled::as_label(B_COUNTRY)) #<1>
+  
+#A plot
+wvs |> 
+  filter(!is.na(Q252)) |> 
+  group_by(Q252) |> 
+  tally() |> 
+  ggplot(aes(x = Q252, y = n)) + 
+  geom_col() + 
+  labs(x = "Regime Satisfaction\n1 = Not Satisfied at All, 10 = Completely Satisfied", 
+       y = "Count") +
+  scale_x_continuous(breaks = c(1:10)) + 
+  theme_minimal()
+
+
+```
+
+1.  The `B_COUNTRY` variable indicates which country the respondent is in. It has numeric values with associated labels (e.g, 20 = a person is from Andorra). This nifty command from the `sjlabelled` package enables me to create a new character variable with those country labels as the data. This is much nicer for subsequent plotting, etc.
+
+@fig-indiv-dist summarizes the individual level responses to this question pooling across countries. Each bar provides the number of respondents in the survey who gave each response. We can see that there is variation here: there are people who are "completely satisfied" with the way democracy works in their country, people in the middle, and people who are "not satisfied at all".[^analysis_clustering-2] We might think of modeling this variation by considering attributes of the respondents that vary between them. For instance, we could consider whether people with higher levels of education tend to give higher responses on this question than those with less education. Or, we could ask whether there are differences between people who identify with a political party and those that do not, or by ideological extremity, or by political news consumption, and so on, and so on. The unit of analysis would be the individual and the differences explained by things that vary between individuals.
+
+[^analysis_clustering-2]: Mean = `r round(mean(wvs$Q252, na.rm = T), 2)` , SD = `r round(sd(wvs$Q252, na.rm = T), 2)` .
+
+The respondents on this survey are not atoms floating freely in space. Rather, the people conducting the survey used some type of sampling procedure to select some people to interview rather than others within particular countries with these countries being a sample of some sort from the broader population of countries in the world.[^analysis_clustering-3] We might intuitively think that *countries* also vary on this measure, i.e., the *average* level of democratic satisfaction may be higher in some countries than others. Let's take a look:
+
+[^analysis_clustering-3]: Some type of probability-based sample is used when selecting individual respondents in each country (see [here](https://www.worldvaluessurvey.org/WVSContents.jsp){target="_blank"}). At the same time, I do think that the WVS uses a probability-based sampling procedure for selecting the *countries* involved.
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Distribution of Country Averages"
+#| label: fig-country-dist
+
+#Country Averaegs
+country_avgs <- wvs |> 
+  group_by(country_name) |> 
+  summarize(dem_satis = mean(Q252, na.rm = T))
+
+#Plot
+ggplot(country_avgs, aes(x = dem_satis)) + 
+  geom_histogram(fill = 'white', color = 'black') + 
+  labs(y = "Mean Democratic Satisfaction within Country", 
+       x = "Regime Satisfaction") + 
+  scale_x_continuous(limits = c(1, 10), 
+                     breaks = seq(from = 1, to = 10, by = 1)) + 
+  theme_minimal()
+
+```
+
+@fig-country-dist was constructed by first calculating the average score on the regime satisfaction measure in each country and then plotting the distribution via a histogram. We can see that there is also variation at this *level* of analysis as well: there is one country with a very low average level of satisfaction (around 2.5), others with rather high (around 8 or so), and countries in the middle.[^analysis_clustering-4] We can probably come up with some plausible suspects for things that would predict (and maybe even cause) this variation. Perhaps regime satisfaction is higher when *countries* are experiencing periods of economic growth, or among *countries* with lower levels of corruption, or in *countries* with more accountable governments, etc. A key point here: the source of this variation is something operating at the *country*-level, i.e., the predictors are things that vary *between countries*.
+
+[^analysis_clustering-4]: The country at the lowest end is Brazil with an average of 2.59. The countries at the top are Tajikistan (8.09), Vietnam (7.61) ,and China (7.55).
+
+We can get a final look at this data via @fig-indiv-country-dist, which plots the number of respondents *within* each country given each response broken down by country.
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Distribution of Individual Responses by Country"
+#| label: fig-indiv-country-dist
+#| fig-height: 12
+
+wvs |> 
+  filter(!is.na(Q252)) |> 
+  group_by(country_name, Q252) |> 
+  tally() |> 
+  ggplot(aes(x = Q252, y = n)) + 
+  geom_col() + 
+  facet_wrap(~ country_name) + 
+  labs(x = "Regime Satisfaction\n1 = Not Satisfied at All, 10 = Completely Satisfied", 
+       y = "Count") +
+  scale_x_continuous(breaks = c(1,3,5,7,9)) + 
+  theme_minimal()
+```
+
+Here we can perhaps better see that variation is occurring at two *levels*. Individuals within a country vary in regime satisfaction - some are the high end, some at the low, and others in the middle. Meanwhile, the distributions are not the same across countries - Brazil has *many* people at 1, China has many people at the high end, and so on.
+
+The average level of regime satisfaction varies across countries. Per above, we can think of country-level attributes that might explain this variation (inequality, economic growth, corruption, etc.). Note that these are things that are a constant for people *within* a given country - everybody in Andorra is living under the same economic conditions, etc.[^analysis_clustering-5] This is where the problem emerges. If we *pool* all of the individual-level data together into a single model (i.e., include all respondents from every country together in one single model), then the errors for people from a given country will likely be correlated with one another because the responses of these individuals will be influenced by a common causal influence that is not accounted for our in statistical model. We will have a violation of our independence of errors assumption, our errors will be biased downwards, and we may end up reject a "null" hypothesis that we shouldn't.[^analysis_clustering-6]
+
+[^analysis_clustering-5]: Well, in some "objective" sense. People may, and very often do, vary in their subjective experience of these variables. People differ, for instance, on whether they think the economy is "good" or "bad" even though the economy is technically the country's economy is technically the same for everyone. This could reflect differences in information about economic performance as well as motivations to perceive the world in attitude-consistent ways (e.g., government supporters could selectively downplay negative information and thereby come to a rosier view of the economy than non-supporters). For relevant reviews on perceptions of regime performance, and potential "biases" in them, see [Anderson (2007)](https://doi.org/10.1146/annurev.polisci.10.050806.155344){target="_blank"} and [Huber and Malhotra (2013)](https://doi.org/10.1146/annurev-polisci-032211-212920){target="_blank"}.
+
+[^analysis_clustering-6]: "A common cause" does not necessarily mean that everyone is reacting in the same way to the country-level stimulus. Rich and poor people could conceivably react very differently to the same level of inequality, for instance. [Solt (2008)](https://doi.org/10.1111/j.1540-5907.2007.00298.x){target="_blank"} argues as such in this article on political engagement. People might also vary in how aware they are of a particular stimulus (e.g., the unemployment rate). This is something that could be investigated empirically via the final solution discussed below.
+
+How, then, can we deal with this type of data?
+
+## Potential Solutions
+
+The following sub-sections describe different ways of approaching geographically clustered/nested data. Perhaps the key difference between them is this: at what level are your independent variables being measured? In other words: what is the appropriate level of analysis for your hypothesis? The answer to this question will help inform which path is best suited for your project.
+
+### Focus on a Single "Cluster"
+
+The problem above emerges when we pool observations from clusters together with one another. If your main IV is at the individual level, then a simple solution would be to simply focus on respondents from a single country by filtering out observations from other countries.
+
+For instance, let's say we hypothesize that regime satisfaction will be positively associated with a person's financial situation. The WVS asks respondents "how satisfied are you with the financial situation of your household" on a 1 (completely dissatisfied) to 10 (completely satisfied) response scale (variable `Q50`). Perhaps we are interested in the case of New Zealand in particular. We would first filter out observations from other countries and regress our DV on the IV (along with plausible confounding variables; see @sec-some-practical-questions). For instance:
+
+```{r}
+# Filter
+nz <- wvs |> 
+  filter(country_name == "New Zealand")
+
+#run our model
+model_nz <- lm(Q252 ~ Q50, data = nz)
+
+#summary of coefficients
+tidy(model_nz)
+
+#predicted values via avg_predictions()
+avg_predictions(model_nz, variables = "Q50") # <1> 
+```
+
+1.  You learned about `predictions()` in Statistics II. `avg_predictions()` does something very similar - it calculates the average predicted value of Y given values of X. The main difference between the two commands concerns how control variables are handled: `predictions()` holds them at their mean/mode, while `avg_predictions()` makes predictions for each observations based on that observation's unique values on the controls and then averages everything up after doing so. If there is only one predictor variable than the two commands converge on the same predicted values with `avg_predictions()` being a bit simpler to use with continuous variables (it will automatically calculate predictions at the min, 1st quartile, median, 3rd quartile, and maximum of the IV).
+
+We can see that there is a positive and statistically significant relationship here: regime satisfaction increases by 0.13 scale points, on average, with each one unit change on our financial situation variable. The overall degree of change when moving from minimum to maximum is fairly large: around 1.14 scale points. The SD for the DV in the New Zealand sub-sample is `r round(sd(nz$Q252, na.rm =T),2)`. We can see that there is a positive and statistically significant relationship here: regime satisfaction increases by 0.13 scale points, on average, with each one unit change on our financial situation variable. The overall degree of change when moving from minimum to maximum is fairly large: around 1.14 scale points. The SD for the DV in the New Zealand sub-sample is `r round(sd(nz$Q252, na.rm = T), 2)`, so a min to max move is equal to a change of about half of a standard deviation. This seems non-trivial in scale, although note that we'd expect even those with very *negative* views of their financial situation, as well as those with very *positive* to be around the mid-point on regime satisfaction (predicted value of 4.74 when satisfaction = 1, 5.88 when it = 10). A politician who could get everybody feeling very positive about their financial situation would be better off than one who couldn't, but they we're probably not talking about "put the politician on money" levels of satisfaction.[^analysis_clustering-7]
+
+[^analysis_clustering-7]: Maybe this is unfair: the measure is about *regime* satisfaction, not *leader*
+
+This approach is very acceptable for your thesis. Its key advantage is analytic simplicity - just filter the data and fit the model you want to fit. Here, you're just using the WVS, ESS, or whatever clustered data source as a convenient source of data for the country you care about. You would want to motivate the use of that particular source (rather than some other country-specific survey) by indicating why its measurements are particularly suitable for your project.
+
+Of course, there are potential 'pull' considerations, i.e., reasons to think about alternatives.
+
+First, this would make sense if the predictor variable you care about is something that varies at the individual level. If the IV you care about is something that varies between clusters/countries (e.g., inequality), then this does not work (unless, perhaps, you can find some type of subjective indicator - e.g., do people's perception of inequality matter?).
+
+Second, you do have to pick, and motivate the use of, a particular country to focus on and discuss how that decision influences what we learn about your question. In the former case, this could very well be part of the set up of your paper. For instance, if you begin your paper with an anecdote involving former German PM Angela Merkel, then it would seem obvious and non-controversial to use data focused on Germany in particular. You would still want to reflect in the discussion on whether the patterns you saw in the data might "travel" to other contexts (other times within Germany, other places besides) - if so, why do you think that? ; if not, in what ways would things be different and why? But, those are discussions you would likely have to have anyways. At the same time, there is some value in having a much more varied set of countries in the analyses as this would speak to such a concern to a certain degree at least in terms of geography.
+
+### Fixed Effects + Clustered Standard Errors
+
+Here, your main IV varies at the individual level and you want to use all the data before you. The simplest solution is to use "country fixed effects" and "clustered standard errors".
+
+"Fixed effects" is just a fancy sounding term for: "Include a factor variable for cluster in your model". The cluster in this example is country (respondents in countries). So, step one would be to convert the variable in the dataset with data on what cluster each observation resides within into a factor variable and include it in the model. I already have this variable factorized (see earlier syntax), so here are the model results:
+
+```{r}
+#run our model
+model_all_indiv <- lm(Q252 ~ Q50 + country_name, data = wvs)
+
+#summary of coefficients
+tidy(model_all_indiv)
+
+```
+
+Our main variable of interest is `Q50` (financial satisfaction). Here, we can see a positive and statistically significant coefficient for this variable - regime satisfaction tends to increase alongside one's financial situation. We also get coefficients for the countries in our dataset (e.g., `country_nameArgentina`, etc.). These compare the average value of the DV in the named country against the common reference group (here, Andorra). Regime satisfaction is lower in Argentina than Andora by -0.265 on average, while being higher in China than Andorra by 1.79 points on average, and so on.
+
+The inclusion of these "fixed effects" essentially control for cluster-level sources of variation...whatever they might be. This accounts for the between-country differences above. However, it does not remove the bias from our standard errors. To fully accomplish this goal, we can use "clustered standard errors" - these are simply standard errors that are calculated in such a way they take into account the internal correlation within countries.
+
+We can obtain the clustered standard errors when we use `modelsummary()` to create our regression tables. Here is how we can do it.
+
+```{r}
+modelsummary(model_all_indiv, 
+             stars = T,
+             coef_map = c(
+               "(Intercept)" = "Intercept", 
+               "Q50" = "Personal Economic Situation"), 
+             vcov = ~country_name, #<1>
+             gof_map = c("nobs", "r.squared", "adj.r.squared", "vcov.type"),  #<2>            
+             notes = list("Linear regression coefficients with standard errors in parentheses. Standard errors are clustered by country."))
+```
+
+1.  This tells `modelsummary()` to use the clustered standard errors. Specifically, errors should be clustered by the `country_name` variable.
+2.  The added bit here is `"vcov.type"`. This tells the command to include a row at the bottom of the table indicating that SEs are clustered by this variable. This could be omitted provided you indicate in the notes that you are clustering SEs in some way.
+
+`vcov = ~country_name`
+
+:   This is the one line of syntax you need. You would replace "country_name" with the name of the (factor) variable in your dataset that concerns the relevant cluster.
+
+`gof_map = c("nobs", "r.squared", "adj.r.squared", "vcov.type")`
+
+:   One note here. There is a new entry: "vcov.type". The final row of the table above is "Std. Errors" and then "by: country_name". This option controls whether that information is presented or not. If I omit "vcov.type" from this part of the command, then that line is omitted. That is fine provided that one then indicates in the notes that standard errors are being clustered.
+
+`coef_map = c(…)`
+
+:   `coef_map()` is another way of renaming variables in `modelsummary()`. I am using it here because anything that *doesn't* match the contexts of this command is *excluded* from the regression table. In this example, I wanted to exclude all of the country-level fixed effects estimates to avoid creating a super long table. I would recommend doing the same in your paper for the regression table presented in the main body of the text and then provide the full table (with all estimates) in an appendix. Or, alternatively, use a coefficient plot in the main text and then give the full table in an appendix.
+
+One thing to note: the use of these "clustered standard errors" does not change the coefficient estimates - they only change the standard errors. I show this in the following snippet using `modelsummary()`. Here, I specify that the output should be a "modelsummary_list" - this tells the command to show the underlying data that is to be included in the table rather than the table itself. I then filter the results so that you only see the coefficient for our financial situation variable and its standard error. The coefficients remain the same, while the standard error becomes much larger (0.014 vs. 0.004). This does not matter for statistical significance in the present case - we have *lots* of data to help us gain precision, but we could see differences in other contexts.
+
+```{r}
+#Without clustering standard errors: 
+modelsummary(model_all_indiv, output ='modelsummary_list')$tidy |> 
+  select(term, estimate, std.error) |> 
+  slice(2)
+
+#With clustering of standard errors
+modelsummary(model_all_indiv, output ='modelsummary_list', 
+             vcov = ~country_name)$tidy |> 
+  select(term, estimate, std.error) |> 
+  slice(2)
+
+```
+
+We can also incorporate the clustering into our estimates of predicted values and slopes when using `predictions()` and `slopes()`. We only need to specify the `vcov =` option again.
+
+```{r}
+
+predictions(model_all_indiv, newdata = datagrid(Q50 = c(1, 5, 6, 8, 10)), vcov = ~country_name) #<1> 
+```
+
+You would use these procedures when your main IV is at the lower level of variation (e.g., the individual level of analysis) and want to use all of the data. However, what if your cared about variation at the *aggregate* level? This approach would not let you know about that since you're subsuming all sources of variation into those country dummy variables. Including country-level variables would introduce multicollinearity Instead, you'd need other tools. The next two sections are more relevant in those situations.
+
+### Aggregation
+
+The preceding examples focus on a situation where the main IV is at the lower level of aggregation - i.e., at the individual level when we have data wherein individuals are nested within countries. If your main IV varies at the *higher* level of aggregation, e.g., the country level, then the simplest approach is likely to aggregate the data up to that level of analyses and proceed as normal. In other words, find the country-mean for the DV and then use that as the DV in subsequent regression model.
+
+As an example, let's suppose our argument is that regime satisfaction is predicted by economic conditions. In particular, we might expect that satisfaction will be higher in places with lower levels of unemployment (conversely, it should be lower in places with higher unemployment). The WVS thankfully includes a variable about the unemployment rate in each country (what a coincidence for my example), named `unemploytotal`. We can see a snippet of the data here - note how the data in the `unemploytotal` column is the same for all Argentine respondents.
+
+```{r}
+wvs |> 
+  select(country_name, Q252, unemploytotal) |> 
+  na.omit() |> 
+  head()
+```
+
+To prepare our data we'll use `group_by()` to calculate the mean value of both variables by country. The unemployment variable is a constant within each country (i.e., all observations in Argentina have the same value \[9.79\], all observations in China have a value of 4.32, etc.). Taking the mean of this variable is the simplest way of porting over those values to our new dataset.
+
+```{r}
+#Aggregate the data 
+aggregated <- wvs |> 
+  group_by(country_name) |>
+  summarize(reg_satis = mean(Q252, na.rm = T), 
+            unemploy = mean(unemploytotal, na.rm = T))
+
+#Take a look
+aggregated
+```
+
+We could then proceed to examine this data via a scatterplot (since both variables are continuous) to see if our intuitions seem correct:
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Unemployment & Regime Satisfaction"
+#| label: fig-unemployment
+
+#Bivariate plot
+ggplot(aggregated, aes(x = unemploy, y = reg_satis)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm') + 
+  labs(y = "Mean Regime Satisfaction", 
+       x = "Unemployment (% of total labor force)") + 
+  theme_minimal() + 
+  scale_y_continuous(limits = c(1, 10), 
+                     breaks = seq(from = 1, to = 10, by = 1))
+
+```
+
+Indeed, we see a negatively sloped line: regime satisfaction tends to decrease as unemployment increases.
+
+We could then proceed to a regression model.
+
+```{r}
+#Model
+model_aggregated <- lm(reg_satis ~ unemploy, data = aggregated)
+
+#Coefficients
+tidy(model_aggregated)
+
+```
+
+We see a negative (and statistically significant) coefficient for unemployment. A 1% increase in the unemployment rate (since this variable is on the % scale) is associated with a drop of country average regime satisfaction of approximately -0.09 scale points. Moving from minimum to maximum is expected to result in a drop of approximately 1.5 scale points (5.73 to 4.25)...although an unemployment rate of 17% or so is pretty anomalous in our data so we get wide confidence intervals. This would represent a pretty large difference given that the DV has a standard deviation of 1.19.
+
+```{r}
+avg_predictions(model_aggregated, variables = "unemploy")
+```
+
+The model above only includes one predictor variable. We could (and should) include plausible confounding variable in the model as well. Note though that these are thing that should vary at the country-level. I sometimes see students who go down this path say they'll include gender, and age, and individual demographics, but that may not make sense. One could aggregate up those variables and include them as well (or, alternatively, use some type of census data to obtain even better estimates of country-level values), but are they actually good confounds? Maybe, maybe not. Countries do not differ all that much in terms of sex/gender distributions (although there is some variation there). They may differ more in overall educational attainment or age patterns, but whether that makes sense to adjust for or not is something you'll need to consider.
+
+### Mixed/Multi-Level Models
+
+There is a final method for dealing with this type of data: "multilevel" or "mixed" models. The examples above saw us modeling *either* individual-level variation *or* country-level variation. A multilevel model enables us to do both things simultaneously in a single model. It can thus subsume the other approaches above. However, I do not recommend that you take this approach given that multilevel models are more complex and you have not been previously trained in their use. The only context in which they would be a better alternative for you is if you are investigating "cross-level interactions": that is, a situation where you are interesting in examining the interaction between an individual-level variable and a cluster-level variable.
+
+The remainder of this section will walk through how to set one of these models up and some basic interpretation. However, this is only the tip of a deeper iceberg.
+
+#### Basic Set Up with a "Null" Model
+
+We'll need some extra R libraries for the following example:
+
+```{r}
+#| message: false
+#| warning: false
+
+library(lme4)
+library(lmerTest)
+library(performance)
+library(parameters)
+```
+
+`lme4` is the go-to package for fitting multilevel models. However, it does have one drawback: `modelsummary()` cannot produce statistical significance stars using a model created with this package. I thus also load `lmerTest` which adds that functionality. The `performance` package is one you've run into before: it helps produce various model performance statistics. Finally, the `parameters` package is kind of like `broom` in that it provides some tools for displaying the results of a regression model. I load it because `tidy()` cannot work with the output of objects created by `lmerTest`. (Confusing? You bet!)
+
+Our first step is to fit a "null" model wherein the DV is only regressed on a constant.
+
+```{r}
+mixed_null <- lmer(Q252 ~ 1 + (1 | country_name), data = wvs)
+```
+
+The syntax here looks kind of similar to the `lm()` command albeit with `lmer` rather than `lm()`. However, there is one very noticeable difference:
+
+`(1 | country_name)`
+
+:   This tells the command to perform a "random intercept" mixed model with observations nested within country. The intercept, recall, is the value we expect Y to take on when our IVs = 0. In a "random intercept" model, the intercept is allowed to take on different values across clusters. In essence, respondents in each country will have a different intercept value. The model will then average those intercepts together (in essence) as a grand summary. This is the simplest multi-level model we can run. It is also possible to run "random coefficient" versions wherein the coefficient for an IV is also allowed to vary across clusters before being averaged, but that is beyond the scope of this document. If you needed to run one of these models, you'd keep this as is but replace `country_name` with the name of the variable pertaining to relevant cluster in your analysis (`(1 | cluster_name)`).
+
+Let's take a look at the output:
+
+```{r}
+summary(mixed_null)
+```
+
+The output begins in a somewhat familiar way as `lm()` with some information about the formula being used in the model and some residuals information, which we can largely ignore. It is then separated into two areas "Random Effects" and "Fixed Effects". What do these mean? I like the description offered in this [resource](https://www.learn-mlms.com/04-module-4.html){target="_blank"}, which focuses on a scenario in which we are trying to model student test scores from students sampled from within various different schools:
+
+> For our purposes of executing and interpreting MLMs, a fixed effect is an average effect across all clusters and a random effect is a variance that describes how much an effect differs across clusters. Generally, fixed effects in MLMs capture the mean of an effect and the random effect captures the variance of an effect. For example, we might have a fixed effect for the intercept that describes average math achievement across all schools. Then we have a random effect that describes how intercepts for math achievement vary across schools. Together, the fixed and random effect describe math achievement scores across schools.
+
+In our example, the Intercept value in the Fixed Effects area is an estimate of the average regime satisfaction across all *countries*. If we take the average in each country and then average together those country averages, this is more or less what we'll get. We previously found the average within each country; here is the average of those averages, which is right in line with the Intercept above.
+
+```{r}
+mean(aggregated$reg_satis, na.rm = T)
+```
+
+What then do the values in the Random Effects tell us? We see two rows here: one for "country_name" and one for "Residual". The value in the "country_name" value tell us about the degree of variation in the country-averages for regime satisfaction. Here, for instance, is the standard deviation of the country-averages that we calculated earlier, which is again in line with the value in the Random effects area:
+
+```{r}
+sd(aggregated$reg_satis, na.rm = T)
+```
+
+The value for Residual, meanwhile, tells us about the variance/standard deviation of individuals around their country mean regime satisfaction. A multi-level model essentially "partitions" the variance in a DV into two "levels": variance at level 1 owing to the lowest level of the model (here: individuals) and variance at level 2 owing to the higher level of aggregation (here: countries).[^analysis_clustering-8] We can then model this variation by including predictors measured at either level as we'll see in the next sub-section.
+
+[^analysis_clustering-8]: Well, in a two-level model. These types of models can be made more complex.
+
+We can get a sense of how much of the variance in our DV varies at each level via the `icc()` command from the `performance` package:
+
+```{r}
+icc(mixed_null)
+```
+
+The value here is 0.185. In essence, this tells us the proportion of the total variance in the DV that occurs at the cluster level. We can think of this as telling us about the degree of similarity between respondents within the same country. The value of 0.185 indicaetst that around 18.5% of the total variance in the regime satisfaction DV is attributable to differences *between countries* (i.e., \~18.5% of the variance occurs at the country-level). That means that 0.815 or 81.5% occurs at the individual level. There is more variance between individuals than between countries. As a side note, if the ICC was very very low, then that might be an indicator that we shouldn't bother with this multi-level model business - a simpler fixed effects model focused on individual level predictors would likely be a better idea since there wouldn't be much cluster level variance to explain in the first place.
+
+#### Adding Predictor Variables
+
+We can add predictor variables much as we do with an `lm()` or `glm()` model. Here, I'll perform three models: (1) one that only includes the individual level predictor (financial situation); (2) one that only includes the country level predictor (unemployment); and then one that includes both at once (for a later discussion).
+
+```{r}
+# Only individual
+mixed_indiv <- lmer(Q252 ~ Q50 + (1 | country_name), data = wvs)
+
+#Only aggregate
+mixed_agg <- lmer(Q252 ~ unemploytotal + (1 | country_name), data = wvs)
+
+#Both
+mixed_both <- lmer(Q252 ~ Q50 + unemploytotal + (1 | country_name), data = wvs)
+```
+
+Our interpretations of the coefficients from these models is basically the same as with an `lm()` model. The intercept tells us the expected average value when the predictor variable(s) = 0, while coefficients tell us about the slope of a line (continuous variable) or about a difference in means between categories (binary/categorical variables).
+
+Let's take a look at the individual-level model first. I'll focus on the output from `parameters()` as this will get rid of the scientific notation that `summary()` would use when showing the coefficients:
+
+```{r}
+# Via Summary
+summary(mixed_indiv)
+
+#Via parameters::parameters()
+parameters(mixed_indiv)
+```
+
+The intercept is 4.12. This tells us the following: the average regime satisfaction cross all countries when the financial situation variable = 0. The intercept is generally not very interesting and especially so in this case given that our IV cannot even taken on a value of 0 (since it ranges from 1 to 10). The coefficient for Q50 is more relevant. It is 0.18. We would interpret this as telling us that each one unit increase in subjective financial situation is associated with an average increase in regime satisfaction of around 0.18 scale points. *People* who are more financially satisfied are also more satisfied with their regime. This relationship is statistically significant as well (p \< 0.001).
+
+We can get a sense of how important this change is via the `predictions()` or `avg_predictions()` commands from the `margnialeffects` package.
+
+```{r}
+predictions(mixed_indiv, newdata = datagrid(Q50 = c(1, 3, 5, 7, 9, 10)))
+```
+
+What about the stuff in the Random effects area? The entry for "country_name" still tells us about the variation in the country means. This value is unchanged from above because we have not added any country-level predictor variables. The entry for Residual still tells us about individual-level variation around country-means. This value is slightly smaller than earlier because we have added a predictor variable that explains some of the total variation at the individual level.
+
+Let's turn to the country-level model:
+
+```{r}
+summary(mixed_agg)
+```
+
+The Intercept here tells us the expected mean level of our dependent variable when the IV = 0, i.e., if unemployment = 0%, then we'd expect to observe the country-level average of regime satisfaction to be about 5.8. Meanwhile, a 1 unit (1% in this instance) increase in the unemployment rate is associated with a decrease of approximately -0.09 scale points on the DV.
+
+```{r}
+predictions(mixed_agg, newdata = datagrid(unemploytotal = c(1:10)))
+```
+
+The coefficient for the country-level variable is smaller than the individual-level variable. We should perhaps be cautious about saying it is "less important" however. The degree of variation at the individual level is much larger than the amount of variation at the country-level as we saw from the Random effects estimates from the null model:
+
+```{r}
+#Uses the parameters() command and some filter to focus
+#our attention on the random effects
+
+parameters(mixed_null) |> 
+  filter(Parameter != "(Intercept)")
+```
+
+A smaller looking change might be more "meaningful" if there is less variance to explain the first place. One way of seeing this is to consider the standardized coefficients from the two models:
+
+```{r}
+#Individual 
+standardise_parameters(mixed_indiv)
+
+#Country
+standardise_parameters(mixed_agg)
+```
+
+Perhaps the important thing here to interpret the coefficients in relation to their level of analysis (e.g., individual level predictors explaining differences between individuals, country-level predictors explaining differences between countries).
+
+#### Comparison with Earlier
+
+Let's compare our results to those from the earlier models (individual level fixed effect with clustered standard errors and the aggregated model).
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| tbl-cap: "Comparison of Different Methods of Analysing Clustered Data"
+#| label: tbl-comparison
+
+#See the chapter on 'regression table formatting suggesion' 
+#for an explanation of the flextable code
+
+#List
+model_comps <- list(
+  "Indiv w/FE" = model_all_indiv, 
+  "Aggregated" = model_aggregated, 
+  "Multi-level" = mixed_indiv, 
+  "Multi-Level" = mixed_agg, 
+  "Multi-Level" = mixed_both)
+
+#Table with some flextable formatting
+model_comps_table <- modelsummary(model_comps, 
+             estimate = "{estimate}{stars}\n{std.error}", 
+             statistic = NULL, 
+             gof_map = c("nobs", "r.squared", "adj.r.squared", 
+                         "r2.marginal", "r2.conditional"),
+             vcov = c(~ country_name, "classical", "classical", 
+                      "classical", "classical"), 
+             coef_map = c(
+               "(Intercept)" = "Intercept", 
+               "Q50" = "Personal Financial Situation", 
+               "unemploy" = "Country Unemployment Rate", 
+               "unemploytotal" = "Country Unemployment Rate"), 
+             notes = list("Notes: OLS or multi-level model coefficients with SEs in parentheses. Country fixed effect estimates omitted from FE model. FE model clusters SEs by country.", 
+                          "* p < 0.05; ** p < 0.01; *** p < 0.001"),
+             output = 'flextable')
+             
+             
+model_comps_table |> 
+  hline(i = nrow_part(model_comps_table) - 3) |>
+  align(i = 1:nrow_part(model_comps_table), j = 2:ncol_keys(model_comps_table), align = 'center') |>
+  align(align = 'center', part = 'header') |> 
+  autofit()
+
+```
+
+A few things may stand out here. First, the coefficient for "Personal Financial Situation" is the same in all models in which it appears. This is because fitting a random intercept multi-level model is basically equivalent to fitting a simpler linear regression model with country dummy variables. The random intercept multi-level model allows the intercept to be "random' (i.e., to take on a different value for each cluster) while still estimating a *common* (or"fixed") estimate for the independent variables.[^analysis_clustering-9] We can see this by using the `coef()` command, which will return the coefficients for the Intercept and for the independent variable(s):
+
+[^analysis_clustering-9]: That is, unless we *also* specify that the coefficient for an IV should be allowed to vary between clusters before being summarized into a single weighted estimate.
+
+```{r}
+# Different intercept, same slope
+coef(mixed_indiv)
+```
+
+The main advantage of the multi-level model is also enabling us to model variation at the country level including the estimation of interactions between levels of analysis (if that is what we want to do).
+
+Second, the coefficient for Country Unemployment Rate is also the same in the Aggregated Model and Multi-Level model where it is the only predictor. Again, this is because the two models are doing the same thing: using variation in country-level unemployment to predict country-level average regime satisfaction. The coefficient for this variable is *not* the same in the final model, for reasons I'll discuss in a subsequent sub-section.
+
+Third, we get different types of R^2^ for the multi-level models: R2 Marg. (marginal R^2^) and R2 Cond. (conditional R^2^). Calculating an R^2^ for a multi-level model is not straightforward (much as it wasn't for logistic models) but these are attempts to do so anyways. The "marginal" version only takes into account the influence of the "fixed effects" portion of the model, while the "conditional" version takes into account both fixed and random effects. Their interpretation is not very straightforward, but higher is typically "better" (caveats about model specification aside).
+
+#### To Center or Not to Center?
+
+One thing that changed in @tbl-comparison was the coefficient for Country Unemployment rate when we switched from a single-variable model (whether OLS or multi-level) to one that includes both that variable and the one with an individual-level predictor (Personal Financial Situation). What is going on there?
+
+Consider these two variables: Personal Financial Situation and Country Unemployment Rate. Both variables pertain to economic conditions in a country. Perhaps more importantly, it seems very plausible that changes in a country's unemployment rate could impact a person's (subjective) financial situation. We could perhaps think of the individual measure as being somewhat 'downstream' or 'post-treatment' of the country level measure!
+
+One way to see this is to look at the relationship between country unemployment rate and country average scores for personal financial situation. @fig-econ does just this with a negative relationship emerging: people are, on average, less satisfied with their personal financial situation in places with more unemployment.
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Correlation between Macro and Micro Economic Indicators"
+#| label: fig-econ
+
+#Get the aggregated data
+econ_data <- wvs |> 
+  group_by(country_name) |> 
+  summarize(personal = mean(Q50, na.rm = T), 
+            country = mean(unemploytotal, na.rm =T))
+
+#Correlation between them using the correlation package
+econ_corr <- correlation::correlation(econ_data)
+
+#Plot
+ggplot(econ_data, aes(x = country, y = personal)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm') + 
+  labs(x = "Country Unemployment Rate",
+       y = "Country Average Personal Financial Situation") + 
+  theme_minimal() + 
+  scale_y_continuous(limits = c(1,10), 
+                     breaks = c(1:10)) + 
+  geom_text(x = 3, 
+            y = 8, 
+            label = paste("Correlation =", 
+                              round(econ_corr[1,3],2), 
+                              sep = " "))
+```
+
+This brings us to the subject of this sub-section: to "center" or not to "center". Centering simply means subtracting a constant value from each observation.[^analysis_clustering-10] One way we could center our data is by subtracting a variable's mean score from each observation - this is called "grand mean centering". A different type of centering is perhaps more common and useful in the context of a multi-level: subtracting the *cluster* mean from each observation within that cluster. This can be useful in a multi-level model. Variation on the centered individual-level variable can only represent within-cluster variation on that variable.
+
+[^analysis_clustering-10]: You may remember this as part of *standardizing* a variable wherein we subtract the mean from each observation and then divide by the variable's standard deviation. In so doing we create a variable with a mean of 0 and a standard deviation of 1.
+
+Here is how we can do this in the present instance by using `group_by()`:
+
+```{r}
+#Center the variable within country
+wvs <- wvs |> 
+  group_by(country_name) |> 
+  mutate(personal_country_mean = mean(Q50, na.rm = T)) |> 
+  ungroup() |> 
+  mutate(personal_center = Q50 - personal_country_mean)
+
+```
+
+Let's compare the original variable to the centered one:
+
+```{r}
+wvs |> 
+  select(Q50, personal_center) |> 
+  psych::describe()
+```
+
+Centering the variable has not meaningfully affected its variance (the standard deviations are basically the same). It has basically just shifted people over so that they vary around a mean of 0.
+
+```{r}
+ggplot(wvs, aes(x = personal_center, y =Q50)) + 
+  geom_point() + 
+  facet_wrap(~ country_name) + 
+  labs(x = "Centered Financial Satisfaction", 
+       y = "Original Scale") + 
+  theme_minimal()
+```
+
+Let's see how this affects our results:
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| tbl-cap: "Comparison with Centered IV"
+#| label: tbl-comparison1
+
+#Fit model with centered variable
+mixed_both_center <- lmer(Q252 ~ personal_center + unemploytotal + 
+                            (1 | country_name), data = wvs)
+
+#Table
+#List
+model_comps1 <- list(
+  "Indiv w/FE" = model_all_indiv, 
+  "Aggregated" = model_aggregated, 
+  "Multi-level" = mixed_indiv, 
+  "Multi-Level" = mixed_agg, 
+  "Multi-Level" = mixed_both, 
+  "Multi-Level" = mixed_both_center)
+
+#Table with some flextable formatting
+model_comps_table1 <- modelsummary(model_comps1, 
+             estimate = "{estimate}{stars}\n{std.error}", 
+             statistic = NULL, 
+             gof_map = c("nobs", "r.squared", "adj.r.squared", 
+                         "r2.marginal", "r2.conditional"),
+             vcov = c(~ country_name, "classical", "classical", 
+                      "classical", "classical", "classical"), 
+             coef_map = c(
+               "(Intercept)" = "Intercept", 
+               "Q50" = "Personal Financial Situation", 
+               "personal_center" = "Personal Financial Situation (Centered)",
+               "unemploy" = "Country Unemployment Rate", 
+               "unemploytotal" = "Country Unemployment Rate"), 
+             notes = list("Notes: OLS or multi-level model coefficients with SEs in parentheses. Country fixed effect estimates omitted from FE model. Clustered standard errors not taken into account in the first model.", 
+                          "* p < 0.05; ** p < 0.01; *** p < 0.001"),
+             output = 'flextable')
+             
+             
+model_comps_table1 |> 
+  hline(i = nrow_part(model_comps_table1) - 3) |>
+  align(i = 1:nrow_part(model_comps_table1), j = 2:ncol_keys(model_comps_table1), align = 'center') |>
+  align(align = 'center', part = 'header') |> 
+  autofit()
+
+```
+
+We now get our original estimates back!
+
+Should you center a lower-level variable like this if you run a multi-level variable? This would make most sense to me if the lower-level variable is continuous in nature and there is a plausible case that the lower level variable is being affected by the higher order one.
+
+#### Interactions
+
+I began this broader section by recommend that you *not* use a multi-level model *unless* you want to examine an interaction between a variable measured at one level of analysis and a variable measured at another. In this example, for instance, you might want to examine whether the relationship between personal financial situation and the DV *varies* based on country context (e.g., maybe it's bigger when unemployment is high vs. low?). Alternatively, we might want to know whether the effects of unemployment vary based on individual level financial conditions. If that is the type of analysis that your hypothesis is setting up, then a multi-level model is most appropriate.[^analysis_clustering-11]
+
+[^analysis_clustering-11]: We could try fitting an `lm()` here with our two variables, their interaction term, and country fixed effects. However, this introduces some severe multicollinearity that can only be avoided by dropping a country-observation. In this example, for instance, R decided to drop observations from the United States in order to estimate the model.
+
+We include an interaction term in the model in the same way that we do so with `lm()` or `glm()` models, via a `*`. I will use the centered version of the personal finance variable in this example. Here are the results using both `summary()` and `parameters()` since the latter will show won't use scientific notation in this example (well, except for the very small interaction term!).[^analysis_clustering-12]
+
+[^analysis_clustering-12]: There is one element of the `summary()` output that I did not discuss: the "Correlation of Fixed Effects" stuff. I generally wouldn't worry too much about that. This [website](https://library.virginia.edu/data/articles/correlation-of-fixed-effects-in-lme4){target="_blank"} goes into what it means in more depth.
+
+```{r}
+#Mixed Model with interaction
+mixed_interaction <- lmer(Q252 ~ personal_center*unemploytotal + 
+                            (1 | country_name), data = wvs)
+
+#Results
+summary(mixed_interaction)
+parameters(mixed_interaction)
+```
+
+Here is a reminder about how to read coefficients in an interaction:
+
+-   `personal_center`: This tells us the estimated relationship between the personal financial situation variable and the DV *when unemployment = 0*. If we could observe countries where unemployment = 0, then we'd expect regime satisfaction to increase by 0.17 scale points, on average, for each one unit increase in financial situation. We do not observe any such countries, so we should be a bit careful about simply relying on this coefficient to interpret the model.
+-   `unemploytotal`: We centered the financial situation variable such that 0 = country mean. A one unit increase in unemployment when personal financial situation is at the mean level within a country is around -0.09 (so, increasing unemployment = decreasing average regime satisfaction).
+-   Interaction term: The interaction term is 0.0017 or 0.002 when rounding. We could use this to say two different things:
+    -   The effect for personal situation becomes more positive by 0.002 scale points with every one unit increase in unemployment. In other words, it seems like personal financial situation is more important in countries with more unemployment...but the interaction term is statistically insignificant (p = 0.1) at conventional levels so we cannot rule out the possibility that the slope for financial situation doesn't change when unemployment changes.
+    -   The effect of country unemployment becomes less negative by 0.002 scale points with each one unit increase in personal financial situation. I say less negative because the coefficient for `unemploytotal` is negative but the interaction term is positive. So, unemployment seems to matter less for those with more financial security...but again, not statistically significant.
+
+As always with interactions we should turn to predicted values or slope estimates to actually make sense of these results (with graphs of these values being an especially good idea):
+
+```{r}
+#| warning: false
+#| message: false
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-cap: "Predicted Values and AMEs from the Interaction Model"
+#| label: fig-interactions
+
+# The syntax below uses some R syntax that is a little bit more advanced
+# than taught in Statistics I and II. Basically, I'm storing the values 
+# I want to make predictions form in a data object and then 
+# directly accessing those values in other syntax calls, instead of writing them 
+# down and then manually entering them. 
+
+##Finding 1 SD < mean, mean, 1 SD > mean for the two variables
+#Uses psych::describe to create a dataframe with the mean and sd
+mean_data <- wvs |> 
+  select(personal_center, unemploytotal) |> 
+  psych::describe()
+
+#I use some base R notation here (the [] stuff) to pass the 
+#values from the mean_data df into a vector. I could do this manually
+#as well, e.g., unemploy_sdbelow <- 6.22 - 4.07, etc., but want to get on 
+#with it! See the R book on interactions for doing this 
+#manually
+
+personal_values <- c(mean_data[1,3] - mean_data[1,4], # mean - sd
+                     mean_data[1,3], #mean, 
+                     mean_data[1,3] + mean_data[1,4]) #mean + sd
+
+unemploy_values <- c(mean_data[2,3] - mean_data[2,4], #mean + sd
+                     mean_data[2,3], #mean, 
+                     mean_data[2,3] + mean_data[2,4]) #mean + sd
+
+## Predicted Values
+# Personal by Country
+#Also uses some base R stuff to simplify getting min to max values for
+#unemployment. 
+plot1 <- predictions(mixed_interaction, 
+            newdata = datagrid(personal_center = c(-6:6), 
+                               unemploytotal = unemploy_values)) |> 
+  mutate(unemploytotal = factor(unemploytotal, 
+                                labels = c("1 SD < Mean", 
+                                           "Mean", 
+                                           "1 SD > Mean"))) |>
+  ggplot(aes(x = personal_center, y = estimate, linetype = unemploytotal)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2) + 
+  labs(x = "(Centered) Personal Financial Situation", 
+       y = "Predicted Value", 
+       linetype = "Country Unemployment") + 
+  theme_bw() + 
+  theme(legend.position = "bottom")
+
+# Country by Personal
+plot2 <- predictions(mixed_interaction, 
+            newdata = datagrid(personal_center = personal_values, 
+                               unemploytotal = mean_data[2,8]:mean_data[2,9])) |> 
+  mutate(personal_center = factor(personal_center, 
+                                labels = c("1 SD < Mean", 
+                                           "Mean", 
+                                           "1 SD > Mean"))) |>
+  ggplot(aes(x = unemploytotal, y = estimate, linetype = personal_center)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2) + 
+  labs(x = "Country Unemployment Rate", 
+       y = "Predicted Value", 
+       linetype = "Personal Financial") + 
+  theme_bw() + 
+  theme(legend.position = "bottom")
+
+
+##Slopes
+plot3 <- avg_slopes(mixed_interaction, 
+                    variables = "personal_center", 
+                    by = "unemploytotal") |> 
+  ggplot(aes(x = unemploytotal, y = estimate)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), 
+              alpha = 0.2) + 
+  geom_hline(yintercept = 0, linetype = 'dashed', color = 'red') + 
+  labs(x = "Country Unemployment",
+       y = "AME for Personal Financial Situation") + 
+  theme_bw()
+ 
+plot4 <- avg_slopes(mixed_interaction, 
+           variables = "unemploytotal", 
+           by = "personal_center") |> 
+  ggplot(aes(x = personal_center, y = estimate)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), 
+              alpha = 0.2) +
+  geom_hline(yintercept = 0, linetype = 'dashed', color = 'red') + 
+  labs(x = "(Centered) Personal Financial Situation",
+       y = "AME for Country Unemployment") + 
+  theme_bw()
+ 
+#Combining
+plot3 + plot4 + plot1 + plot2
+
+```
+
+The top part of @fig-interactions show the average marginal effect of personal financial situation by unemployment (left) or unemployment by personal financial situation (right). We can see that the effect of a person's personal financial situation is expected to increase in size as we move from countries with less to countries with more unemployment...but the change is quite wee. Likewise, we the effect of country unemployment is more negative among those with very poor financial situations (e.g., around -4 or -5) than among those with better ones (e.g., around 4 or 5)...but the change in effect is very wee and there is a lot of uncertainty here. This is brought home further by the predicted values plots on the bottom where we get nearly parallel lines. It would be hard to see these results and say that macro and micro economic conditions interact!
+
+
