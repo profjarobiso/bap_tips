@@ -748,7 +748,8 @@ plot1 <- predictions(mixed_interaction,
        y = "Predicted Value", 
        linetype = "Country Unemployment") + 
   theme_bw() + 
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") + 
+  guides(linetype = guide_legend(nrow = 2))
 
 # Country by Personal
 plot2 <- predictions(mixed_interaction, 
@@ -765,7 +766,8 @@ plot2 <- predictions(mixed_interaction,
        y = "Predicted Value", 
        linetype = "Personal Financial") + 
   theme_bw() + 
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom")  + 
+  guides(linetype = guide_legend(nrow = 2))
 
 
 ##Slopes
@@ -800,4 +802,14 @@ plot3 + plot4 + plot1 + plot2
 
 The top part of @fig-interactions show the average marginal effect of personal financial situation by unemployment (left) or unemployment by personal financial situation (right). We can see that the effect of a person's personal financial situation is expected to increase in size as we move from countries with less to countries with more unemployment...but the change is quite wee. Likewise, we the effect of country unemployment is more negative among those with very poor financial situations (e.g., around -4 or -5) than among those with better ones (e.g., around 4 or 5)...but the change in effect is very wee and there is a lot of uncertainty here. This is brought home further by the predicted values plots on the bottom where we get nearly parallel lines. It would be hard to see these results and say that macro and micro economic conditions interact!
 
+#### Assumptions
 
+We can use some of our same old toosl to check assumptions for a linear mixed model (e.g., `resid_panel()` and `car::vif()`), although `car::avPlots()` will not work. You can find a walk through of how to check assumptions for these types of models via this helpful [guide](https://www.learn-mlms.com/12-module-12.html){target="_blank"}.
+
+### What about Logit Models? 
+
+The discussions above focus on situations where our DV is (assumed to be) continuous (interval/ratio) in nature. What about if our DV is binary? The same basic considerations apply:
+
+-   Is the relationship you're interested in testing something that varies at the lower level of aggregation (e.g., between individuals)? Then focus on a single cluster or use fixed effects.
+-   Is the relationship of interest primarily at the higher level of aggregation (e.g., between countries)? Then recode the DV to be 0/1, find the mean by cluster, and regress that on your predictor variables. The DV here would vary continuously between 0 and 1, so a linear regression model would likely be sufficient.
+-   Do you need or want a more complicated solution? Then you could fit a mixed effects/multi-level logistic model instead (see [here](https://stats.oarc.ucla.edu/r/dae/mixed-effects-logistic-regression/){target="_blank"})
