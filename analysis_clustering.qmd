@@ -806,7 +806,7 @@ The top part of @fig-interactions show the average marginal effect of personal f
 
 We can use some of our same old toosl to check assumptions for a linear mixed model (e.g., `resid_panel()` and `car::vif()`), although `car::avPlots()` will not work. You can find a walk through of how to check assumptions for these types of models via this helpful [guide](https://www.learn-mlms.com/12-module-12.html){target="_blank"}.
 
-### What about Logit Models? 
+### What about Logit Models?
 
 The discussions above focus on situations where our DV is (assumed to be) continuous (interval/ratio) in nature. What about if our DV is binary? The same basic considerations apply:
 

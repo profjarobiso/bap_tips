@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 16&nbsp; Heteroskedasticity and Robust Standard Errors</title>
+<title>Thoughts and Advice on Writing your BAP - 17&nbsp; Heteroskedasticity and Robust Standard Errors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_robust.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_robust.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -256,32 +256,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./analysis_discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Discussing Your Model Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./analysis_03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_pivot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_robust.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_clustering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -296,18 +302,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#our-model" id="toc-our-model" class="nav-link active" data-scroll-target="#our-model"><span class="header-section-number">16.1</span> Our Model</a></li>
-  <li><a href="#checking-the-assumption-and-finding-a-problem" id="toc-checking-the-assumption-and-finding-a-problem" class="nav-link" data-scroll-target="#checking-the-assumption-and-finding-a-problem"><span class="header-section-number">16.2</span> Checking the Assumption and Finding a Problem</a></li>
-  <li><a href="#what-can-we-do" id="toc-what-can-we-do" class="nav-link" data-scroll-target="#what-can-we-do"><span class="header-section-number">16.3</span> What Can We Do?</a></li>
+  <li><a href="#our-model" id="toc-our-model" class="nav-link active" data-scroll-target="#our-model"><span class="header-section-number">17.1</span> Our Model</a></li>
+  <li><a href="#checking-the-assumption-and-finding-a-problem" id="toc-checking-the-assumption-and-finding-a-problem" class="nav-link" data-scroll-target="#checking-the-assumption-and-finding-a-problem"><span class="header-section-number">17.2</span> Checking the Assumption and Finding a Problem</a></li>
+  <li><a href="#what-can-we-do" id="toc-what-can-we-do" class="nav-link" data-scroll-target="#what-can-we-do"><span class="header-section-number">17.3</span> What Can We Do?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_robust.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_robust.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-robust" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></h1>
+<h1 class="title"><span id="sec-robust" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></h1>
 </div>
 
 
@@ -374,8 +380,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You should check the classic assumptions of the statistical model that you are using in your paper after running it. One of the classic assumptions for an OLS model is homoskedasticity. Homoskedasticity occurs when the variance of the model’s residuals are are about the same across model predictions. If this assumption fails, then your standard errors will be “downwardly biased” (that is, “too small”). This may mean rejecting the null hypothesis of no effect when you actually shouldn’t reject the null.</p>
 <p>The Statistics II R materials discuss how to check this assumption in greater detail. This chapter provides some more tools for doing so. In addition, it discusses one potential tool you might use if you do find significant violations of this assumption.</p>
-<section id="our-model" class="level2 page-columns page-full" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="our-model"><span class="header-section-number">16.1</span> Our Model</h2>
+<section id="our-model" class="level2 page-columns page-full" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="our-model"><span class="header-section-number">17.1</span> Our Model</h2>
 <p>We need a model. I’ll use the same model as in the Statistics II example (but see my note below). Here, we regress a measure of political violence (<code>pve</code>) on a measure of a country’s level of democracy and a squared version of that democracy score to capture potential non-linearities in the relationship between democracy and violence. Here are the descriptive statistics for our DV and IV and then the model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Descriptive Statistics</span></span>
@@ -452,8 +458,8 @@ Type:  response </code></pre>
 </div>
 <p>The slope of a linear regression line is normally the same regardless of what value X takes on. However, the inclusion of the squared term relaxes this assumption. The slope is negative at at very low levels of polyarchy and then starts to peter out before becoming increasingly positive.</p>
 </section>
-<section id="checking-the-assumption-and-finding-a-problem" class="level2 page-columns page-full" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="checking-the-assumption-and-finding-a-problem"><span class="header-section-number">16.2</span> Checking the Assumption and Finding a Problem</h2>
+<section id="checking-the-assumption-and-finding-a-problem" class="level2 page-columns page-full" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="checking-the-assumption-and-finding-a-problem"><span class="header-section-number">17.2</span> Checking the Assumption and Finding a Problem</h2>
 <p>Okay, let’s check our homoskedasticity assumption. Recall that we can do this by looking at a plot of the model’s residuals against its predictions. Ideally we will see a random cloud of dots without any obvious pattern.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <em>Hetero</em>skedasticity, on the other hand, would commonly show up as some type of funnel shape as in the top left figure here:</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;If our DV was discrete (e.g., took on values 1 through 7), then we’d get a row of parallel dots.</p></div></div><p><img src="images/homo_hetero1.png" class="img-fluid"></p>
 <p>We can use the <code>resid_panel()</code> command from the <code>ggResidpanel</code> library to do this, as so:</p>
@@ -483,8 +489,8 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
 <p>The p-value here is well below 0.05, which is our standard metric for assessing statistical significance. We can thus reject the null hypothesis of homoskedasticity.</p>
 <p>One important note and caution about this test: it is sensitive to sample size much like any statistical significance test. In practice, this means that it becomes easier and easier to reject this null hypothesis with with more and more data in our model. However, our residuals are unlikely to be perfectly homoskedastic in actual data. We might thus find ourselves in situations where we can reject the null hypothesis of homoskedasticity but where there really isn’t a serious problem that we need to address. This is why we recommend focusing on the plot of residual values to see if there is a really noticeable trend there. The BP test can then be used to check one’s instincts.</p>
 </section>
-<section id="what-can-we-do" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="what-can-we-do"><span class="header-section-number">16.3</span> What Can We Do?</h2>
+<section id="what-can-we-do" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="what-can-we-do"><span class="header-section-number">17.3</span> What Can We Do?</h2>
 <p>We have found heteroskedasticity. That means we should be a bit careful with our claims of statistical significance. What can we do to address this issue?</p>
 <p>Heteroskedaticity implies that our model is making better predictions for some observations than others. Ideally, then, we should try and improve our model to address this imbalance. That could involve adding predictors or perhaps transforming our variables in some fashion.</p>
 <p>It is not always clear how exactly we should improve our model, however. One thing we could do in such a situation is to use what are known as “heteroskedastic-robust” or “<a href="https://en.wikipedia.org/wiki/Heteroskedasticity-consistent_standard_errors" target="_blank">heteroskedastic-consistent</a>” standard errors. These are standard errors that are calculated in a different way and which are more ‘robust’ to the violation of this assumption. Their use does not “fix” our problem - if heteroskedasticity is present due to a variable that is missing from our model, then using these SEs does not magically make our model better (or avoid the bias that the exclusion of the confounder introduces into our coefficient estimates). However, we could use this tool to probe whether our conclusions are robust to a more conservative test.</p>
@@ -514,12 +520,12 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_84350gmxp25fkebdhp4m</title>
+    <title>tinytable_vbhlab5lmojtk8lda322</title>
     <style>
-.table td.tinytable_css_5leatw3yfjdz9k2x203q, .table th.tinytable_css_5leatw3yfjdz9k2x203q {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_3yzvh54d7mbztowc1vjg, .table th.tinytable_css_3yzvh54d7mbztowc1vjg {    text-align: left; }
-.table td.tinytable_css_plmsg5mik8wnfiq0egzk, .table th.tinytable_css_plmsg5mik8wnfiq0egzk {    text-align: center; }
-.table td.tinytable_css_jen4httv4t41072hf8mn, .table th.tinytable_css_jen4httv4t41072hf8mn {    border-bottom: solid 0.05em black; }
+.table td.tinytable_css_sy8yt39ingp9eszkw9vz, .table th.tinytable_css_sy8yt39ingp9eszkw9vz {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_p9ioi4iiwvjgcm7gwh78, .table th.tinytable_css_p9ioi4iiwvjgcm7gwh78 {    text-align: left; }
+.table td.tinytable_css_h86qfbs6x541kwny3vft, .table th.tinytable_css_h86qfbs6x541kwny3vft {    text-align: center; }
+.table td.tinytable_css_kjqwj4t8a66562mk6rtw, .table th.tinytable_css_kjqwj4t8a66562mk6rtw {    border-bottom: solid 0.05em black; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -537,7 +543,7 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
 
   
     <div class="container">
-      <table class="table table-borderless" id="tinytable_84350gmxp25fkebdhp4m" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_vbhlab5lmojtk8lda322" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -589,12 +595,12 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
     </div>
 
     <script>
-      function styleCell_tinytable_qtxeperir2jufmaz9moh(i, j, css_id) {
-        var table = document.getElementById("tinytable_84350gmxp25fkebdhp4m");
+      function styleCell_tinytable_3i747khyvb04mrwpjwus(i, j, css_id) {
+        var table = document.getElementById("tinytable_vbhlab5lmojtk8lda322");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_84350gmxp25fkebdhp4m');
+        var table = document.getElementById('tinytable_vbhlab5lmojtk8lda322');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -602,8 +608,8 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_qtxeperir2jufmaz9moh(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_84350gmxp25fkebdhp4m");
+      function spanCell_tinytable_3i747khyvb04mrwpjwus(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_vbhlab5lmojtk8lda322");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -630,30 +636,30 @@ BP = 14.584, df = 2, p-value = 0.0006811</code></pre>
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(0, 0, 'tinytable_css_5leatw3yfjdz9k2x203q') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(0, 1, 'tinytable_css_5leatw3yfjdz9k2x203q') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(0, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(1, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(2, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(3, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(4, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(5, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(6, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(7, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(8, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(9, 0, 'tinytable_css_3yzvh54d7mbztowc1vjg') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(0, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(1, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(2, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(3, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(4, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(5, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(6, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(7, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(8, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(9, 1, 'tinytable_css_plmsg5mik8wnfiq0egzk') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(6, 0, 'tinytable_css_jen4httv4t41072hf8mn') })
-window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufmaz9moh(6, 1, 'tinytable_css_jen4httv4t41072hf8mn') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(0, 0, 'tinytable_css_sy8yt39ingp9eszkw9vz') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(0, 1, 'tinytable_css_sy8yt39ingp9eszkw9vz') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(0, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(1, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(2, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(3, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(4, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(5, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(6, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(7, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(8, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(9, 0, 'tinytable_css_p9ioi4iiwvjgcm7gwh78') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(0, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(1, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(2, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(3, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(4, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(5, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(6, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(7, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(8, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(9, 1, 'tinytable_css_h86qfbs6x541kwny3vft') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(6, 0, 'tinytable_css_kjqwj4t8a66562mk6rtw') })
+window.addEventListener('load', function () { styleCell_tinytable_3i747khyvb04mrwpjwus(6, 1, 'tinytable_css_kjqwj4t8a66562mk6rtw') })
     </script>
 
   
@@ -679,13 +685,13 @@ window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufm
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_zijneci9pzc9awjrl1ju</title>
+    <title>tinytable_mo2hh9rqa9b9i43tkhm3</title>
     <style>
-.table td.tinytable_css_1edjh0apkut03localv7, .table th.tinytable_css_1edjh0apkut03localv7 {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_ovi4vhiedih1u0xmhpke, .table th.tinytable_css_ovi4vhiedih1u0xmhpke {    text-align: left; }
-.table td.tinytable_css_m0ferbxqad3fzs8jdzsd, .table th.tinytable_css_m0ferbxqad3fzs8jdzsd {    text-align: center; }
-.table td.tinytable_css_ilgrsf3z6ekuqf7euixk, .table th.tinytable_css_ilgrsf3z6ekuqf7euixk {    text-align: center; }
-.table td.tinytable_css_k10mitk7207w1n4wymk6, .table th.tinytable_css_k10mitk7207w1n4wymk6 {    border-bottom: solid 0.05em black; }
+.table td.tinytable_css_n9t30zgekm9cpbmk36u1, .table th.tinytable_css_n9t30zgekm9cpbmk36u1 {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_wqu011sibjyzhbdt8jyu, .table th.tinytable_css_wqu011sibjyzhbdt8jyu {    text-align: left; }
+.table td.tinytable_css_5bitvattav0bo42mal8j, .table th.tinytable_css_5bitvattav0bo42mal8j {    text-align: center; }
+.table td.tinytable_css_gfc7fgl62rhwt51rhqq9, .table th.tinytable_css_gfc7fgl62rhwt51rhqq9 {    text-align: center; }
+.table td.tinytable_css_4yxa0b9qya00guwt8xqh, .table th.tinytable_css_4yxa0b9qya00guwt8xqh {    border-bottom: solid 0.05em black; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -703,7 +709,7 @@ window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufm
 
   
     <div class="container">
-      <table class="table table-borderless" id="tinytable_zijneci9pzc9awjrl1ju" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_mo2hh9rqa9b9i43tkhm3" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -765,12 +771,12 @@ window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufm
     </div>
 
     <script>
-      function styleCell_tinytable_c1j3xrn61qphpszqp3y1(i, j, css_id) {
-        var table = document.getElementById("tinytable_zijneci9pzc9awjrl1ju");
+      function styleCell_tinytable_hmfelxmu2e6412i69xdt(i, j, css_id) {
+        var table = document.getElementById("tinytable_mo2hh9rqa9b9i43tkhm3");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_zijneci9pzc9awjrl1ju');
+        var table = document.getElementById('tinytable_mo2hh9rqa9b9i43tkhm3');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -778,8 +784,8 @@ window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufm
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_c1j3xrn61qphpszqp3y1(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_zijneci9pzc9awjrl1ju");
+      function spanCell_tinytable_hmfelxmu2e6412i69xdt(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_mo2hh9rqa9b9i43tkhm3");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -806,42 +812,42 @@ window.addEventListener('load', function () { styleCell_tinytable_qtxeperir2jufm
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 0, 'tinytable_css_1edjh0apkut03localv7') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 1, 'tinytable_css_1edjh0apkut03localv7') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 2, 'tinytable_css_1edjh0apkut03localv7') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(1, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(2, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(3, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(4, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(5, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(7, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(8, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(9, 0, 'tinytable_css_ovi4vhiedih1u0xmhpke') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(1, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(2, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(3, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(4, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(5, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(7, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(8, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(9, 1, 'tinytable_css_m0ferbxqad3fzs8jdzsd') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(0, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(1, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(2, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(3, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(4, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(5, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(7, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(8, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(9, 2, 'tinytable_css_ilgrsf3z6ekuqf7euixk') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 0, 'tinytable_css_k10mitk7207w1n4wymk6') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 1, 'tinytable_css_k10mitk7207w1n4wymk6') })
-window.addEventListener('load', function () { styleCell_tinytable_c1j3xrn61qphpszqp3y1(6, 2, 'tinytable_css_k10mitk7207w1n4wymk6') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 0, 'tinytable_css_n9t30zgekm9cpbmk36u1') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 1, 'tinytable_css_n9t30zgekm9cpbmk36u1') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 2, 'tinytable_css_n9t30zgekm9cpbmk36u1') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(1, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(2, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(3, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(4, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(5, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(7, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(8, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(9, 0, 'tinytable_css_wqu011sibjyzhbdt8jyu') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(1, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(2, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(3, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(4, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(5, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(7, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(8, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(9, 1, 'tinytable_css_5bitvattav0bo42mal8j') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(0, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(1, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(2, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(3, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(4, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(5, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(7, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(8, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(9, 2, 'tinytable_css_gfc7fgl62rhwt51rhqq9') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 0, 'tinytable_css_4yxa0b9qya00guwt8xqh') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 1, 'tinytable_css_4yxa0b9qya00guwt8xqh') })
+window.addEventListener('load', function () { styleCell_tinytable_hmfelxmu2e6412i69xdt(6, 2, 'tinytable_css_4yxa0b9qya00guwt8xqh') })
     </script>
 
   
@@ -1489,12 +1495,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./analysis_pivot.html" class="pagination-link" aria-label="Reshaping Datasets">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./analysis_clustering.html" class="pagination-link" aria-label="Geographically Clustered/Nested Data">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 15&nbsp; Reshaping Datasets</title>
+<title>Thoughts and Advice on Writing your BAP - 16&nbsp; Reshaping Datasets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -256,32 +256,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./analysis_discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Discussing Your Model Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./analysis_03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_pivot.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_robust.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_clustering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -296,18 +302,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#wide-vs.-long-datasets" id="toc-wide-vs.-long-datasets" class="nav-link active" data-scroll-target="#wide-vs.-long-datasets"><span class="header-section-number">15.1</span> Wide vs.&nbsp;Long Datasets</a></li>
-  <li><a href="#from-wide-to-long-pivot_longer" id="toc-from-wide-to-long-pivot_longer" class="nav-link" data-scroll-target="#from-wide-to-long-pivot_longer"><span class="header-section-number">15.2</span> From Wide to Long: <code>pivot_longer()</code></a></li>
-  <li><a href="#from-long-to-wide-pivot_wider" id="toc-from-long-to-wide-pivot_wider" class="nav-link" data-scroll-target="#from-long-to-wide-pivot_wider"><span class="header-section-number">15.3</span> From Long to Wide: <code>pivot_wider()</code></a></li>
+  <li><a href="#wide-vs.-long-datasets" id="toc-wide-vs.-long-datasets" class="nav-link active" data-scroll-target="#wide-vs.-long-datasets"><span class="header-section-number">16.1</span> Wide vs.&nbsp;Long Datasets</a></li>
+  <li><a href="#from-wide-to-long-pivot_longer" id="toc-from-wide-to-long-pivot_longer" class="nav-link" data-scroll-target="#from-wide-to-long-pivot_longer"><span class="header-section-number">16.2</span> From Wide to Long: <code>pivot_longer()</code></a></li>
+  <li><a href="#from-long-to-wide-pivot_wider" id="toc-from-long-to-wide-pivot_wider" class="nav-link" data-scroll-target="#from-long-to-wide-pivot_wider"><span class="header-section-number">16.3</span> From Long to Wide: <code>pivot_wider()</code></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_pivot.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-reshaping-datasets" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></h1>
+<h1 class="title"><span id="sec-reshaping-datasets" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></h1>
 </div>
 
 
@@ -345,8 +351,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You will be working with data in your project. The data that you obtain from the World Values Survey, the Dutch National Election Studies, the Varieties of Democracy, and so on, will likely be “<a href="https://r4ds.had.co.nz/tidy-data.html" target="_blank">tidy</a>” data wherein columns represent variables and rows represent observations. These “tidy” datasets can nevertheless come in either of two “shapes” with potentially important implications for your analyses. This chapter unpacks this idea and discusses how you can move between “longer” and “wider” datasets.</p>
-<section id="wide-vs.-long-datasets" class="level2 page-columns page-full" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="wide-vs.-long-datasets"><span class="header-section-number">15.1</span> Wide vs.&nbsp;Long Datasets</h2>
+<section id="wide-vs.-long-datasets" class="level2 page-columns page-full" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="wide-vs.-long-datasets"><span class="header-section-number">16.1</span> Wide vs.&nbsp;Long Datasets</h2>
 <p>Let’s first get a handle on what is meant by “wide” and “long” datasets.</p>
 <p>The following dataset is a simplified version of the European Social Survey:</p>
 <div class="cell">
@@ -398,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is a “long” formatted dataset. The first column is again an identifier. In this case, the variable is named <code>country_name</code> and provides the name of each country in the dataset. The values here repeat. We can think of the observations in a “long” formatted dataset as a “dyad”.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> In this example, the dyad would be a “country-year” - our data includes observations on countries by year. A dyad could refer to something else though. For instance, suppose we ask respondents to evaluate multiple political parties; we could organize our dataset in a “long” format wherein each row provides a respondents evaluation of a distinct party (e.g., a respondent-party dyad).</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;We could perhaps have data with an even more complicated unit of analysis. Instead of countries, or country-years, perhaps we have party-country-years or something.</p></div></div><p>Most students in my BAP will use survey data. This type of data will generally be in a “wide” format unless, perhaps, the survey is a panel survey (e.g., the respondent is surveyed at multiple time points). In general, it will make the most sense to keep the data in that format. However, there are some situations wherein it may be useful to “reshape” the data (e.g., convert a wide dataset to a long dataset). This can facilitate some types of descriptive analyses and may be required for others. Likewise, you may have need to reshape a long dataset into a wider format. The remainder of this document will show you how to do this using two commands from the <code>tidyverse</code>: <code>pivot_longer()</code> and <code>pivot_wider()</code>.</p>
 </section>
-<section id="from-wide-to-long-pivot_longer" class="level2 page-columns page-full" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="from-wide-to-long-pivot_longer"><span class="header-section-number">15.2</span> From Wide to Long: <code>pivot_longer()</code></h2>
+<section id="from-wide-to-long-pivot_longer" class="level2 page-columns page-full" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="from-wide-to-long-pivot_longer"><span class="header-section-number">16.2</span> From Wide to Long: <code>pivot_longer()</code></h2>
 <p>Let’s consider a first use case where it may make sense to reshape our data as an example of how to do so. The ESS dataset above includes columns (variables) pertaining to whether the respondent reported performing various political actions. Here is an overview:</p>
 <div class="cell">
 <details class="code-fold">
@@ -776,7 +782,7 @@ No</td>
 </div>
 </div>
 <p>It does look like those with higher levels of education are more like to take these particular political acts. The difference is fairly small when we look at behaviors that are uncommon, but much larger with behaviors that are a bit more likely to be observed in general (e.g., boycotting). Of course, this doesn’t mean that education is <em>causing</em> these differences. Indeed, whether education causes political participation is something of a recent debate. We would thus want to move to a more fully specified model to more fully justify our claims.</p>
-<p>The foregoing can also be useful for making the same <em>type</em> of plot but for different variables. For instance, our <code>ess</code> dataset contains several measures of trust: trust in the country’s parliament (<code>trstprl</code>), trust in the legal system (<code>trstlgl</code>), trust in the police (<code>trstplc</code>), and trust in politicians (<code>trstplt</code>) on a scale ranging from 0 (no trust at all) to 10 (complete trust). . We could, for instance, provide a bar-graph showing the number (or even proportion) of respondents giving each response from 0-10. Instead of creating a plot for each variable separately and then using <code>patchwork</code> to combine them (as shown in <a href="analysis_04.html" class="quarto-xref"><span>Chapter 14</span></a>), we could do this all at once by using <code>tidy_longer()</code>. For instance:</p>
+<p>The foregoing can also be useful for making the same <em>type</em> of plot but for different variables. For instance, our <code>ess</code> dataset contains several measures of trust: trust in the country’s parliament (<code>trstprl</code>), trust in the legal system (<code>trstlgl</code>), trust in the police (<code>trstplc</code>), and trust in politicians (<code>trstplt</code>) on a scale ranging from 0 (no trust at all) to 10 (complete trust). . We could, for instance, provide a bar-graph showing the number (or even proportion) of respondents giving each response from 0-10. Instead of creating a plot for each variable separately and then using <code>patchwork</code> to combine them (as shown in <a href="analysis_04.html" class="quarto-xref"><span>Chapter 15</span></a>), we could do this all at once by using <code>tidy_longer()</code>. For instance:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -850,8 +856,8 @@ trstplt 0.05</code></pre>
 </div>
 <p>Pivoting from wide to long can be a useful strategy for your analyses. We have used it above to summarize multiple variables and then produce nice looking figures to communicate our results. Pivoting could also be useful in other contexts as well. It may be a pre-requisite for some types of analyses (e.g., the analysis of repeated measures data such as with panel data). It could also be useful as a prelude to more advanced analyses such as performing the same regression model on lots and lots of different subsets of our data (e.g., the same model for each country in a dataset) although that use is beyond the scope of this document (see <a href="https://r4ds.had.co.nz/many-models.html" target="_blank">here</a> for an example discussion).</p>
 </section>
-<section id="from-long-to-wide-pivot_wider" class="level2 page-columns page-full" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="from-long-to-wide-pivot_wider"><span class="header-section-number">15.3</span> From Long to Wide: <code>pivot_wider()</code></h2>
+<section id="from-long-to-wide-pivot_wider" class="level2 page-columns page-full" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="from-long-to-wide-pivot_wider"><span class="header-section-number">16.3</span> From Long to Wide: <code>pivot_wider()</code></h2>
 <p>We can move from long to wide as well. This is perhaps less useful overall. The main use case I can think of here focuses on situations where you want to compare across different values within one of the dyad columns.</p>
 <p>Let’s start with a simple example involving our <code>ess_long</code> data from above. Let’s take a quick look at the data again to remind ourselves what it looks like:</p>
 <div class="cell">
@@ -1703,12 +1709,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./analysis_04.html" class="pagination-link" aria-label="Combining Plots">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Combining Plots</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining Plots</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./analysis_robust.html" class="pagination-link" aria-label="Heteroskedasticity and Robust Standard Errors">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -25,6 +25,7 @@ book:
         - analysis_01.qmd
         - analysis_02.qmd
         - analysis_rscript.qmd
+        - analysis_discussion.qmd
         - analysis_03.qmd
         - analysis_04.qmd
         - analysis_pivot.qmd
