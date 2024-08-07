@@ -404,7 +404,7 @@ vdem_wider |>
 
 ```
 
-1.  This is one of a variety of helpful shortcuts for selecting variables based on the contents of variable names, including `ends_with()` and `starts_with()` See [this ](https://tidyselect.r-lib.org/reference/starts_with.html){target="_blank"}[^analysis_pivot-7]se, pretty stable is not *perfectly* stable.
+1.  This is one of a variety of helpful shortcuts for selecting variables based on the contents of variable names, including `ends_with()` and `starts_with()` See [this](https://tidyselect.r-lib.org/reference/starts_with.html){target="_blank"}[^analysis_pivot-7]se, pretty stable is not *perfectly* stable.
 
 [^analysis_pivot-7]: See [here](https://stackoverflow.com/questions/71602835/how-can-i-add-45-degree-line){target="_blank"} for where I found the syntax needed for the 45 degree line.
 

@@ -31,6 +31,7 @@ book:
         - analysis_pivot.qmd
         - analysis_robust.qmd
         - analysis_clustering.qmd
+        - analysis_mlogit.qmd
 
 format:
   html:

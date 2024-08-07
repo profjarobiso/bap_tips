@@ -211,4 +211,4 @@ In practice you will see both things done and sometimes even in the same model! 
 
 ## What should I do if my DV is categorical?
 
-If my DV had multiple categories that do not admit of an obvious ordering (e.g.: do you support the Labour Party, Conservative Party, or the Liberal Democrat Party), then a multinomial logit model would be most appropriate. A multinomial logit model is basically just a logit model but one designed for categorical variables with more than two categories. I'll give an example in **CHAPTER**.
+If my DV had multiple categories that do not admit of an obvious ordering (e.g.: do you support the Labour Party, Conservative Party, or the Liberal Democrat Party), then a multinomial logit model would be most appropriate. A multinomial logit model is basically just a logit model but one designed for categorical variables with more than two categories. I'll give an example in @sec-categorical-dvs .
