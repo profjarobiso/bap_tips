@@ -4,7 +4,7 @@ reference-location: margin
 toc-depth: 4
 ---
 
-# Geographically Clustered/Nested Data
+# Geographically Clustered/Nested Data {#sec-geographically-clusterednested-data}
 
 ```{r}
 #| message: false

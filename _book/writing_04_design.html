@@ -262,6 +262,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Categorical DVs</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_ologit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Ordinal DVs</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -341,7 +347,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="talking-about-models-and-control-variables" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="talking-about-models-and-control-variables"><span class="header-section-number">4.3.3</span> Talking about models and control variables</h3>
 <p>You should tell your reader how you are analyzing your DV.</p>
-<p>The first component of this discussion is a note regarding the specific type of statistical model that you are using and why you have chosen this one. This generally does not require very much elaboration as the type of analysis is going to be determined the nature of your DV (i.e., continuous DV = OLS, binary = logistic). So, a simple proviso is all most of you will need: “I use an [model] because my dependent variable is [scale]”. Of course, your specific project may use other types of data that may entail some other modeling strategy. Maybe your DV is categorical in which case you need something like a multinomial logistic model (see <strong>SECTION</strong> for more on this). Perhaps you have a “clustered” dataset, in which case you would need to do something to deal with that and make a note of what that “something” happens to be (see <strong>SECTION</strong> for more on this topic).</p>
+<p>The first component of this discussion is a note regarding the specific type of statistical model that you are using and why you have chosen this one. This generally does not require very much elaboration as the type of analysis is going to be determined the nature of your DV (i.e., continuous DV = OLS, binary = logistic). So, a simple proviso is all most of you will need: “I use an [model] because my dependent variable is [scale]”. Of course, your specific project may use other types of data that may entail some other modeling strategy. Maybe your DV is categorical in which case you need something like a multinomial logistic model (see <a href="analysis_mlogit.html" class="quarto-xref"><span>Chapter 19</span></a> for more on this). Perhaps you have a “clustered” dataset, in which case you would need to do something to deal with that and make a note of what that “something” happens to be (see <a href="analysis_clustering.html" class="quarto-xref"><span>Chapter 18</span></a> for more on this topic).</p>
 <p>You also need to tell the reader what else (besides your main IVs of interest) is going into this model to predict the DV. In particular, you need to tell the reader what you are controlling for in your model(s) and sufficient information about how they are coded/scaled so that your reader can understand your regression output. In general, I would recommend leaving the in-depth details about the measurement (e.g.&nbsp;question wording) and coding of control variables to an Appendix with a reference to this appendix in the main-text. It’s still a good idea to have some mention of the direction of the variable’s coding in the main text (e.g., higher values on the variable = ?) though. This information could be a simple bullet point list like so:</p>
 <ul>
 <li>Ideology

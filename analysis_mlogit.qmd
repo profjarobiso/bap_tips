@@ -41,13 +41,13 @@ You learned how run linear (OLS) and (binomial) logistic regression models in St
 
 Let's start with an initial question: what predicts variation in a person's partisan identification? I will use data from the 2020 American National Election Studies to consider this question. Respondents on this survey are asked two questions on this front with the nature of the second question depending on the answer to the first:
 
--    "Generally speaking, do you usually think of yourself as a Democrat, a Republican, an independent, or what?
+-   "Generally speaking, do you usually think of yourself as a Democrat, a Republican, an independent, or what?
 -   \[If answering Democrat or Republican on first question\] Would you call yourself a strong \[Democrat / Republican\] or a not very strong \[Democrat / Republican\]?
 -   \[If answering something other than Democrat/Republican on the first question\] Do you think of yourself as closer to the Republican Party or to the Democratic Party? (Response options: closer to Republican, closer to Democrat, Neither)
 
 The final question here is important because many Americans who say they are Independent do indeed 'lean' toward one of the parties and, more or less, act like partisans when it comes time to vote or evaluate partisan politics. They are essentially "stealth" partisans and so we don't want to just dump them into the "(pure) Independent" bucket.[^analysis_mlogit-1]
 
-[^analysis_mlogit-1]: If they walk like a partisan and talk like a partisan, then why don't they say they're a partisan on the first question? For some this may reflect ambivalence about the party due to either current events indicating poor performance by the party or, perhaps, *good* performance by the other side. [Lavine, Johnston, and Steenbergen](Lavine, H. G., Johnston, C. D., & Steenbergen, M. R. (2012). The Ambivalent Partisan: How Critical Loyalty Promotes Democracy (1st ed.). Oxford University Press. https://doi.org/10.1093/acprof:oso/9780199772759.001.0001){target="_blank"} provide a great account of how partisan ambivalence influences decision making. For others, meanwhile, this may occur because many people don't like "partisans" - they think they're conflict oriented weirdos and most normies would rather cut off their foot then have to spend one more minute talking about nasty ole politics with them. This leads some partisans to say they're Independent. [Klar and Krupnikov](https://catalogue.leidenuniv.nl/permalink/31UKB_LEU/18s393l/alma9938473447302711){target="_blank"} provide the definitive account here.
+[^analysis_mlogit-1]: If they walk like a partisan and talk like a partisan, then why don't they say they're a partisan on the first question? For some this may reflect ambivalence about the party due to either current events indicating poor performance by the party or, perhaps, *good* performance by the other side. [Lavine, Johnston, and Steenbergen](Lavine,%20H.%20G.,%20Johnston,%20C.%20D.,%20&%20Steenbergen,%20M.%20R.%20(2012).%20The%20Ambivalent%20Partisan:%20How%20Critical%20Loyalty%20Promotes%20Democracy%20(1st%20ed.).%20Oxford%20University%20Press.%20https://doi.org/10.1093/acprof:oso/9780199772759.001.0001){target="_blank"} provide a great account of how partisan ambivalence influences decision making. For others, meanwhile, this may occur because many people don't like "partisans" - they think they're conflict oriented weirdos and most normies would rather cut off their foot then have to spend one more minute talking about nasty ole politics with them. This leads some partisans to say they're Independent. [Klar and Krupnikov](https://catalogue.leidenuniv.nl/permalink/31UKB_LEU/18s393l/alma9938473447302711){target="_blank"} provide the definitive account here.
 
 Most analyses of American politics that use these measures will use a 7-pt scale constructed from them arraying people from "Strong Democrat" to "Strong Republican". Here is that the distribution of that variable looked like on the (raw, unweighted) 2020 ANES.
 
@@ -152,7 +152,7 @@ A linear model doesn't quite make sense here since our data is now categorical. 
 
 You can think of a multinomial logistic model as a type of extension of the binomial logistic model you learned about in Statistics II but one that is used for predicting membership in a categorical variable with more than two unordered categories. In a multinomial logistic model, we will specify a particular category of the DV as our 'reference category' and then use a logistic model to model the chances of being in each of the other categories of the DV *relative* to the chances of being in the reference category. This is kind of similar to what we do with categorical IVs (pick a reference category and compare every other category to it) only with the categorical variable serving as the DV rather than an IV.
 
-### Running the Model 
+### Running the Model
 
 Multinomial logistic models are not natively supported in R, so we will need a library with a multinomial-logistic model function in order to run such a model. There are actually a few such libraries out there, but I will use the `nnet` package. One advantage of this particular package relative to alternatives (such as the `mlogit` package) is that does not require us to reshape our data (see @sec-reshaping-datasets).
 
@@ -276,7 +276,7 @@ modelsummary(model_multinom,
              shape = model + term ~ response)
 ```
 
- `shape = model + term ~ response`
+`shape = model + term ~ response`
 
 :   This can basically be kept the same for your examples. It is telling `modelsummary()` to plot the results of the different models in separate columns. `response` refers to the categories of the DV. We would naturally want to clean this table up a bit (e.g,. rename variables, etc.), but I leave that out here for simplicity sake.
 
@@ -291,7 +291,7 @@ glance(model_multinom)
 performance::r2_nagelkerke(model_multinom)
 ```
 
-### Assumptions 
+### Assumptions
 
 First, we can investigate multicollinearity using the `vif()` package from the `car` library:
 
