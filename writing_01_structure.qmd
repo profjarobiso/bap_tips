@@ -17,12 +17,14 @@ Regardless of these points, there should be clear section headers to delineate w
 
 ![](images/headeres.png){.lightbox}
 
-A second consideration concerns length The thesis, as a whole, should be between 7,000-8,000 words (excluding the title page and references). A natural question might then be: how long should each portion be? There is no single correct answer to this question. What follows, then, are *highly* general recommendations that will need to be revised in relation to your particular research question and project. I would not get too attached to the specific numbers here - they were not created via any type of scientific process beyond me trying to eyeball my own writing, and past theses, and throwing out some plausible sounding ranges. However, the ranges may give some sense of the relative importance of each section.
+A second consideration concerns length The thesis, as a whole, should be between 7,000-8,000 words (excluding the title page and references). A natural question might then be: how long should each portion be?[^writing_01_structure-1] There is no correct answer to this question. What follows, then, are *highly* general recommendations that will need to be revised in relation to your particular research question and project. I would not get too attached to the specific numbers here - they were not created via any type of scientific process beyond me trying to eyeball my own writing, and past theses, and throwing out some plausible sounding ranges. However, the ranges may give some sense of the complexity of each section.
+
+[^writing_01_structure-1]: Indeed, I originally wrote this paragraph because I student asked me this question in an earlier BAP.
 
 1.  Introduction: \~500-1000 words
-2.  Literature Review and theory: \~1500-2500 words
-3.  Research Design: \~700-1500 words
+2.  Literature Review and theory: \~2000-2500 words
+3.  Research Design: \~1000-1500 words
 4.  Analyses/Results: \~700-1500 words
-5.  Conclusion: \~600-1500 words
+5.  Conclusion: \~800-1500 words
 
 Finally, I have a sixth item above: Appendix or Appendices. There are two types of appendix that it makes sense to include: (1) one that gives some additional details on how control variables are measured and operationalized in your model; (2) one that goes into detail about your assumption checks. I'll discuss these in sections to come. An important point: appendices do not count toward the word count of the thesis.

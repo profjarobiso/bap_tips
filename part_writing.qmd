@@ -11,9 +11,9 @@ That all is perhaps easier said than done and writing a *good* BA thesis will ta
 The goal of this section is to provide some things to think about as you go about the *writing* part of your project. In particular, I will...
 
 -   Discuss the basic structure of the thesis
--   Provide my thoughts on how to successfully execute each section and some pitfalls to avoid when doing so[^1]
+-   Provide my thoughts on how to successfully execute each section and some pitfalls to avoid when doing so[^part_writing-1]
 
-[^1]: And by "pitfalls", I sometimes mean "things that annoy me"
+[^part_writing-1]: And by "pitfalls", I sometimes mean "things that annoy me".
 
 ## Some Other Guides
 

@@ -2,9 +2,45 @@
 
 The foregoing chapters provide some thoughts on the each section of your thesis. In this final chapter, I will offer some more general thoughts on writing that apply to the whole thesis.
 
-## Outline first
+## Write! And Edit!
 
-In general, it is a good idea to begin with an outline of what you want to write. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences.
+You may be tempted to read and think, read and think, and so on, comfortable in the belief that you can just crank out a draft later on that will perfectly reflect your thoughts. Avoid this temptation. One of the functions of writing is to help us structure our own thoughts - to help us *figure out what we think* in the first place. Something that feels ordered in your thoughts can soon become disordered, confused, or unclear when you start to put those thoughts down on paper. So, start writing sooner than later and keep at it.
+
+One risk here, one that I know all too well, is to put too much pressure on these initial drafts - to avoid writing out of a fear that things *wont'* be perfect or good enough or clear enough. That is a category error as the science fiction writer Mary Robinette Kowal notes in this [Bluesky](https://bsky.app/profile/maryrobinette.bsky.social/post/3klk7yguydk24){target="_blank"} post:
+
+![](images/kowal.png)
+
+Of course, you do not want to just stop at your first draft. Your first draft might not be "shitty", but it is still one animated by a particular function that ultimately does not perfectly align with the function behind the writing of your final draft. The historian Kevin Kruse has a good take on this ([link to original Bluesky post](https://bsky.app/profile/kevinmkruse.bsky.social/post/3kyz3axp44k2r){target="_blank"}):
+
+![](images/kruse.png) So, start writing but also *edit, edit, edit* with an eye toward persuading your readers that you topic is interesting, that you know what you're talking about, etc.
+
+Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: [Simple Tricks for Better Prose](https://thesisstatement.substack.com/p/simple-tricks-for-better-prose){target="_blank"}; [Show and Tell](https://thesisstatement.substack.com/p/show-and-tell)
+
+1.  Proofreading for Clarity
+    -   Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.
+    -   Be wary of starting sentences with demonstratives that are not connected to a noun (e.g. "This results in", "These can affect," etc.). Sentences such as these invite the question: what is "this" again?
+    -   Avoid using the passive voice if you can help it.
+    -   Avoid beginning paragraphs with "However" or similar clauses. "However" implies a contrast (This thing, *however* this other thing)...but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you're setting yourself up against.
+    -   Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.
+2.  Proofreading for Content
+    -   Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.
+    -   One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of "but why?" questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.
+    -   Do not assume that you reader(s) know everything about the topic you're writing about.
+3.  Proofread for Grammar and Miscellaneous Errors
+    -   Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.
+
+## Outlines Can Help
+
+One thing that may help you in your writing process is an outline helping you identify the main point(s) that you want to advance and the order in which they should occur. You can then start filling in the blanks in the writing process.
+
+You could think of creating a rough outline prior to your very first draft to organize your thoughts before writing. Such an outline might be very rudimentary in nature. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences. For instance:
+
+-   Party cues are important
+-   Parties are distrusted
+-   Do cues matter less when distrust is salient?
+-   ...
+
+You might also use an outline (perhaps a more in-depth one) later in the writing process. Perhaps you've tried your hand at the introduction and theory sections via rough drafts (or perhaps via less structured writing, e.g., simple notes to yourself etc.) and now feel you have a good handle on what you want to argue and how. You might take a step back and collect your thoughts into a more elaborate outline prior to your next draft so that you can hit the ground running.
 
 A potential outline might look like this (although, the contents will obviously vary based on what you are writing):
 
@@ -27,7 +63,7 @@ A potential outline might look like this (although, the contents will obviously 
 
 In filling in the outline for each paragraph, be sure to keep in mind that each paragraph should be organized around a clear, and singular, point or idea. A goal of the thesis, and indeed all writing, is to clearly communicate ideas. One writing tic that may undermine this goal is over-stuffing paragraphs with too many ideas or points. Instead, focus each paragraph on a main idea with successive paragraphs building on each other to form an overarching argument or point. [Steven V. Miller's](http://svmiller.com/blog/2015/12/assorted-tips-students-research-papers/){target="_blank"} tip's for students page has an example of what I am talking about here that is quite useful.
 
-The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a *start* to writing - there are places where I have placeholders ("Final Sentence"), for instance - and its contents are rather barebones. But, it provided me with a start!
+The following is an example of what I mean. It stems from my efforts to puzzle through an idea I had that I was going to write up as a paper for a research workshop. As you can see, such an outline is a *start* to writing - there are places where I have placeholders ("Final Sentence"), for instance - and its contents are rather barebones (although more fully realized than the one above). But, it provided me with a start!
 
 -   Introduction
     -   Paragraph 1: Promises aren't believed
@@ -80,30 +116,11 @@ The following is an example of what I mean. It stems from my efforts to puzzle t
         -   Final sentence
     -   ...
 
-## Write and Edit, Edit, Edit...
-
-Having an outline in hand first helps clarify what you actually need to write...which is a handy thing to know before you start writing! However, it is, of course, just a first step. You then need to start writing and, important, *editing* and *rewriting* as well. Your first draft is almost certainly your worst draft in terms of clarity for the reader. Revisit your writing as much as possible. If possible, have someone read a draft of your thesis and ask them for feedback regarding anything that is unclear or doesn't make sense.
-
-Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: [Simple Tricks for Better Prose](https://thesisstatement.substack.com/p/simple-tricks-for-better-prose){target="_blank"}; [Show and Tell](https://thesisstatement.substack.com/p/show-and-tell)
-
-1.  Proofreading for Clarity
-    -   Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.
-    -   Be wary of starting sentences with demonstratives that are not connected to a noun (e.g. "This results in", "These can affect," etc.). Sentences such as these invite the question: what is "this" again?
-    -   Avoid using the passive voice if you can help it.
-    -   Avoid beginning paragraphs with "However" or similar clauses. "However" implies a contrast (This thing, *however* this other thing)...but that would suggest combining the two points into a single paragraph. Either do that or rewrite so that you quickly reintroduce the idea you're setting yourself up against.
-    -   Finally, make your sentences as short as possible. Doing so will force you to write exactly what you mean. It will also prevent complicated sentence structures from obscuring the meaning of your words. One way to accomplish this task: rewrite sentences with multiple clauses separated by commas and try to eliminate as many commas as possible by rearranging the clauses.
-2.  Proofreading for Content
-    -   Put yourself in the shoes of an intelligent reader who is unfamiliar with the topic. Make sure your argument will be clear to such a person and that you have not left any parts of the argument or evidence unstated or assumed them to be common knowledge.
-    -   One way to make sure you have done this is to write or revise as if you have a curious (and unusually literate) five-year-old child peering over your shoulder. Your evidence should speak to the series of "but why?" questions that this child will inevitably ask you. The logic and facts you present, what you cite from the sources you use, are the best tools you have to convince that child of your argument.
-    -   Do not assume that you reader(s) know everything about the topic you're writing about.
-3.  Proofread for Grammar and Miscellaneous Errors
-    -   Polish your writing. Make sure there are no grammatical mistakes, no typos (remember to look for missing words, too), no repetitive words/wordings, and no missing or incorrect citations.
-
 ## Some Other Questions and Topics
 
-can you use first person! Yes! "This paper argues" is nonsense. You argue! Own the argument.
+Can you use first person when writing your thesis? Yes! "This paper argues" is nonsense. You argue! Own your writing.
 
-avoid tables that overlap pages
+Avoid having tables that overlap pages (i.e., half of Table X is on p. 20 and the other half is on p. 21). Some tables might simply be too large for a single page. However, if the table can be fit on a single page, then do so. You can cut and paste text to flow around it.
 
 ## Use a reference manager to ease in-text citing and reference list building
 
