@@ -24,19 +24,19 @@ This can be especially useful at the very beginning of your research endeavors w
 
 For instance, here are the first several entries I found on Google Scholar when using the phrase "terrorist attacks" as my search term:
 
-![](images/scholar1.png)
+![](images/scholar1.png){.lightbox}
 
 The second article by Leonie Huddy seems a relevant, albeit now somewhat old, resource. Huddy is a prominent public opinion researcher and the article clearly concerns public opinion on the subject.[^doing_01_research-1] However, the other articles (save maybe the first one) look less relevant to my original question.
 
 [^doing_01_research-1]: This article is actually a specific type of research article that is published by the journal *Public Opinion Quarterly*, in which the authors canvass existing survey data to give a descriptive view of public polling concerning a topic.
 
-One thing I could do to better my odds of finding relevant work is to refine my search in various ways (choosing a different term, adding more keywords, asking for results from particular journals, etc.). Indeed, I would recommend doing just that if and when you engage in this type of research strategy: start with a keyword but limit your search to selected journals relevant to our class (see @sec-research-focus below). For instance, here I add "public opinion" to my query to try and weed out less relevant work and restrict my attention to the American Political Science Review:
+One thing I could do to better my odds of finding relevant work is to refine my search in various ways (choosing a different term, adding more keywords, asking for results from particular journals, etc.). Indeed, I would recommend doing just that if and when you engage in this type of research strategy: start with a keyword but limit your search to selected journals relevant to our class (see @sec-research-focus below). For instance, here I add "public opinion" to my query to try and weed out less relevant work and restrict my attention to the American Political Science Review to limit how many sources might come up:
 
-![](images/scholar2.png)
+![](images/scholar2.png){.lightbox}
 
 These results are much more helpful. I get a couple of articles not on the subject of terrorism (Hopkins, Chong and Druckman), but which may still be relevant for thinking about its effects in some way as they focus on how messages in the media influence public opinion. The other articles in this snapshot are much more directly focused on research relevant to my starting question.
 
-An open search of this type can turn up relevant work and, indeed, quite a lot of it if you're focused on a 'hot' topic. Of course, this strategy has its limitations. An open-ended search is a quite iterative process that may take some work to get you where you want to go (e.g., finding the right keywords, or searching through multiple relevant journals). It may thus be better at the very beginning (to get started) and towards the end (to see if you're missing anything) strategy.
+An open search of this type can turn up relevant work and, indeed, quite a lot of it if you're focused on a 'hot' topic. Of course, this strategy has its limitations. An open-ended search is a quite iterative process that may take some work to get you where you want to go (e.g., finding the right keywords, or searching through multiple relevant journals). It may thus be better most useful at the very beginning (to get started) and towards the end (to see if you're missing anything) of your literature search.
 
 ### Working Backwards, Working Forwards
 
@@ -60,17 +60,17 @@ Second, it says nothing about either the mechanics of actually going out and fin
 
 When you look up an article you will see something like the image below (staying with the terrorism example, but dropping the specific focus on the American Political Science Review):
 
-![](images/scholar3.png)
+![](images/scholar3.png){.lightbox}
 
 The first entry that comes up is an article by Davis and Silver that focuses on public opinion concerning the trade off between civil liberties and security introduced by new public policy passed into law after the September 11 terrorist attacks in the United States. There are two particularly relevant links here that I want to draw your attention to: "Related Articles" and "Cited by".
 
 Related articles is a list of articles Google has decided are related to this one. This may be a first way to delve into a topic in greater detail. In practice, you are relying on Google's algorithm to sort articles into more/less relevant...which may work fine in most cases. Indeed, in this case, Google lists a variety of other articles on this particular topic that all strike me as highly relevant for someone doing research on public opinion concerning terrorist attacks (albeit work with a decidedly US skew), as this snippet shows:
 
-![](images/scholar4.png)
+![](images/scholar4.png){.lightbox}
 
 Alternatively, one can click on "Cited by", which will naturally take you to a list of books and articles that cite the original research. Here, is a snippet of that screen for this article:
 
-![](images/scholar5.png)
+![](images/scholar5.png){.lightbox}
 
 "Cited by" is a powerful method for researching "forward". However, it may also pose some issues when starting with highly cited articles such as this one: lots of people cite it even when not working on terrorism! One can, of course, simply start skimming titles to find the relevant stuff, but that can be a bit time consuming if the originating article in question has a lot of citations.
 
@@ -78,7 +78,7 @@ Google Scholar has an additional trick up its sleeve that may help here owing to
 
 [^doing_01_research-3]: I also added "public opinion" to further refine the search. Of course, I could have added something even more specific here depending on my interests, e.g., "tolerance", or "prejudice", or "voter turnout" or whatever.
 
-![](images/scholar6.png)
+![](images/scholar6.png){.lightbox}
 
 Now I have a little bit more to work with. I have the original article and some leads on research that may be more relevant for my own research (assuming, here, that I may want to understand something about German public opinion in particular).
 
@@ -90,7 +90,7 @@ The second route is via Leiden University itself. You may have noticed in the im
 
 To take this second route you must first add the university as a resource in the settings in Google Scholar. First, access the website's settings page via three horizontal lines in the upper top-left corner of the website. Then go to "Library Links", search for "Leiden" in the search box, click on Leiden and select the box for "Universiteit Leiden". Hit save and then everything should be good to go.
 
-![](images/scholar7.png)
+![](images/scholar7.png){.lightbox}
 
 ### Connected Papers
 
@@ -102,11 +102,11 @@ Much like Google Scholar, you can search for a given article (using its title or
 
 Let's check out the Davis and Silver paper that we turned up in the section above. This is as easy as typing in the name and then double clicking on the article.
 
-![](images/conn.png){fig-align="center"}
+![](images/conn.png){.lightbox fig-align="center"}
 
 Here is what the output page looks like. You can double click on this image to zoom in on it. The graph can be directly accessed via [this link](https://www.connectedpapers.com/main/ead0a8227aff6c80930aaa320510ae74f133e25e/graph?utm_source=share_popup&utm_medium=copy_link&utm_campaign=share_graph){target="_blank"}.
 
-![](images/conn1.png)
+![](images/conn1.png){.lightbox}
 
 The middle part provides a graphical display of research in the form of a network. Here is how to read the graph:
 
@@ -118,11 +118,11 @@ There look to be three or so clusters of studies centered around Davis and Silve
 
 Connected Papers also provides two additional areas: "Prior Works" and "Derivative Works". The former tab provides an overview of the works that are highly cited by works displayed in the graph and which might thus be counted as "seminal works" within this field.
 
-![](images/conn2.png)
+![](images/conn2.png){.lightbox}
 
 We also have Derivative Works: papers not in the graph but which cite many of those that are.
 
-![](images/conn3.png)
+![](images/conn3.png){.lightbox}
 
 The nice thing about Connected Papers, in my opinion, is that it can reveal to you in one go a big (but manageable) chunk of a broader research literature. If I were writing a paper on terrorism and civil liberties (or, perhaps, one of those component concepts), for instance, most of the articles represented in the image with the graph above would indeed be the core of my literature review as they represent some of the most important work on this topic over the past two decades. I would not want to *stop* with them, but they would nevertheless provide me with a solid core with which to work. That might not be the case in other examples, of course. In this example I chose a highly influential article, for instance. Nevertheless, Connected Papers can help one get into a research literature on a topic quite quickly.
 
@@ -134,7 +134,7 @@ First, one could try and read everything you have found. This would certainly gi
 
 One natural shortcut is algorithmic and has been the topic of the sections above: use Google or Connected Paper's algorithm to identify a smaller subset of articles and then read through them. This isn't a bad idea. However, we don't necessarily know what goes into Google's decision making in deciding what is relevant. In addition, one might still need to use judgement to parse out relevant and irrelevant resources as I did in the example above regarding Connected Papers.
 
-A second cue you can use is prestige. This is a natural cue as humans use prestige all the time to decide whom to pay attention to and learn from. There are two relevant signals of prestige that one can look to here. First, one can look at citation counts. The Davis and Silver article from above, for instance, has been cited nearly 900 times, which is quite a bit for a single paper. That signals that many other researchers think this is an important article. This may create some potential biases though. The natural bias is temporal; recent articles will be cited less simply because they are more recent, so a citation based judgement rule may lead you away from important recent work. That bias, at least, can be rectified by going back to Google Scholar and looking for more recent work on the topic.
+A second cue you can use is prestige. This is a natural cue as humans use prestige all the time to decide whom to pay attention to and learn from. There are two relevant signals of prestige that one can look to here. First, one can look at citation counts. The Davis and Silver article from above, for instance, has been cited nearly 900 times, which is quite a bit for a single paper. That signals that many other researchers think this is an important article. This may create some potential biases though. One natural bias is temporal; recent articles will be cited less simply because they are more recent, so a citation based judgement rule may lead you away from important recent work. That bias, at least, can be rectified by going back to Google Scholar and looking for more recent work on the topic.
 
 A second signal of prestige is the journal in which the article is published. The [blog post](http://svmiller.com/blog/2014/11/how-to-do-a-literature-review/){target="_blank"} by Miller linked to at the beginning of this document discusses this strategy in some more detail. Here are the journals I'd think to be quite relevant for our class (with acronyms in parentheses):
 

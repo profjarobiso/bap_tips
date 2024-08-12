@@ -3,7 +3,7 @@ reference-location: margin
 code-annotations: hover
 ---
 
-# Ordinal DVs
+# Ordinal DVs {#sec-ordinal-dvs}
 
 ```{r}
 #| message: false

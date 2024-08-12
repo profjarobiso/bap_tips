@@ -160,7 +160,7 @@ Saying something about the substantive effect of a variable can be difficult as 
 
 ## Two Questions to Think About for Substantive Significance
 
-The foregoing is a recommendation about the *form* of how you discuss your results: remind the reader about what your hypothesis, indicate what evidence would be consistent with it in your model, tell us whether that evidence shows up (e.g., is the coefficient in the right direction and statistically significant, and then use predicted values to flesh out the meaning of that coefficient and particularly so in contexts where the coefficient is statistically significant). However, this still elides the question about whether the patterns you see are *meaningfully* or *substantively* significant or not. This is a difficult to answer question because the answer may be research question and contingent (e.g., a "small" effect could be meaningful in some contexts but not others). However, I think you should consider two questions on this front to try and structure your discussion and interpretations.
+The foregoing is a recommendation about the *form* of how you discuss your results: remind the reader about what your hypothesis, indicate what evidence would be consistent with it in your model, tell us whether that evidence shows up (e.g., is the coefficient in the right direction and statistically significant), and then use predicted values to flesh out the meaning of that coefficient and particularly so in contexts where the coefficient is statistically significant. However, this still elides the question about whether the patterns you see are *meaningfully* or *substantively* significant or not. This is a difficult to answer question because the answer may be research question and data contingent (e.g., a "small" effect could be meaningful in some contexts but not others). However, I think you should consider two questions on this front to try and structure your discussion and interpretations.
 
 First, what comparison in terms of X values do you want to call our attention to? In other words, if you're calculating predicted values or creating a predicted values plot, then what would a meaningful difference in X even be in your context?
 
@@ -172,7 +172,7 @@ Second, once you have thought through what a meaningful comparison would be and 
 
 -   Percent change and intuition
     -   One could use a [calculator](https://www.calculatorsoup.com/calculators/algebra/percent-change-calculator.php){target="_blank"} (or R as a calculator) to calculate the percentage change represented by a given comparison.
-    -   The predicted democracy score for a country with 0 female legislators is 0.53 while it is 0.77 for a country with the maximum observed value on this variable. That yields a percentage change of: $\frac{0.77 - 0.53)}{0.77} * 100 = 31.2\%$
+    -   The predicted democracy score for a country with 0 female legislators is 0.53 while it is 0.77 for a country with the maximum observed value on this variable. That yields a percentage change of: $\frac{0.77 - 0.53}{0.77} * 100 = 31.2\%$
     -   It's up to intuition, perhaps, from there: does a 31.2% change seem large? It does to me actually...although it's possible that the difference I've brought attention to here (maximum IV - minimum IV) might be unrepresentative. The third quartile for the Women MP variable is 19.5, for instance, so the maximum value seems like an outlier.
 -   Variation in the DV
     -   One could alternatively look at the difference in comparison to the variation in the DV.
@@ -188,7 +188,7 @@ The remaining sections walk through a few examples and discuss these issues furt
 
 ## OLS Model, Factor Predictor
 
-Let's begin with perhaps the simplest example: your main IV is a factor variable (i.e., a binary variable or a categorical variable converted into a factor in R).[^analysis_discussion-4] We'll use the example from above that features a binary indicator for whether a country was considered an autocracy in the year 1984 or a democracy in that year.
+Let's begin with perhaps the simplest example: your main IV is a factor variable (i.e., a binary variable or a categorical variable converted into a factor in R).[^analysis_discussion-4] We'll use the example from above that features a binary indicator for whether a country was considered an autocracy in the year 2006 or a democracy in that year.
 
 [^analysis_discussion-4]: If you're using SPSS, then you need to manually create the separate dummy variables and include the appropriate number of them in the model. You need to include k-1 dummies where k = the number of categories on the original variable. A variable with four categories (e.g., North, West, South, and East) would necessitate the inclusion of three dummy variables (e.g., `north` (0 = not North, 1 = North), `west` (0 = not West, 1 = West), and `south` (0 = not South, 1 = South).
 
@@ -205,7 +205,7 @@ Let's say that we have the following hypothesis: "Hypothesis 1: Countries consid
 
 [^analysis_discussion-6]: A note here: don't say that you have "proven" your hypothesis. We don't really do that. We may falsify them, but evidence consistent with our expectations do not mean that we have definitely proven our claims. Maybe our model is garbage, for instance. Maybe it only applies to our given context.
 
-The foregoing is a very nice discussion: it clearly delineates what the expectations are, what evidence would be consistent with them, and whether that is the case. However, I think we can go a bit further to flesh this out per earlier discussions. In particular, we might use the `predictions()` command to calculated average predicted values of the DV and then integrate them into our written discussion either directly or by a reference to an additional figure we create.
+The foregoing is a very nice discussion: it clearly delineates what the expectations are, what evidence would be consistent with them, and whether that is the case. However, I think we can go a bit further to flesh this out per earlier discussions. In particular, we might use the `predictions()` command to calculate average predicted values of the DV and then integrate them into our written discussion either directly or by a reference to an additional figure we create.
 
 Here are the predicted values for the two categories of this variable:
 
@@ -217,7 +217,7 @@ predvals <- predictions(m1,
 predvals
 ```
 
-And, here is them plotted out:
+And, here they are plotted out:
 
 ```{r}
 ggplot(predvals, aes(x = regime_type_2006, 
@@ -232,7 +232,7 @@ ggplot(predvals, aes(x = regime_type_2006,
   theme_minimal(16)
 ```
 
-These values may help us further communicate the substantive importance of this difference. On the one hand, the difference seems quite large when we consider it in relation to the theoretical range of the DV: 0-1. The difference between the two categories is thus around $\frac{1}{3}$ of the DV's scale.[^analysis_discussion-7] Or, we could compare this difference to the standard deviation of the DV (0.25): $\frac{0.31}{0.25} = 1.2$. What about qualitatively? The V-Dem scale ranges from 0-1 with higher values = more democratic regime, but the specific values (0.3, 0.7, etc.) are a bit abstract as to what they actually represent.[^analysis_discussion-8] Democracy score data from Freedom House and elsewhere is often measured on an interval scale and then categorized. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"} discuss doing so for the V-Dem measure used here and suggest the regimes must have at least a 0.5 on this `v2x_polyarchy` variable to be considered democratic. Based on this, we might say that 2006 classifications remain pretty stable or consistent: countries considered autocratic in 2006 remain autocratic (on average) while countries considered democratic in 2006 remain democratic (on average).
+These values may help us further communicate the substantive importance of this difference. On the one hand, the difference seems quite large when we consider it in relation to the theoretical range of the DV: 0-1. The difference between the two categories is thus around $\frac{1}{3}$ of the DV's scale.[^analysis_discussion-7] Or, we could compare this difference to the standard deviation of the DV (0.25): $\frac{0.31}{0.25} = 1.2$. What about qualitatively? The V-Dem scale ranges from 0-1 with higher values = more democratic regime, but the specific values (0.3, 0.7, etc.) are a bit abstract as to what they actually represent.[^analysis_discussion-8] Democracy score data from Freedom House and elsewhere is often measured on an interval scale and then categorized. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"} discuss doing so for the V-Dem measure used here and suggest that regimes must have at least a 0.5 on this `v2x_polyarchy` variable to be considered democratic. Based on this, we might say that 2006 classifications remain pretty stable or consistent: countries considered autocratic in 2006 remain autocratic (on average) given the predicted value is below 0.5, while countries considered democratic in 2006 remain democratic (on average) since the predicted value for this category is above 0.5.
 
 [^analysis_discussion-7]: In practice, this variable ranges from 0.015 to 0.908 since there are no perfect (non)democracies.
 
@@ -240,7 +240,7 @@ These values may help us further communicate the substantive importance of this 
 
 We might thus update our discussion to make some of these points salient. (Note: it might make sense to divide this into two paragraphs.)
 
-> I argued in Hypothesis 1 that countries considered autocratic in 2006 would remain less democratic in 2020 than countries considered democratic in 2006. Table 2 shows the results of my regression model where a negative coefficient for 2006 regime type would represent evidence consistent with H1. And, indeed, we see a negative and statistically significant (p \< 0.001) coefficient emerge for regime type. The difference between these countries is not just statistically significant, but also substantively meaningful. A difference of 0.31 scale points is around 1/3rd of the scale of the dependent variable. Figure 1, meanwhile, shows the predicted democracy score for each set of countries: 0.29 \[95% CI; 0.24, 0.34\] in 2006 autocracies and 0.60 \[0.57, 0.64\] in 2006 democracies. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"} recommend a score of 0.5 as a cut off point separating democracies from non-democracies on this measure. The results in Table 2 and Figure 1 thus indicate not just a different in degree, but also a difference in kind with previously autocratic countries remaining autocratic, on average, and previously democratic countries doing the same. Ultimately, the evidence in Table 2 is thus consistent with my expectations.
+> I argued in Hypothesis 1 that countries considered autocratic in 2006 would remain less democratic in 2020 than countries considered democratic in 2006. Table 2 shows the results of my regression model where a negative coefficient for 2006 regime type would represent evidence consistent with H1. And, indeed, we see a negative and statistically significant (p \< 0.001) coefficient emerge for regime type. The difference between these countries is not just statistically significant, but also substantively meaningful. A difference of 0.31 scale points is around 1/3rd of the scale of the dependent variable. Figure 1, meanwhile, shows the predicted democracy score for each set of countries: 0.29 \[95% CI; 0.24, 0.34\] in 2006 autocracies and 0.60 \[0.57, 0.64\] in 2006 democracies. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"} recommend a score of 0.5 as a cut off point separating democracies from non-democracies on this measure. The results in Table 2 and Figure 1 thus indicate not just a difference in degree, but also a difference in kind with previously autocratic countries remaining autocratic, on average, and previously democratic countries doing the same. Ultimately, the evidence in Table 2 is thus consistent with my expectations.
 
 ## OLS Model, Continuous Predictor
 
@@ -253,7 +253,7 @@ dem_models
 
 Let's say that we have the following hypothesis: "Hypothesis 1: Countries with greater female representation are more democratic than countries with less female representation, all else equal". We might begin our discussion as so:
 
-> I argued in Hypothesis 1 that countries female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerge for this variable. Each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, after adjusting for differences in country wealth and prior regime status. The evidence in Table 2 is thus consistent with my expectations.
+> I argued in Hypothesis 1 that countries female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerge for this variable. Each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, on the polyarchy scale after adjusting for differences in country wealth and prior regime status. The evidence in Table 2 is thus consistent with my expectations.
 
 Again, not bad. But, 0.005 seems awfully small. Is this actually a meaningful comparison?
 
@@ -286,7 +286,7 @@ ggplot(predvals_cont,
        x = "% Female MPs (2003)")
 ```
 
-The figure suggests a pretty sizable change in the DV moving across the full range of the IV. Our expectation among countries with 0% female legislators and mean/modal values on the control variables is 0.53 \[0.48, 0.58\], right around the 0.5 cut off discussed above. The expected values at the observed maximum of the IV is 0.77 \[0.67, 0.87\], more clearly democratic in nature. The difference between those values represents a 31% change, or a difference equivalent to around 1/3rd of the range of the DV, or a difference of around 0.96 standard deviations or so on the DV. This would indicate a pretty sizable difference.
+The figure suggests a pretty sizable change in the DV moving across the full range of the IV. Our expectation among countries with 0% female legislators and mean/modal values on the control variables is 0.53 \[95% CI: 0.48, 0.58\], right around the 0.5 cut off discussed above. The expected values at the observed maximum of the IV is 0.77 \[0.67, 0.87\], more clearly democratic in nature. The difference between those values represents a 31% change, or a difference equivalent to around 1/3rd of the range of the DV, or a difference of around 0.96 standard deviations or so on the DV. I think this would all indicate a pretty sizable difference.
 
 Including a plot like the one above into our paper would be a great way of fleshing out the meaning of our IV. However, is drawing attention to the difference between minimum and maximum values of this IV really the best comparison in this example? Consider again the distribution of the variable:
 
@@ -303,7 +303,7 @@ p2 +
 
 The maximum value here seems like a clear outlier. There is only one country at the maximum and the next closest values are at around 37 or so on the scale. The focus on the maximum - minimum might thus overstate the importance of this variable a bit.
 
-Comparing values at the minimum and maximum of a continuous IV may be an intuitive way of conveying the cumulative or total effect of the variable. But, per above, it might not always be appropriate if this change is uncommon or represents differences between outliers. An alternative tactic that you may observe in researcher is to focus on other indicators for "low" and "high" values on a scale that stop short at the very extremes. Common examples include:
+Comparing values at the minimum and maximum of a continuous IV may be an intuitive way of conveying the cumulative or total effect of the variable. But, per above, it might not always be appropriate if this change is uncommon or represents differences between outliers. An alternative tactic that you may observe in research is to focus on other indicators for "low" and "high" values on a scale that stop short at the very extremes. Common examples include:
 
 -   The 10th and 90th percentiles of the variable's distribution
 -   The 25th and 75th percentiles of the variable's distribution
@@ -326,18 +326,20 @@ quantile(demdata$Women2003,
 
 1.  Put the percentiles here, but as decimals (e.g., 10th percentile $\rightarrow$ 0.1, etc.).
 
-Let's say we think drawing attention to a "low" value of the 10th percentile (3.8% female MPs) and the 90th percentile (28.3%) would best convey the importance of our variable. I would still provide the corresponding full figure of predicted values from above, but I would supplement the text discussion with predicted values at these levels.
+Let's say we think drawing attention to a "low" value of the 10th percentile (3.8% female MPs) and a "high" value of the 90th percentile (28.3%) would best convey the importance of our variable. I would still provide the corresponding full figure of predicted values from above, but supplement the text discussion with predicted values at these levels.
 
 ```{r}
 predictions(m1, 
             newdata = datagrid(Women2003 = c(3.83, 28.3)))
 ```
 
-> I argued in Hypothesis 1 that countries female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerges for this variable such that each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, after adjusting for differences in country wealth and prior regime status. The evidence in Table 2 is thus consistent with my expectations.
+> I argued in Hypothesis 1 that female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerges for this variable such that each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, after adjusting for differences in country wealth and prior regime status.[^analysis_discussion-10] The evidence in Table 2 is thus consistent with my expectations.
 >
 > How important is the relationship between female representation and subsequent democracy scores? Figure 1 plots the democracy score we expect to observe across the range of female representation. The difference between predicted democracy scores at the maximum observed value for female representation (45.3%) and the observed minimum (0%) is quite substantial in nature (0.24 scale points or approximately one quarter of the range of the DV). However, the the maximum here is bit unrepresentative as only one country in the model has a female representation value above 40%. If we instead compare countries at the 90th (28.3% female representation) and 10th (3.83%) percentiles, then we'd expect to see a difference in democracy scores of 0.13 scale point on average (10th percentile: 0.55 \[95% CI: 0.51, 0.60\], 90th percentile: 0.68 \[0.63, 0.73\]). This still represents a fairly important difference. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"}, for instance, recommend using 0.5 as the cut off between democratic and non-democratic countries. Moving from a country with very little female representation to one with a comparatively high level (but equivalent values on the other predictor variables) thus represents a change from countries straddling the democracy/non-democracy line to ones that are more consistently democratic in nature.
 
-There is one final tool that may be relevant here. The discussion above notes the predicted value and its corresponding uncertainty. It also mentions the difference between predicted values. However, this discussion lacks any mention of uncertainty. We can use the `comparisons()` command in the `marginaleffects` package to accomplish this end (see [here](https://marginaleffects.com/vignettes/comparisons.html){target="_blank"} for a longer discussion).
+[^analysis_discussion-10]: I apparently use "And, indeed" a lot in these discussions. Maybe a writing tic to work on.
+
+There is one final tool that may be relevant here. The discussion above notes the predicted value and its corresponding uncertainty. It also mentions the difference between predicted values. However, this discussion lacks any mention of uncertainty regarding the difference in predicted values. We can use the `comparisons()` command in the `marginaleffects` package to accomplish this end (see [here](https://marginaleffects.com/vignettes/comparisons.html){target="_blank"} for a longer discussion).
 
 ```{r}
 example_comparison <- comparisons(m1, 
@@ -351,7 +353,7 @@ example_comparison <- comparisons(m1,
 
 `variable = list(Women2003 = c(3.83, 28.3)),`
 
-:   We can then specify which variable the comparison should be done for and the values on that variable we want to compare. In essence, the command will use this information to calculated predicted values at these two levels of the IV and then calculate the *difference* between them.
+:   We can then specify which variable the comparison should be done for and the values on that variable we want to compare. In essence, the command will use this information to calculate predicted values at these two levels of the IV and then calculate the *difference* between them (second value - first value).
 
 `newdata = 'mean')`
 
@@ -370,13 +372,13 @@ example_comparison
 
 The difference in predicted values here is 0.13 \[95% CI: 0.05, 0.21\] and statistically significant (p \< 0.001). This might be helpful information to convey in the written report:
 
-> I argued in Hypothesis 1 that countries female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerges for this variable such that each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, after adjusting for differences in country wealth and prior regime status. The evidence in Table 2 is thus consistent with my expectations.
+> I argued in Hypothesis 1 that female representation would be positively associated with democracy levels. Table 2 shows the results of my regression model where a positive coefficient for female representation would represent evidence consistent with H1. And, indeed, there is a positive and statistically significant (p \< 0.01) coefficient emerges for this variable such that each one percentage increase in female representation is associated with an increase of 0.005 scale points, on average, after adjusting for differences in country wealth and prior regime status. The evidence in Table 2 is thus consistent with my expectations.
 >
 > How important is the relationship between female representation and subsequent democracy scores? Figure 1 plots the democracy score we expect to observe across the range of female representation. The difference between predicted democracy scores at the maximum observed value for female representation (45.3%) and the observed minimum (0%) is quite substantial in nature (0.24 scale points or approximately one quarter of the range of the DV). However, the the maximum here is bit unrepresentative as only one country in the model has a female representation value above 40%. If we instead compare countries at the 90th (28.3% female representation) and 10th (3.83%) percentiles, then we'd expect to see a difference in democracy scores of 0.13 \[95% CI: 0.05, 0.21\] scale points on average (10th percentile: 0.55 \[95% CI: 0.51, 0.60\], 90th percentile: 0.68 \[0.63, 0.73\]). This still represents a fairly important difference. [Lührmann, Tannenberg, and Lindberg](https://www.cogitatiopress.com/politicsandgovernance/article/view/1214){target="_blank"}, for instance, recommend using 0.5 as the cut off between democratic and non-democratic countries. Moving from a country with very little female representation to one with a comparatively high level (but equivalent values on the other predictor variables) thus represents a change from countries straddling the democracy/non-democracy line to ones that are more consistently democratic in nature.
 
 ## Logistic Model
 
-The foregoing all goes for logistic regression but perhaps double so since logistic coefficients are basically uninterpretable on their own. We thus should be especially keen to use our model by calculated predicted probabilities and average marginal effects (i.e., the average change in the probability that Y = 1 given a one unit change in X). At the same time, a discussion of predicted probabilities might be helped here by the fact that 0.5 is a clear change in status: from less likely than not that Y= 1 to more likely than not.
+The foregoing all goes for logistic regression but perhaps double so since logistic coefficients are basically uninterpretable on their own. We thus should be especially keen to use our model by calculating predicted probabilities and average marginal effects (i.e., the average change in the probability that Y = 1 given a one unit change in X). At the same time, a discussion of predicted probabilities might be helped here by the fact that 0.5 is a clear change in status: from less likely than not that Y= 1 to more likely than not.
 
 ```{r}
 #| message: false
@@ -442,13 +444,13 @@ dem_tab_2
 3.  We then create the table but here we use the name of the object we created using `modelsummary_list` and which has the extra column from step 2.
 4.  And we include the Nagelkerke R2 like so.
 
-@tbl-dem-model1 is our example model here. The DV again focuses on democracy score data, but here dichotomized such that countries with a score of 1 saw a *decrease* in their democracy score between 2010 and 2020 and those with a score of 0 saw either an increase or no change at all. Three IVs are included: (1) the % of people using Facebook in the country as of 2013, (2) the corruption perception index for the country (higher = *less* perceived corruption, and (3) a binary indicator for whether the country has a compulsory voting system (=1) or not (=0).
+@tbl-dem-model1 is our example model here. The DV again focuses on democracy score data, but here dichotomized such that countries with a score of 1 saw a *decrease* in their democracy score between 2010 and 2020 and those with a score of 0 saw either an increase or no change at all. Three IVs are included: (1) the % of people using Facebook in the country as of 2013, (2) the corruption perception index for the country (higher = *less* perceived corruption), and (3) a binary indicator for whether the country has a compulsory voting system (=1) or not (=0).
 
 The coefficients here are on the log of the odds scale. We can use them to discuss the direction of the relationship but not the substance.
 
-Let's start with the compulsory voting measure. It has a positive coefficient, which indicates that countries with a compulsory voting system were more likely to see a decrease in democracy from 2010 to 2020, but this difference is not statistically significant so we cannot rule out the possibility of no difference on the DV between these categories. We could perhaps stop there as it were, i.e., simply note that we do not find a significant difference. Sometimes that is just fine in the paper. However, I think we should still calculate the predicted probability that DV = 1 (democratic decline) for both categories and their associated uncertainty in this instance. We only have 155 observations in the data. Meanwhile, very few countries are recorded as having a compulsory voting system of some type.[^analysis_discussion-10] Perhaps there is a meaningless expected difference between countries...or perhaps there is a large difference with lots of uncertainty.
+Let's start with the compulsory voting measure. It has a positive coefficient, which indicates that countries with a compulsory voting system were more likely to see a decrease in democracy from 2010 to 2020, but this difference is not statistically significant so we cannot rule out the possibility of no difference (or even a positive difference!) on the DV between these categories. We could perhaps stop there as it were, i.e., simply note that we do not find a significant difference. Sometimes that is just fine in the paper. However, I think we should still calculate the predicted probability that DV = 1 (democratic decline) for both categories and their associated uncertainty in this example. We only have 155 observations in the model. Meanwhile, *very few* countries are recorded as having a compulsory voting system of some type.[^analysis_discussion-11] Perhaps there is a meaningless expected difference between countries...or perhaps there is a large difference with lots of uncertainty.
 
-[^analysis_discussion-10]: This is a slight understatement. The data here comes from the `v2elcomvot` in the V-Dem data. This variable divided countries into four categories: No CV (n = 156), CV but without sanctions or sanctions are not enforced (n = 12), CV with enforced but minimal sanctions (n = 10), and Sanctions with considerable enforced sanctions (n = 1). Really, there are perhaps 11 countries, or perhaps even 1, with a true compulsory voting system.
+[^analysis_discussion-11]: This is a slight understatement. The data here comes from the `v2elcomvot` variable in the V-Dem dataset. This variable divided countries into four categories: No CV (n = 156), CV but without sanctions or sanctions are not enforced (n = 12), CV with enforced but minimal sanctions (n = 10), and Sanctions with considerable enforced sanctions (n = 1). Really, there are perhaps 11 countries, or perhaps even 1, with a true compulsory voting system.
 
 ```{r}
 table(demdata$compulsory_voting)
@@ -487,7 +489,9 @@ How might we write this up?
 
 > I argued in Hypothesis 1 that countries with a compulsory voting system should be less likely to experience democratic erosion. Table 1 provides the results from my logistic model testing this proposition where a negative coefficient for the compulsory voting indicator would be consistent with Hypothesis 1. Ultimately, I do not find evidence in line with my expectations. The coefficient for compulsory voting is *positive* rather than negative. It is also statistically insignificant (p = 0.85). The predicted probability of democracy scores decreasing is nearly the same in both sets of countries when covariates are set at their mean or mode (Compulsory Voting: 0.63 \[95% CI: 0.54, 0.72\]; No Compulsory Voting: 0.66 \[0.42, 0.84\]). The resulting average marginal effect of the variable is rather trivial in nature (0.02 \[-0.22, 0.26\]). Compulsory voting thus appears unrelated to democratic declines, a point that I discuss in further in the Conclusion.
 
-Let's turn to a continuous measure: the % of people using Facebook in the country as of 2013. Its coefficient is positive and statistically significant indicating that countries with more Facebook users were more likely to see a decrease in their democracy scores than countries with fewer Facebook users. We should be highly careful about saying this is a causal relationship of course - there are likely omitted variables here and, meanwhile, the DV is a change score from 2010 to 2020 and the IV is measured in 2013, so we likely cannot rule out the possibility that decreases in the 2010-2012 region led to more Facebook use!
+Let's turn to a continuous measure: the % of people using Facebook in the country as of 2013. Its coefficient is positive and statistically significant indicating that countries with more Facebook users were more likely to see a decrease in their democracy scores than countries with fewer Facebook users. We should be highly careful about saying this is a causal relationship of course - there are likely omitted variables here and, meanwhile, the DV is a change score from 2010 to 2020 and the IV is measured in 2013, so we likely cannot rule out the possibility that decreases in the 2010-2012 region led to more Facebook use![^analysis_discussion-12]
+
+[^analysis_discussion-12]: Or, perhaps, that Facebook's decisions about which markets to open in and prioritize was guided in some way by factors associated with democratic decline.
 
 This is a continuous variable. Here, I'd recommend including a plot of the predicted probabilities and then supplementing with a discussion in text, perhaps calling attention to "low" vs "high" comparisons of relevance/interest.
 
@@ -515,7 +519,7 @@ ggplot(predvals_facebook, aes(x = Facebook, y = estimate)) +
   scale_y_continuous(limits = c(0,1)) + 
   labs(x = "% Facebook Membership (2003)", 
        y = "Predicted Probability of Democratic Decline (2010-2020)") + 
-  ggpubr::theme_pubclean() #<1>
+  ggpubr::theme_pubclean() 
 ```
 
 1.  Uses a `ggplot()` theme contained in the `ggpubr` package. That package would need to be installed for the syntax to work. Just showing some different options here.

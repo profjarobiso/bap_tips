@@ -5,11 +5,11 @@ reference-location: margin
 
 # R Script Files {#sec-r-script-files}
 
-You used R Markdown files to create assignments in Statistics I and II. However, you may very likely be using R differently for your thesis: as the place where you perform your analyses with the write up then happening in a word processor (Microsoft Word, Google Docs, etc.). As such, you will likely be working in a R Script file rather than an R Markdown file. This chapter provides some thoughts on how best to set those script files up. It will make reference to an example R Script file that you can access via [this link](https://surfdrive.surf.nl/files/index.php/s/ffmaNaUFIkJgGme){target="_blank"}.
+You used R Markdown files to create assignments in Statistics I and II. However, you may be using R differently for your thesis: as the place where you perform your analyses with the write up then happening in a word processor (Microsoft Word, Google Docs, etc.). As such, you will likely be working in a R Script file rather than an R Markdown file. This chapter provides some thoughts on how best to set those script files up. It will make reference to an example R Script file that you can access via [this link](https://surfdrive.surf.nl/files/index.php/s/ffmaNaUFIkJgGme){target="_blank"}.
 
 ## Suggested Structure
 
-I would recommend structuring the R Script file with different sections that build on one another. The logic behind this ordering is based on the discussion in @sec-analysis-steps. For instance:
+I would recommend structuring the R Script file with different sections that build on one another. The logic behind this ordering is based on the discussion in @sec-analysis-steps.
 
 -   Header Information
     -   It is nice to start with some header information indicating what the contents of the file are for. You are probably going to have a single script file for your project so this can be as simple as providing a short description such as "BAP - Data Analysis Script by NAME". If you had multiple files (e.g., one for data cleaning, one for one type of analysis, one for another) then you could help keep things straight for yourself and others by having that information in the header (e.g., "Data Cleaning Script" or "Regression Model Analyses").

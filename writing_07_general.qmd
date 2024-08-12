@@ -6,15 +6,17 @@ The foregoing chapters provide some thoughts on the each section of your thesis.
 
 You may be tempted to read and think, read and think, and so on, comfortable in the belief that you can just crank out a draft later on that will perfectly reflect your thoughts. Avoid this temptation. One of the functions of writing is to help us structure our own thoughts - to help us *figure out what we think* in the first place. Something that feels ordered in your thoughts can soon become disordered, confused, or unclear when you start to put those thoughts down on paper. So, start writing sooner than later and keep at it.
 
-One risk here, one that I know all too well, is to put too much pressure on these initial drafts - to avoid writing out of a fear that things *wont'* be perfect or good enough or clear enough. That is a category error as the science fiction writer Mary Robinette Kowal notes in this [Bluesky](https://bsky.app/profile/maryrobinette.bsky.social/post/3klk7yguydk24){target="_blank"} post:
+One risk here, one that I know all too well, is to put too much pressure on these initial drafts - to avoid writing out of a fear that things *won't* be perfect or good enough or clear enough. That is a category error as the function of the first draft (or drafts) is to give you a space to be *imperfect* as the science fiction writer Mary Robinette Kowal notes in this [Bluesky](https://bsky.app/profile/maryrobinette.bsky.social/post/3klk7yguydk24){target="_blank"} post:
 
 ![](images/kowal.png)
 
-Of course, you do not want to just stop at your first draft. Your first draft might not be "shitty", but it is still one animated by a particular function that ultimately does not perfectly align with the function behind the writing of your final draft. The historian Kevin Kruse has a good take on this ([link to original Bluesky post](https://bsky.app/profile/kevinmkruse.bsky.social/post/3kyz3axp44k2r){target="_blank"}):
+Of course, you do not want to just stop at your first draft. Your first draft might not be "shitty", but it is still one animated by a particular function that ultimately does not perfectly align with the goals of your final draft. The historian Kevin Kruse has a good take on this ([link to original Bluesky post](https://bsky.app/profile/kevinmkruse.bsky.social/post/3kyz3axp44k2r){target="_blank"}):
 
-![](images/kruse.png) So, start writing but also *edit, edit, edit* with an eye toward persuading your readers that you topic is interesting, that you know what you're talking about, etc.
+![](images/kruse.png)
 
-Here is some advice for the editing process. Musgrave and Davis provide additional points of value in the following blog posts: [Simple Tricks for Better Prose](https://thesisstatement.substack.com/p/simple-tricks-for-better-prose){target="_blank"}; [Show and Tell](https://thesisstatement.substack.com/p/show-and-tell)
+So, start writing but also *edit, edit, edit* with an eye toward persuading your readers that you topic is interesting, that you know what you're talking about, etc.
+
+Here is some advice for the editing process. Musgrave and Davis provide additional points of instruction in the following blog posts: [Simple Tricks for Better Prose](https://thesisstatement.substack.com/p/simple-tricks-for-better-prose){target="_blank"}; [Show and Tell](https://thesisstatement.substack.com/p/show-and-tell)
 
 1.  Proofreading for Clarity
     -   Read the entire paper, checking for any awkward or unclear passages. For any such passage that you find, ask yourself what point you want it to convey. Write the point as if you were explaining it to a friend. Then revise to make it formal.
@@ -31,7 +33,7 @@ Here is some advice for the editing process. Musgrave and Davis provide addition
 
 ## Outlines Can Help
 
-One thing that may help you in your writing process is an outline helping you identify the main point(s) that you want to advance and the order in which they should occur. You can then start filling in the blanks in the writing process.
+One thing that may help you in your writing process is an outline wherein you identify the main point(s) that you want to advance and the order in which they should occur. You can then start filling in the blanks in the writing process.
 
 You could think of creating a rough outline prior to your very first draft to organize your thoughts before writing. Such an outline might be very rudimentary in nature. This will let you start to feel out your argument, and flexibly revise it, without the pressure of having to compose perfect sentences. For instance:
 
@@ -40,9 +42,7 @@ You could think of creating a rough outline prior to your very first draft to or
 -   Do cues matter less when distrust is salient?
 -   ...
 
-You might also use an outline (perhaps a more in-depth one) later in the writing process. Perhaps you've tried your hand at the introduction and theory sections via rough drafts (or perhaps via less structured writing, e.g., simple notes to yourself etc.) and now feel you have a good handle on what you want to argue and how. You might take a step back and collect your thoughts into a more elaborate outline prior to your next draft so that you can hit the ground running.
-
-A potential outline might look like this (although, the contents will obviously vary based on what you are writing):
+You might also use an outline (perhaps a more in-depth one) later in the writing process. Per above, it can be a good idea to simply start writing and get some thoughts on the page. You might take a step back and collect your thoughts into a more elaborate outline prior to your next draft so that you can hit the ground running. A potential outline along these lines might look like this (although, the contents will obviously vary based on what you are writing):
 
 1.  Introduction
     -   First Paragraph: Main point
