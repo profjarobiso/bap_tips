@@ -66,7 +66,7 @@ modelsummary(model_list,
 3.  Only include N, R^2^ , and Adjusted R^2^ in the table as goodness of fit statistics
 4.  Give informative labels for your variables
 
-The table above provides the coefficients from each model and then, underneath them, the coefficient's standard error. Here is my pet peeve: `modelsummary()` does not include the coefficient and SE in the same cell of the table, which can lead to situations where you get extra spacing between the coefficient and standard error. We can see this above with the "Percentage Female Legislators (2003)" and "Facebook Use (proportion of population)" variables.
+The table above provides the coefficients from each model and then, underneath them, the coefficient's standard error. Here is my pet peeve: `modelsummary()` does not include the coefficient and SE in the same cell of the table, which can lead to situations where you get extra spacing between the coefficient and standard error when the variable label takes up more than one line in its cell. We can see this above with the "Percentage Female Legislators (2003)" and "Facebook Use (proportion of population)" variables.
 
 There is nothing *wrong* about the output above. I just think it looks kind of ugly. We could perhaps avoid it by specifying a shorter label for the two variables...but that would involve some trial and error to get things right and shortening the label might make it harder to understand the table. But, thankfully, there is another way!
 
@@ -104,7 +104,7 @@ Here is what changed:
 
 `estimate = "{estimate}{stars}\n({std.error})"`
 
-:   This is the big change. The default behavior of `modelsummary` is to present the coefficients from the regression model, which are stored in a column named `estimate`. Here, we are overriding that default behavior by explicitly specifying what should be in the cell - this is done via the information in the curly brackets. We are telling the command to first plot the coefficient estimate (`{estimate}`), and then symbols for statistical significance (`{stars}`). We then tell the command to create a new line in the cell (`\n`) and to provide the standard errors surrounded by parentheses (`({std.error})`). This makes sure that everything is presented in the same cell, which will make sure that we do not get any spacing between the coefficient and standard error, regardless of how long the variable labels happen to be.
+:   This is the big change. The default behavior of `modelsummary` is to present the coefficients from the regression model, which are stored in a column named `estimate`. In essence, the default option is something like: `estimate = {estimate}` . Here, we are overriding that default behavior by explicitly specifying what should be in the cell - this is done via the information in the curly brackets. We are telling the command to first plot the coefficient estimate (`{estimate}`), and then symbols for statistical significance (`{stars}`). We then tell the command to create a new line in the cell (`\n`) and to provide the standard errors surrounded by parentheses (`({std.error})`). This makes sure that everything is presented in the same cell, which will make sure that we do not get any spacing between the coefficient and standard error, regardless of how long the variable labels happen to be.
 
 `statistic = NULL`
 
@@ -120,7 +120,7 @@ Here is what changed:
 
 [^analysis_03-1]: Normally this would be done at the start of the R script with the other packages.
 
-There is one other step I would take here. It is probably not noticeable above, but the columns listing the coefficients are not centered. We can, of course, export the table to Word and then center it there, but I'm going to handle this all in one go via syntax. In addition, the horizontal line separating "Num.Obs" and the coefficients above it does not always get printed out when exporting to Word, so I'll add some syntax to make sure that happens. These steps are optional since you could do them manually later.
+There is one other step I would take here. It is probably not noticeable above, but the columns listing the coefficients are not centered. We can, of course, export the table to Word and then center it there, but I'm going to handle this all in one go via syntax from the `flextable` package. In addition, the horizontal line separating "Num.Obs" and the coefficients above it does not always get printed out when exporting to Word when using the syntax above, so I'll add some syntax to make sure that happens. These steps are optional since you could do them manually later.
 
 ```{r}
 # Save the modelsummary results to an object

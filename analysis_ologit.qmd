@@ -81,8 +81,10 @@ coef_names <- c( #<10>
 You learned how run linear (OLS) and (binomial) logistic regression models in Statistics II. These models are appropriate for continuous and binary dependent variables. What if your DV is *ordinal* in nature, however? I discussed this question in @sec-some-practical-questions where I suggested there are three basic possibilities:
 
 1.  Just run and interpret and OLS model
-2.  Use an *ordinal logistic* model instead
+2.  Use an *ordinal logistic* model instead[^analysis_ologit-1]
 3.  Run and interpret the OLS model, put an ordinal logistic model in an appendix (the "cover your bases" strategy)
+
+[^analysis_ologit-1]: I will be using "ordered logistic" and "ordinal logistic" interchangeably in this chapter.
 
 This chapter focuses on how to run an interpret an ordinal logistic model in case you wish to go down either the 2nd or 3rd pathways.
 
@@ -94,9 +96,9 @@ I'll use data from the 2020 American National Elections Study for this example. 
 table(anes$interest)
 ```
 
-Let's say we are interested in the following research question: do people who trust the news media report more interest in politics than those that do not trust the news media?[^analysis_ologit-1] The ANES also asked a question on this front: "In general, how much trust and confidence do you have in the news media when it comes to reporting the news fully, accurately, and fairly?". Respondents could indicate no trust at all (1 = "none") up to "a great deal" (=5) of trust. In practice, respondents were fairly non-trusting here.
+Let's say we are interested in the following research question: do people who trust the news media report more interest in politics than those that do not trust the news media?[^analysis_ologit-2] The ANES also asked a question on this front: "In general, how much trust and confidence do you have in the news media when it comes to reporting the news fully, accurately, and fairly?". Respondents could indicate no trust at all (1 = "none") up to "a great deal" (=5) of trust. In practice, respondents were fairly non-trusting here.
 
-[^analysis_ologit-1]: Interest is implicitly being caused by trust in the media here. That may not be the most plausible causal story here. We might instead wonder whether political interest *causes trust instead!* An interest in politics is something that seems to develop during adolescence after which time it becomes highly stable (see work by [Markus Prior](https://catalogue.leidenuniv.nl/permalink/31UKB_LEU/18s393l/alma9939360364702711){target="_blank"}). However, I'll ignore that possibility and simply assume that changes in news trust are at least plausibly exogeneous to changes in political interest. In this particular example, the news trust measure was asked on the pre-election wave of the ANES (sometime in August or September 2020) and the interest measure was asked on the post-election wave (sometime in November).
+[^analysis_ologit-2]: Interest is implicitly being caused by trust in the media here. That may not be the most plausible causal story here. We might instead wonder whether political interest *causes trust instead!* An interest in politics is something that seems to develop during adolescence after which time it becomes highly stable (see work by [Markus Prior](https://catalogue.leidenuniv.nl/permalink/31UKB_LEU/18s393l/alma9939360364702711){target="_blank"}). However, I'll ignore that possibility and simply assume that changes in news trust are at least plausibly exogeneous to changes in political interest. In this particular example, the news trust measure was asked on the pre-election wave of the ANES (sometime in August or September 2020) and the interest measure was asked on the post-election wave (sometime in November).
 
 ```{r}
 table(anes$news_trust)
@@ -116,9 +118,13 @@ modelsummary(model_ols,
 
 1.  See comment on the very first code chunk in this document.
 
-There is a positive and statistically significant relationship between our news trust variable and the DV. We expect the *average* value of the political interest variable to increase by around 0.08 scale points with each one unit increase in the news trust variable (holding "constant" the effects of the other predictors).
+There is a positive and statistically significant relationship between our news trust variable and the DV. We expect the *average* value of the political interest variable to increase by around 0.08 scale points with each one unit increase in the news trust variable (holding "constant" the effects of the other predictors). Here is a plot of the predicted values from this model: the average on the political interest variable we expect to observe for people at each level of the IV:
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
 predictions(model_ols, 
             newdata = datagrid(news_trust = c(1:5))) |> 
   ggplot(aes(x = news_trust, y = estimate)) + 
@@ -133,16 +139,16 @@ predictions(model_ols,
   
 ```
 
-1.  I'm using `geom_pointrange()` to plot the predicted value and its CI and then `geom_line()` to connect those values rather than `geom_line()` to plot the predictions and `geom_ribbon()` to plot the CIs. Why? Eh, I kind of like how it looks in this instance. There are only five values of the IV, for instance, so plotting each predicted value with a marker strikes me as easier to read in this instance.
+1.  I'm using `geom_pointrange()` to plot the predicted value and its CI and then `geom_line()` to connect those values rather than `geom_line()` to plot the predictions and `geom_ribbon()` to plot the CIs. Why? Eh, I kind of like how it looks in this instance. There are only five values of the IV, for instance, so plotting each predicted value with a marker strikes me as easier to read in this example. You should choose aesthetics to help you accurately and effectively communicate.
 2.  This allows me to override the default labels for each marker, which would simply be the numbers of each level of the variable (1,2,3...). Providing the labels is more informative here.
 
-What's the (potential) problem here? We are assuming that the DV is on an interval/ratio scale in which the difference between levels is equivalent in meaning. However, is the amount of change in political interest when moving from a response of "not at all interested" to "not very interested" *actually* the same as the degree of change in political interest when moving from "somewhat interested" to "very interested"? Giving each level a numeric value separated by one (1,2,3,4) implies so, but that is ultimately an assumption on our part. In practice, many researchers are willing to make this assumption. It is likely not problematic in situations where the ordered DV has 5 or more categories...but likely isn't always.
+What's the (potential) problem here? We are assuming that the DV is on an interval/ratio scale in which the difference between levels is equivalent in meaning. However, is the amount of change in political interest when moving from a response of "not at all interested" to "not very interested" *actually* the same as the degree of change in political interest when moving from "somewhat interested" to "very interested"? Giving each level a numeric value separated by one (1,2,3,4) implies so, but that is ultimately an assumption on our (and our model's) part. In practice, many researchers are willing to make this assumption. It is likely not problematic in situations where the ordered DV has 5 or more categories...but likely isn't always.
 
 ## Ordered/Ordinal Logistic Regression
 
 An alternative we could turn to if this concerned us is an ordered or ordinal logistic regression. Here, we are interested in modeling the probability that an observation is in a given category (e.g., "somewhat interested") rather than the preceding categories (e.g., "not at all" and 'not very" interested). We do so by modeling the log of the odds of this being the case, hence this being an ordered *logistic* regression model. See [this website](https://stats.oarc.ucla.edu/r/dae/ordinal-logistic-regression/){taret="_blank"} for additional information on this points.
 
-We cannot perform an ordered logistic without an extra library. Here, I will use the `polr()` command from the `MASS` library. I will not first load the `MASS` library because it has a conflict with the `dplyr` package in the `tidyverse` (both have a `select()` command). One could alternatively set up the preamble to their R Script file such that `MASS` is loaded first and then `tidyverse` or `dplyr`.
+We cannot perform an ordered logistic regression without an extra library. Here, I will use the `polr()` command from the `MASS` library. I will not first load the `MASS` library because it has a conflict with the `dplyr` package in the `tidyverse` (both have a `select()` command). One could alternatively set up the preamble to their R Script file such that `MASS` is loaded first and then `tidyverse` or `dplyr` to avoid this problem.
 
 Step one here is to convert our DV into a factor variable as this is a requirement of the command. Step 2 is to run our model using the `polr()` function.
 
@@ -153,7 +159,8 @@ anes <- anes |>
                                levels = c(1,2,3,4)))
 
 # Model
-model_ologit <- MASS::polr(interest_fct ~ news_trust + age + sex + education + race_eth, data = anes)
+model_ologit <- MASS::polr(interest_fct ~ news_trust + age + sex + 
+                             education + race_eth, data = anes)
 ```
 
 Let's take a look at the output:
@@ -162,13 +169,16 @@ Let's take a look at the output:
 summary(model_ologit)
 ```
 
-The coefficient values are provided first. These are log of the odd estimates and so we can only really use them to understand the direction of a relationship. A positive value here indicates that we expect an observation to be in a higher numbered category of the DV as the IV increases in value. A negative value indicates the inverse. Here, for instance, we expect people who trust the news more to be more interested in politics (net of the influence of the other predictor variables0.
+The coefficient values are provided first. These are log of the odd estimates and so we can only really use them to understand the direction of a relationship. A positive value here indicates that we expect an observation to be in a higher numbered category of the DV as the IV increases in value. A negative value indicates the inverse. Here, for instance, we expect people who trust the news more to be more interested in politics (net of the influence of the other predictor variables.
 
 We next get a section called "Intercepts". These values are also often called "cut points". You will get as many Intercepts here as there are categories of the DV minus 1. My DV has four categories, hence I get three cut points. We seldom worry about or interpret these values; you can see the link above for a more formal definition.
 
 How do our results compare to the OLS model from earlier?
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 models <- list(
   "OLS" = model_ols, 
   "O.Logit" = model_ologit
@@ -181,11 +191,11 @@ modelsummary(models,
              notes = "OLS or Ordered Logistic coefficients with SEs in parenthesis. Ref cat for Race = White respondent")
 ```
 
-1.  The cut points or intercept values from an ordered logistic model are printed by default by `modelsummary()`. They would something like: "1\|2", "2\|3", etc. I did not include those values in my `coef_names` earlier, so they are omitted from my output. If I wanted them in the table, I'd use `coef_map()` to put them at the end of my other coefficients.
+1.  The cut points or intercept values from an ordered logistic model are printed by default by `modelsummary()`. They would something like: "1\|2", "2\|3", etc., and would, kind of annoyingly, be the first estimates provided in the table. I did not include those values in my `coef_names` earlier, so they are omitted from my output. If I wanted them in the table, I'd use `coef_map()` to put them at the end of my other coefficients.
 
-The coefficient values are different, but of course they are - we're modeling different things (averages vs. log of the odds). However, the direction of relationships are all identical. The statistical significance is also the same in each case. That is not always going to happen, but here we have two models producing the same basic story. Only, the OLS model yields coefficient values we can directly interpret while the ordered logistic model does not. [^analysis_ologit-2]
+The coefficient values are different, but of course they are - we're modeling different things (averages vs. log of the odds). However, the direction of relationships are all identical. The statistical significance is also the same in each case. That is not always going to happen, but here we have two models producing the same basic story. Only, the OLS model yields coefficient values we can directly interpret while the ordered logistic model does not. [^analysis_ologit-3]
 
-[^analysis_ologit-2]: We also do not get R^2^ or adjusted R^2^ values either. One could obtain a Nagelkerke R^2^ for this model via the `performance` package, e.g., `performance::nagelkerke_r2(model_ologit)` .
+[^analysis_ologit-3]: We also do not get R^2^ or adjusted R^2^ values either. One could obtain a Nagelkerke R^2^ for this model via the `performance` package, e.g., `performance::nagelkerke_r2(model_ologit)` .
 
 If we want to actually understand what the coefficients are telling us, then we can turn to the `marginaleffects` package and its `predictions()` and `slopes()` commands.
 

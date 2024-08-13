@@ -235,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining Plots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining (and Saving) Plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -350,11 +350,11 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li>Experiments
 <ul>
-<li><p>You may be interested in experiments as a method for understanding the world and perhaps even as a method to be employed in your own project.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>If you want to learn more about experiments, then I heavily recommend reading through the Toshkov chapter on the subject and skimming through the book <a href="https://catalogue.leidenuniv.nl/permalink/f/q6ue0j/UBL_ALMA51407977430002711" target="_blank">Experimental Thinking: A Primer on Social Science Experiments</a> by James Druckman to better understand the possibilities on offer.</p></li>
+<li>You may be interested in experiments as a method for understanding the world and perhaps even as a method to be employed in your own project.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>If you want to learn more about experiments, then I heavily recommend reading through the Toshkov chapter on the subject and skimming through the book <a href="https://catalogue.leidenuniv.nl/permalink/f/q6ue0j/UBL_ALMA51407977430002711" target="_blank">Experimental Thinking: A Primer on Social Science Experiments</a> by James Druckman to better understand the possibilities on offer.</li>
 </ul></li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Students in my BAP have, in the past, fielded survey experiments for their projects. I am certainly open to this as a method. If you are interested in this, then I’d ask you to keep in mind the issue of time and feasibility. Collecting your own data does add some steps to the thesis writing process - you will need to come up with the experimental protocols, create the survey (using, for instance, <a href="https://www.staff.universiteitleiden.nl/research/it-and-research/qualtrics">Qualtrics</a>), field the survey, and then analyze it. This can be doable in the short time span available to you (especially if you are replicating/extending an existing experimental design), but does require you to be a bit more ‘on the ball’ in terms of time management. If you’re interested in doing this, then you should talk with me as soon as possible to discuss your ideas.</p></div></div><p>The foregoing focuses on the logic of research design - on why researchers might collect data in the way they do and the potential consequences of research design on the findings that result. Understanding a study’s findings also depends on reading the regression tables and figures present in the article as well, something which may feel overwhelming at times. Here are some useful resources for helping you interpret research:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Students in my BAP have, in the past, fielded survey experiments for their projects. I am certainly open to this as a method. If you are interested in this, then I’d ask you to keep in mind the issue of time and feasibility. Collecting your own data does add some steps to the thesis writing process - you will need to come up with the experimental protocols, create the survey (using, for instance, <a href="https://www.staff.universiteitleiden.nl/research/it-and-research/qualtrics" target="_blank">Qualtrics</a>), field the survey, and then analyze it. This can be doable in the short time span available to you (especially if you are replicating/extending an existing experimental design), but does require you to be a bit more ‘on the ball’ in terms of time management. If you’re interested in doing this, then you should talk with me as soon as possible to discuss your ideas.</p></div></div><p>The foregoing focuses on the logic of research design - on why researchers might collect data in the way they do and the potential consequences of research design on the findings that result. Understanding a study’s findings also depends on reading the regression tables and figures present in the article as well, something which may feel overwhelming at times. Here are some useful resources for helping you interpret research:</p>
 <ul>
 <li><a href="http://svmiller.com/blog/2014/08/reading-a-regression-table-a-guide-for-students/" target="_blank">Reading a Regression Table: A Guide for Students</a> by Steven V. Miller</li>
 <li><a href="https://egap.org/resource/10-things-to-know-about-reading-a-regression-table/" target="_blank">10 Things to Know about Reading a Regression Table</a> by EGAP</li>
@@ -384,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
 <li>WVS: World Values Survey</li>
 <li>EVS: European Values Survey</li>
 <li>ESS: European Social Survey</li>
-<li>CSES: Comparative study of Electoral Systems</li>
+<li>CSES: Comparative Study of Electoral Systems</li>
 <li>EES: European Election Studies</li>
 </ul>
 </section>
@@ -407,10 +407,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p><a href="https://github.com/vdeminstitute/vdemdata" target="_blank">vdemdata</a></p>
 <ul>
-<li>Installing this package will download the most recent Varieties of Democracy (V-Dem) data files.</li>
+<li>Installing this package will download the most recent Varieties of Democracy (<a href="https://www.v-dem.net/" target="_blank">V-Dem)</a> data files. It also installs a codebook file in the form of a spreadsheet, but I’d generally recommend going to V-Dem’s website and downloading the .pdf file as it’d be easier to work with.</li>
 <li>You can find a vignette on how to use this package <a href="https://rforpoliticalscience.com/2024/04/04/how-to-download-and-graph-the-of-democracy-v-dem-dataset-in-r/" target="_blank">here</a></li>
 </ul></li>
-<li><p><a href="https://vincentarelbundock.github.io/WDI/#/">WDI</a></p>
+<li><p><a href="https://vincentarelbundock.github.io/WDI/#/" target="_blank">WDI</a></p>
 <ul>
 <li>You might need/want to access data from the World Bank (e.g., data on a country’s unemployment rate). This package enables you to query the World Bank’s databases from R and then download the data directly without needed to visit their webpage. (In practice, I’d recommend using the World Bank’s website to help you search for the relevant indicator and then using the package to download it.)</li>
 <li>Steven V. Miller provides a helpful <a href="http://svmiller.com/blog/2021/02/gank-world-bank-data-with-wdi-in-r/" target="_blank">vignette</a> on how to use this package.</li>

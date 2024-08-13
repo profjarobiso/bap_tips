@@ -41,7 +41,7 @@ The columns are different variables. `idno`, for instance, is a unique and anony
 
 The foregoing is what we would call a "wide" dataset. The first column of a dataset is usually an identifier.[^analysis_pivot-1] A wide-formatted dataset is one wherein the values in this identifier column do not repeat. Each row in the dataset above focuses on a *different* survey respondent (as seen from the unique values in `idno`).
 
-[^analysis_pivot-1]: This is not always true. Big social surveys like the ESS or ANES will often starts with lots of columns focused on survey-related variables (e.g., the country of the respondent, when the respondent answered the survey, what mode was used, weights, etc.) before getting to the actual survey responses.
+[^analysis_pivot-1]: This is not always true. Big social surveys like the ESS or ANES will often start with lots of columns focused on survey-related variables (e.g., the country of the respondent, when the respondent answered the survey, what interviewing mode was used, weights, etc.) before getting to the actual survey responses.
 
 Compare what is shown above to the following dataset, which focuses on data from the [Varieties of Democracy](https://www.v-dem.net/){target="_blank"} (V-Dem) project:
 
@@ -53,11 +53,11 @@ vdem <- import("./data/vdem_small.rda")
 head(vdem, n = 10L)
 ```
 
-This is a "long" formatted dataset. The first column is again an identifier. In this case, the variable is named `country_name` and provides the name of each country in the dataset. The values here repeat. We can think of the observations in a "long" formatted dataset as a "dyad".[^analysis_pivot-2] In this example, the dyad would be a "country-year" - our data includes observations on countries by year. A dyad could refer to something else though. For instance, suppose we ask respondents to evaluate multiple political parties; we could organize our dataset in a "long" format wherein each row provides a respondents evaluation of a distinct party (e.g., a respondent-party dyad).
+This is a "long" formatted dataset. The first column is again an identifier. In this case, the variable is named `country_name` and provides the name of each country in the dataset. The values here repeat. The second column is `year`, which records the year the values of the other columns are measured for. The values in this column vary (e.g., 1789,1790, etc.). We can think of the observations in a "long" formatted dataset as a "dyad".[^analysis_pivot-2] In this example, the dyad would be a "country-year" - our data includes observations on countries by year. A dyad could refer to something else though. For instance, suppose we ask respondents to evaluate multiple political parties; we could organize our dataset in a "long" format wherein each row provides a respondent's evaluation of a distinct party (e.g., a respondent-party dyad).
 
 [^analysis_pivot-2]: We could perhaps have data with an even more complicated unit of analysis. Instead of countries, or country-years, perhaps we have party-country-years or something.
 
-Most students in my BAP will use survey data. This type of data will generally be in a "wide" format unless, perhaps, the survey is a panel survey (e.g., the respondent is surveyed at multiple time points). In general, it will make the most sense to keep the data in that format. However, there are some situations wherein it may be useful to "reshape" the data (e.g., convert a wide dataset to a long dataset). This can facilitate some types of descriptive analyses and may be required for others. Likewise, you may have need to reshape a long dataset into a wider format. The remainder of this document will show you how to do this using two commands from the `tidyverse`: `pivot_longer()` and `pivot_wider()`.
+Most students in my BAP will use survey data. This type of data will generally be in a "wide" format unless, perhaps, the survey is a panel survey (e.g., the respondent is surveyed at multiple time points). In general, it will make the most sense to keep the data in that format. However, there are some situations wherein it may be useful to "reshape" the data (e.g., convert a wide dataset to a long dataset). This can facilitate some types of descriptive analyses and may be required for some types of statistical modeling. Likewise, you may have need to reshape a long dataset into a wider format. The remainder of this document will show you how to do this using two commands from the `tidyverse`: `pivot_longer()` and `pivot_wider()`.
 
 ## From Wide to Long: `pivot_longer()`
 
@@ -105,7 +105,7 @@ Here is the data produced by this command. Seeing it will help illuminate what I
 head(ess_long, n = 10L)
 ```
 
-The first column is `idno`, our respondent identifier. We can see now that the values here now *repeat* - each respondent is now represented multiple times in the data. We then get columns for education, age, and trust. These still provide the values for these variables for each respondent. We can see that they do not vary *within* respondents (i.e., the same values are provided for each row associated with respondent 600002).[^analysis_pivot-3] We then see a column named `measure` - the contents of this column indicate which participation measure the particular row tells us about. Row 1, for instance, tells you how respondent 600002 answered the "contplt" question, while row 2 tells you how respondent 600002 answered the "wrkprty" question, and so on. Finally, `outcome` gives the specific value provided on the participation measure associated with the respondent. A 2 on these measures indicate that the respondent did not take the action in question, while a 1 indicates that they did. Respondent 600002 did not report taking any of the actions in question.
+The first column is `idno`, our respondent identifier. We can see now that the values here now *repeat* - each respondent is now represented multiple times in the data. We then get columns for education, age, and trust. These still provide the values for these variables for each respondent. We can see that they do not vary *within* respondents (i.e., the same values are provided for each row associated with respondent 600002).[^analysis_pivot-3] We then see a column named `measure` - the contents of this column indicate which participation measure the particular row tells us about. Row 1, for instance, tells you how respondent 600002 answered the "contplt" question, while row 2 tells you how respondent 600002 answered the "wrkprty" question, and so on. The `idno` column provides us identifying information about the *respondent* part of the respondent-participant dyad, while the `measure` column gives us information about the `measure` part of the dyad. Finally, `outcome` gives the specific value provided on the participation measure associated with the respondent. A 2 on these measures indicate that the respondent did not take the action in question, while a 1 indicates that they did. Respondent 600002 did not report taking any of the actions in question.
 
 [^analysis_pivot-3]: In practice, I would probably have a precursor line in my syntax that selects only the variables I want in the reshaped dataset to avoid including unnecessary elements. For instance: `ess |> select(contplt, wrkprty, wrkorg, badge, sgnptit, pbldmn, bctprd) |> pivot_longer(…)`
 
@@ -245,7 +245,7 @@ descriptives_univ |>
 
 It does look like those with higher levels of education are more like to take these particular political acts. The difference is fairly small when we look at behaviors that are uncommon, but much larger with behaviors that are a bit more likely to be observed in general (e.g., boycotting). Of course, this doesn't mean that education is *causing* these differences. Indeed, whether education causes political participation is something of a recent debate. We would thus want to move to a more fully specified model to more fully justify our claims.
 
-The foregoing can also be useful for making the same *type* of plot but for different variables. For instance, our `ess` dataset contains several measures of trust: trust in the country's parliament (`trstprl`), trust in the legal system (`trstlgl`), trust in the police (`trstplc`), and trust in politicians (`trstplt`) on a scale ranging from 0 (no trust at all) to 10 (complete trust). . We could, for instance, provide a bar-graph showing the number (or even proportion) of respondents giving each response from 0-10. Instead of creating a plot for each variable separately and then using `patchwork` to combine them (as shown in @sec-combining-plots), we could do this all at once by using `tidy_longer()`. For instance:
+The foregoing can also be useful for making the same *type* of plot but for different variables. For instance, our `ess` dataset contains several measures of trust: trust in the country's parliament (`trstprl`), trust in the legal system (`trstlgl`), trust in the police (`trstplc`), and trust in politicians (`trstplt`) on a scale ranging from 0 (no trust at all) to 10 (complete trust). . We could, for instance, provide a bar-graph showing the number (or even proportion) of respondents giving each response from 0-10. Instead of creating a plot for each variable separately and then using `patchwork` to combine them (as shown in @sec-combining-plots), we could do this all at once by using `pivot_longer()`. For instance:
 
 ```{r}
 #| message: false
@@ -391,7 +391,7 @@ Let's take a look:
 head(vdem_wider, n = 10L)
 ```
 
-The first column is our ID column. We can now see that each country features once! We then get columns with our democracy data. The command has "glued" together the names from `values_from` with the values from `year` (e.g., `v2x_polyarchy_1980` tells us the polyarchy scores for each country in the year 1980, while `v2x_polyarchy_2000` gives us the year 2000 data and so on). The naming of variables in a `pivot_wider()` command can get a little bit complicated in more complicated examples and there are additional options useful on this front; see the [reference page](https://tidyr.tidyverse.org/reference/pivot_wider.html){target="_blank"} for the command.
+The first column is our ID column. We can now see that each country features once! We then get columns with our democracy data. The command has "glued" together the names from `values_from` with the values from `year` (e.g., `v2x_polyarchy_1980` tells us the polyarchy scores for each country in the year 1980, while `v2x_polyarchy_2000` gives us the year 2000 data and so on). The naming of variables in a `pivot_wider()` command can get a little bit complicated and there are additional useful options on this front; see the [reference page](https://tidyr.tidyverse.org/reference/pivot_wider.html){target="_blank"} for the command.
 
 Let's look at some correlations. I will use the `correlation()` command from the aptly named `correlation` package to do this because it makes it easy to calculate multiple correlations at once.
 
@@ -404,9 +404,7 @@ vdem_wider |>
 
 ```
 
-1.  This is one of a variety of helpful shortcuts for selecting variables based on the contents of variable names, including `ends_with()` and `starts_with()` See [this](https://tidyselect.r-lib.org/reference/starts_with.html){target="_blank"}[^analysis_pivot-7]se, pretty stable is not *perfectly* stable.
-
-[^analysis_pivot-7]: See [here](https://stackoverflow.com/questions/71602835/how-can-i-add-45-degree-line){target="_blank"} for where I found the syntax needed for the 45 degree line.
+1.  This is one of a variety of helpful shortcuts for selecting variables based on the contents of variable names, including `ends_with()` and `starts_with()`
 
 We could perhaps plot this data to get a better sense of matters. I will do so for the 1980 and 2020 data. I will also add a 45 degree diagonal line; points above this line will indicate countries with *higher* levels of democracy in 2020 than 1980, while points below the line indicate a *decrease* in electoral democracy over time.
 
@@ -422,7 +420,7 @@ ggplot(vdem_wider, aes(x = v2x_polyarchy_1980, y = v2x_polyarchy_2020)) +
 
 ```
 
-1.  Adds the 45 degree line.
+1.  Adds the 45 degree line. See [here](https://stackoverflow.com/questions/71602835/how-can-i-add-45-degree-line){target="_blank"} for where I found the syntax needed for the 45 degree line.
 2.  The democracy variables have a theoretical range of 0 to 1. This extends the y- axis to cover that full range.
 
 The electoral democracy scores are quite stable per the correlation coefficient. Where there are deviations it tends to show up in countries with a higher democracy score in 2020 than 1980. This makes sense as the 1980s/1990s is commonly referred to as the 'third wave of democratization' We can also see that countries with comparatively high levels of democracy in 1980 generally have quite high levels in 2020 as well.

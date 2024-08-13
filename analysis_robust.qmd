@@ -63,7 +63,7 @@ tidy(violence, conf.int = TRUE)
 
 Per above, `pve` ranges from -2.71 to +1.49. Higher values on this measure indicate *less* violence in a country. Higher values on our `v2x_polyarchy` measure indicate *greater* levels of electoral democracy. The coefficients here imply...
 
--   Intercept: We should expect a `pve` score less than 0 (-0.589) when `v2x_polyarchy` (and its squared term) = 0
+-   Intercept: We should expect a `pve` score less than 0 (-0.589) when `v2x_polyarchy` (and its squared term) = 0.
 -   Coefficient for `v2x_polyarchy`: `pve` will decrease in value (i.e., violence will *increase* given how this variable is scaled) as `v2x_polyarchy` increases, but...
 -   Coefficient for squared term: `pve` values will then start to increase (i.e., violence will decrease) as we move further along the polyarchy scale.
 
@@ -114,7 +114,7 @@ bptest(violence)
 
 The p-value here is well below 0.05, which is our standard metric for assessing statistical significance. We can thus reject the null hypothesis of homoskedasticity.
 
-One important note and caution about this test: it is sensitive to sample size much like any statistical significance test. In practice, this means that it becomes easier and easier to reject this null hypothesis with with more and more data in our model. However, our residuals are unlikely to be perfectly homoskedastic in actual data. We might thus find ourselves in situations where we can reject the null hypothesis of homoskedasticity but where there really isn't a serious problem that we need to address. This is why we recommend focusing on the plot of residual values to see if there is a really noticeable trend there. The BP test can then be used to check one's instincts.
+One important note and caution about this test: it is sensitive to sample size much like any statistical significance test. In practice, this means that it becomes easier and easier to reject this null hypothesis with with more and more data in our model. However, our residuals are unlikely to be perfectly homoskedastic in actual data. We might thus find ourselves in situations where we can reject the null hypothesis of homoskedasticity but where there really isn't a serious problem that we need to address. This is why we recommend focusing on the plot of residual values to see if there is a really noticeable trend there. The BP test can then be used to check one's instincts in situations where there is a really noticeable looking deviation.
 
 ## What Can We Do?
 
@@ -144,7 +144,7 @@ modelsummary(violence,
 
 1.  Changes the way the standard errors are calculated.
 
-The main difference from other examples you've seen is `vcov = "HC3"`. That is what will update the standard errors.
+The main difference from other examples you've seen is `vcov = "HC3"`. That is what will update the standard errors. If you're changing the nature of the SEs being reported as in this example, then you should also communicate that in some way, e.g., by including information on this front in the Notes to the table.
 
 Let's take a step back and compare results. Here is syntax that produces a regression table wherein Model 1 uses the standard SEs reported in `lm()` (the "classical" SEs) and Model 2 reports the robust version:
 
@@ -170,11 +170,15 @@ We can also incorporate these types of SEs into our plots of predicted values, e
 
 ```{r}
 #Plot of predicted values
-plot_predictions(violence, vcov = "HC3", condition = "v2x_polyarchy")
+plot_predictions(violence, 
+                 vcov = "HC3", 
+                 condition = "v2x_polyarchy")
 
 
 #Slopes at various levels of democracy
-slopes(violence, newdata = datagrid(v2x_polyarchy = c(0, 0.10, 0.25, 0.5, 0.75)), vcov = "HC3")
+slopes(violence, 
+       newdata = datagrid(v2x_polyarchy = c(0, 0.10, 0.25, 0.5, 0.75)), 
+       vcov = "HC3")
 ```
 
 Again, the only thing that will really change are the standard errors and, by extension, the confidence intervals.

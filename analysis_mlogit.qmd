@@ -41,7 +41,7 @@ You learned how run linear (OLS) and (binomial) logistic regression models in St
 
 Let's start with an initial question: what predicts variation in a person's partisan identification? I will use data from the 2020 American National Election Studies to consider this question. Respondents on this survey are asked two questions on this front with the nature of the second question depending on the answer to the first:
 
--   "Generally speaking, do you usually think of yourself as a Democrat, a Republican, an independent, or what?
+-   Generally speaking, do you usually think of yourself as a Democrat, a Republican, an independent, or what?
 -   \[If answering Democrat or Republican on first question\] Would you call yourself a strong \[Democrat / Republican\] or a not very strong \[Democrat / Republican\]?
 -   \[If answering something other than Democrat/Republican on the first question\] Do you think of yourself as closer to the Republican Party or to the Democratic Party? (Response options: closer to Republican, closer to Democrat, Neither)
 
@@ -75,7 +75,7 @@ anes |>
 2.  Calculates the number in each group of `V201231x`. A simpler version of `summarize(varname = n())`.
 3.  The `\n` stuff here tells `ggplot` to add a line break. I do this to avoid the labels overlapping with one another.
 
-We might then model this variable using an OLS linear regression model. In so doing, we are assuming that this ordinal variable is interval/ratio in nature. This is a common assumption in this literature. Here, I'll predict it using a person's attitudes regarding abortion (1 = abortion should never be permitted ... 4 = women should always be able to obtain an abortion), government spending (higher = government should spend more on services), education, whether someone in the household is a union member, sex, race-ethnicity, and age.
+We might then model this variable using an OLS linear regression model. In so doing, we are assuming that this ordinal variable is interval/ratio in nature. That is a common assumption in this literature. Here, I'll predict it using a person's attitudes regarding abortion (1 = abortion should never be permitted ... 4 = women should always be able to obtain an abortion), government spending (higher = government should spend more on services), education, whether someone in the household is a union member, sex, race-ethnicity, and age.
 
 ```{r}
 #| code-fold: true
@@ -120,7 +120,7 @@ We can see that policy attitudes significantly and substantially predict this de
 predictions(model_ols, newdata = datagrid(abortion = c(1:4)))
 ```
 
-The foregoing analyses use this variable on its original 7-pt scale. In so doing, we are examining both classification (is a person Democrat or Republican?) but also the strength of that identification (e.g., not strong, strong, lean). Perhaps we have a different RQ in mind or prefer a different way of analyzing this data that focuses simply on categorization: what predicts whether a person chooses "Republican" vs. "Democrat", vs. "Independent" (regardless of whether they say "strong" or "not strong")
+The foregoing analyses use this variable on its original 7-pt scale. In so doing, we are examining both classification (is a person Democrat or Republican?) but also the strength of that identification (e.g., not strong, strong, lean). Perhaps we have a different RQ in mind or prefer a different way of analyzing this data that focuses simply on categorization: what predicts whether a person chooses "Republican" vs. "Democrat", vs. "Independent" (regardless of whether they say "strong" or "not strong"). This may be a particularly relevant in multi-party contexts where one can meaningfully choose from multiple parties and where surveys are sadly less likely to ask about strength of identification.
 
 ```{r}
 #| code-fold: true
@@ -146,7 +146,7 @@ anes |>
 
 ```
 
-A linear model doesn't quite make sense here since our data is now categorical. The type of logistic regression you learned in Statistics II also won't work because that is a type of logistic model (a "binomial" logistic model) that is used for predicting binary data. We could theoretically dichotomous this variable and run that type of model. For instance, we could create a binary variable where 1 = Republican and 0 = Democrat or 1 = Democrat and 0 = Republican or Independent. This might make sense in some contexts. Perhaps we are studying vote choices in a multi-party context and we ultimately care about predicting whether a person votes for a party in government vs. some other party. Creating a dummy variable and running a binomial logistic model in that situation (e.g., 1 = vote for government party, 0 = vote for other party) would make sense. However, this only makes sense in relation to a particular RQ and hypothesis. What if our RQ/hypothesis implied a model predicting whether a person votes for a government party, a left-wing opposition party, or a right-wing opposition party? Dichotomization of the DV wouldn't help us there.
+A linear model doesn't quite make sense here since our data is now categorical. The type of logistic regression you learned in Statistics II also won't work because that is a type of logistic model (a "binomial" logistic model) that is used for predicting binary data. We could theoretically dichotomize this variable and run that type of model. For instance, we could create a binary variable where 1 = Republican and 0 = Democrat or 1 = Democrat and 0 = Republican or Independent. This might make sense in some contexts. Perhaps we are studying vote choices in a multi-party context and we ultimately care about predicting whether a person votes for a party in government vs. some other party. Creating a dummy variable and running a binomial logistic model in that situation (e.g., 1 = vote for government party, 0 = vote for other party) would make sense. However, this only makes sense in relation to a particular RQ and hypothesis. What if our RQ/hypothesis implied a model predicting whether a person votes for a government party, a left-wing opposition party, or a right-wing opposition party? Dichotomization of the DV wouldn't help us there.
 
 ## Multinomial Logistic Model
 
@@ -161,11 +161,12 @@ Multinomial logistic models are not natively supported in R, so we will need a l
 library(nnet)
 
 # Re-Running our model
-model_multinom <- multinom(pid3 ~ abortion + spending + education + union + sex + race_eth + age, data = anes)
+model_multinom <- multinom(pid3 ~ abortion + spending + education + union +
+                             sex + race_eth + age, data = anes)
 
 ```
 
-The code chunk above loads the `nnet` library and then runs our model. The model specification process is the same as with OLS models, etc., but now we use the `multinom()` function. An important note about the DV: I created the `pid3` variable above as a character variable with three categories ("Democrat", "Independent", and "Republican"). The `multinom` command will work with this variable but it will automatically use the first alphabetical category as the reference group in the analysis. If I wanted to change this (e.g., use "Republican" or "Independent" as the reference category), I could convert this `pid3` variable to a factor variable and specify the first level manually.
+The code chunk above loads the `nnet` library and then runs our model. The model specification process is the same as with OLS models, etc., but now we use the `multinom()` function. An important note about the DV: I created the `pid3` variable above as a character variable with three categories ("Democrat", "Independent", and "Republican"). The `multinom` command will work with this type of variable but it will automatically use the first alphabetical category as the reference group in the analysis. If I wanted to change this (e.g., use "Republican" or "Independent" as the reference category), I could convert this `pid3` variable to a factor variable and specify the first level manually.
 
 Let's take a look at our results:
 
@@ -293,7 +294,7 @@ performance::r2_nagelkerke(model_multinom)
 
 ### Assumptions
 
-First, we can investigate multicollinearity using the `vif()` package from the `car` library:
+First, we can investigate multicollinearity using the `vif()` package from the `car` library...
 
 ```{r}
 car::vif(model_multinom)

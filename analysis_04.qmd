@@ -3,7 +3,7 @@ code-annotations: hover
 reference-location: margin
 ---
 
-# Combining Plots {#sec-combining-plots}
+# Combining (and Saving) Plots {#sec-combining-plots}
 
 ```{r}
 #| message: false
@@ -24,7 +24,7 @@ demdata <- import("data/demdata.rds")
 2.  For data manipulation & plotting
 3.  For creating regression tables
 
-Figures are great ways of presenting statistical information. There are times when we will want to include multiple figures in our papers.
+Figures are great ways of presenting statistical information. There are times when we will want to include multiple figures in our papers. Sometimes it will even make sense to combine multiple figures into a single one. How can we do that?
 
 ## Example Using `patchwork`
 
@@ -69,7 +69,7 @@ egal_plot
 2.  The title provides information of what the x-axis is showing, so I removed the x-axis label (`x = NULL`) to avoid redundancy.
 3.  Sets the "limits" or range of the x-axis. Not strictly needed, but made sense here since I'm plotting different variables with the same theoretical range but potentially different observed minimums and maximums.
 
-This is nice - we can see how much variation there is on the variables and also some differences between them (e.g., more countries at the higher levels of electoral democracy than liberal or egalitarian democracy). In terms of the paper, however, it might be a bit awkward to provide each histogram as its own figure - it's not *wrong* per se, but it would take up a lot of space in the paper.
+This is nice - we can see how much variation there is on the variables and also some differences between them (e.g., more countries at the higher levels of electoral democracy than liberal or egalitarian democracy). In terms of the paper, however, it might be a bit awkward to provide each histogram as its own figure - it's not *wrong* per se, but it would take up a lot of space in the paper. And, if we wanted our readers to compare across the different figures, then providing them separately (e.g., Figure 1, Figure 2, and Figure 3) might make that complicated and/or difficult since the figures will probably be provided on different pages of the document.
 
 Instead of providing each plot separately, we can combine these different histograms into a single figure and include that in our thesis. We can then refer to that figure as we go. The `patchwork` package is one very useful package for doing this (see their [webpage](https://patchwork.data-imaginist.com/){target="_blank"} for all the different things you can do with this package).[^analysis_04-2]
 
@@ -90,7 +90,9 @@ poly_plot + lib_plot + egal_plot
 
 1.  Normally we would load all of our packages at the very beginning of our script file.
 
-The simplest way to combine plots with `patchwork` is by using a `+` sign as here. This may not be the best looking version of our figure though given the number of plots we're combining. They are currently a bit scrunched up since there is only so much horizontal space in the figure. We can use `patchwork` to combine the different figures a bit differently to avoid this issue (if we think it is a problem). For instance, we could stack each plot on top of each other (use more vertical space); this is generally done by using the `/` divider rather than a `+` sign. We could mix and match the `+` and `\` signs as in the second plot below. Or, we could explicitly specify how many rows there should be as in the third option.[^analysis_04-3]
+The simplest way to combine plots with `patchwork` is by using a `+` sign as here. Doing so will create a figure like the one above where each successive plot is added to the right of the last one.
+
+The plot above may not be the best looking version of our combined figure given the number of plots we're combining. They are currently a bit scrunched up since there is only so much horizontal space in the figure. Thankfully, we can use `patchwork` to combine the separate figures in different ways to avoid this issue (if we think it is a problem). For instance, we could stack each plot on top of each other (use more vertical space); this is generally done by using the `/` divider rather than a `+` sign. We could mix and match the `+` and `/` signs as in the second plot below. Or, we could explicitly specify how many rows there should be as in the third option.[^analysis_04-3]
 
 [^analysis_04-3]: We could also specify the number of *columns* (`ncol = 2)` .
 
@@ -141,6 +143,6 @@ The `ggsave()` command works as follows:
 
 `height = ….`
 
-:   I then specify the dimensions of the figure. These are in inches by default, but can be changed to other units as well (e.g., including `units = 'cm'` would allow you to control the size in centimeters). This is usually a trial and error approach - save the image, open it up and see if it is distorted in some way, and then update as needed (make wider, make shorter, etc.).
+:   I then specify the dimensions of the figure. These are in inches by default, but can be changed to other units as well (e.g., including `units = 'cm'` would allow you to control the size in centimeters; see the help file for `ggsave()` via entering `?ggsave()` in the R console for more information). This is usually a trial and error approach - save the image, open it up and see if it is distorted in some way, and then update as needed (make wider, make shorter, etc.).
 
 The example above focused on combining histograms. This can of course be used with other types of plots, with combinations of types, and with coefficient plots. It is not always needed, but can make sense in some instances.
