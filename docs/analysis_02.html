@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Thoughts and Advice on Writing your BAP - 11&nbsp; Some Practical Questions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./analysis_rscript.html" rel="next">
+<link href="./analysis_01.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_02.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Thoughts and Advice on Writing your BAP</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing the Thesis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_01_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Structuring the Thesis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_02_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_03_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_04_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Research Design/Data Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_05_analyses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_06_conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_01_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Finding Literature</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_02_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical Issues in Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_rscript.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Discussing Your Model Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining (and Saving) Plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_pivot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_robust.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_mlogit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Categorical DVs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_ologit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Ordinal DVs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-should-i-control-for" id="toc-what-should-i-control-for" class="nav-link active" data-scroll-target="#what-should-i-control-for"><span class="header-section-number">11.1</span> What should I control for?</a></li>
+  <li><a href="#if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" id="toc-if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" class="nav-link" data-scroll-target="#if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model"><span class="header-section-number">11.2</span> If a control variable is not statistically significant, should I remove it from my model?</a></li>
+  <li><a href="#how-many-variables-should-i-can-i-include-in-my-model" id="toc-how-many-variables-should-i-can-i-include-in-my-model" class="nav-link" data-scroll-target="#how-many-variables-should-i-can-i-include-in-my-model"><span class="header-section-number">11.3</span> How many variables should I, can I, include in my model?</a></li>
+  <li><a href="#what-should-i-do-with-ordinal-data" id="toc-what-should-i-do-with-ordinal-data" class="nav-link" data-scroll-target="#what-should-i-do-with-ordinal-data"><span class="header-section-number">11.4</span> What should I do with ordinal data?</a></li>
+  <li><a href="#what-should-i-do-if-my-dv-is-categorical" id="toc-what-should-i-do-if-my-dv-is-categorical" class="nav-link" data-scroll-target="#what-should-i-do-if-my-dv-is-categorical"><span class="header-section-number">11.5</span> What should I do if my DV is categorical?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_02.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-some-practical-questions" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this chapter I’ll discuss some more practical questions that may arise as you think about how to analyze your data.</p>
+<section id="what-should-i-control-for" class="level2 page-columns page-full" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="what-should-i-control-for"><span class="header-section-number">11.1</span> What should I control for?</h2>
+<p>Your goal in the thesis is probably going to be to test some hypothesis. For instance, you might hypothesize that partisan animosity (“affective polarization”) will be greater among people with extreme ideologies than people with centrist ideologies. You will naturally want to find data on your DV and IV and fit some type of regression model. A natural question then arises: what else should go into my model? Or: what should I “control” for?</p>
+<p>We can answer this question by taking a step back and thinking about what we’re trying to do when we include a “control” variable in our model.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Suppose we perform some bivariate test predicting partisan animosity and affective polarization and find the relationship we expect to find (i.e., more extremity = more animosity). The challenge before us is that ideological extremity is not randomly distributed in society. Extremists probably differ from non-extremists in all sorts of ways - they might have different education levels, social networks, personality characteristics, etc. This consideration raises the possibility that the relationship we observe (more ideological extremity = more animosity) is <em>better explained</em> by one or more of these other characteristics that differentiates extremists and non-extremists (e.g., more <a href="https://doi.org/10.1016/j.cobeha.2019.10.016" target="_blank">dogmatism</a> = more animosity &amp; more extremity?). We include “control” variables in an attempt to statistically account for alternative explanations for the relationship we care about and thus avoid (or, at least, reduce) bias concerning the estimated relationship we care about. We should thus “control” for any and all potential <em>confounder</em> variables <em>that we can</em>, i.e., variables that we have good reason to think cause <em>both</em> our main IV of interest <em>and</em> the DV.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;The focus here is on the inclusion of additional predictor variables in a context where we are trying to generate an unbiased estimate of the relationship between a particular IV and a DV. We could also be building a statistical model for the sake of prediction, e.g., to construct an accurate forecasting model. The considerations about what to include in such a model would be different as the focus would be on what best reduces predictions errors from the model as a whole rather than what reduces bias in one particular estimate.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Of course, there may be (likely are) important confounders out there that we have no clue about, cannot measure, or perhaps simply do not possess a measure of to include in our model. We should thus be careful not to over-interpret statistical models of observational data as definitively telling us that our IV of interest causes the DV - it is better to talk about these relationships as associations between the variables.</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-confounder1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confounder1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-confounder1-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="analysis_02_files/figure-html/fig-confounder1-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounder1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: A Relationship with Two Confounders
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Per above, you should control for things that you believe cause both your main IV of interest and your DV. You can justify these beliefs in relation to prior evidence and theory. Per <a href="analysis_01.html" class="quarto-xref"><span>Chapter 10</span></a>, one important part of the thesis writing process (and of doing your analysis) is first doing the hard work of figuring out how you <em>think</em> the world works in relation to your phenomenon of interest as this will help you identify relevant control variables.</p>
+<p>One thing you should avoid doing is simply dumping predictor variables into your model. This is because you can get in trouble by leaving out relevant variables (as above) but <em>also</em> by including unnecessary variables in your model as well! In particular, you should try to avoid including what are alternatively known as “post-treatment” or “mediating” variables in your model.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> These terms refer to the role that the variable is playing in your underlying causal theory connecting your main IV and your DV. A post-treatment variable is a variable that is caused <em>by</em> your main IV and in turn causes your DV. Your main IV is thought to cause the DV at least in part because of its influence on this mediating variable. For instance:</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;There is yet another potential source of bias from improper variable inclusion: <a href="https://catalogofbias.org/biases/collider-bias/" target="_blank">collider bias</a>. Let’s say we have this model: Y = X1 + X2. Collider bias emerges when one of the variables on the right hand side of the equation (X2, for instance) is caused by the other two variables (i.e., X2 is caused by Y and X1). Collider bias can lead to a spurious association much like omitted variable bias when a relevant confound is excluded.</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-mediator1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediator1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-mediator1-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="analysis_02_files/figure-html/fig-mediator1-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediator1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: A Relationship with a Confounder and a Mediator
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What is the problem here, exactly? Let’s say that our main IV is ideological extremity and our DV is partisan animosity. We might think that some of this relationship is explained by a common source of both variables (dogmatism or cognitive rigidity) and include that in our model to avoid bias. However, we think that extremity still has a residual relationship with animosity (i.e., dogmatism doesn’t perfectly confound the extremity/animosity relationship). In particular, we theorize that this relationship emerges because holding an extreme ideology facilitates a variety of reasoning processes that will lead extremists to hold inaccurate beliefs about the other side’s political views.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Extremists, for instance, might come to see the other side as holding more extreme beliefs than it actually does, feel threatened by this (somewhat imagined) out-group, and hence express more animosity toward the out-group.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Inaccurate “meta-perceptions” (or, beliefs about others beliefs) are indeed an important predictor of group animosity (see, for instance, <a href="https://doi.org/10.1073/pnas.2001263117" target="_blank">Moore-Berg et al.</a>) and perhaps also support for political violence (see, for instance, <a href="https://www.nature.com/articles/s41562-023-01594-w" target="_blank">Braley et al.</a>)</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-mediator2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediator2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="analysis_02_files/figure-html/fig-mediator2-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="analysis_02_files/figure-html/fig-mediator2-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediator2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: Probably Not a Good Idea to Control for Beliefs about Out-Group Beliefs!
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What happens if we include a measure for “Beliefs About Out-Group Beliefs” into our model? Well, our model will provide an estimate of the relationship between ideological extremity and partisan animosity that emerges after we adjust for differences in beliefs about the out-groups. In essence, the model will give us an estimate that tells us this: “if we compare people with the beliefs about the out-group but differ in their ideological extremity, then what is the difference in partisan animosity that we should expect to observe?”. This estimate is almost certainly not what we were after in the first place though. Our question focused on the <em>overall</em> or <em>total</em> relationship between extremity and animosity: is there one and how big is it? However, if part of the reason why extremity is associated with animosity is due to this mediator, then including the mediator in the model is essentially “controlling away” some of the effect we care about! Including the mediator in our model accounts for part of (perhaps even the entire) reason why extremity matters for understanding animosity thereby leading to a smaller effect estimate than actually exists - our model can only tell us whether there is a relationship between extremity and animosity after adjusting for differences in the mediator. Indeed, if the only reason why extremists differ from non-extremists is because of the effect of extremity on beliefs about the out-group, then our estimate for the effect of extremity in this model might even be 0 (statistically insignificant)!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> You can see this point in practice via Case 4 in this <a href="https://janhove.github.io/posts/2021-06-29-posttreatment/" target="_blank">explainer</a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;See <a href="https://www.vox.com/2014/12/1/7311417/race-law-controls" target="_blank">this article</a> for additional discussion of this type of situation.</p></div></div><p>This general problem is known as “post-treatment bias”: a bias introduced by controlling for a post-treatment or mediating variable. You should avoid it as best you can. The difficulty is that what is counted as a confounder (Z caises X and Y) versus a post-treatment variable (X causes Z which causes Y) may be ambiguous or contested. At a certain level, we may be stuck with assumptions about how the world works to justify our decisions on this front. This is another reason to give careful pre-analysis thought to the nature of your theory.</p>
+<p>There can be contexts in which we would want to include the post-treatment variable in the model although they may not apply to your thesis. First, we might actually be interested in whether there is any left-over relationship between our main IV and the DV after accounting for potential mediators. For instance, we might be investigating wealth biases in college admissions.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> We might examine this question by comparing admission rates for students with rich parents vs.&nbsp;those with non-rich parents where we’ll likely find higher admission rates among the former group than the latter. A skeptic may say that this is not evidence that colleges are biased toward the rich - perhaps family wealth leads to better academic performance (higher grades, higher test scores) and that is what colleges are paying attention to. In this instance, it might make sense to also include measures of performance to see if there is still a relationship between family background and admissions after adjusting for differences in performance (what we might call a “direct” effect of family background since it is not being mediated by performance). Second, we might be interested in testing for mediation: how much of the relationship between our main IV and the DV is accounted for by a mediator? This is difficult to do in practice, and especially so with observational data, but typically would involve including the post-treatment/mediating variable in the model at some point. However, in the context of your study this type of mediating variable is almost certainly a nuisance variable that you do not want to include in the model for the reasons discussed above.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;This is a real-life example based on the following <a href="https://www.nytimes.com/interactive/2023/07/24/upshot/ivy-league-elite-college-admissions.html?unlocked_article_code=1.9k0.QVwt.AMoPxL1M5loZ&amp;smid=url-share" target="_blank">news article</a>.</p></div></div><p>Two final thoughts here. First, the foregoing applies when your data is non-experimental. However, if you are working with an experiment then you don’t generally <em>need</em> any control variables in your model. You can simply predict your DV with an indicator for which treatment group the observation has been randomly assigned to. This is the case because random assignment is handling the task of ruling out alternative explanations. Second, the foregoing focuses on situations where the two predictor variables are causing one another (in some way) and also causing Y. What about if the two IVs are unrelated to one another while both predicting the DV? Including both predictors in the model would be a good idea in this scenario but for other reasons than discussed above. Instead of reducing <em>bias</em> in our estimates, doing so would reduce <em>variance</em> in our estimates (i.e., it would lead to more certainty); see Case 5 in <a href="https://janhove.github.io/posts/2021-06-29-posttreatment/#case-5-x-and-z-affect-y-x-and-z-dont-affect-each-other." target="_blank">this explainer</a>. However, this is mainly of interest in experimental studies wherein we know for sure that our main IV (assignment to different experimental groups) is unrelated to other variables (due to random assignment and measuring the other variables prior to assignment).</p>
+</section>
+<section id="if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="if-a-control-variable-is-not-statistically-significant-should-i-remove-it-from-my-model"><span class="header-section-number">11.2</span> If a control variable is not statistically significant, should I remove it from my model?</h2>
+<p>No.</p>
+<p>You should use theory and evidence to justify what variables go into the model. A “statistically insignificant” variable does not mean the variable does not ‘cause’ the DV or even that it doesn’t matter for you. Insignificant predictors could emerge, for instance, due to poor survey wording (measurement error) or low sample size even in a case where there is a ‘real’ relationship between the two variables. And, per above, the rationale for including the variable in your model is that it is a plausible confounder of a/the variable you actually care about. If those assumptions are correct then we may very well <em>expect</em> to see a null relationship between (some of) the controls and the DV since you are controlling for its potential mechanisms (i.e., your main IV)!</p>
+</section>
+<section id="how-many-variables-should-i-can-i-include-in-my-model" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="how-many-variables-should-i-can-i-include-in-my-model"><span class="header-section-number">11.3</span> How many variables should I, can I, include in my model?</h2>
+<p>There is a basic mathematical ‘basement’ here for OLS models: n &gt; k. n is the number of observations you have while k is the number of coefficients. A bivariate model has two coefficients (intercept and slope) while multiple regression models would have as many added slope terms as there are additional predictors. The number of observations you have must be greater than the number of variables you’re including in the model.</p>
+<p>Okay, but probably you’ll have anywhere from 25 to 10,000 observations in your dataset. So, is it okay to include anywhere from 20 to 9500 variables? Not necessarily. Too many variables for too few observations can lead to an issue known as <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank">overfitting</a>. There are some <em>general</em> rules of thumb here though that you may see suggesting that you should have approximately 10-15 observations per model term. A constant + 2 IVs? You’d want 30-45 observations at least. Of course, rules of thumb are not always iron clad.</p>
+<p>The general aim should probably be for parsimony: “Everything should be as simple as it can be, but not simpler”.</p>
+</section>
+<section id="what-should-i-do-with-ordinal-data" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="what-should-i-do-with-ordinal-data"><span class="header-section-number">11.4</span> What should I do with ordinal data?</h2>
+<p>Statistics II focuses on OLS regression and logistic regression. The former is meant for the analysis of continuous (interval/ratio) DVs, while the latter is meant for binary DVs. What about <em>ordinal</em> variables? These impose some complications.</p>
+<p>Consider age in years as a variable. The difference between 18 years old and 19 years old is the same as the difference between 80 years old and 81 years old: 1 year. Each unit increment in age in years cover the same amount of change. Now, consider a standard left-right ideology measure ranging from 0 (“left”) to 10 (“right”). A person who rates themselves a 1 on the scale is less left-leaning than someone who rates themselves a 0. A person who rates themselves a 10 on the scale is likewise less left-leaning (more right-leaning) than someone who gives themselves a 9. The difference in each case is again a single unit on our scale. But do these 1 unit differences really capture the same amount of ideological difference between the groups? This is not quite as clear cut as with the age variable given the abstractness of the scale.</p>
+<p>The foregoing ambiguity can create a problem for ordinary least squares regression. OLS models assume that the relationship between the IV and the DV is linear: that moving from 18 years to 19 years will bring with it the same degree of change in Y as moving from 80 to 81 years. Or, that moving from 0 to 1 on the left-right measure brings with it the same degree of change in Y as moving from 9 to 10. However, ordinal variables can violate, or at least potentially violate, that assumption insofar as the difference between levels of the variable doesn’t capture the same degree of change across the range of the IV. So, what should you do?</p>
+<p>If your DV is ordinal, then my recommendation is to simply run an OLS model. The alternative to an OLS model here is an ordered/ordinal logistic model. I’ll discuss fitting such a model in <a href="analysis_ologit.html" class="quarto-xref"><span>Chapter 20</span></a> . However, while this is the technically more appropriate model: you were not trained on how to run it, it is more difficult to interpret, there are debates about statisticians about whether it is really a better model, and it usually leads to the same basic conclusions. In running an OLS model with an ordinal DV, you will be implicitly assuming that the spacing between categories on the DV is indeed equivalent/identical. If you are concerned about that assumption, then I’d recommend that you present the results of both an OLS model and an ordered logistic model (perhaps presented in an appendix); discuss the results of the OLS model; and then note the similarity with (and/or differences from) the ordered logit model. This is a common tactic. I’ll discuss this more in <a href="analysis_ologit.html" class="quarto-xref"><span>Chapter 20</span></a> .</p>
+<p>A perhaps trickier business is what to do with ordinal <em>independent</em> variables. One can do two things here. First, one could treat the variable as a categorical variable: convert the variable into a factor variable with the lowest level as the reference category and include this variable in the model. This is the safest tactic as it does not involve making any further assumptions about the data (i.e., that the change between categories is equivalent). However, it throws away information about the variable (the fact that it is <em>ordered</em> in nature). Second, one could simply assume that the categories are equivalently spaced and treat the variable as ‘continuous’ in nature. This perhaps enables easier interpretations, but does involve that additional assumption and you know what they say about assumptions.</p>
+<p>In practice you will see both things done and sometimes even in the same model! Here, I would recommend paying some attention to how other researchers use the variable in question. The 7-pt party identity measure in the US is almost always treated as an interval/continuous scale, for instance.</p>
+</section>
+<section id="what-should-i-do-if-my-dv-is-categorical" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="what-should-i-do-if-my-dv-is-categorical"><span class="header-section-number">11.5</span> What should I do if my DV is categorical?</h2>
+<p>If my DV had multiple categories that do not admit of an obvious ordering (e.g.: do you support the Labour Party, Conservative Party, or the Liberal Democrat Party), then a multinomial logit model would be most appropriate. A multinomial logit model is basically just a logit model but one designed for categorical variables with more than two categories. I’ll give an example in <a href="analysis_mlogit.html" class="quarto-xref"><span>Chapter 19</span></a> .</p>
+
+
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;11.1: A Relationship with Two Confounders</span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;11.2: A Relationship with a Confounder and a Mediator</span>
+<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;11.3: Probably Not a Good Idea to Control for Beliefs about Out-Group Beliefs!</span>
+</div>
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./analysis_01.html" class="pagination-link" aria-label="Analysis Steps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./analysis_rscript.html" class="pagination-link" aria-label="R Script Files">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>
