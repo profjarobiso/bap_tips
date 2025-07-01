@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thoughts and Advice on Writing your BAP - 14&nbsp; Regression Table Formatting Suggestion</title>
+<title>14&nbsp; Regression Table Formatting Suggestion – Thoughts and Advice on Writing your BAP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fdf964b8551a4c1da979a829183e41b0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
 
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -147,13 +147,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_analysis.html">Practical Issues in Data Analysis</a></li><li class="breadcrumb-item"><a href="./analysis_03.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -188,7 +188,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./part_writing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing the Thesis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -241,7 +241,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./part_research.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Doing Research</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -264,7 +264,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./part_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical Issues in Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -454,37 +454,92 @@ window.Quarto = {
 </dl>
 </div>
 <div class="cell-output-display">
- 
+<!-- preamble start -->
 
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_ffg0tyq4kk4ypblbmu5k</title>
-    <style>
-.table td.tinytable_css_eqeaxrt2kdhrjr7mhya2, .table th.tinytable_css_eqeaxrt2kdhrjr7mhya2 {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_wcltflhgypx5g1dc7xy6, .table th.tinytable_css_wcltflhgypx5g1dc7xy6 {    text-align: left; }
-.table td.tinytable_css_svmokl1m66ya00611th3, .table th.tinytable_css_svmokl1m66ya00611th3 {    text-align: center; }
-.table td.tinytable_css_73ylb899qc06icgya9m0, .table th.tinytable_css_73ylb899qc06icgya9m0 {    text-align: center; }
-.table td.tinytable_css_tx5bn8rad4n0ogcuzrp0, .table th.tinytable_css_tx5bn8rad4n0ogcuzrp0 {    text-align: center; }
-.table td.tinytable_css_foqzkhu1q00ugsoz2f8w, .table th.tinytable_css_foqzkhu1q00ugsoz2f8w {    border-bottom: solid 0.05em black; }
-    </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-  
 
-  
+      function styleCell_t431p94e31z4zoklw8hv(i, j, css_id) {
+          var table = document.getElementById("tinytable_t431p94e31z4zoklw8hv");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_t431p94e31z4zoklw8hv');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_t431p94e31z4zoklw8hv(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_t431p94e31z4zoklw8hv");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 8, j: 3 }, { i: 8, j: 2 }, { i: 8, j: 1 },  ], css_id: 'tinytable_css_zu02hyzxuoed9xhmc2jd',}, 
+          { positions: [ { i: 8, j: 0 },  ], css_id: 'tinytable_css_xywrloqy5gac0opz37eq',}, 
+          { positions: [ { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 5, j: 1 }, { i: 6, j: 1 }, { i: 3, j: 1 }, { i: 4, j: 1 }, { i: 9, j: 1 }, { i: 10, j: 1 }, { i: 7, j: 1 }, { i: 9, j: 2 }, { i: 1, j: 2 }, { i: 2, j: 2 }, { i: 3, j: 2 }, { i: 4, j: 2 }, { i: 5, j: 2 }, { i: 6, j: 2 }, { i: 7, j: 2 }, { i: 9, j: 3 }, { i: 10, j: 3 }, { i: 10, j: 2 }, { i: 3, j: 3 }, { i: 4, j: 3 }, { i: 1, j: 3 }, { i: 2, j: 3 }, { i: 7, j: 3 }, { i: 5, j: 3 }, { i: 6, j: 3 },  ], css_id: 'tinytable_css_thxghnnd59wclm7s66oq',}, 
+          { positions: [ { i: 0, j: 1 }, { i: 0, j: 3 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_szgw8kqbx1jvpxfvnft8',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 9, j: 0 }, { i: 10, j: 0 },  ], css_id: 'tinytable_css_qdbomnsc0lrnmyc44n7x',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_mxc5r4ftebxljj416tvj',}, 
+          { positions: [ { i: 11, j: 2 }, { i: 11, j: 1 }, { i: 11, j: 3 },  ], css_id: 'tinytable_css_hvi5ulev6bz1m71lilai',}, 
+          { positions: [ { i: 11, j: 0 },  ], css_id: 'tinytable_css_a904c8fpc41j93z31owm',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_t431p94e31z4zoklw8hv(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_zu02hyzxuoed9xhmc2jd, .table th.tinytable_css_zu02hyzxuoed9xhmc2jd { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_xywrloqy5gac0opz37eq, .table th.tinytable_css_xywrloqy5gac0opz37eq { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_thxghnnd59wclm7s66oq, .table th.tinytable_css_thxghnnd59wclm7s66oq { text-align: center; }
+      .table td.tinytable_css_szgw8kqbx1jvpxfvnft8, .table th.tinytable_css_szgw8kqbx1jvpxfvnft8 { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_qdbomnsc0lrnmyc44n7x, .table th.tinytable_css_qdbomnsc0lrnmyc44n7x { text-align: left; }
+      .table td.tinytable_css_mxc5r4ftebxljj416tvj, .table th.tinytable_css_mxc5r4ftebxljj416tvj { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_hvi5ulev6bz1m71lilai, .table th.tinytable_css_hvi5ulev6bz1m71lilai { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_a904c8fpc41j93z31owm, .table th.tinytable_css_a904c8fpc41j93z31owm { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+    </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_ffg0tyq4kk4ypblbmu5k" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_t431p94e31z4zoklw8hv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -566,110 +621,7 @@ window.Quarto = {
         </tbody>
       </table>
     </div>
-
-    <script>
-      function styleCell_tinytable_zlqhsnv5rxf81efkisl1(i, j, css_id) {
-        var table = document.getElementById("tinytable_ffg0tyq4kk4ypblbmu5k");
-        table.rows[i].cells[j].classList.add(css_id);
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_ffg0tyq4kk4ypblbmu5k');
-        var newRow = table.insertRow(i);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_tinytable_zlqhsnv5rxf81efkisl1(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_ffg0tyq4kk4ypblbmu5k");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
-        for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
-            }
-          }
-        }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
-      }
-
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 0, 'tinytable_css_eqeaxrt2kdhrjr7mhya2') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 1, 'tinytable_css_eqeaxrt2kdhrjr7mhya2') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 2, 'tinytable_css_eqeaxrt2kdhrjr7mhya2') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 3, 'tinytable_css_eqeaxrt2kdhrjr7mhya2') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(1, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(2, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(3, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(4, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(5, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(6, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(7, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(9, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(10, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(11, 0, 'tinytable_css_wcltflhgypx5g1dc7xy6') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(1, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(2, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(3, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(4, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(5, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(6, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(7, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(9, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(10, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(11, 1, 'tinytable_css_svmokl1m66ya00611th3') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(1, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(2, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(3, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(4, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(5, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(6, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(7, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(9, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(10, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(11, 2, 'tinytable_css_73ylb899qc06icgya9m0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(0, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(1, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(2, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(3, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(4, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(5, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(6, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(7, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(9, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(10, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(11, 3, 'tinytable_css_tx5bn8rad4n0ogcuzrp0') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 0, 'tinytable_css_foqzkhu1q00ugsoz2f8w') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 1, 'tinytable_css_foqzkhu1q00ugsoz2f8w') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 2, 'tinytable_css_foqzkhu1q00ugsoz2f8w') })
-window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81efkisl1(8, 3, 'tinytable_css_foqzkhu1q00ugsoz2f8w') })
-    </script>
-
-  
-
-
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <p>The table above provides the coefficients from each model and then, underneath them, the coefficient’s standard error. Here is my pet peeve: <code>modelsummary()</code> does not include the coefficient and SE in the same cell of the table, which can lead to situations where you get extra spacing between the coefficient and standard error when the variable label takes up more than one line in its cell. We can see this above with the “Percentage Female Legislators (2003)” and “Facebook Use (proportion of population)” variables.</p>
@@ -696,7 +648,7 @@ window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81e
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"* p &lt; 0.05; ** p &lt; 0.01; *** p &lt; 0.001"</span>), </span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">output =</span> <span class="st">'flextable'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-72809bca{}.cl-7275df32{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-727a2600{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-727a3f96{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-727a3fa0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-727a3fa1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-727a3faa{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-727a3fab{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-72809bca"><thead><tr style="overflow-wrap:break-word;"><th class="cl-727a3f96"><p class="cl-727a2600"><span class="cl-7275df32"> </span></p></th><th class="cl-727a3f96"><p class="cl-727a2600"><span class="cl-7275df32">Electoral Democracy</span></p></th><th class="cl-727a3f96"><p class="cl-727a2600"><span class="cl-7275df32">Liberal Democracy</span></p></th><th class="cl-727a3f96"><p class="cl-727a2600"><span class="cl-7275df32">Egalitarian Democracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">Intercept</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.116</span><br><span class="cl-7275df32">(0.099)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">-0.057</span><br><span class="cl-7275df32">(0.097)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">-0.115</span><br><span class="cl-7275df32">(0.083)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">Human Development Index (2005)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.371*</span><br><span class="cl-7275df32">(0.166)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.415*</span><br><span class="cl-7275df32">(0.162)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.505***</span><br><span class="cl-7275df32">(0.139)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">Percentage Female Legislators (2003)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.006**</span><br><span class="cl-7275df32">(0.002)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.007***</span><br><span class="cl-7275df32">(0.002)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.007***</span><br><span class="cl-7275df32">(0.002)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">Facebook Use (proportion of population)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.004*</span><br><span class="cl-7275df32">(0.002)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.004**</span><br><span class="cl-7275df32">(0.002)</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.003*</span><br><span class="cl-7275df32">(0.001)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa1"><p class="cl-727a2600"><span class="cl-7275df32">Num.Obs.</span></p></td><td class="cl-727a3fa1"><p class="cl-727a2600"><span class="cl-7275df32">142</span></p></td><td class="cl-727a3fa1"><p class="cl-727a2600"><span class="cl-7275df32">142</span></p></td><td class="cl-727a3fa1"><p class="cl-727a2600"><span class="cl-7275df32">142</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">R2</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.384</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.463</span></p></td><td class="cl-727a3fa0"><p class="cl-727a2600"><span class="cl-7275df32">0.522</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-727a3faa"><p class="cl-727a2600"><span class="cl-7275df32">R2 Adj.</span></p></td><td class="cl-727a3faa"><p class="cl-727a2600"><span class="cl-7275df32">0.371</span></p></td><td class="cl-727a3faa"><p class="cl-727a2600"><span class="cl-7275df32">0.451</span></p></td><td class="cl-727a3faa"><p class="cl-727a2600"><span class="cl-7275df32">0.511</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-727a3fab"><p class="cl-727a2600"><span class="cl-7275df32">Notes: OLS Coefficients with SEs in Parentheses</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-727a3fab"><p class="cl-727a2600"><span class="cl-7275df32">* p &lt; 0.05; ** p &lt; 0.01; *** p &lt; 0.001</span></p></td></tr></tfoot></table></div>
+<div class="tabwid"><style>.cl-83d820a6{}.cl-83d360ca{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-83d55786{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-83d569ce{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83d569d8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83d569d9{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83d569da{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83d569db{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-83d820a6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-83d569ce"><p class="cl-83d55786"><span class="cl-83d360ca"> </span></p></th><th class="cl-83d569ce"><p class="cl-83d55786"><span class="cl-83d360ca">Electoral Democracy</span></p></th><th class="cl-83d569ce"><p class="cl-83d55786"><span class="cl-83d360ca">Liberal Democracy</span></p></th><th class="cl-83d569ce"><p class="cl-83d55786"><span class="cl-83d360ca">Egalitarian Democracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">Intercept</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.116</span><br><span class="cl-83d360ca">(0.099)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">-0.057</span><br><span class="cl-83d360ca">(0.097)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">-0.115</span><br><span class="cl-83d360ca">(0.083)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">Human Development Index (2005)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.371*</span><br><span class="cl-83d360ca">(0.166)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.415*</span><br><span class="cl-83d360ca">(0.162)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.505***</span><br><span class="cl-83d360ca">(0.139)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">Percentage Female Legislators (2003)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.006**</span><br><span class="cl-83d360ca">(0.002)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.007***</span><br><span class="cl-83d360ca">(0.002)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.007***</span><br><span class="cl-83d360ca">(0.002)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">Facebook Use (proportion of population)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.004*</span><br><span class="cl-83d360ca">(0.002)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.004**</span><br><span class="cl-83d360ca">(0.002)</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.003*</span><br><span class="cl-83d360ca">(0.001)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569d9"><p class="cl-83d55786"><span class="cl-83d360ca">Num.Obs.</span></p></td><td class="cl-83d569d9"><p class="cl-83d55786"><span class="cl-83d360ca">142</span></p></td><td class="cl-83d569d9"><p class="cl-83d55786"><span class="cl-83d360ca">142</span></p></td><td class="cl-83d569d9"><p class="cl-83d55786"><span class="cl-83d360ca">142</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">R2</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.384</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.463</span></p></td><td class="cl-83d569d8"><p class="cl-83d55786"><span class="cl-83d360ca">0.522</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83d569da"><p class="cl-83d55786"><span class="cl-83d360ca">R2 Adj.</span></p></td><td class="cl-83d569da"><p class="cl-83d55786"><span class="cl-83d360ca">0.371</span></p></td><td class="cl-83d569da"><p class="cl-83d55786"><span class="cl-83d360ca">0.451</span></p></td><td class="cl-83d569da"><p class="cl-83d55786"><span class="cl-83d360ca">0.511</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-83d569db"><p class="cl-83d55786"><span class="cl-83d360ca">Notes: OLS Coefficients with SEs in Parentheses</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-83d569db"><p class="cl-83d55786"><span class="cl-83d360ca">* p &lt; 0.05; ** p &lt; 0.01; *** p &lt; 0.001</span></p></td></tr></tfoot></table></div>
 </div>
 </div>
 <p>Here is what changed:</p>
@@ -785,7 +737,7 @@ window.addEventListener('load', function () { styleCell_tinytable_zlqhsnv5rxf81e
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's take a look</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>reg_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-72c50652{}.cl-72bb6e76{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-72bf0b1c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-72bf0b30{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-72bf1ed6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1ee0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1ee1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1ee2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1eea{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1eeb{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1eec{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1ef4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1ef5{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-72bf1efe{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-72c50652"><thead><tr style="overflow-wrap:break-word;"><th class="cl-72bf1ed6"><p class="cl-72bf0b1c"><span class="cl-72bb6e76"> </span></p></th><th class="cl-72bf1ed6"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">Electoral Democracy</span></p></th><th class="cl-72bf1ed6"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">Liberal Democracy</span></p></th><th class="cl-72bf1ed6"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">Egalitarian Democracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ee0"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Intercept</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.116</span><br><span class="cl-72bb6e76">0.099</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">-0.057</span><br><span class="cl-72bb6e76">0.097</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">-0.115</span><br><span class="cl-72bb6e76">0.083</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ee0"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Human Development Index (2005)</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.371*</span><br><span class="cl-72bb6e76">0.166</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.415*</span><br><span class="cl-72bb6e76">0.162</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.505***</span><br><span class="cl-72bb6e76">0.139</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ee0"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Percentage Female Legislators (2003)</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.006**</span><br><span class="cl-72bb6e76">0.002</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.007***</span><br><span class="cl-72bb6e76">0.002</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.007***</span><br><span class="cl-72bb6e76">0.002</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ee2"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Facebook Use (proportion of population)</span></p></td><td class="cl-72bf1eea"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.004*</span><br><span class="cl-72bb6e76">0.002</span></p></td><td class="cl-72bf1eea"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.004**</span><br><span class="cl-72bb6e76">0.002</span></p></td><td class="cl-72bf1eea"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.003*</span><br><span class="cl-72bb6e76">0.001</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1eeb"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Num.Obs.</span></p></td><td class="cl-72bf1eec"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">142</span></p></td><td class="cl-72bf1eec"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">142</span></p></td><td class="cl-72bf1eec"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">142</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ee0"><p class="cl-72bf0b30"><span class="cl-72bb6e76">R2</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.384</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.463</span></p></td><td class="cl-72bf1ee1"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.522</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-72bf1ef4"><p class="cl-72bf0b30"><span class="cl-72bb6e76">R2 Adj.</span></p></td><td class="cl-72bf1ef5"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.371</span></p></td><td class="cl-72bf1ef5"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.451</span></p></td><td class="cl-72bf1ef5"><p class="cl-72bf0b1c"><span class="cl-72bb6e76">0.511</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-72bf1efe"><p class="cl-72bf0b30"><span class="cl-72bb6e76">Notes: OLS Coefficients with SEs in Parentheses</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-72bf1efe"><p class="cl-72bf0b30"><span class="cl-72bb6e76">* p &lt; 0.05; ** p &lt; 0.01; *** p &lt; 0.001</span></p></td></tr></tfoot></table></div>
+<div class="tabwid"><style>.cl-83fbfe4a{}.cl-83f786bc{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-83f9986c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-83f99876{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-83f9a848{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a852{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a853{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a854{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a855{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a85c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a85d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a85e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a85f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-83f9a860{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-83fbfe4a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-83f9a848"><p class="cl-83f9986c"><span class="cl-83f786bc"> </span></p></th><th class="cl-83f9a848"><p class="cl-83f9986c"><span class="cl-83f786bc">Electoral Democracy</span></p></th><th class="cl-83f9a848"><p class="cl-83f9986c"><span class="cl-83f786bc">Liberal Democracy</span></p></th><th class="cl-83f9a848"><p class="cl-83f9986c"><span class="cl-83f786bc">Egalitarian Democracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-83f9a852"><p class="cl-83f99876"><span class="cl-83f786bc">Intercept</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.116</span><br><span class="cl-83f786bc">0.099</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">-0.057</span><br><span class="cl-83f786bc">0.097</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">-0.115</span><br><span class="cl-83f786bc">0.083</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a852"><p class="cl-83f99876"><span class="cl-83f786bc">Human Development Index (2005)</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.371*</span><br><span class="cl-83f786bc">0.166</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.415*</span><br><span class="cl-83f786bc">0.162</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.505***</span><br><span class="cl-83f786bc">0.139</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a852"><p class="cl-83f99876"><span class="cl-83f786bc">Percentage Female Legislators (2003)</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.006**</span><br><span class="cl-83f786bc">0.002</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.007***</span><br><span class="cl-83f786bc">0.002</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.007***</span><br><span class="cl-83f786bc">0.002</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a854"><p class="cl-83f99876"><span class="cl-83f786bc">Facebook Use (proportion of population)</span></p></td><td class="cl-83f9a855"><p class="cl-83f9986c"><span class="cl-83f786bc">0.004*</span><br><span class="cl-83f786bc">0.002</span></p></td><td class="cl-83f9a855"><p class="cl-83f9986c"><span class="cl-83f786bc">0.004**</span><br><span class="cl-83f786bc">0.002</span></p></td><td class="cl-83f9a855"><p class="cl-83f9986c"><span class="cl-83f786bc">0.003*</span><br><span class="cl-83f786bc">0.001</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a85c"><p class="cl-83f99876"><span class="cl-83f786bc">Num.Obs.</span></p></td><td class="cl-83f9a85d"><p class="cl-83f9986c"><span class="cl-83f786bc">142</span></p></td><td class="cl-83f9a85d"><p class="cl-83f9986c"><span class="cl-83f786bc">142</span></p></td><td class="cl-83f9a85d"><p class="cl-83f9986c"><span class="cl-83f786bc">142</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a852"><p class="cl-83f99876"><span class="cl-83f786bc">R2</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.384</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.463</span></p></td><td class="cl-83f9a853"><p class="cl-83f9986c"><span class="cl-83f786bc">0.522</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-83f9a85e"><p class="cl-83f99876"><span class="cl-83f786bc">R2 Adj.</span></p></td><td class="cl-83f9a85f"><p class="cl-83f9986c"><span class="cl-83f786bc">0.371</span></p></td><td class="cl-83f9a85f"><p class="cl-83f9986c"><span class="cl-83f786bc">0.451</span></p></td><td class="cl-83f9a85f"><p class="cl-83f9986c"><span class="cl-83f786bc">0.511</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-83f9a860"><p class="cl-83f99876"><span class="cl-83f786bc">Notes: OLS Coefficients with SEs in Parentheses</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-83f9a860"><p class="cl-83f99876"><span class="cl-83f786bc">* p &lt; 0.05; ** p &lt; 0.01; *** p &lt; 0.001</span></p></td></tr></tfoot></table></div>
 </div>
 </div>
 <p>You’re likely writing in Word or Google Docs, so you need to export the table to a .docx file so that you can copy and paste the table into your report. We need to use a command from the <code>flextable</code> library to do this since we changed the table-making back-end above.</p>
@@ -985,18 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1028,7 +969,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1036,7 +997,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1133,7 +1094,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
