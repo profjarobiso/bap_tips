@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+---
+
+# Finalizing, Distributing, and Data Downloading
+
+## Survey Structure
+
+-   Consent
+-   Survey Questions
+-   Thank you and debrief
+-   End of survey
+
+How should you set organize the "Survey Questions" part.
+
+## Preview, Preview, Preview
+
+## Downloading the Survey Questionnaire
+
+## Publishing and Distributing
+
+## Downloading Data
