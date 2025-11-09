@@ -34,6 +34,11 @@ book:
         - analysis_clustering.qmd
         - analysis_mlogit.qmd
         - analysis_ologit.qmd
+    - part: part_qualtrics.qmd
+      chapters: 
+        - qualtrics_basics.qmd
+        - quarto_randomization.qmd
+        - quarto_finalizing_distribution_data.qmd
 
 format:
   html:

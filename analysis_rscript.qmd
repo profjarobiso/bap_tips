@@ -52,5 +52,3 @@ A handy tool here is the Outline section. You can see an Outline of the contexts
 -   `#` : Section
 -   `##`: Sub-Section
 -   `###` Sub-subsection
-
-**Testing the update process for the book, disregard**

@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>21&nbsp; Qualtrics: Basics – Thoughts and Advice on Writing your BAP</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./quarto_randomization.html" rel="next">
+<link href="./part_qualtrics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b9e11ad5a37ead2aabff839d95ae3857.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_qualtrics.html">Surveys and Experiments in Qualtrics</a></li><li class="breadcrumb-item"><a href="./qualtrics_basics.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Qualtrics: Basics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Thoughts and Advice on Writing your BAP</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing the Thesis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_01_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Structuring the Thesis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_02_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_03_review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Review of Literature and Argument</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_04_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Research Design/Data Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_05_analyses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results/Analyses Section</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_06_conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing_07_general.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">General Writing Advice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_01_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Finding Literature</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./doing_02_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Finding and Evaluating Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical Issues in Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Analysis Steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Some Practical Questions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_rscript.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">R Script Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Discussing Your Model Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression Table Formatting Suggestion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Combining (and Saving) Plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_pivot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_robust.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Heteroskedasticity and Robust Standard Errors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Geographically Clustered/Nested Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_mlogit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Categorical DVs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_ologit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Ordinal DVs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Surveys and Experiments in Qualtrics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics_basics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Qualtrics: Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto_randomization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Advanced Randomization (Inc.&nbsp;Experiments)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto_finalizing_distribution_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Finalizing, Distributing, and Data Downloading</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#starting-the-process" id="toc-starting-the-process" class="nav-link active" data-scroll-target="#starting-the-process"><span class="header-section-number">21.1</span> Starting the process</a></li>
+  <li><a href="#overview-of-the-survey-page" id="toc-overview-of-the-survey-page" class="nav-link" data-scroll-target="#overview-of-the-survey-page"><span class="header-section-number">21.2</span> Overview of the survey page</a></li>
+  <li><a href="#sec-question-block-and-survey-flow" id="toc-sec-question-block-and-survey-flow" class="nav-link" data-scroll-target="#sec-question-block-and-survey-flow"><span class="header-section-number">21.3</span> Question Block and Survey Flow</a></li>
+  <li><a href="#adding-and-editing-questions" id="toc-adding-and-editing-questions" class="nav-link" data-scroll-target="#adding-and-editing-questions"><span class="header-section-number">21.4</span> Adding and Editing Questions</a>
+  <ul class="collapse">
+  <li><a href="#editing-a-question" id="toc-editing-a-question" class="nav-link" data-scroll-target="#editing-a-question"><span class="header-section-number">21.4.1</span> Editing a question</a></li>
+  <li><a href="#mc-question-options" id="toc-mc-question-options" class="nav-link" data-scroll-target="#mc-question-options"><span class="header-section-number">21.4.2</span> MC Question Options</a></li>
+  <li><a href="#choice-randomization" id="toc-choice-randomization" class="nav-link" data-scroll-target="#choice-randomization"><span class="header-section-number">21.4.3</span> Choice Randomization</a></li>
+  <li><a href="#sec-adding-new-questions" id="toc-sec-adding-new-questions" class="nav-link" data-scroll-target="#sec-adding-new-questions"><span class="header-section-number">21.4.4</span> Adding New Questions</a></li>
+  <li><a href="#import-from-library" id="toc-import-from-library" class="nav-link" data-scroll-target="#import-from-library"><span class="header-section-number">21.4.5</span> Import from Library</a></li>
+  <li><a href="#page-breaks" id="toc-page-breaks" class="nav-link" data-scroll-target="#page-breaks"><span class="header-section-number">21.4.6</span> Page breaks</a></li>
+  <li><a href="#timing-questions" id="toc-timing-questions" class="nav-link" data-scroll-target="#timing-questions"><span class="header-section-number">21.4.7</span> Timing questions</a></li>
+  </ul></li>
+  <li><a href="#piping-skipping-and-more" id="toc-piping-skipping-and-more" class="nav-link" data-scroll-target="#piping-skipping-and-more"><span class="header-section-number">21.5</span> Piping, Skipping, and more</a>
+  <ul class="collapse">
+  <li><a href="#sec-display-logic" id="toc-sec-display-logic" class="nav-link" data-scroll-target="#sec-display-logic"><span class="header-section-number">21.5.1</span> Display Logic</a></li>
+  <li><a href="#piped-text" id="toc-piped-text" class="nav-link" data-scroll-target="#piped-text"><span class="header-section-number">21.5.2</span> Piped Text</a></li>
+  <li><a href="#sec-skip-logic-and-consent-pages" id="toc-sec-skip-logic-and-consent-pages" class="nav-link" data-scroll-target="#sec-skip-logic-and-consent-pages"><span class="header-section-number">21.5.3</span> Skip Logic and Consent Pages</a></li>
+  <li><a href="#sec-branches" id="toc-sec-branches" class="nav-link" data-scroll-target="#sec-branches"><span class="header-section-number">21.5.4</span> Branches</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_qualtrics.html">Surveys and Experiments in Qualtrics</a></li><li class="breadcrumb-item"><a href="./qualtrics_basics.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Qualtrics: Basics</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-qualtrics-basics" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Qualtrics: Basics</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This chapter will cover some basic concepts involved with setting up a survey in Qualtrics. Here is what we’ll cover:</p>
+<ul>
+<li>Starting the survey creation process</li>
+<li>Question blocks and the survey flow</li>
+<li>Editing a question</li>
+<li>Inserting new questions</li>
+<li>Updating question wording and flow based on responses to prior questions</li>
+</ul>
+<p>Note: images in this document have a ‘lightbox’ class, which means that you can click on them to pop them out and get a slightly closer look.</p>
+<section id="starting-the-process" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="starting-the-process"><span class="header-section-number">21.1</span> Starting the process</h2>
+<p>Step 1, naturally, is logging in to Qualtrics via <a href="https://leidenuniv.eu.qualtrics.com/" target="_blank">this webpage</a>. At that point you will see a page like this:</p>
+<p><a href="images/qualtrics_start.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/qualtrics_start.png" class="img-fluid"></a></p>
+<p>The left hand column shows the various projects in your Qualtrics. In your case, there shouldn’t be any at first since you’re just starting, but once you have created one then it will appear here.</p>
+<p>The middle part will show active surveys and how many responses they have received in the recent days. Again, this will be blank at first and only relevant once you have distributed your survey to actual people to complete.</p>
+<p>The most important thing for you, at this point, is the “Create a new project” button that is shown at the bottom of the screen. Click that button to start the process of creating a survey. From there, select: survey; get started; give a name to your survey; and select ‘create project’. Here is a .gif showing the process.</p>
+<p><a href="images/qualtrics_init.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/qualtrics_init.gif" class="img-fluid"></a></p>
+</section>
+<section id="overview-of-the-survey-page" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="overview-of-the-survey-page"><span class="header-section-number">21.2</span> Overview of the survey page</h2>
+<p>Here is the survey creation page in its default form. Let’s get to know some parts of this page.</p>
+<p><a href="images/qualtrics_qpage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/qualtrics_qpage.png" class="img-fluid"></a></p>
+<p>Let’s start at the far left with the various icons. These icons represent different modes that you can select between as you’re working. Here is an image with added text to indicate the meaning of the icons:</p>
+<p><a href="images/qualtrics_mode_text.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/qualtrics_mode_text.png" class="img-fluid"></a></p>
+<ul>
+<li>Builder: this is where you ‘build’ your survey, i.e., create and modify the questions that will make up the survey.</li>
+<li>Survey flow: clicking this button will show you the “survey flow” for your survey, i.e., its organizational structure. I will discuss this further in coming sections/chapters.</li>
+<li>Look and feel: clicking this button will bring up options for changing how your survey looks (e.g., its theme, font, etc.).</li>
+<li>Options: these are general options. In general you will not need to deal with this much as the default options here are good.</li>
+<li>Quotas: you can ignore this</li>
+<li>Languages: This handles the base language for the survey.</li>
+</ul>
+</section>
+<section id="sec-question-block-and-survey-flow" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="sec-question-block-and-survey-flow"><span class="header-section-number">21.3</span> Question Block and Survey Flow</h2>
+<p>Qualtrics surveys are organized around question blocks. A default question block is added when you first create the survey:</p>
+<p><a href="images/qblock.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/qblock.png" class="img-fluid"></a></p>
+<p>Each question block can feature one or more questions within them. In this case, we have a single multiple choice question (Q1) albeit one without any content yet. In practice, you should include questions on the same topic within a question block. For instance, you might have a single question block for demographic questions (age, gender/sex, etc.), another for political ideology, another for a third topic, etc.</p>
+<p>The top of the block provides the name of the question block which is “Default Question Block” in our current instance. We can rename this block by clicking on this text and giving the block a more informative name. You should do this in practice because it will help you organize your survey later on when working in the Survey Flow area of Qualtrics.</p>
+<p>There are a couple of ways to add blocks to our survey. First, we can click “Add Block” to, well, add another block. Alternatively, we can click on the three dots in the block to get some block options, which includes “Add block below”. This latter route is more useful when you already have many blocks already and do not want to scroll down to the end of the page to click the “Add Block” option.</p>
+<p><a href="images/block_opts.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/block_opts.png" class="img-fluid"></a></p>
+<p>Blocks are the basic building, uh, blocks of our survey. We can naturally move them around so that the survey progresses in the way we want. The block options menu shown in the image above has a “Move block” option that you can use to do so. However, this is a little awkward to use in practice and especially so if you have a lot of blocks in your survey. A better option is to use the Survey Flow page. Let’s take a look at what that page looks like (with future sections/chapters elaborating more on how you can use this page).</p>
+<p><a href="images/flow_basic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/flow_basic.png" class="img-fluid"></a></p>
+<p>The image above shows the Survey Flow page for my survey at this point (and after I had added a second block which I imaginatively titled ‘new block’). This area provides an overview of the basic flow of my survey. It indicates that respondent will first complete the question(s) in the “Default Question Block” block and then those in the “new block” area. I can re-arrange things, if I want, by clicking on “Move” for a block and then dragging and dropping it to where I want it to be. I would then need to hit the Apply button at the bottom of the page (not shown here) to make sure that my changes were saved.</p>
+<p>Another important button here is “Add Below” which reveals various options:</p>
+<p><a href="images/add_below.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/add_below.png" class="img-fluid"></a></p>
+<p>You do not need to know much about these various options at the present moment and some you likely will never need to know about (e.g,. Supplemental Data or Web Service). However, there are some options that may be useful for you (Branch, Randomizer, and Group) and which will be discussed more in further sections.</p>
+</section>
+<section id="adding-and-editing-questions" class="level2 page-columns page-full" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="adding-and-editing-questions"><span class="header-section-number">21.4</span> Adding and Editing Questions</h2>
+<p>Let’s turn to the process of creating/editing questions for our survey. We’ll begin with the default question to get a sense of how to edit questions and then move on to adding new ones and some of the options available to you when doing so.</p>
+<section id="editing-a-question" class="level3 page-columns page-full" data-number="21.4.1">
+<h3 data-number="21.4.1" class="anchored" data-anchor-id="editing-a-question"><span class="header-section-number">21.4.1</span> Editing a question</h3>
+<p>Qualtrics has been nice to us and populated our Default Question Block with a multiple choice question:</p>
+<p><a href="images/qblock.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/qblock.png" class="img-fluid"></a></p>
+<p>At the top we can see “Q1”. This is the name of the question. When you add another question it will be “Q2” and so on. You can click on Q1 and edit the name to something more informative. This is often a good idea beacuse it helps clarify to you what each column is supposed to represent. The name of the question will be the name of the variable in your eventual dataset, though, so if you want to make sure that any renaming that you do will not make your life harder later on when working in R or SPSS. For instance, changing the name of Q1 to “This is my first Qualtrics question” would be a terrible idea because statistical software packages do not play nicely with variable names that have spaces in them. Personally, I use lower case whole words (e.g., “leftright” or “pid”) or <a href="https://www.freecodecamp.org/news/snake-case-vs-camel-case-vs-pascal-case-vs-kebab-case-whats-the-difference/" target="_blank">snake case</a> (e.g., “pid_lean”, “race_eth”) and keep them short but informative if/when renaming questions.</p>
+<p>We then see “Click to write the question text” which is perhaps self-explanatory. We then see three multiple choice options; if we click on the text next to them we can write our answer options.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;There is a an “Edit Multiple” option on the left hand side of the screen under “Choices”. This option enables us to edit multiple responses at once rather than edit each on in turn.</p></div></div><p>Let’s see this in practice. Here, I’ll create a question modeled on the US General Social Survey’s <a href="https://gssdataexplorer.norc.org/variables/187/vshow" target="_blank">question</a> about whether the government is spending too much/too little/the right amount on education. Note: I’ve already written the question wording in a separate text file so that I could copy and paste for this .gif.</p>
+<p><a href="images/defaultq.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/defaultq.gif" class="img-fluid"></a></p>
+<p>Yay, our first question! If we click on the three button menu option for the question we can select “Preview Question” to get a sense of what this will look like to those taking the survey.</p>
+<div id="qpreview" class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/qpreview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="The Preview Question option"><img src="images/qpreview.png" class="img-fluid figure-img" alt="The Preview Question option"></a></p>
+<figcaption>The Preview Question option</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/qpreview1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="What it looks like after pressing"><img src="images/qpreview1.png" class="img-fluid figure-img" alt="What it looks like after pressing"></a></p>
+<figcaption>What it looks like after pressing</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>You may have also noticed a Preview button at the top of the builder area as well, next to Publish. That Preview button lets us preview the survey as a whole and take it as if you were a respondent. You should do this several times before you circulate the survey to potential respondents to work out potential issues with the survey and survey flow.</p>
+</section>
+<section id="mc-question-options" class="level3" data-number="21.4.2">
+<h3 data-number="21.4.2" class="anchored" data-anchor-id="mc-question-options"><span class="header-section-number">21.4.2</span> MC Question Options</h3>
+<p>If you click on a question, then you will see various options in the Edit Question column to the left of the question building area. Let’s move down the column to see what options are available to you.</p>
+<p><a href="images/qoptions1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/qoptions1.png" class="img-fluid"></a></p>
+<p><strong>Question Type</strong>: Here you can change the question’s type. I’ll talk a little more about question types in the next sub-section.</p>
+<p><strong>Answer Type</strong>: Can respondents choose multiple options or only one? The default is “allow one answer”. This is a sensible default for multiple choice questions. There can be situations where it makes sense to change this, but generally this can be left alone unless you have a good reason to do otherwise.</p>
+<p><strong>Choices</strong>: Here we can change the number of choice options. The default here was three but if we wanted to make this a 5-item or 7-item or whatever-item question, then we can increase/decrease the number accordingly. We also see an “Edit Multiple” option right below the Number of Choices part. We can click this option to give us a text box where we can edit the wording of all of our response options at once.</p>
+<p><strong>Format</strong>: You get three options here: (1) list (what you see in the image), (2) dropdown (people pick from a dropdown box), and (3) select box (they’re giving a box with the different options and click on the one that they want). I would generally keep this as “list” for a multiple choice question. The one time I would consider a dropdown is when there are many, many, discrete response options (e.g., if I were asking US-based survey respondents what state they live in then I could simply have a dropdown box here instead of 50 options).</p>
+<p><strong>Alignment</strong>: You can choose to show the response options in a vertical alignment (as above) or a horizontal one (the response options are displayed next to each other). I believe vertical alignment plays better with people taking surveys on mobile phones, so I might consider defaulting to that option. You can preview what the survey would look like when taking it on a mobile phone when you Preview the survey (see <a href="quarto_finalizing_distribution_data.html#sec-preview-preview-preview" class="quarto-xref"><span>Section 23.2</span></a>).</p>
+<p>There are some more options as well if we scroll down the page:</p>
+<p><a href="images/qoptions2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="images/qoptions2.png" class="img-fluid"></a></p>
+<p><strong>Add Requirements:</strong> (Note: this was off by default but I clicked it on so you could see the sub-options). The most relevant thing here is “Force response”. If you toggle Add Requirements and select this option, then respondents will need to answer the question to move on in the survey. Should you do this? There are pros and cons here. Selecting this option enables you to avoid having missing data on the question and thus maximize the number of survey responses that you can use in your analyses. In addition, it’s possible that you’ll need a response on an item for some other purpose (e.g., when you first ask them for informed consent to take the survey or because it will influence the nature of the questions people get later on in the survey). However, forcing people to respond might have negative implications for data quality as well insofar as it annoys respondents, and, moreover, respondents should have the right to <em>not</em> answer our questions. The benefits likely outweigh the cons here.</p>
+<p><strong>Add Validation</strong>: You can ignore this.</p>
+<p><strong>Question Behavior</strong>: We now have a variety of options for question behavior.</p>
+<ul>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/display-logic/" target="_blank">Display</a> and <a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/skip-logic/" target="_blank">skip</a> logic cover situations where you want respondents to be shown this question (or not shown this question) under certain circumstances. I’ll discuss this a little in a future section.</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/carry-forward-choices/" target="_blank">Carry forward choices</a> enables you to “copy specific answer choices from a question and bring them into a future question in your survey”.</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/choice-randomization/" data-taret="_blank">Choice randomization</a> enables you to randomize the order of response options; I’ll discuss this a little more in the next section.</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/" target="_blank">Recode values</a> enables you to change the numeric values associated with each response. The default options in my question, for instance, are 1 = too little, 2 = too much, and 3 = about right. If I wanted to change that behavior (e.g., make too little = 1, about right = 2, and too much = 3), then I could use this option to do that. The potential advantage is that this may preempt having to do this type of recoding later on in R/SPSS. However, I generally leave this alone to avoid screwing things up by accident.</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-default-choices/" target="_blank">Default choices</a> is an option area which I do not think I’ve ever actually used. It’s probably not relevant for your survey.</li>
+<li>JavaScript: this would give you the ability to add Javascript code to do some advanced things…but again, this is almost certainly not required for your survey.</li>
+</ul>
+</section>
+<section id="choice-randomization" class="level3 page-columns page-full" data-number="21.4.3">
+<h3 data-number="21.4.3" class="anchored" data-anchor-id="choice-randomization"><span class="header-section-number">21.4.3</span> Choice Randomization</h3>
+<p>One of the options noted above is Choice Randomization. Let’s take a look at what we can do here:</p>
+<p><a href="images/choice_random.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="images/choice_random.png" class="img-fluid"></a></p>
+<p>The default is “No Randomization” - the responses that you created will be shown in the order that you created them. For some questions this might not be problematic. The other options, meanwhile, enable you to randomize your responses in some manner.</p>
+<p>Why (and when) might you want to randomize response options? Consider what it takes to answer a survey question: we need to read and interpret this question, recall information from memory, and then try to map this information to the response options before us.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Answering a survey question, in other words, requires some degree of mental effort. Ideally, respondents are willing and able to give this effort and thus answer our questions as well as possible. However, respondents may not always be so willing and able - perhaps they’re not so interested in the topic or the survey is dragging on a bit or the question simply requires a lot of effort to answer. In such cases respondents might engage in “satisficing” behavior - they might take some type of shortcut to come up with a <em>good enough</em> answer for their mix of motivation and ability.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This could involve a respondent simply relying on the most immediate considerations that come to mind rather than canvassing their memory for additional relevant information. Or, it could mean simply choosing the first or last option offered since that is a very simple way to get through a survey.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This latter behavior would then induce a potential bias in our data with responses skewed to the first (or last) response option given to respondents. Randomizing choice options does not really help with the former sources of satisficing behavior, but it can help reduce the negative impacts of the latter type of behavior. I thus recommend some randomization in your response options.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<a href="Cognitive processes underlying context effects in attitude measurement." target="_blank">Tourangeau and Rasinski</a> provide a classic account of this processes. You may see the link between this idea and our discussions of information processing and memory from class.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;See <a href="https://catalogue.leidenuniv.nl/permalink/31UKB_LEU/rdnp04/cdi_proquest_miscellaneous_69540306" target="_blank">Kronick</a> for a discussion of the concept.</p></div><div id="fn4"><p><sup>4</sup>&nbsp;I recall being in college and receiving a telephone (!) survey from some university service. The interviewer would start reading out the response options, one after the other, and the survey starting to drag on and on with my desire to satisfice in just this way growing and growing.</p></div></div><p>Let’s take a look at our options for choice randomization:</p>
+<blockquote class="blockquote">
+<p>Display answers in a random order</p>
+</blockquote>
+<p>This will completely randomize the order of the response options. If I were to select this option for my ‘are we spending too much’ question, then some respondents might get ‘Too Little | Too Much | About Right’ as the response order and others ‘Too Much | About Right | Too Little’ and others ‘About Right | Too Little | Too Much’ and so on. This option is thus not particularly useful for items where the responses have some type of ordinal scale to them (e.g., not at all to extremely; strongly agree to strongly disagree). Instead, this option is more useful for questions with unordered categorical responses (e.g., what is your nationality; which candidate/party did you vote for).</p>
+<blockquote class="blockquote">
+<p>Present only _ of total choices</p>
+</blockquote>
+<p>This enables you to select some random number of options to show. I cannot think of a particularly good use case for this.</p>
+<blockquote class="blockquote">
+<p>Randomly flip the order of choices</p>
+</blockquote>
+<p>Suppose that you have a question where there are five response options: strongly agree, agree, neither, disagree, strongly disagree. This randomization option will show some respondents the scale starting from strongly agree and going to strongly disagree but other respondents with get the flipped order, strongly disagree to strongly agree. I would recommend using this for your questions that involve an ordinal scale.</p>
+<p>When you click on this option, you will then see a sub-option with a ticked box: “Consistently reverse the choice order for all questions with this randomization option selected.” The Qualtrics help page says the following about this sub-option: “This option only appears after enabling “randomly flip the order of choices.” When enabled, this option will consistently randomize answer choice order for all affected questions in your survey.” Suppose I set up my response options to range from strongly agree to strongly disagree - if Qualtrics randomly shows the respondent the question in the strongly disagree to strongly agree format (i.e., randomly flips the direction of the option) then it will also randomly flip the order for all subsequent questions where you ask it to randomly reverse the scale direction. Otherwise, Qualtrics will randomize the direction anew for each question. This is generally reasonable - having things flip around randomly from question to question can induce confusion among respondents and increase their cognitive load…which might lead them to satisfice!</p>
+<blockquote class="blockquote">
+<p>Advanced Randomization</p>
+</blockquote>
+<p>This enables some additional customization to the randomization process. Let’s take a peek at the options you get if you click on this and then “Set up Advanced Randomization”</p>
+<p><a href="images/advanced_rando.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="images/advanced_rando.png" class="img-fluid"></a></p>
+<p>We see the response options for my question in the left box, under “Fixed display order”. In essence, this shows us the current display order for the options. If we click on one of these options (or select them all), we can then add them to one (or more) of the boxes to the right. The most useful box here is “Randomize Choices”. This option is useful if we want to randomize the order of only <em>some</em> of the responses. For instance, suppose that my question asked respondents who they voted for in the 2024 US President election with the following options: Donald Trump, Kamala Harris, Jill Stein, Some Other Candidate, and Did Not Vote. I might want to randomize the order of Trump, Harris, and Stein while leaving the other two options for the bottom of the list. I could do that by selecting the Trump, Harris, and Stein options and adding them to the “Randomize Choices” box at the top.</p>
+</section>
+<section id="sec-adding-new-questions" class="level3 page-columns page-full" data-number="21.4.4">
+<h3 data-number="21.4.4" class="anchored" data-anchor-id="sec-adding-new-questions"><span class="header-section-number">21.4.4</span> Adding New Questions</h3>
+<p>Thus far we’ve seen how to edit a question using the default question that Qualtrics populated our survey with as a base. Let’s talk, then, about adding new questions to our survey.</p>
+<p>Adding new questions is pretty straight forward. Just hit “Add New Question” within a block and a menu will pop up showing different types of questions that you might add. (There is another option here for adding new questions which I’ll discuss in the next section as it is only sometimes useful.) Let’s talk about some of the possibilities.</p>
+<p><a href="images/qtypes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="images/qtypes.png" class="img-fluid"></a></p>
+<p><strong>Multiple Choice</strong>: This will likely be your bread and butter question type. We’ve seen it already so I won’t say more here.</p>
+<p><strong>Text Entry</strong>: This is for situations where you want to ask an open ended question.</p>
+<p><strong>Text / Graphic</strong>: This type of ‘question’ doesn’t actually ask respondent a question per se since respondents are not provided with any response options. Instead, respondents just see some text. This type of question is particularly useful for creating segues between areas of your survey. For instance, suppose you begin with questions about people’s political values and then segue into questions about their attitudes toward globalization. You might start the first block with a Text question that says something like “We’ll begin by asking you some questions about your political attitudes” or something like that.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> You might then include another Text ‘question’ as a segue to the following section as well, “We’ll now ask you questions about your beliefs regarding globalization”. Another use case for this type of question are experiments, e.g., providing the stimulus or the treatment that people are responding to, before asking them the specific questions you want to use in your analyses as dependent variables.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Alternatively, you might have segue Blocks that only feature this single question instead of incorporating it into the same block as the resulting questions. That can be useful if, for instance, you want to randomize the order of questions in the ensuing block. See <a href="#sec-bonus-question-randomization-within-a-block" class="quarto-xref"><span>Section 21.5.4.1</span></a> for more on that.</p></div></div><p><strong>Matrix Table</strong>: You can think of this as a way of asking several multiple choice questions on the same topic in a slightly more efficient manner. For instance:</p>
+<p><a href="images/spending.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="images/spending.png" class="img-fluid"></a></p>
+<p>Here, respondents are asked to indicate whether they want more or less spent in four different areas. We can add/reduce the number of statements or the number of scale points for the question via the options to the left. While not shown here, one can also randomize the order of the different statements within the grid, which is generally a good idea.</p>
+<p>This type of grid or matrix question can be useful when you have several items that share a common prompt/intro and have the same scale, i.e., the questions all deal with the same basic concept. The main trade off here is complexity. The table above only had four statements to evaluate. This type of set up would not work very well if there were many different rows/statements (although it might be reasonable to have two or three such tables rather than one giant one). This type of set up can also be awkward to answer on a mobile phone.</p>
+<p>One thing to know about regarding these questions is the naming scheme. I named this question as “spending” but there are actually four questions here (one on the environment, one on health care, etc.). In my dataset, the four different questions would be represented by spending_1, spending_2, spending_3, and spending_4.</p>
+<p><strong>Slider</strong>: This is similar to the matrix question but here people can answer on a slider scale as below. For instance:</p>
+<p><a href="images/slider.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/slider.png" class="img-fluid"></a></p>
+<p>There are additional question types, but the above will likely cover 99.9% or even 100% of what you want.</p>
+</section>
+<section id="import-from-library" class="level3" data-number="21.4.5">
+<h3 data-number="21.4.5" class="anchored" data-anchor-id="import-from-library"><span class="header-section-number">21.4.5</span> Import from Library</h3>
+<p>You may have noticed another option here: “Import from library”. Let’s click on that button to see what happens:</p>
+<p><a href="images/import_library.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="images/import_library.png" class="img-fluid"></a></p>
+<p>There is a ‘question library’ in Qualtrics with some commonly asked questions. You can use this option to import questions from this library into your survey. I think the most relevant options here are for demographics (e.g., sex/gender, age, education, race/ethnicity, income, etc.). You can rely on these questions for adding demographics items to your survey. (One note here: the age question I saw in this area was a multiple choice question [e.g, 18-24, 25-34, etc.]. That may not be all that valuable to you if you have an IRO student sample since the vast majority of people will be in the same age bracket. I thus recommend using an open ended question for this, e.g., “what year were you born?” or “what is your current age in years?”).</p>
+</section>
+<section id="page-breaks" class="level3" data-number="21.4.6">
+<h3 data-number="21.4.6" class="anchored" data-anchor-id="page-breaks"><span class="header-section-number">21.4.6</span> Page breaks</h3>
+<p>Qualtrics surveys are organized around question blocks (see <a href="#sec-question-block-and-survey-flow" class="quarto-xref"><span>Section 21.3</span></a>). Each block can feature one or more questions. I would recommend including multiple blocks within your survey with each organized around a common theme or common concept.</p>
+<p>You should include page breaks within blocks that feature multiple questions. You can add a page break by moving your mouse cursor to the area between questions at which point an “+ Add page break option will come up”:</p>
+<p><a href="images/pbreak.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/pbreak.png" class="img-fluid"></a></p>
+<p>This is how things will look after clicking on the option:</p>
+<p><a href="images/pbreak1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="images/pbreak1.png" class="img-fluid"></a></p>
+<p>In general, I would recommend limiting the number of questions on a single page to keep the survey manageable for your respondents. I typically default to a single question per page although there are some areas where I might have two or three (e.g., basic demographics). There are some places where I might deviate from this suggestion though. For instance, suppose I am interested in measuring some latent psychological concept that is typically measured via a somewhat long multi-item battery (e.g., need for cognition or the Big Five personality traits). I would not create twenty different pages for each question in the (short) Big Five inventory, but likely four or five pages each with multiple questions. This might be a place where a grid question would be useful.</p>
+</section>
+<section id="timing-questions" class="level3" data-number="21.4.7">
+<h3 data-number="21.4.7" class="anchored" data-anchor-id="timing-questions"><span class="header-section-number">21.4.7</span> Timing questions</h3>
+<p>One question type not discussed above but which may be useful to you are <a href="https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/" target="_blank">timing</a> questions. A timing question does what it says - it records how long respondents take on the survey page. We can add it via the “Add a new question” option as seen below. Q4 is what the timing question looks like within the question block.</p>
+<p><a href="images/timing.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/timing.png" class="img-fluid"></a></p>
+<p>The Timing question will record four things for you:</p>
+<ul>
+<li>How many seconds before the first click on the page (First Click)</li>
+<li>How many seconds before the final click on the page (Last Click)</li>
+<li>How many seconds before the respondent clicked to the next page, i.e., submitted their response (Page Submit)</li>
+<li>How many times they clicked on the page (Click count)</li>
+</ul>
+<p>The most useful thing here is the Page Submit entry. This can be particularly useful for thinking about (or even analyzing) how long people thought about the question you are asking, perhaps as an indicator for the degree of cognitive elaboration people are employing when answering.</p>
+<p>One thing to note: be mindful of the page breaks here. The Timing question focuses on how long people take on the page as a whole. If you want to measure how long they take on a specific question, then that question should be provided on its own separate page by inserting page breaks before and after the question (and making sure the Timing question is also placed within those page break boundaries).</p>
+<p>The Timing question is mainly used to track how long people take. However, we can also use it in an additional aspect: you can also use this option to make sure that respondents sit on the page for a give amount of time before being allowed to progress to the next page. This is sometimes used to prevent respondents from simply speeding through the survey and for increasing the chances that they engage with the material on the page. I would use that option sparingly if at all. See the Qualtrics page for this question (linked above) for more.</p>
+</section>
+</section>
+<section id="piping-skipping-and-more" class="level2 page-columns page-full" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="piping-skipping-and-more"><span class="header-section-number">21.5</span> Piping, Skipping, and more</h2>
+<p>Most of the time we ask a respondent a question and their answer does not matter for the rest of the survey. However, there can be scenarios where we might want to have a person’s answer to a question influence the nature of future questions. This section discusses some possibilities.</p>
+<section id="sec-display-logic" class="level3 page-columns page-full" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="sec-display-logic"><span class="header-section-number">21.5.1</span> Display Logic</h3>
+<p>One way we can use people’s responses to influence the rest of the survey is via Display and Skip logic. In essence, these cover situations where we want to display a subsequent question to respondents based on their response to an initial one or, alternatively, to skip questions based on prior responses. I’ll give an example of the former in this sub-section.</p>
+<p>A classic example here involves the measurement of partisan identification in the United States. The most common method is to first ask respondents a question such as: “Generally speaking, do you think of yourself as a Democrat, a Republican, an Independent, or what?”. Respondents who select Democrat or Republican are then asked for the strength of this identification (is it strong or not very strong?). Respondents who indicate Independent, Other Party, or No Preference are instead given a follow up question where they are asked “Do you think of yourself as closer to the Republican Party or to the Democratic Party” with three response options: Closer to Republican, Closer to Democratic, or Nether. In this set up we need to ask respondents an initial question and then have our survey show them a specific follow up question based on their response to the initial question. We can do this via Display Logic.</p>
+<p>I would begin by creating my questions. I would then add a page break between the initial question and the potential follow up questions as so:<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;I have a separate strength question for those that said Democrat, and those that said Republican, to this initial question. We can actually simplify this and pose only one question by using Piped Text to also feed the specific response chosen on the initial question into the question wording of the follow up here. I will show that below.</p></div></div><p><a href="images/pid1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="images/pid1.png" class="img-fluid"></a></p>
+<p>I now have to add Display logic to the three follow up questions. I do that by clicking on the question and navigating to the Display Logic option shown in the Question Behavior area. Here is what the process looks like for the Democrat question in this set up:</p>
+<p><a href="images/dlogic1.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="images/dlogic1.gif" class="img-fluid"></a></p>
+<ul>
+<li>Click on Display Logic</li>
+<li>Leave the first bit alone<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+<li>Under Select Question: find the initial question whose response you’re using to set the logic</li>
+<li>And select the option that is needed
+<ul>
+<li>You can select multiple options here by adding another row via the green plus arrow. I will show an example below.</li>
+</ul></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;In this example at least. We can use other things in our Display Logic besides question responses.</p></div></div><p>Here is what the question now looks like:</p>
+<p><a href="images/pid2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="images/pid2.png" class="img-fluid"></a></p>
+<p>Basically, it says that this question will be displayed if the respondent answered Democrat to that initial “Generally speaking” question. I would then perform this same step for the other questions so that respondents only see the question that they should.</p>
+<p>In my example, respondents should see the “Do you think of yourself as closer to…” question if they responded with Independent, Other Party, or No Preference to the initial item. Here is what that would look like:</p>
+<p><a href="images/pid3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="images/pid3.png" class="img-fluid"></a></p>
+<p>I needed to add a line/row for each individual response to the first PID question. The main thing to watch out for is the conditional logic part of the logic. You can see the “Or” option at the start of the second two rows. Basically, we are telling Qualtrics to show respondents this question if they said Independent <em>or</em> they said Other Party <em>or</em> they said No Preference. The alternative option for the logic is “And”: if they said Independent and Other Party and No Preference. That would not work in the current instance because respondents could only pick one response. If I left this at “And”, then nobody would actually get shown this question. The “And” option is perhaps more useful if you’re setting up Display Logic using multiple questions or, perhaps, some type of multi-option multiple choice question.</p>
+</section>
+<section id="piped-text" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="piped-text"><span class="header-section-number">21.5.2</span> Piped Text</h3>
+<p>Another way that we can use answers from one question to influence another is via Piped Text. Specifically, this enables us to pipe the text of the selected option from one question into a subsequent question. The example in the previous sub-section is a good example of when this might be helpful. I initially created two follow up strength questions, one for Democrats and one for Republicans. However, I can simplify matters in this particular instance by piping in text. Let’s see what that looks like.</p>
+<p><a href="images/piped.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="images/piped.gif" class="img-fluid"></a></p>
+<p>I begin by clicking on my question and starting to edit the question text. I delete the text for “Democrat” and then click on piped text. This gives me a drop down box with various options. In my case, I want to pipe text from a survey question so I click on that option. I then find my question where I’m given various other options for what I can pipe in. Here, I want to pipe in the text for the response option that the respondent selected. I then do the same for the ending part of the sentence “not very strong [piped text]” (not shown in the .gif).</p>
+<p>Here is what the final question now looks like:</p>
+<p><a href="images/pid4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="images/pid4.png" class="img-fluid"></a></p>
+<p>If respondents selected “Democrat” in the first question, then this one will read “Would you call yourself a strong Democrat or a not very strong Democrat?”. If they answered “Republican” on the first question, then Republican would instead by inserted. I also updated the display logic so that only those respondents that gave either (“Or”) of those two responses on the initial question will see this follow up question.</p>
+<p>Of note here: you need to force responses to the initial question to make sure this Piped Stuff works the way it should work.</p>
+</section>
+<section id="sec-skip-logic-and-consent-pages" class="level3" data-number="21.5.3">
+<h3 data-number="21.5.3" class="anchored" data-anchor-id="sec-skip-logic-and-consent-pages"><span class="header-section-number">21.5.3</span> Skip Logic and Consent Pages</h3>
+<p>Earlier we saw how to selectively display questions based on responses to an initial question. We can use Skip Logic to similar ends: use the response to one question to inform whether Qualtrics <em>skips</em> a subsequent question (or questions).</p>
+<p>Perhaps the most relevant place to use Skip Logic is in combination with your very first question on the survey: the informed consent question. Every survey should begin with a question informing respondents about the basics of the survey and asking them for their informed consent. Respondents who answer affirmatively here can take the survey while those that do not give consent do not - they should, in essence, skip the entire survey. Let’s see what this would look like in practice.</p>
+<p><a href="images/consent.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="images/consent.png" class="img-fluid"></a></p>
+<p>The image above shows the final product. What did I do?</p>
+<ul>
+<li>I created a new block which I named consent. The name is only important for me since the respondents are not shown it.</li>
+<li>I went into the Survey Flow and moved this block to the very beginning of the survey (see below).</li>
+<li>I added a multiple choice question (which I named “consent”). The body of the question provides a short description of what the survey is about, what they’ll be asked to do, informs them of their ability not to consent and to withdraw participation, and ultimately asks whether they consent or not.
+<ul>
+<li>You can add bullet points like this by clicking on the Rich Content Editor when editing the question wording.</li>
+</ul></li>
+<li>I then added the Skip Logic. The process here is similar to adding Display Logic. Here, if the person clicks “I do not consent”, then the next page will be the end of survey page, i.e., they will not be shown any substantive questions.</li>
+</ul>
+<p>One <strong>important</strong> point: you <strong>need</strong> to add a Force Response option to this consent question as otherwise people who do provide any answer would still be shown the survey.</p>
+<p>Here is what the survey flow (currently) looks like:</p>
+<p><a href="images/consent_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="images/consent_flow.png" class="img-fluid"></a></p>
+</section>
+<section id="sec-branches" class="level3" data-number="21.5.4">
+<h3 data-number="21.5.4" class="anchored" data-anchor-id="sec-branches"><span class="header-section-number">21.5.4</span> Branches</h3>
+<p>Another way we can selectively show people information is by creating survey branches. Here, we can selectively show people <em>question blocks</em> based on their responses to prior questions.</p>
+<p>Let’s stick with our partisan identity example. We might want to measure the strength of a person’s identification with their party using a multi-item scale to obtain a more accurate measure. I have added a new block to my survey with three such questions drawn from work by <a href="https://doi.org/10.1111/pops.12482" target="_blank">Huddy, Bankert, and Davies</a> .</p>
+<p><a href="images/pidimp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="images/pidimp.png" class="img-fluid"></a></p>
+<p>Let’s say that I wanted to show this block of questions only to those people that said they were a Democrat or Republican on the initial question or indicated that they were close to a party on the leaner follow up question. A good way to do this is to create a survey branch. Here is a gif that shows the basic process:</p>
+<p><a href="images/branching.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="images/branching.gif" class="img-fluid"></a></p>
+<p>What am I doing:</p>
+<ul>
+<li>Go to Survey Flow</li>
+<li>Click on the block that you want to branch from and select Add Below</li>
+<li>Select the Branch Option</li>
+<li>Move the block (or blocks) you want in the branch into the Branch</li>
+<li>Select options and set the logic for the branch</li>
+</ul>
+<p>Here is what the final product looks like:</p>
+<p><a href="images/branch1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="images/branch1.png" class="img-fluid"></a></p>
+<p>In essence: If the repondent said Democrat or Republican to the initial partisanship question, or said Closer to Republican/Democratic to the leaner question, then they should be shown this block with the three identity strength questions. If those options are not true, then they are not shown the block.</p>
+<section id="sec-bonus-question-randomization-within-a-block" class="level4" data-number="21.5.4.1">
+<h4 data-number="21.5.4.1" class="anchored" data-anchor-id="sec-bonus-question-randomization-within-a-block"><span class="header-section-number">21.5.4.1</span> Bonus: question randomization within a block</h4>
+<p>I just created a block with three PID strength questions. Earlier we saw how we can randomize the order of choices for a single question. Here, I will show you how to randomize the order of questions within a block.</p>
+<p>Click on an area in the block - by the block name and above the first question is a good place. This will bring up an options menu on the left hand side for Block Behavior with a Question Randomization option.</p>
+<p><a href="images/question_random.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="images/question_random.png" class="img-fluid"></a></p>
+<p>Click on that option and set up randomization much like we did for response options earlier:</p>
+<p><a href="images/question_random1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="images/question_random1.png" class="img-fluid"></a></p>
+<p>The pop up here displays a very relevant message: randomizing questions within a block ignores page breaks! This option is thus not often so useful, but if you have a short block and want to randomize questions within it, then this is how you’d do it.</p>
+
+
+</section>
+</section>
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./part_qualtrics.html" class="pagination-link" aria-label="Surveys and Experiments in Qualtrics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Surveys and Experiments in Qualtrics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./quarto_randomization.html" class="pagination-link" aria-label="Advanced Randomization (Inc. Experiments)">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Advanced Randomization (Inc.&nbsp;Experiments)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

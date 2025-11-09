@@ -65,7 +65,8 @@ wvs <- import("./data/wvs_small.rda")
 #Some cleaning 
 wvs <- wvs |> 
   mutate(
-    country_name = sjlabelled::as_label(B_COUNTRY)) #<1>
+    country_name = sjlabelled::as_label(B_COUNTRY), #<1>
+    country_name = as.character(country_name)) # <2>
   
 #A plot
 wvs |> 
@@ -83,6 +84,7 @@ wvs |>
 ```
 
 1.  The `B_COUNTRY` variable indicates which country the respondent is in. It has numeric values with associated labels (e.g, 20 = a person is from Andorra). This nifty command from the `sjlabelled` package enables me to create a new character variable with those country labels as the data. This is much nicer for subsequent plotting, etc.
+2.  I convert this variable into a character variable. Why? I updated my `marginaleffects` library since I last ran this chapter and it started throwing errors because `country_name` was a factor variable and there were some missing categories in the analysis. Sigh.
 
 @fig-indiv-dist summarizes the individual level responses to this question pooling across countries. Each bar provides the number of respondents in the survey who gave each response. We can see that there is variation here: there are people who are "completely satisfied" with the way democracy works in their country, people in the middle, and people who are "not satisfied at all".[^analysis_clustering-2] We might think of modeling this variation by considering attributes of the respondents that vary between them. For instance, we could consider whether people with higher levels of education tend to give higher responses on this question than those with less education. Or, we could ask whether there are differences between people who identify with a political party and those that do not, or by ideological extremity, or by political news consumption, and so on, and so on. The unit of analysis would be the individual and the differences explained by things that vary between individuals.
 
